@@ -13,6 +13,7 @@ class Datasheet extends ObjectModel
 	private $screenshot;
 	private $author;
 	private $date;
+	private $track;
 
 	public function __construct($value = [])
 	{
@@ -62,6 +63,26 @@ class Datasheet extends ObjectModel
 		}
 		$request->closeCursor();
 		return $listOfSheets;
+	}
+
+		/**
+	 * Obtient un chapitre unique (pour la vue Single)
+	 * @param int $id L'id du chapitre
+	 * @return chapter l'objet chapitre
+	 */
+	public static function getUnique($id)
+	{
+		$db = Database::getDBConnection();
+		$request = $db->prepare('SELECT * FROM datasheet WHERE id = :id');
+		$request->bindValue(':id', (int) $id);
+		$request->execute();
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Datasheet');
+		$chapter = $request->fetch();
+		if($chapter === false) {
+			header("Location:index.php");
+		}
+		$chapter->setDate(new DateTime($chapter->getDate()));
+		return $chapter;
 	}
 
 	// SETTERS
@@ -190,6 +211,18 @@ class Datasheet extends ObjectModel
 	{
 		$this->date = $date;
 	}
+
+	/**
+	 * Permet d'assigner une valeur à l'attribut 'track'.
+	 * @param string $track une track sample
+	 */
+	public function setTrack($track)
+	{
+		if(is_string($track) && !empty($track)) 
+		{
+			$this->track = $track;
+		}
+	}
 	
 	// GETTERS
 
@@ -279,5 +312,13 @@ class Datasheet extends ObjectModel
 	 */
 	public function getDate() {
 		return $this->date; 
+	}
+
+	/**
+	 * Obtient la track de la fiche.
+	 * @return string La track
+	 */
+	public function getTrack() {
+		return $this->track; 
 	}
 }

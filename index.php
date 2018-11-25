@@ -33,10 +33,10 @@ switch ($p) {
 		$controller = new BlogController();
 		$content = $controller->executeHome();
 		break;
-	// case "single":
-	// 	$controller = new BlogController();
-	// 	$content = $controller->executeSingle();
-	// 	break;
+	case "single":
+		$controller = new BlogController();
+		$content = $controller->executeSingle();
+		break;
 	// case "admin":
 	// 	if(!isset($_SESSION['username']) OR isset($_SESSION['username']) AND $_SESSION['username'] !== 'j.forteroche') {
 	// 		header('Location: index.php?p=login');

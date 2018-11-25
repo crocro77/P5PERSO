@@ -7,8 +7,6 @@
 	<div class="row">
 		<h1 id="site-title">Liste des jeux Game Gear</h1>
 		<br />
-		<h5 id="titleDetail">Découvrez ce roman passionnant avec de nouveaux chapitres ajoutés régulièrement !</h5>
-		<br />
 	</div>
 	<hr>
 	<ul class="pagination center">
@@ -42,11 +40,11 @@
 						<h6 class="grey-text">Le <?= $sheet->getDate()->format("d/m/Y"); ?> par <?= $sheet->getAuthor(); ?></h6>
 					</div>
 					<div class="card-image waves-effect waves-block waves-light">
-						<a href="index.php?p=single&amp;id=<?= $sheet->getId(); ?>"><img src="<?= $sheet->getCover(); ?>" alt="<?= htmlspecialchars($sheet->getTitle()); ?>"/></a>
+						<a href="index.php?p=single&amp;id=<?= $sheet->getId(); ?>"><img src="public/img/<?= $sheet->getCover(); ?>" alt="<?= htmlspecialchars($sheet->getTitle()); ?>"/></a>
 					</div>
 					<div class="card-content">
 						<span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
-						<p><a href="index.php?p=single&amp;id=<?= $sheet->getId(); ?>">Voir le chapitre complet</a></p>
+						<p><a href="index.php?p=single&amp;id=<?= $sheet->getId(); ?>">Voir la fiche complète</a></p>
 					</div>
 					<div class="card-reveal">
 						<span class="card-title grey-text text-darken-4"><?= htmlspecialchars($sheet->getTitle()); ?><i class="material-icons right">close</i></span>

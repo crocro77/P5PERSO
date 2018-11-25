@@ -2163,7 +2163,7 @@
      */
   body {
     margin: 0;
-    background-color: rgb(41, 41, 41);
+    background-color: rgb(70, 129, 134);
     font-family: 'Open Sans';
     padding-bottom: 30px;
   }
@@ -2760,7 +2760,7 @@
   }
   
   .pagination li a {
-    color: #444;
+    color: rgb(255, 254, 254);
     display: inline-block;
     font-size: 1.2rem;
     padding: 0 10px;
@@ -3012,6 +3012,7 @@
     display: table;
     border-collapse: collapse;
     border-spacing: 0;
+    color: whitesmoke;
   }
   
   table.striped tr {
@@ -4794,7 +4795,6 @@
     font-size: 1.15rem;
     line-height: 110%;
     margin: 0.7666666667rem 0 0.46rem 0;
-    background-color: white;
   }
   
   em {
@@ -5120,11 +5120,8 @@
     display: block;
     border-radius: 2px 2px 0 0;
     position: relative;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 100%;
+    margin: auto;
+    width: 33%;
   }
   
   .card .card-image .card-title {
@@ -9526,8 +9523,9 @@
   }
   
   #post-title {
-    font-family: 'Open Sans';
+    font-family: 'Ubuntu';
     font-weight: bold;
+    color: whitesmoke;
   }
   
   #chapterUniqueParagraph {
@@ -9597,4 +9595,12 @@
   
   .material-icons:active {
     color: white;
+  }
+
+  footer {
+    color: whitesmoke;
+  }
+
+  .sheetParagraph {
+    color: whitesmoke;
   }
