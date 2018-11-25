@@ -6,12 +6,13 @@
     <title><?= $pageTitle; ?></title>
     <link rel="shortcut icon" href="public/img/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet"> 
     <link type="text/css" rel="stylesheet" href="public/css/materialize.css"  media="screen,projection"/>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="public/js/materialize.js"></script>
   </head>
   <body>
-    <nav class="light-blue">
+    <nav class="black">
         <div class="container">
             <div class="nav-wrapper">
               <a class="navbar-brand" href="index.php">Liste des jeux Game Gear</a>       

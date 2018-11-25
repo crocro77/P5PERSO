@@ -1,6 +1,6 @@
 <?php
 
-class ObjectModel
+abstract class ObjectModel
 {
     // Attribut nécessaire à la connexion avec la base de données.
     public $db;
@@ -10,10 +10,9 @@ class ObjectModel
      * Permet de se connecter à la base de données dès l'instanciation de l'objet.
      * @param PDO Object $db La base de données
      */
-    public function __construct()
+    public function __construct()   
     {
-        $db = new Database();
-        $this->db = $db->getDBConnection();
+        $this->db = Database::getDBConnection();
     }
 
     /**

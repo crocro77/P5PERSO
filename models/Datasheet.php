@@ -12,6 +12,7 @@ class Datasheet extends ObjectModel
 	private $cover;
 	private $screenshot;
 	private $author;
+	private $date;
 
 	public function __construct($value = [])
 	{
@@ -36,27 +37,28 @@ class Datasheet extends ObjectModel
 	}
 
 	/**
-	 * Obtient la liste des chapitres.
-	 * @param int $firstArticle Le premier chapitre
-	 * @param int $chaptersPerPage Le nombre de chapitres par page
+	 * Obtient la liste des fiches.
+	 * @param int $firstSheet La première fiche
+	 * @param int $sheetsPerPage Le nombre de fiches par page
 	 * @return Sheet objects La liste
 	 */
-	public function getList($firstSheet = -1, $sheetsPerPage = -1) 
+	public static function getList($firstSheet = -1, $sheetsPerPage = -1) 
 	{
-		$sql = 'SELECT * FROM datasheet ORDER BY title DESC';
+		$sql = 'SELECT * FROM datasheet ORDER BY title ASC';
 		
 		// Vérification de la validité des données reçues.
 		if($firstSheet != -1 OR $sheetsPerPage != -1)
 		{
 			$sql .= ' LIMIT ' . (int) $sheetsPerPage . ' OFFSET ' . (int) $firstSheet;
 		}
-		$request = $this->db->query($sql);
-		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Sheet');
+		$db = Database::getDBConnection();
+		$request = $db->query($sql);
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Datasheet');
 		$listOfSheets = $request->fetchAll();
 		// On boucle sur la liste des chapitres afin d'instancier des objets Date pour date
 		foreach($listOfSheets as $sheet)
 		{
-			$sheet->setReleaseDate(new Year($sheet->getReleaseDate()));
+			$sheet->setDate(new DateTime($sheet->getDate()));
 		}
 		$request->closeCursor();
 		return $listOfSheets;
@@ -101,7 +103,7 @@ class Datasheet extends ObjectModel
 
 	/**
 	 * Permet d'assigner une valeur à l'attribut 'developer'.
-	 * @param string $developer Le contenu
+	 * @param string $developer Le developer
 	 */
 	public function setDeveloper($developer)
 	{
@@ -113,7 +115,7 @@ class Datasheet extends ObjectModel
 
 	/**
 	 * Permet d'assigner une valeur à l'attribut 'publisher'.
-	 * @param string $publisher Le contenu
+	 * @param string $publisher Le publisher
 	 */
 	public function setPublisher($publisher)
 	{
@@ -124,8 +126,8 @@ class Datasheet extends ObjectModel
 	}
 
 	/**
-	 * Permet d'assigner une valeur à l'attribut 'date'.
-	 * @param Year $date La date de publication
+	 * Permet d'assigner une valeur à l'attribut 'release_date'.
+	 * @param Year $date La date de release
 	 */
 	public function setReleaseDate(Year $release_date)
 	{
@@ -134,7 +136,7 @@ class Datasheet extends ObjectModel
 
 	/**
 	 * Permet d'assigner une valeur à l'attribut 'genre'.
-	 * @param string $genre Le contenu
+	 * @param string $genre Le genre
 	 */
 	public function setGenre($genre)
 	{
@@ -146,7 +148,7 @@ class Datasheet extends ObjectModel
 
 	/**
 	 * Permet d'assigner une valeur à l'attribut 'cover'.
-	 * @param string $cover L'image d'illustration du chapitre
+	 * @param string $cover L'image cover de la fiche
 	 */
 	public function setCover($cover)
 	{
@@ -158,7 +160,7 @@ class Datasheet extends ObjectModel
 
 	/**
 	 * Permet d'assigner une valeur à l'attribut 'screenshot'.
-	 * @param string $screenshot L'image d'illustration du chapitre
+	 * @param string $screenshot L'image screenshot de la fiche
 	 */
 	public function setScreenshot($screenshot)
 	{
@@ -179,11 +181,20 @@ class Datasheet extends ObjectModel
 			$this->author = $author;
 		}
 	}
+
+	/**
+	 * Permet d'assigner une valeur à l'attribut 'date'.
+	 * @param DateTime $date La date de publication
+	 */
+	public function setDate(DateTime $date)
+	{
+		$this->date = $date;
+	}
 	
 	// GETTERS
 
 	/**
-	 * Obtient l'id du chapter.
+	 * Obtient l'id de la fiche.
 	 * @return int L'id
 	 */
 	public function getId() {
@@ -191,7 +202,7 @@ class Datasheet extends ObjectModel
 	}
 
 	/**
-	 * Obtient le titre du chapter.
+	 * Obtient le titre de la fiche.
 	 * @return string Le titre
 	 */
 	public function getTitle() {
@@ -199,7 +210,7 @@ class Datasheet extends ObjectModel
 	}
 
 	/**
-	 * Obtient le contenu du chapter.
+	 * Obtient le contenu de la fiche.
 	 * @return string Le contenu
 	 */
 	public function getContent() {
@@ -207,58 +218,66 @@ class Datasheet extends ObjectModel
 	}
 
 	/**
-	 * Obtient l'image du chapitres.
-	 * @return string l'image du chapitre
+	 * Obtient le developer de la fiche.
+	 * @return string le developer
 	 */
 	public function getDeveloper() {
 		return $this->developer;
 	}
 
 	/**
-	 * Obtient l'image du chapitres.
-	 * @return string l'image du chapitre
+	 * Obtient le publisher de la fiche.
+	 * @return string le publiser
 	 */
 	public function getPublisher() {
 		return $this->publisher;
 	}
 
 	/**
-	 * Obtient la date de publication du chapter.
-	 * @return Year Object La date de publication
+	 * Obtient la release_date de la fiche
+	 * @return Year Object La release_date
 	 */
 	public function getReleaseDate() {
 		return $this->release_date; 
 	}
 
 	/**
-	 * Obtient l'image du chapitres.
-	 * @return string l'image du chapitre
+	 * Obtient le genre de la fiche.
+	 * @return string le genre
 	 */
 	public function getGenre() {
 		return $this->genre;
 	}
 
 	/**
-	 * Obtient l'image du chapitres.
-	 * @return string l'image du chapitre
+	 * Obtient l'image cover de la fiche.
+	 * @return string l'image cover de la fiche
 	 */
 	public function getCover() {
 		return $this->cover;
 	}
 
 	/**
-	 * Obtient l'image du chapitres.
-	 * @return string l'image du chapitre
+	 * Obtient l'image screenshot de la fiche.
+	 * @return string l'image screenshot de la fiche
 	 */
 	public function getScreenshot() {
 		return $this->screenshot;
 	}
 
 	/**
-	 * Obtient l'auteur du chapter.
+	 * Obtient l'auteur de la fiche.
 	 * @return string L'auteur
 	 */
 	public function getAuthor() {
 		return $this->author; 
+	}
+
+	/**
+	 * Obtient la date de publication de la fiche.
+	 * @return DateTime Object La date de publication
+	 */
+	public function getDate() {
+		return $this->date; 
 	}
 }
