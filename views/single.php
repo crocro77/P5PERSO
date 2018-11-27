@@ -3,7 +3,7 @@
     <div>
         <h1  id="site-title">Liste des jeux Game Gear</h1>
         <br />
-        <p id="titleDetail"><a class="btn light-blue waves-effect" href="index.php">Retour à la page d'accueil</a></p>
+        <p id="titleDetail"><a class="btn black waves-effect" href="index.php">Retour à la page d'accueil</a></p>
     </div>
 </div>
 <div class="container">
@@ -27,12 +27,12 @@
             </tbody>
         </table>
         <br />
-        <div class="center"><img src="public/img/<?= $sheetUnique->getCover() ?>" width="20%"></div>
+        <div class="center"><img src="public/img/<?= $sheetUnique->getCover() ?>" width="10%"></div>
    
         <p class="sheetParagraph"><?= $sheetUnique->getContent(); ?></p>
         <br />
         <div class="center">
-            <h4>Bonus</h4>
+            <h5>Bonus : Extrait de l'OST "<?= $sheetUnique->getTrackName(); ?>"</h5>
             <audio controls>
                 <source src="<?= $sheetUnique->getTrack(); ?>" type="audio/mpeg">
                 Your browser does not support the audio element.
@@ -52,7 +52,7 @@
                 <?php
                 if (empty($comment->getSignaled())) { // Si l'attribut 'signaler' est vide, on affiche le lien pour signaler.
                     ?>
-                <a href="index.php?p=single&amp;id=<?= $chapterUnique->getId(); ?>&amp;action=signal&amp;commentId=<?= $comment->getId(); ?>"><small class="signal pull-right">Signaler</small></a>
+                <a href="index.php?p=single&amp;id=<?= $sheetUnique->getId(); ?>&amp;action=signal&amp;commentId=<?= $comment->getId(); ?>"><small class="signal pull-right">Signaler</small></a>
                 <?php
                 // Sinon, on affiche un message d'alerte pour prévenir que le commentaire a été signalé.
             } else {
@@ -98,7 +98,7 @@
                 </div>
                     <input type="hidden" name="id" value="<?= $sheetUnique->getId(); ?>">
                 <div class="col s12">
-                    <button type="submit" name ="submit" class="btn light-blue waves-effect">Envoyer votre commentaire</button>
+                    <button type="submit" name ="submit" class="btn black waves-effect">Envoyer votre commentaire</button>
                 </div>
             </form>
         </div>

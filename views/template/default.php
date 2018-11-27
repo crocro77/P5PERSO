@@ -11,14 +11,17 @@
     <link type="text/css" rel="stylesheet" href="public/css/materialize.css"  media="screen,projection"/>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="public/js/materialize.js"></script>
+    <script type="text/javascript" src="public/js/slider.js"></script>
   </head>
   <body>
     <nav class="black">
         <div class="container">
             <div class="nav-wrapper">
-              <a class="navbar-brand" href="index.php">Liste des jeux Game Gear</a>       
+              <a class="navbar-brand" href="index.php">World of Game Gear</a>       
                 <ul class="right hide-on-med-and-down">
+                    <li><a title="Chat" href="#"><i class="material-icons">chat_bubble</i></a></li>
                     <li><a title="Administration" href="index.php?p=admin"><i class="material-icons">lock</i></a></li>
+                    <li><a title="A propos" href="#"><i class="material-icons">info</i></a></li>
                 </ul>
             </div>
         </div>

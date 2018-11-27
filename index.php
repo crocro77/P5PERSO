@@ -19,7 +19,7 @@ function autoload($classname)
 
 spl_autoload_register('autoload');
 
-$pageTitle = "Liste des jeux Game Gear";
+$pageTitle = "World of Game Gear";
 
 if (isset($_GET['p'])) {
 	$p = $_GET['p'];

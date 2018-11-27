@@ -1,11 +1,13 @@
 <br />
 <div class="container">
 	<div id="illustration">
-		<img id="landscape" src="public/img/GG.jpg" alt="Sega Game Gear">
+		<div id="slider">
+			<img id="sliderImage" src="public/img/GG.jpg" alt="sliderImage">
+		</div>
 	</div>
 	<br />	
 	<div class="row">
-		<h1 id="site-title">Liste des jeux Game Gear</h1>
+		<h1 id="site-title">Index des jeux Game Gear</h1>
 		<br />
 	</div>
 	<hr>
@@ -58,17 +60,5 @@
 		?>
 		</div>
 	</div>
-	<hr>
-	<ul class="pagination center">
-	<?php
-	for ($i = 1; $i <= $numberOfPages; $i++) {
-		if ($i == $currentPage) {
-			echo "<li class='page-item'><a class='page-link'>$i</a></li>";
-		} else {
-			echo '<li class="waves-effect"><a class="page-link" href="?page=' . $i . '#anchor">' . $i . '</a></li>';
-		}
-	}
-	?>
-	</ul>
 	<hr>
 </div>

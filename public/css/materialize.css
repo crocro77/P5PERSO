@@ -2163,7 +2163,7 @@
      */
   body {
     margin: 0;
-    background-color: rgb(70, 129, 134);
+    background-color: rgb(64, 65, 65);
     font-family: 'Open Sans';
     padding-bottom: 30px;
   }
@@ -5121,7 +5121,6 @@
     border-radius: 2px 2px 0 0;
     position: relative;
     margin: auto;
-    width: 33%;
   }
   
   .card .card-image .card-title {
@@ -9547,8 +9546,8 @@
   }
   
   .chapterUniqueImage {
-    height: 180px;
-    width: 286px;
+    height: 150px;
+    width: 220px;
     border-radius: 3px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   }
@@ -9603,4 +9602,18 @@
 
   .sheetParagraph {
     color: whitesmoke;
+  }
+
+  #slider {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #sliderImage {
+    border: 1px solid black;
+    box-shadow: 1px 1px gray;
+    width: 50%;
+    max-height: 304px;
   }

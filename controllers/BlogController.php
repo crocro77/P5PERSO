@@ -28,7 +28,6 @@ class BlogController
 			$currentPage = 1;
 		}
 		
-
 		$firstSheet = ($currentPage - 1) * $sheetsPerPage;
 		$listOfSheets = $sheetManager->getList($firstSheet, $sheetsPerPage);
 

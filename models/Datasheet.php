@@ -14,6 +14,7 @@ class Datasheet extends ObjectModel
 	private $author;
 	private $date;
 	private $track;
+	private $trackname;
 
 	public function __construct($value = [])
 	{
@@ -83,6 +84,87 @@ class Datasheet extends ObjectModel
 		}
 		$chapter->setDate(new DateTime($chapter->getDate()));
 		return $chapter;
+	}
+
+		/**
+	 * Ajoute une fiche dans la base de données.
+	 * @param chapter $chapter L'objet chapitre
+	 */
+	public static function addSheet(Datasheet $sheet)
+	{
+		$db = Database::getDBConnection();
+		$req = $db->prepare('INSERT INTO datasheet(title, content, author, developer, publisher, release_date, genre, cover, screenshot, date) VALUES(:title, :content, :author, :developer, :publisher, :release_date, :genre, :cover, :screenshot, NOW())');
+		$req->bindValue(':title', $sheet->getTitle());
+		$req->bindValue(':content', $sheet->getContent());
+		$req->bindValue(':author', $sheet->getAuthor());
+		$req->bindValue(':developer', $sheet->getDeveloper()());
+		$req->bindValue(':publisher', $sheet->getPublisher());
+		$req->bindValue(':release_date', $sheet->getReleaseDate());
+		$req->bindValue(':genre', $sheet->getGenre());
+		$req->bindValue(':cover', $sheet->getCover() ? $cover->getCover() : 'cover.png');
+		$req->bindValue(':screenshot', $sheet->getScreenshot() ? $chapter->getScreenshot() : 'screenshot.png');
+		$req->execute();
+	}
+
+	/**
+	 * Met à jour les valeurs d'un chapitre.
+	 * @param string $title Le titre
+	 * @param string $author L'auteur
+	 * @param string $content Le contenu
+	 * @param string $developer Le developpeur
+	 * @param string $publisher L'editeur
+	 * @param string $release_date La date de sortie
+	 * @param string $genre le genre
+	 * @param int $id L'id
+	 */
+	public static function updateSheet($title, $author, $content, $developer, $publisher, $release_date, $genre, $id)
+	{
+		$db = Database::getDBConnection();
+		$request = $db->prepare('UPDATE datasheet SET title = :title, author = :author, content = :content, developer = :developer, publisher = :publisher, release_date = :release_date, genre = :genre, date = NOW() WHERE id = :id');
+		$request->bindValue(':title', $title);
+		$request->bindValue(':author', $author);
+		$request->bindValue(':content', $content);
+		$request->bindValue(':developer', $developer);
+		$request->bindValue(':publisher', $publisher);
+		$request->bindValue(':release_date', $release_date);
+		$request->bindValue(':genre', $genre);
+		$request->bindValue(':id', (int) $id);
+		$request->execute();
+	}
+
+	/**
+	 * Met à jour l'image d'un chapitre.
+	 * @param string $cover L'image
+	 */
+	public static function updateCover($cover, $id)
+	{
+		$db = Database::getDBConnection();
+		$request = $db->prepare('UPDATE datasheet SET cover = :cover WHERE id = :id');
+		$request->bindValue(':cover', $cover);
+		$request->bindValue(':id', (int) $id);
+		$request->execute();
+	}
+
+	/**
+	 * Met à jour l'image d'un chapitre.
+	 * @param string $screenshot L'image
+	 */
+	public static function updateScreenshot($screenshot, $id)
+	{
+		$db = Database::getDBConnection();
+		$request = $db->prepare('UPDATE datasheet SET screenshot = :screenshot WHERE id = :id');
+		$request->bindValue(':screenshot', $screenshot);
+		$request->bindValue(':id', (int) $id);
+		$request->execute();
+	}
+	
+	/**
+	 * Supprime un chapitre de la bdd
+	 */
+	public static function deleteSheet()
+	{
+		$db = Database::getDBConnection();
+		$db->exec('DELETE FROM datasheet WHERE id = '. $_POST['id']);
 	}
 
 	// SETTERS
@@ -223,6 +305,18 @@ class Datasheet extends ObjectModel
 			$this->track = $track;
 		}
 	}
+
+		/**
+	 * Permet d'assigner une valeur à l'attribut 'trackname'.
+	 * @param string $track le nom de la track sample
+	 */
+	public function setTrackName($trackname)
+	{
+		if(is_string($trackname) && !empty($trackname)) 
+		{
+			$this->trackname = $trackname;
+		}
+	}
 	
 	// GETTERS
 
@@ -320,5 +414,13 @@ class Datasheet extends ObjectModel
 	 */
 	public function getTrack() {
 		return $this->track; 
+	}
+
+	/**
+	 * Obtient la trackname de la fiche.
+	 * @return string La trackname
+	 */
+	public function getTrackName() {
+		return $this->trackname; 
 	}
 }
