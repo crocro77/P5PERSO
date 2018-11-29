@@ -79,7 +79,7 @@ class Comment extends ObjectModel
 	 */
 	public static function getAllComments() {
 		$db = Database::getDBConnection();
-		$result = $db->query("SELECT comments.id, comments.author, comments.comment_date, comments.post_id, comments.comment, posts.title FROM comments JOIN posts ON comments.post_id = posts.id WHERE comments.seen = '0' ORDER BY comments.post_id, comments.comment_date ASC");
+		$result = $db->query("SELECT comments.id, comments.author, comments.comment_date, comments.post_id, comments.comment, datasheet.title FROM comments JOIN datasheet ON comments.post_id = datasheet.id WHERE comments.seen = '0' ORDER BY comments.post_id, comments.comment_date ASC");
 		$listComments = $result->fetchAll(PDO::FETCH_CLASS, "Comment");
 		foreach($listComments as $comment) {
 			$comment->setCommentDate(new DateTime($comment->getCommentDate()));
@@ -143,6 +143,15 @@ class Comment extends ObjectModel
 		$req = $db->prepare('DELETE FROM comments WHERE id = :id');
 		$req->bindValue(':id', $commentId);
 		$req->execute();
+	}
+
+	/**
+	 * Delete all comments
+	 */
+	public function deleteAll() {
+		$db = Database::getDBConnection();
+		$result = $db->exec('TRUNCATE TABLE comments');
+		return $result;
 	}
 
 	// SETTERS 

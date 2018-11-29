@@ -37,30 +37,40 @@ switch ($p) {
 		$controller = new BlogController();
 		$content = $controller->executeSingle();
 		break;
-	// case "admin":
-	// 	if(!isset($_SESSION['username']) OR isset($_SESSION['username']) AND $_SESSION['username'] !== 'j.forteroche') {
-	// 		header('Location: index.php?p=login');
-	// 	} else {
-	// 		$pageTitle .= ' - Tableau de bord';
-	// 		$controller = new AdminController();
-	// 		$content = $controller->executeAdminPanel();
-	// 	}
-	// 	break;
-	// case "login":
-	// 	if(isset($_SESSION['username']) AND $_SESSION['username'] == 'j.forteroche') {
-	// 		header('Location: index.php');
-	// 	} else {
-	// 		$pageTitle .= ' - Connexion';
-	// 		$controller = new AdminController();
-	// 		$content = $controller->executeLogin();
-	// 	}
-	// 	break;
-	// case "logout":
-	// 	session_start();
-	// 	session_destroy();
-	// 	header('Location: index.php');
-	// 	exit();
-	// 	break;
+	case "about":
+		$pageTitle .= ' - À propos';
+		$controller = new BlogController();
+		$content = $controller->executeAbout();
+		break;
+	case "mentions":
+		$pageTitle .= ' - Mentions légales';
+		$controller = new BlogController();
+		$content = $controller->executeMentions();
+		break;
+	case "admin":
+		if(!isset($_SESSION['username']) OR isset($_SESSION['username']) AND $_SESSION['username'] !== 'ntonyyy') {
+			header('Location: index.php?p=login');
+		} else {
+			$pageTitle .= ' - Tableau de bord';
+			$controller = new AdminController();
+			$content = $controller->executeAdminPanel();
+		}
+		break;
+	case "login":
+		if(isset($_SESSION['username']) AND $_SESSION['username'] == 'ntonyyy') {
+			header('Location: index.php');
+		} else {
+			$pageTitle .= ' - Connexion';
+			$controller = new AdminController();
+			$content = $controller->executeLogin();
+		}
+		break;
+	case "logout":
+		session_start();
+		session_destroy();
+		header('Location: index.php');
+		exit();
+		break;
 	default:
 		$controller = new ErrorController();
 		$content = $controller->executeError();

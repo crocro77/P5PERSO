@@ -6,14 +6,11 @@ class BlogController
 {
 	public function executeHome()
 	{
-		// Nombre de chapitre voulu par page.
 		$sheetsPerPage = 8;
 
-		// On compte le nombre total de chapitre présents dans la bdd.
 		$sheetManager = new Datasheet();
 		$numberOfSheets = $sheetManager->count();
 
-		// Nombre de pages.
 		$numberOfPages = ceil($numberOfSheets / $sheetsPerPage);
 
 		$currentPage = 1;
@@ -35,7 +32,6 @@ class BlogController
 	}
 	
 	public function executeSingle() {
-		// Si $_POST['author'] n'est pas vide OU qu'il est vide mais que $_SESSION['username'] existe et que $_POST['comment'] n'est pas vide
 		$commentManager = new Comment();
 		if(!empty($_POST['author']) || (empty($_POST['author']) && isset($_SESSION['username']) && !empty($_POST['comment']))) {
 			$comment = new Comment();
@@ -63,5 +59,16 @@ class BlogController
 		$listOfComments = $commentManager->getSheetComments($_GET['id']);
 
 		return load_template('single.php', array('sheetUnique' => $sheetUnique, 'listOfComments' => $listOfComments));
+	}
+
+	public function executeAbout() {
+		$aboutManager = new About();
+		$aboutDescription = $aboutManager->getAboutDescription();
+
+		return load_template('about.php', array('aboutDescription' => $aboutDescription));
+	}
+
+	public function executeMentions() {
+		return load_template('mentions.php', array());
 	}
 }

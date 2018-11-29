@@ -19,9 +19,9 @@
             <div class="nav-wrapper">
               <a class="navbar-brand" href="index.php">World of Game Gear</a>       
                 <ul class="right hide-on-med-and-down">
-                    <li><a title="Chat" href="#"><i class="material-icons">chat_bubble</i></a></li>
+                    <li><a title="Chat" href="index.php?p=chat"><i class="material-icons">chat_bubble</i></a></li>
                     <li><a title="Administration" href="index.php?p=admin"><i class="material-icons">lock</i></a></li>
-                    <li><a title="A propos" href="#"><i class="material-icons">info</i></a></li>
+                    <li><a title="A propos" href="index.php?p=about"><i class="material-icons">info</i></a></li>
                 </ul>
             </div>
         </div>
@@ -30,7 +30,7 @@
       <?= $content; ?>
       
     <footer>
-        <p id="titleDetail">2018 - ntonyyy</p>
+        <p id="titleDetail">2018 - ntonyyy - <a title="Mentions légales" href="index.php?p=mentions">Mentions légales</a></p>
     </footer>
   </body>
 </html>

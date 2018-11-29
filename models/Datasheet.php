@@ -167,6 +167,16 @@ class Datasheet extends ObjectModel
 		$db->exec('DELETE FROM datasheet WHERE id = '. $_POST['id']);
 	}
 
+		/**
+	 * Supprime tous les articles de la base de données. Remet l'id de base à 0.
+	 */
+	public static function deleteAll()
+	{
+		$db = Database::getDBConnection();
+		$result = $db->exec('TRUNCATE TABLE datasheet');
+		return $result;
+	}
+
 	// SETTERS
 
 	/**

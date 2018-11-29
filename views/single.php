@@ -1,7 +1,7 @@
 <br />
 <div class="container">
     <div>
-        <h1  id="site-title">Liste des jeux Game Gear</h1>
+        <h1 id="site-title">Liste des jeux Game Gear</h1>
         <br />
         <p id="titleDetail"><a class="btn black waves-effect" href="index.php">Retour à la page d'accueil</a></p>
     </div>
