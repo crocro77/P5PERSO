@@ -27,7 +27,7 @@ class AdminController
 
 		// ajout et maj d'un contenu dans la bdd //
 		$errors = '';
-		if (!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['content']) && !empty($_POST['developer']) && !empty($_POST['publisher']) && !empty($_POST['release_date']) && !empty($_POST['genre'])) {
+		if (!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['content']) && !empty($_POST['developer']) && !empty($_POST['publisher']) && !empty($_POST['release_date']) && !empty($_POST['genre']) && !empty($_POST['trackname'])) {
 			$title = $_POST['title'];
 			$author = $_POST['author'];
 			$content = $_POST['content'];
@@ -36,6 +36,8 @@ class AdminController
 			$release_date = $_POST['release_date'];
 			$genre = $_POST['genre'];
 			$cover = "";
+			$track = "";
+			$trackname = $_POST['trackname'];
 
 			$id = (!empty($_POST['id']) ? $_POST['id'] : null);
 
@@ -56,9 +58,32 @@ class AdminController
 				}
 
 				if (!isset($error)) {
-					$key = md5($_FILES['file']['name']) . time() . $extension;
-					move_uploaded_file($_FILES['file']['tmp_name'], 'public/img/' . $key);
-					$cover = $key;
+					$coverKey = md5($_FILES['file']['name']) . time() . $extension;
+					move_uploaded_file($_FILES['file']['tmp_name'], 'public/img/' . $coverKey);
+					$cover = $coverKey;
+				}
+			}
+
+			// upload de la track de la fiche
+			if (isset($_FILES['file2'])) {
+				$file = $_FILES['file2']['name'];
+				$max_size = 2000000;
+				$size = $_FILES['file2']['size'];
+				$extensions = array('.mp3', '.MP3');
+				$extension = strrchr($file, '.');
+
+				if (!in_array($extension, $extensions)) {
+					$error = "Cette musique n'est pas valable";
+				}
+
+				if ($size > $max_size) {
+					$error = "Le fichier est trop volumineux";
+				}
+
+				if (!isset($error)) {
+					$trackKey = md5($_FILES['file2']['name']) . time() . $extension;
+					move_uploaded_file($_FILES['file2']['tmp_name'], 'public/mp3/' . $trackKey);
+					$track = $trackKey;
 				}
 			}
 
@@ -81,9 +106,13 @@ class AdminController
 				$sheet->setReleaseDate($release_date);
 				$sheet->setGenre($genre);
 				if ($cover) {
-					$cover->setCover($cover);
+					$sheet->setCover($cover);
 				}
-				$sheet->add($sheet);
+				if ($track) {
+					$sheet->setTrack($track);
+				}
+				$sheet->setTrackName($trackname);
+				$sheet->addSheet($sheet);
 				header("Location:index.php");
 			}
 		} elseif (!empty($_POST)) {
@@ -107,6 +136,9 @@ class AdminController
 			}
 			if (empty($_POST['genre'])) {
 				$errors .= '<li>Le genre est obligatoire.</li>';
+			}
+			if (empty($_POST['trackname'])) {
+				$errors .= '<li>Le nom de la track est obligatoire.</li>';
 			}
 
 			$_SESSION['flash']['error'] = '<ul>' . $errors . '</ul>';

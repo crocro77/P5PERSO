@@ -54,14 +54,18 @@ if(isset($_SESSION['flash'])) {
         </div>
     </div>
 
-	<img id="output_image" width="25%" height="25%"/>
 	<div class="col s12">
         <div class="btn light-blue waves-effect waves-light input-field file-field col s3">
-			<input type="file" name="file" onchange="preview_image(event)">
-    		<input type="submit" value="Screenshot" name="submit">
+			<input type="file" name="file2">
+    		<input type="submit" value="Track bonus de l'OST" name="submit">
+			<input type="text" class="file-path" readonly/>
         </div>
     </div>
-
+	<div class="form-group">
+		<label for="trackname">Nom de la track</label>
+		<input type="text" name="trackname" class="form-control" value="<?php if(isset($_GET['action']) && $_GET['action'] == 'edit') echo $sheet->getTrackName(); ?>" />
+	</div>
+	<br />
 	<?php
 	// Si on édite un article, le bouton d'envoi devient 'Mettre à jour'.
 	if(isset($_GET['action']) && $_GET['action'] == 'edit') {

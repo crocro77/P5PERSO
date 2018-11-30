@@ -9,7 +9,8 @@
 <div class="container">
     <h2 id="post-title" class="center"><?= htmlspecialchars($sheetUnique->getTitle()); ?></h2>
         <div class="row center">
-            <img class="chapterUniqueImage" src="<?= $sheetUnique->getScreenshot() ?>" alt="<?= htmlspecialchars($sheetUnique->getTitle()); ?>" >
+        <!-- <img class="chapterUniqueImage" src="<>?= $sheetUnique->getScreenshot() ?>" alt="<>?= htmlspecialchars($sheetUnique->getTitle()); ?>" > -->
+            <img src="public/img/<?= $sheetUnique->getCover() ?>" alt="<?= htmlspecialchars($sheetUnique->getTitle()); ?>" >
         </div>
         <h6 class="center">Par <?= htmlspecialchars($sheetUnique->getAuthor()); ?> le <?= $sheetUnique->getDate()->format('d/m/Y') ?></h6>
         <table>
@@ -26,15 +27,13 @@
                 <td><?= $sheetUnique->getGenre() ?></td>
             </tbody>
         </table>
-        <br />
-        <div class="center"><img src="public/img/<?= $sheetUnique->getCover() ?>" width="10%"></div>
-   
+        <br />   
         <p class="sheetParagraph"><?= $sheetUnique->getContent(); ?></p>
         <br />
         <div class="center">
             <h5>Bonus : Extrait de l'OST "<?= $sheetUnique->getTrackName(); ?>"</h5>
             <audio controls>
-                <source src="<?= $sheetUnique->getTrack(); ?>" type="audio/mpeg">
+                <source src="public/mp3/<?= $sheetUnique->getTrack(); ?>" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
         </div>

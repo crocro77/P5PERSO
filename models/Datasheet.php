@@ -93,16 +93,18 @@ class Datasheet extends ObjectModel
 	public static function addSheet(Datasheet $sheet)
 	{
 		$db = Database::getDBConnection();
-		$req = $db->prepare('INSERT INTO datasheet(title, content, author, developer, publisher, release_date, genre, cover, screenshot, date) VALUES(:title, :content, :author, :developer, :publisher, :release_date, :genre, :cover, :screenshot, NOW())');
+		$req = $db->prepare('INSERT INTO datasheet(title, content, author, developer, publisher, release_date, genre, cover, screenshot, track, trackname, date) VALUES(:title, :content, :author, :developer, :publisher, :release_date, :genre, :cover, :screenshot, :track, :trackname, NOW())');
 		$req->bindValue(':title', $sheet->getTitle());
 		$req->bindValue(':content', $sheet->getContent());
 		$req->bindValue(':author', $sheet->getAuthor());
-		$req->bindValue(':developer', $sheet->getDeveloper()());
+		$req->bindValue(':developer', $sheet->getDeveloper());
 		$req->bindValue(':publisher', $sheet->getPublisher());
 		$req->bindValue(':release_date', $sheet->getReleaseDate());
 		$req->bindValue(':genre', $sheet->getGenre());
-		$req->bindValue(':cover', $sheet->getCover() ? $cover->getCover() : 'cover.png');
+		$req->bindValue(':cover', $sheet->getCover() ? $sheet->getCover() : 'cover.png');
 		$req->bindValue(':screenshot', $sheet->getScreenshot() ? $chapter->getScreenshot() : 'screenshot.png');
+		$req->bindValue(':track', $sheet->getTrack() ? $sheet->getTrack() : 'track.mp3');
+		$req->bindValue(':trackname', $sheet->getTrackName());
 		$req->execute();
 	}
 
@@ -240,9 +242,9 @@ class Datasheet extends ObjectModel
 
 	/**
 	 * Permet d'assigner une valeur à l'attribut 'release_date'.
-	 * @param Year $date La date de release
+	 * @param int $date La date de release
 	 */
-	public function setReleaseDate(Year $release_date)
+	public function setReleaseDate($release_date)
 	{
 		$this->release_date = $release_date;
 	}
