@@ -113,7 +113,7 @@ class Datasheet extends ObjectModel
 	 * @param string $content Le contenu
 	 * @param string $developer Le developpeur
 	 * @param string $publisher L'editeur
-	 * @param string $release_date La date de sortie
+	 * @param int $release_date La date de sortie
 	 * @param string $genre le genre
 	 * @param int $id L'id
 	 */
@@ -126,7 +126,7 @@ class Datasheet extends ObjectModel
 		$request->bindValue(':content', $content);
 		$request->bindValue(':developer', $developer);
 		$request->bindValue(':publisher', $publisher);
-		$request->bindValue(':release_date', $release_date);
+		$request->bindValue(':release_date', (int) $release_date);
 		$request->bindValue(':genre', $genre);
 		$request->bindValue(':id', (int) $id);
 		$request->execute();

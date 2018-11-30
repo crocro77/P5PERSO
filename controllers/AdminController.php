@@ -27,15 +27,19 @@ class AdminController
 
 		// ajout et maj d'un contenu dans la bdd //
 		$errors = '';
-		if (!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['content'])) {
+		if (!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['content']) && !empty($_POST['developer']) && !empty($_POST['publisher']) && !empty($_POST['release_date']) && !empty($_POST['genre'])) {
 			$title = $_POST['title'];
 			$author = $_POST['author'];
 			$content = $_POST['content'];
+			$developer = $_POST['developer'];
+			$publisher = $_POST['publisher'];
+			$release_date = $_POST['release_date'];
+			$genre = $_POST['genre'];
 			$cover = "";
 
 			$id = (!empty($_POST['id']) ? $_POST['id'] : null);
 
-			// upload de l'image de chapitre
+			// upload de la cover de la fiche
 			if (isset($_FILES['file'])) {
 				$file = $_FILES['file']['name'];
 				$max_size = 2000000;
@@ -60,9 +64,9 @@ class AdminController
 
 			if (isset($_POST['id'])) {
 				$sheet = new Datasheet();
-				$sheet->update($title, $author, $content, $id);
+				$sheet->updateSheet($title, $author, $content, $developer, $publisher, $release_date, $genre, $id);
 				if ($cover) {
-					$cover->updateImage($cover, $id);
+					$cover->updateCover($cover, $id);
 					header("Location:index.php");
 				} else {
 					header("Location:index.php");
@@ -72,6 +76,10 @@ class AdminController
 				$sheet->setTitle($title);
 				$sheet->setContent($content);
 				$sheet->setAuthor($author);
+				$sheet->setDeveloper($developer);
+				$sheet->setPublisher($publisher);
+				$sheet->setReleaseDate($release_date);
+				$sheet->setGenre($genre);
 				if ($cover) {
 					$cover->setCover($cover);
 				}
@@ -87,6 +95,18 @@ class AdminController
 			}
 			if (empty($_POST['content'])) {
 				$errors .= '<li>Le contenu est obligatoire.</li>';
+			}
+			if (empty($_POST['developer'])) {
+				$errors .= '<li>Le développeur est obligatoire.</li>';
+			}
+			if (empty($_POST['publisher'])) {
+				$errors .= '<li>L\'éditeur est obligatoire.</li>';
+			}
+			if (empty($_POST['release_date'])) {
+				$errors .= '<li>L\'année de sortie est obligatoire.</li>';
+			}
+			if (empty($_POST['genre'])) {
+				$errors .= '<li>Le genre est obligatoire.</li>';
 			}
 
 			$_SESSION['flash']['error'] = '<ul>' . $errors . '</ul>';

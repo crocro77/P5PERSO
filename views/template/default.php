@@ -30,7 +30,7 @@
       <?= $content; ?>
       
     <footer>
-        <p id="titleDetail">2018 - ntonyyy - <a title="Mentions légales" href="index.php?p=mentions">Mentions légales</a></p>
+        <p id="titleDetail">2018 - ntonyyy - <a title="Mentions légales" id="mention-btn" href="index.php?p=mentions">Mentions légales</a></p>
     </footer>
   </body>
 </html>

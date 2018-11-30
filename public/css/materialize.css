@@ -2163,7 +2163,7 @@
      */
   body {
     margin: 0;
-    background-color: rgb(64, 65, 65);
+    background-color: rgb(83, 109, 153);
     font-family: 'Open Sans';
     padding-bottom: 30px;
   }
@@ -9563,7 +9563,7 @@
   
   .tab .material-icons {
     font-size: 50px;
-    color: black;
+    color: white;
   }
   
   .flex-container {
@@ -9601,7 +9601,7 @@
   }
 
   .sheetParagraph {
-    color: whitesmoke;
+    color: black;
   }
 
   #slider {
@@ -9616,4 +9616,8 @@
     box-shadow: 1px 1px gray;
     width: 50%;
     max-height: 304px;
+  }
+
+  #mention-btn {
+    color: white;
   }
