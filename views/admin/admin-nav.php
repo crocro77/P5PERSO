@@ -1,6 +1,6 @@
 <br />
 <div class="center">
-	<ul class="flex-container">
+	<ul class="flex-container  white">
 		<li class="tab" <?php if($selectedTab == 'dashboard') echo 'class="active"' ?>>
 			<a title="Tableau de bord" href="index.php?p=admin&tab=dashboard"><i class="material-icons">dashboard</i></a>
 			<p>Tableau de bord</p>

@@ -38,7 +38,7 @@ class About extends ObjectModel {
 	 * Permet de mettre à jour la valeur de l'objet About en base de données.
 	 * @param string $about L'objet About
 	 */
-	public function update($description, $id) {
+	public static function update($description, $id) {
         $db = Database::getDBConnection();
 		$req = $db->prepare('UPDATE about SET description = :description WHERE id = :id');
 		$req->bindValue(':description', $description);
@@ -50,13 +50,13 @@ class About extends ObjectModel {
 	 * Obtient la description pour affichage en vue.
 	 * @return string La description.
 	 */
-	public function getAboutDescription() {
+	public static function getAboutDescription() {
         $db = Database::getDBConnection();
 		$res = $db->query('SELECT * FROM about WHERE id = 1')->fetchColumn(1);
 		return $res;
 	}
 
-	public function deleteDescription() {
+	public static function deleteDescription() {
         $db = Database::getDBConnection();
 		$res = $db->exec('TRUNCATE TABLE about');
 		return $res;

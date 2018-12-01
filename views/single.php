@@ -6,11 +6,10 @@
         <p id="titleDetail"><a class="btn black waves-effect" href="index.php">Retour à la page d'accueil</a></p>
     </div>
 </div>
-<div class="container">
+<div class="container grey lighten-3">
     <h2 id="post-title" class="center"><?= htmlspecialchars($sheetUnique->getTitle()); ?></h2>
         <div class="row center">
-        <!-- <img class="chapterUniqueImage" src="<>?= $sheetUnique->getScreenshot() ?>" alt="<>?= htmlspecialchars($sheetUnique->getTitle()); ?>" > -->
-            <img src="public/img/<?= $sheetUnique->getCover() ?>" alt="<?= htmlspecialchars($sheetUnique->getTitle()); ?>" >
+            <img class="chapterUniqueImage" src="public/img/<?= $sheetUnique->getScreenshot() ?>" alt="<?= htmlspecialchars($sheetUnique->getTitle()); ?>" >
         </div>
         <h6 class="center">Par <?= htmlspecialchars($sheetUnique->getAuthor()); ?> le <?= $sheetUnique->getDate()->format('d/m/Y') ?></h6>
         <table>
@@ -27,7 +26,10 @@
                 <td><?= $sheetUnique->getGenre() ?></td>
             </tbody>
         </table>
-        <br />   
+        <br />
+        <div class="center">
+            <img src="public/img/<?= $sheetUnique->getCover() ?>" alt="<?= htmlspecialchars($sheetUnique->getTitle()); ?>" width="183px" heigth="256px">
+        </div>
         <p class="sheetParagraph"><?= $sheetUnique->getContent(); ?></p>
         <br />
         <div class="center">
@@ -64,7 +66,7 @@
 
     }
 } else {
-    echo "<p class='white'>Aucun commentaire n'a été publié, soyez le premier à réagir !</p>";
+    echo "<p>Aucun commentaire n'a été publié, soyez le premier à réagir !</p>";
 }
 ?>
 	<hr>
@@ -72,7 +74,7 @@
 		<div class="write-comment">
             <?php
             if (isset($_SESSION['username'])) {
-                echo '<p class="white">Vous postez un commentaire en tant que <strong>' . $_SESSION['username'] . '</strong></p>';
+                echo '<p>Vous postez un commentaire en tant que <strong>' . $_SESSION['username'] . '</strong></p>';
             }
             ?>
             <form class="form-horizontal" action="index.php?p=single&amp;id=<?= $sheetUnique->getId(); ?>#comments" method="post">
@@ -102,4 +104,3 @@
             </form>
         </div>
 </div>
-<script type="text/javascript" src="public/js/script.js"></script>

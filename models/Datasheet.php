@@ -102,7 +102,7 @@ class Datasheet extends ObjectModel
 		$req->bindValue(':release_date', $sheet->getReleaseDate());
 		$req->bindValue(':genre', $sheet->getGenre());
 		$req->bindValue(':cover', $sheet->getCover() ? $sheet->getCover() : 'cover.png');
-		$req->bindValue(':screenshot', $sheet->getScreenshot() ? $chapter->getScreenshot() : 'screenshot.png');
+		$req->bindValue(':screenshot', $sheet->getScreenshot() ? $sheet->getScreenshot() : 'screenshot.png');
 		$req->bindValue(':track', $sheet->getTrack() ? $sheet->getTrack() : 'track.mp3');
 		$req->bindValue(':trackname', $sheet->getTrackName());
 		$req->execute();
@@ -135,8 +135,8 @@ class Datasheet extends ObjectModel
 	}
 
 	/**
-	 * Met à jour l'image d'un chapitre.
-	 * @param string $cover L'image
+	 * Met à jour de la cover de la fiche.
+	 * @param string $cover La cover
 	 */
 	public static function updateCover($cover, $id)
 	{
@@ -148,14 +148,27 @@ class Datasheet extends ObjectModel
 	}
 
 	/**
-	 * Met à jour l'image d'un chapitre.
-	 * @param string $screenshot L'image
+	 * Met à jour du screenshot d'une fiche.
+	 * @param string $screenshot Le screenshot
 	 */
 	public static function updateScreenshot($screenshot, $id)
 	{
 		$db = Database::getDBConnection();
 		$request = $db->prepare('UPDATE datasheet SET screenshot = :screenshot WHERE id = :id');
 		$request->bindValue(':screenshot', $screenshot);
+		$request->bindValue(':id', (int) $id);
+		$request->execute();
+	}
+
+	/**
+	 * Met à jour l'image d'un chapitre.
+	 * @param string $screenshot L'image
+	 */
+	public static function updateTrack($track, $id)
+	{
+		$db = Database::getDBConnection();
+		$request = $db->prepare('UPDATE datasheet SET track = :track WHERE id = :id');
+		$request->bindValue(':track', $track);
 		$request->bindValue(':id', (int) $id);
 		$request->execute();
 	}

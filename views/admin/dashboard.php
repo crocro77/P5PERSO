@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row grey lighten-3">
 	<div class="col-xs-12">
 		<div class="center">
 			<h3>Tableau de bord</h3>

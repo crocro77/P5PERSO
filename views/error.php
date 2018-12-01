@@ -1,5 +1,5 @@
 <br />
-<div class="error-container">
+<div class="error-container grey lighten-3">
 	<div class="container">
 		<div class="page-header">
 			<h4 class="center">Désolé, cette page n'existe pas.</h4>

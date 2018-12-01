@@ -7,7 +7,7 @@
 	</div>
 	<br />	
 	<div class="row">
-		<h1 id="site-title">Index des jeux Game Gear</h1>
+		<h1 class=" light-blue darken-4" id="site-title">Index des jeux Game Gear</h1>
 		<br />
 	</div>
 	<hr>
@@ -55,7 +55,7 @@
 				</div>
 			</div>
 			<?php
-		    }
+			}
 		}
 		?>
 		</div>

@@ -3012,7 +3012,7 @@
     display: table;
     border-collapse: collapse;
     border-spacing: 0;
-    color: whitesmoke;
+    color: rgb(0, 0, 0);
   }
   
   table.striped tr {
@@ -5121,6 +5121,8 @@
     border-radius: 2px 2px 0 0;
     position: relative;
     margin: auto;
+    width: 183px;
+    height: 256px;
   }
   
   .card .card-image .card-title {
@@ -5521,7 +5523,7 @@
   .btn-small {
     text-decoration: none;
     color: #fff;
-    background-color: #03a9f4;
+    background-color: #000000;
     text-align: center;
     letter-spacing: .5px;
     -webkit-transition: background-color .2s ease-out;
@@ -9524,7 +9526,7 @@
   #post-title {
     font-family: 'Ubuntu';
     font-weight: bold;
-    color: whitesmoke;
+    color: rgb(0, 0, 0);
   }
   
   #chapterUniqueParagraph {
@@ -9563,7 +9565,7 @@
   
   .tab .material-icons {
     font-size: 50px;
-    color: white;
+    color: black;
   }
   
   .flex-container {
@@ -9620,4 +9622,8 @@
 
   #mention-btn {
     color: white;
+  }
+
+  #admin-connection {
+    width: 100%;
   }

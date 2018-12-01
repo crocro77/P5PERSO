@@ -37,6 +37,7 @@ class AdminController
 			$genre = $_POST['genre'];
 			$cover = "";
 			$track = "";
+			$screenshot = "";
 			$trackname = $_POST['trackname'];
 
 			$id = (!empty($_POST['id']) ? $_POST['id'] : null);
@@ -87,11 +88,40 @@ class AdminController
 				}
 			}
 
+			// upload du screenshot de la fiche
+			if (isset($_FILES['file3'])) {
+				$file = $_FILES['file3']['name'];
+				$max_size = 2000000;
+				$size = $_FILES['file3']['size'];
+				$extensions = array('.png', '.jpg', '.jpeg', '.gif', '.PNG', '.JPG', '.JPEG', '.GIF');
+				$extension = strrchr($file, '.');
+
+				if (!in_array($extension, $extensions)) {
+					$error = "Cette image n'est pas valable";
+				}
+
+				if ($size > $max_size) {
+					$error = "Le fichier est trop volumineux";
+				}
+
+				if (!isset($error)) {
+					$screenshotKey = md5($_FILES['file3']['name']) . time() . $extension;
+					move_uploaded_file($_FILES['file3']['tmp_name'], 'public/img/' . $screenshotKey);
+					$screenshot = $screenshotKey;
+				}
+			}			
+
 			if (isset($_POST['id'])) {
 				$sheet = new Datasheet();
-				$sheet->updateSheet($title, $author, $content, $developer, $publisher, $release_date, $genre, $id);
+				$sheet->updateSheet($title, $author, $content, $developer, $publisher, $release_date, $genre, $trackname, $id);
 				if ($cover) {
-					$cover->updateCover($cover, $id);
+					$sheet->updateCover($cover, $id);
+				}
+				if ($screenshot) {
+					$sheet->updateScreenshot($screenshot, $id);
+				}
+				if ($track) {
+					$sheet->updateTrack($track, $id);
 					header("Location:index.php");
 				} else {
 					header("Location:index.php");
@@ -110,6 +140,9 @@ class AdminController
 				}
 				if ($track) {
 					$sheet->setTrack($track);
+				}
+				if ($screenshot) {
+					$sheet->setScreenshot($screenshot);
 				}
 				$sheet->setTrackName($trackname);
 				$sheet->addSheet($sheet);
@@ -173,4 +206,5 @@ class AdminController
 
 		return load_template('admin/admin.php', array('listOfsheets' => $listOfsheets, 'selectedTab' => $selectedTab, 'sheet' => $sheet, 'signaledComments' => $signaledComments, 'listOfComments' => $listOfComments));
 	}
+	
 }

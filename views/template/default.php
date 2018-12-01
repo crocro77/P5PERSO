@@ -8,13 +8,13 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="public/css/materialize.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="public/css/materialize.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="public/js/materialize.js"></script>
     <script type="text/javascript" src="public/js/slider.js"></script>
   </head>
-  <body>
-    <nav class="black">
+  <body class="grey darken-3">
+    <nav class="blue-grey darken-4">
         <div class="container">
             <div class="nav-wrapper">
               <a class="navbar-brand" href="index.php">World of Game Gear</a>       
@@ -28,9 +28,10 @@
     </nav>
 
       <?= $content; ?>
-      
+   
     <footer>
-        <p id="titleDetail">2018 - ntonyyy - <a title="Mentions légales" id="mention-btn" href="index.php?p=mentions">Mentions légales</a></p>
-    </footer>
+      <p id="titleDetail">© 2018 ntonyyy - <a title="Mentions légales" id="mention-btn" href="index.php?p=mentions" class="grey-text text-lighten-4">Mentions légales</a></p>
+    </footer>   
+
   </body>
 </html>

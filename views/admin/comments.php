@@ -1,3 +1,4 @@
+<div class="grey lighten-3">
 <div class="page-header">
 	<h3 id="to-the-top" class="center">Commentaire(s)</h3>
 </div>
@@ -73,6 +74,7 @@ if (empty($listOfComments)) {
 	?>
 	</div>
 	<a href="#to-the-top" title="Retour en haut" class="right"><i class="material-icons">arrow_upward</i></a>
+</div>
 </div>
 
 <script type="text/javascript" src="public/js/script.js"></script>

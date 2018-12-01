@@ -1,3 +1,4 @@
+<div class="grey lighten-3">
 <?php 
 if(isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['id'])) {
 	echo '<div class="page-header">';
@@ -46,19 +47,26 @@ if(isset($_SESSION['flash'])) {
 		<textarea name="content" class="form-control"><?php if(isset($_GET['action']) && $_GET['action'] == 'edit') echo $sheet->getContent(); ?></textarea>
 	</div>
 	<br />
-	<img id="output_image" width="25%" height="25%"/>
+	<img id="output_cover_image" width="25%" height="25%"/>
 	<div class="col s12">
-        <div class="btn light-blue waves-effect waves-light input-field file-field col s3">
-			<input type="file" name="file" onchange="preview_image(event)">
+        <div class="btn black waves-effect waves-light input-field file-field col s3">
+			<input type="file" name="file" onchange="preview_cover_image(event)">
     		<input type="submit" value="Cover de la fiche" name="submit">
+        </div>
+	</div>
+	
+	<img id="output_screenshot_image" width="25%" height="25%"/>
+	<div class="col s12">
+        <div class="btn black waves-effect waves-light input-field file-field col s3">
+			<input type="file" name="file3" onchange="preview_screenshot_image(event)">
+    		<input type="submit" value="Screenshot de la fiche" name="submit">
         </div>
     </div>
 
 	<div class="col s12">
-        <div class="btn light-blue waves-effect waves-light input-field file-field col s3">
+        <div class="btn black waves-effect waves-light input-field file-field col s3">
 			<input type="file" name="file2">
     		<input type="submit" value="Track bonus de l'OST" name="submit">
-			<input type="text" class="file-path" readonly/>
         </div>
     </div>
 	<div class="form-group">
@@ -82,9 +90,10 @@ if(isset($_SESSION['flash'])) {
 	}
 	?>
 </form>
+</div>
 <!-- On appelle la librairie TinyMCE pour la page Ecriture/Edition -->
 <script src="//cloud.tinymce.com/stable/tinymce.min.js?apiKey=c851wd1npuo4c59ed6f7fp6doripcdhfdi1ltt9hpr29wt3x"></script>
-<script type="text/javascript" src="public/js/script.js"></script>
+<script type="text/javascript" src="public/js/preview_image.js"></script>
 <script>tinymce.init({
 	selector: 'textarea',
 	height: 500,
