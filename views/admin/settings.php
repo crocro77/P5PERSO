@@ -1,4 +1,4 @@
-<div class="center settings grey lighten-3">
+<div id="settings" class="center settings grey lighten-3">
 	<div class="page-header">
 		<h2>Réglages</h2>
 	</div>
@@ -27,10 +27,13 @@
 	<p><a class="btn btn-default btn-sm" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer tous les commentaires ?'));" href="index.php?p=admin&amp;action=deleteAllComments">Supprimer tous les commentaires</a></p>
 	<br>
 
+	<h4>Le Chat</h4>
+	<p><a class="btn btn-default btn-sm" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer tous les messages du chat ?'));" href="index.php?p=admin&amp;action=deleteAllMessages">Supprimer tous les messages du chat</a></p>
+
 	<h4>Votre compte</h4>
 
 	<div class="center">
-		<a class="btn light-blue waves-effect" title="Se déconnecter" href="index.php?p=logout"><i class="material-icons left">exit_to_app</i>Se déconnecter</a></li>
+		<a class="btn btn-default btn-sm" title="Se déconnecter" href="index.php?p=logout"><i class="material-icons left">exit_to_app</i>Se déconnecter</a></li>
     </div>
 </div>
 

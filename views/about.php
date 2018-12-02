@@ -1,4 +1,4 @@
-<div class="center about-container grey lighten-3">
+<div id="about" class="center about-container grey lighten-3">
 	<div class="container">
 		<div class="page-header">
 			<h3>À propos</h3>

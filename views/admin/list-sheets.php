@@ -1,4 +1,4 @@
-<div class="grey lighten-3">
+<div id="list" class="grey lighten-3">
 <h2 id="to-the-top">Liste des fiches</h2>
 <hr/>
 <?php
@@ -20,9 +20,9 @@ if(empty($listOfsheets)) {
                     <div class="col s12 m6 l4 center">
                         <img src="public/img/<?= $sheet->getCover() ?>" class="responsive-img" alt="<?= htmlspecialchars($sheet->getTitle()); ?>"/>
                         <br/><br/>
-                        <a class="btn black waves-effect waves-light" href="index.php?p=single&id=<?= $sheet->getId(); ?>">Voir la fiche complète</a>
+                        <a class="btn btn-default btn-sm" href="index.php?p=single&id=<?= $sheet->getId(); ?>">Voir la fiche complète</a>
                         <br/><br/>
-                        <a class="btn black waves-effect waves-light" href="index.php?p=admin&tab=write&action=edit&id=<?= $sheet->getId(); ?>">Éditer la fiche</a>
+                        <a class="btn btn-default btn-sm" href="index.php?p=admin&tab=write&action=edit&id=<?= $sheet->getId(); ?>">Éditer la fiche</a>
                         <br/><br/>
                         <form method="post" role="form" action="index.php?p=admin&menu=list&action=delete&id=<?= $sheet->getId(); ?>">
                             <input type="hidden" name="id" value="<?= $sheet->getId(); ?>">

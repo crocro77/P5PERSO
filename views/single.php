@@ -3,10 +3,10 @@
     <div>
         <h1 id="site-title">Liste des jeux Game Gear</h1>
         <br />
-        <p id="titleDetail"><a class="btn black waves-effect" href="index.php">Retour à la page d'accueil</a></p>
+        <p id="titleDetail"><a class="btn btn-default btn-sm" href="index.php">Retour à la page d'accueil</a></p>
     </div>
 </div>
-<div class="container grey lighten-3">
+<div id="single" class="container grey lighten-3">
     <h2 id="post-title" class="center"><?= htmlspecialchars($sheetUnique->getTitle()); ?></h2>
         <div class="row center">
             <img class="chapterUniqueImage" src="public/img/<?= $sheetUnique->getScreenshot() ?>" alt="<?= htmlspecialchars($sheetUnique->getTitle()); ?>" >
@@ -99,7 +99,7 @@
                 </div>
                     <input type="hidden" name="id" value="<?= $sheetUnique->getId(); ?>">
                 <div class="col s12">
-                    <button type="submit" name ="submit" class="btn black waves-effect">Envoyer votre commentaire</button>
+                    <button type="submit" name ="submit" class="btn btn-default btn-sm">Envoyer votre commentaire</button>
                 </div>
             </form>
         </div>

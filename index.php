@@ -47,6 +47,16 @@ switch ($p) {
 		$controller = new BlogController();
 		$content = $controller->executeMentions();
 		break;
+	case "chat":
+		$pageTitle .= ' - Chat';
+		$controller = new ChatController();
+		$content = $controller->executeChat();
+		break;
+	// case "quiz":
+	// 	$pageTitle .= ' - Quiz';
+	// 	$controller = new QuizController();
+	// 	$content = $controller->executeQuiz();
+	// 	break;
 	case "admin":
 		if(!isset($_SESSION['username']) OR isset($_SESSION['username']) AND $_SESSION['username'] !== 'ntonyyy') {
 			header('Location: index.php?p=login');

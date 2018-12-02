@@ -1,5 +1,5 @@
 <div class="row grey lighten-3">
-	<div class="col-xs-12">
+	<div id="dashboard" class="col-xs-12">
 		<div class="center">
 			<h3>Tableau de bord</h3>
 		</div>  
@@ -32,7 +32,7 @@
 			</div>	
         </div>
         <div class="center">
-			<a class="btn light-blue waves-effect" title="Se déconnecter" href="index.php?p=logout"><i class="material-icons left">exit_to_app</i>Se déconnecter</a></li>
+			<a class="btn btn-default btn-sm" title="Se déconnecter" href="index.php?p=logout"><i class="material-icons left">exit_to_app</i>Se déconnecter</a></li>
         </div>
 	</div>
 </div>

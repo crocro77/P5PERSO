@@ -5534,7 +5534,7 @@
   .btn:hover,
   .btn-large:hover,
   .btn-small:hover {
-    background-color: #2bbbad;
+    background-color: #78909c;
   }
   
   .btn-floating {
@@ -9626,4 +9626,36 @@
 
   #admin-connection {
     width: 100%;
+  }
+
+  #chatWindow {
+    display: block;
+    margin: 50px auto;
+    padding: 5px 10px;
+    background-image: url("../img/chatwallpaper.jpg");
+    background-color: rgba(255, 255, 255, 0.808);
+    border-radius: 3px;
+    border : 3px solid rgb(235, 235, 148);
+    width: 750px;
+    height: 420px;
+  }
+
+  #chatPseudo {
+    font-weight: bold;
+    font-family: 'Ubuntu';
+    color: white;
+  }
+
+  #chatMessage {
+    font-style: italic;
+    font-family: 'Ubuntu';
+    color: white;
+  }
+
+  #chatLine {
+    line-height: 30%;
+  }
+
+  #single, #dashboard, #list, #write, #comments, #settings, #error, #mentions, #about {
+    padding: 25px 35px;
   }

@@ -89,7 +89,7 @@ class Comment extends ObjectModel
 
 	/**
 	 * obtenir le commentaire signalé
-	 * @return le commentaire signalé.
+	 * @return signaledcomment le commentaire signalé.
 	 */
 	public static function getSignaledComments() {
 		$db = Database::getDBConnection();
@@ -138,7 +138,7 @@ class Comment extends ObjectModel
 	 * supprime un commentaire
 	 * @param int $id l'identifiant
 	 */
-	public function deleteComment($commentId) {
+	public static function deleteComment($commentId) {
 		$db = Database::getDBConnection();
 		$req = $db->prepare('DELETE FROM comments WHERE id = :id');
 		$req->bindValue(':id', $commentId);
@@ -148,7 +148,7 @@ class Comment extends ObjectModel
 	/**
 	 * Delete all comments
 	 */
-	public function deleteAll() {
+	public static function deleteAll() {
 		$db = Database::getDBConnection();
 		$result = $db->exec('TRUNCATE TABLE comments');
 		return $result;

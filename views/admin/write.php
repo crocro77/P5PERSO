@@ -1,4 +1,4 @@
-<div class="grey lighten-3">
+<div id="write" class="grey lighten-3">
 <?php 
 if(isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['id'])) {
 	echo '<div class="page-header">';
@@ -49,7 +49,7 @@ if(isset($_SESSION['flash'])) {
 	<br />
 	<img id="output_cover_image" width="25%" height="25%"/>
 	<div class="col s12">
-        <div class="btn black waves-effect waves-light input-field file-field col s3">
+        <div class="btn btn-black waves-effect waves-light input-field file-field col s3">
 			<input type="file" name="file" onchange="preview_cover_image(event)">
     		<input type="submit" value="Cover de la fiche" name="submit">
         </div>
@@ -57,14 +57,14 @@ if(isset($_SESSION['flash'])) {
 	
 	<img id="output_screenshot_image" width="25%" height="25%"/>
 	<div class="col s12">
-        <div class="btn black waves-effect waves-light input-field file-field col s3">
+        <div class="btn btn-black waves-effect waves-light input-field file-field col s3">
 			<input type="file" name="file3" onchange="preview_screenshot_image(event)">
     		<input type="submit" value="Screenshot de la fiche" name="submit">
         </div>
     </div>
 
 	<div class="col s12">
-        <div class="btn black waves-effect waves-light input-field file-field col s3">
+        <div class="btn btn-black waves-effect waves-light input-field file-field col s3">
 			<input type="file" name="file2">
     		<input type="submit" value="Track bonus de l'OST" name="submit">
         </div>

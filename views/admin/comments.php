@@ -1,4 +1,4 @@
-<div class="grey lighten-3">
+<div id="comments" class="grey lighten-3">
 <div class="page-header">
 	<h3 id="to-the-top" class="center">Commentaire(s)</h3>
 </div>

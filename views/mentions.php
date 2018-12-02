@@ -1,4 +1,4 @@
-<div class="mentions-container grey lighten-3">
+<div id="mentions" class="mentions-container grey lighten-3">
 	<div class="container">
 		<h2>Informations légales</h2>
 		<h3>1. Présentation du site.</h3>

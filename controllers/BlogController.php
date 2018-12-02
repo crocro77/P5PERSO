@@ -6,7 +6,7 @@ class BlogController
 {
 	public function executeHome()
 	{
-		$sheetsPerPage = 4;
+		$sheetsPerPage = 6;
 
 		$sheetManager = new Datasheet();
 		$numberOfSheets = $sheetManager->count();

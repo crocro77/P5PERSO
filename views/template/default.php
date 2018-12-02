@@ -20,6 +20,7 @@
               <a class="navbar-brand" href="index.php">World of Game Gear</a>       
                 <ul class="right hide-on-med-and-down">
                     <li><a title="Chat" href="index.php?p=chat"><i class="material-icons">chat_bubble</i></a></li>
+                    <li><a title="Quiz" href="index.php?p=quiz"><i class="material-icons">gamepad</i></a></li>
                     <li><a title="Administration" href="index.php?p=admin"><i class="material-icons">lock</i></a></li>
                     <li><a title="A propos" href="index.php?p=about"><i class="material-icons">info</i></a></li>
                 </ul>
