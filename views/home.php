@@ -1,5 +1,5 @@
 <br />
-<div class="container">
+<div id="home" class="container">
 	<div id="illustration">
 		<div id="slider">
 			<img id="sliderImage" src="public/img/GG.jpg" alt="sliderImage">
@@ -45,12 +45,12 @@
 						<a href="index.php?p=single&amp;id=<?= $sheet->getId(); ?>"><img src="public/img/<?= $sheet->getCover(); ?>" alt="<?= htmlspecialchars($sheet->getTitle()); ?>"/></a>
 					</div>
 					<div class="card-content">
-						<span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
+						<span class="card-title activator grey-text text-darken-4"><i title="Screenshot" class="material-icons right">more_vert</i></span>
 						<p><a href="index.php?p=single&amp;id=<?= $sheet->getId(); ?>">Voir la fiche complète</a></p>
 					</div>
 					<div class="card-reveal">
 						<span class="card-title grey-text text-darken-4"><?= htmlspecialchars($sheet->getTitle()); ?><i class="material-icons right">close</i></span>
-							<p><?= substr($sheet->getContent(), 0, 400) . '...'; ?></p>
+							<img id="card-reveal-screenshot" src="public/img/<?= ($sheet->getScreenshot()); ?>" alt="<?= htmlspecialchars($sheet->getTitle()); ?>"/>
 					</div>
 				</div>
 			</div>

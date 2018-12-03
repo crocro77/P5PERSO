@@ -9659,3 +9659,153 @@
   #single, #dashboard, #list, #write, #comments, #settings, #error, #mentions, #about {
     padding: 25px 35px;
   }
+
+  /* Media Queries */
+@media only screen and (max-width: 414px) {
+  #landscape {
+    width: 330px;
+    height: 150px;
+  }
+
+  #illustration,
+  #site-title {
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0;
+  }
+}
+
+.side-nav {
+  position: fixed;
+  width: 80px;
+  left: -105%;
+  top: 0;
+  margin: 0;
+  height: 64px;
+  padding-bottom: 60px;
+  background-color: rgba(5, 5, 5, 0.198);
+  z-index: 999;
+  overflow-y: auto;
+  will-change: left;
+}
+
+.side-nav.right-aligned {
+  will-change: right;
+  right: -105%;
+  left: auto;
+}
+
+.side-nav .collapsible {
+  margin: 0;
+}
+
+.side-nav li {
+  float: none;
+  padding: 0 15px;
+}
+
+.side-nav li:hover,
+.side-nav li.active {
+  background-color: rgb(255, 255, 255);
+}
+
+.side-nav a {
+  color: rgb(255, 255, 255);
+  display: block;
+  font-size: 1rem;
+  height: 64px;
+  line-height: 64px;
+  padding: 0 15px;
+}
+
+.side-nav.fixed a {
+  display: block;
+  padding: 0 15px;
+  color: rgb(255, 255, 255);
+}
+
+.side-nav.fixed {
+  left: 0;
+  position: fixed;
+}
+
+.side-nav.fixed.right-aligned {
+  right: 0;
+  left: auto;
+}
+
+.z-depth-1,
+nav,
+.card-panel,
+.card,
+.toast,
+.btn,
+.btn-large,
+.btn-floating,
+.dropdown-content,
+.collapsible,
+.side-nav {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.side-nav .collapsible {
+  border: none;
+  box-shadow: none;
+}
+
+.side-nav .collapsible li {
+  padding: 0;
+}
+
+.side-nav .collapsible-header {
+  background-color: transparent;
+  border: none;
+  line-height: inherit;
+  height: inherit;
+  margin: 0 1rem;
+}
+
+.side-nav .collapsible-header i {
+  line-height: inherit;
+}
+
+.side-nav .collapsible-body {
+  border: 0;
+  background-color: #fff;
+}
+
+.side-nav .collapsible-body li a {
+  margin: 0 1rem 0 2rem;
+}
+
+@media only screen and (max-width : 992px) {
+  .side-nav.fixed {
+    left: -105%;
+  }
+
+  .side-nav.fixed.right-aligned {
+    right: -105%;
+    left: auto;
+  }
+}
+
+.side-nav .collapsible-body li.active,
+.side-nav.fixed .collapsible-body li.active {
+  background-color: #ee6e73;
+}
+
+.side-nav .collapsible-body li.active a,
+.side-nav.fixed .collapsible-body li.active a {
+  color: #fff;
+}
+
+#admin-btn {
+  color: white;
+  cursor: default;
+}
+
+#card-reveal-screenshot {
+  display: block;
+  margin: 30px auto;
+  width: 50%;
+}

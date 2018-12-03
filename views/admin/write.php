@@ -71,7 +71,7 @@ if(isset($_SESSION['flash'])) {
     </div>
 	<div class="form-group">
 		<label for="trackname">Nom de la track</label>
-		<input type="text" name="trackname" class="form-control" value="<?php if(isset($_GET['action']) && $_GET['action'] == 'edit') echo $sheet->getTrackName(); ?>" />
+		<input type="text" name="trackname" class="form-control" value="<?php if(isset($_GET['action']) && $_GET['action'] == 'edit') echo $sheet->getTrackName(); else echo "SEGA" ?>" />
 	</div>
 	<br />
 	<?php
