@@ -116,11 +116,13 @@ class AdminController
 				$sheet->updateSheet($title, $author, $content, $developer, $publisher, $release_date, $genre, $trackname, $id);
 				if ($cover) {
 					$sheet->updateCover($cover, $id);
+					header("Location:index.php");
 				}
-				if ($screenshot) {
+				elseif ($screenshot) {
 					$sheet->updateScreenshot($screenshot, $id);
+					header("Location:index.php");
 				}
-				if ($track) {
+				elseif ($track) {
 					$sheet->updateTrack($track, $id);
 					header("Location:index.php");
 				} else {

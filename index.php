@@ -57,6 +57,21 @@ switch ($p) {
 	// 	$controller = new QuizController();
 	// 	$content = $controller->executeQuiz();
 	// 	break;
+	case "user":
+		$pageTitle .= ' - Espace Membres';
+		$controller = new BlogController();
+		$content = $controller->executeUsersSpace();
+		break;
+	case "connection":
+		$pageTitle .= ' - Connexion à l\'Espace Membres';
+		$controller = new BlogController();
+		$content = $controller->executeUserLogin();
+		break;
+	case "register":
+		$pageTitle .= ' - Inscription à l\'Espace Membres';
+		$controller = new BlogController();
+		$content = $controller->executeUserRegister();
+		break;
 	case "admin":
 		if(!isset($_SESSION['username']) OR isset($_SESSION['username']) AND $_SESSION['username'] !== 'ntonyyy') {
 			header('Location: index.php?p=login');
