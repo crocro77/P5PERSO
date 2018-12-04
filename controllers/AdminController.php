@@ -118,12 +118,16 @@ class AdminController
 					$sheet->updateCover($cover, $id);
 					header("Location:index.php");
 				}
-				elseif ($screenshot) {
+				if ($screenshot) {
 					$sheet->updateScreenshot($screenshot, $id);
 					header("Location:index.php");
 				}
-				elseif ($track) {
+				if ($track) {
 					$sheet->updateTrack($track, $id);
+					header("Location:index.php");
+				}
+				if ($trackname) {
+					$sheet->updateTrackName($trackname, $id);
 					header("Location:index.php");
 				} else {
 					header("Location:index.php");
@@ -146,7 +150,9 @@ class AdminController
 				if ($screenshot) {
 					$sheet->setScreenshot($screenshot);
 				}
-				$sheet->setTrackName($trackname);
+				if ($trackname) {
+					$sheet->setTrackName($trackname);
+				}
 				$sheet->addSheet($sheet);
 				header("Location:index.php");
 			}

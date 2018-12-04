@@ -104,7 +104,7 @@ class Datasheet extends ObjectModel
 		$req->bindValue(':cover', $sheet->getCover() ? $sheet->getCover() : 'cover.png');
 		$req->bindValue(':screenshot', $sheet->getScreenshot() ? $sheet->getScreenshot() : 'screenshot.png');
 		$req->bindValue(':track', $sheet->getTrack() ? $sheet->getTrack() : 'track.mp3');
-		$req->bindValue(':trackname', $sheet->getTrackName());
+		$req->bindValue(':trackname', $sheet->getTrackName() ? $sheet->getTrackName() : 'SEGA');
 		$req->execute();
 	}
 
@@ -119,10 +119,10 @@ class Datasheet extends ObjectModel
 	 * @param string $genre le genre
 	 * @param int $id L'id
 	 */
-	public static function updateSheet($title, $author, $content, $developer, $publisher, $release_date, $genre, $id)
+	public static function updateSheet($title, $author, $content, $developer, $publisher, $release_date, $genre, $trackname, $id)
 	{
 		$db = Database::getDBConnection();
-		$request = $db->prepare('UPDATE datasheet SET title = :title, author = :author, content = :content, developer = :developer, publisher = :publisher, release_date = :release_date, genre = :genre, date = NOW() WHERE id = :id');
+		$request = $db->prepare('UPDATE datasheet SET title = :title, author = :author, content = :content, developer = :developer, publisher = :publisher, release_date = :release_date, genre = :genre, trackname = :trackname, date = NOW() WHERE id = :id');
 		$request->bindValue(':title', $title);
 		$request->bindValue(':author', $author);
 		$request->bindValue(':content', $content);
@@ -130,6 +130,7 @@ class Datasheet extends ObjectModel
 		$request->bindValue(':publisher', $publisher);
 		$request->bindValue(':release_date', (int) $release_date);
 		$request->bindValue(':genre', $genre);
+		$request->bindValue(':trackname', $trackname);
 		$request->bindValue(':id', (int) $id);
 		$request->execute();
 	}
@@ -169,6 +170,19 @@ class Datasheet extends ObjectModel
 		$db = Database::getDBConnection();
 		$request = $db->prepare('UPDATE datasheet SET track = :track WHERE id = :id');
 		$request->bindValue(':track', $track);
+		$request->bindValue(':id', (int) $id);
+		$request->execute();
+	}
+
+		/**
+	 * Met à jour l'image d'un chapitre.
+	 * @param string $screenshot L'image
+	 */
+	public static function updateTrackName($trackname, $id)
+	{
+		$db = Database::getDBConnection();
+		$request = $db->prepare('UPDATE datasheet SET trackname = :trackname WHERE id = :id');
+		$request->bindValue(':trackname', $trackname);
 		$request->bindValue(':id', (int) $id);
 		$request->execute();
 	}

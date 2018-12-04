@@ -45,11 +45,11 @@
 						<a href="index.php?p=single&amp;id=<?= $sheet->getId(); ?>"><img src="public/img/<?= $sheet->getCover(); ?>" alt="<?= htmlspecialchars($sheet->getTitle()); ?>"/></a>
 					</div>
 					<div class="card-content">
-						<span class="card-title activator grey-text text-darken-4"><i title="Screenshot" class="material-icons right">more_vert</i></span>
+						<span class="card-title activator grey-text text-darken-4"><i title="Screenshot" class="material-icons right">image</i></span>
 						<p><a href="index.php?p=single&amp;id=<?= $sheet->getId(); ?>">Voir la fiche complète</a></p>
 					</div>
 					<div class="card-reveal">
-						<span class="card-title grey-text text-darken-4"><?= htmlspecialchars($sheet->getTitle()); ?><i class="material-icons right">close</i></span>
+						<span class="card-title grey-text text-darken-4 center"><?= htmlspecialchars($sheet->getTitle()); ?><i class="material-icons right">close</i></span>
 							<img id="card-reveal-screenshot" src="public/img/<?= ($sheet->getScreenshot()); ?>" alt="<?= htmlspecialchars($sheet->getTitle()); ?>"/>
 					</div>
 				</div>
