@@ -11,7 +11,7 @@ class Users extends ObjectModel
 	public function __construct($value = []) 
 	{
 		parent::__construct();
-		$this->tableName = 'comments';
+		$this->tableName = 'users';
 		if(!empty($value)) {
 			$this->hydrate($value);
 		}

@@ -7022,9 +7022,8 @@
        ========================================================================== */
   [type="radio"]:not(:checked),
   [type="radio"]:checked {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
+    opacity: 1;
+    cursor: pointer;
   }
   
   [type="radio"]:not(:checked)+span,
@@ -9658,7 +9657,7 @@
     line-height: 30%;
   }
 
-  #single, #dashboard, #list, #write, #comments, #settings, #error, #mentions, #about, #users, #userlogin, #register {
+  #single, #dashboard, #list, #write, #comments, #settings, #error, #mentions, #about, #users, #userlogin, #register, #quiz, #score {
     padding: 25px 35px;
   }
 
@@ -9810,4 +9809,10 @@ nav,
   display: block;
   margin: 30px auto;
   width: 50%;
+}
+
+#score-result {
+  font-family: 'Ubuntu';
+  font-size: 30px;
+  font-weight: bold;
 }

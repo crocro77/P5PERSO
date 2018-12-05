@@ -9,7 +9,7 @@ class Chat extends ObjectModel
 	public function __construct($value = []) 
 	{
 		parent::__construct();
-		$this->tableName = 'comments';
+		$this->tableName = 'chat';
 		if(!empty($value)) {
 			$this->hydrate($value);
 		}

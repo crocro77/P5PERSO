@@ -52,11 +52,16 @@ switch ($p) {
 		$controller = new ChatController();
 		$content = $controller->executeChat();
 		break;
-	// case "quiz":
-	// 	$pageTitle .= ' - Quiz';
-	// 	$controller = new QuizController();
-	// 	$content = $controller->executeQuiz();
-	// 	break;
+	case "quiz":
+		$pageTitle .= ' - Quiz';
+		$controller = new QuizController();
+		$content = $controller->executeQuiz();
+		break;
+	case "score":
+		$pageTitle .= ' - Score du Quiz';
+		$controller = new QuizController();
+		$content = $controller->executeScoreQuiz();
+		break;
 	case "user":
 		$pageTitle .= ' - Espace Membres';
 		$controller = new BlogController();
