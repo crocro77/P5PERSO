@@ -64,17 +64,17 @@ switch ($p) {
 		break;
 	case "user":
 		$pageTitle .= ' - Espace Membres';
-		$controller = new BlogController();
+		$controller = new UsersController();
 		$content = $controller->executeUsersSpace();
 		break;
 	case "connection":
 		$pageTitle .= ' - Connexion à l\'Espace Membres';
-		$controller = new BlogController();
+		$controller = new UsersController();
 		$content = $controller->executeUserLogin();
 		break;
 	case "register":
 		$pageTitle .= ' - Inscription à l\'Espace Membres';
-		$controller = new BlogController();
+		$controller = new UsersController();
 		$content = $controller->executeUserRegister();
 		break;
 	case "admin":

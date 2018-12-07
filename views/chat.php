@@ -1,5 +1,10 @@
 <div class="container">
+    <div class="center"> 
+        <h1>Bienvenue sur le Chat</h1>
+    </div>
+    
     <div class="row" id="chatWindow">
+        
 
         <?php
         if (empty($listOfChatMessages)) {

@@ -6,7 +6,11 @@ class BlogController
 {
 	public function executeHome()
 	{
-		$sheetsPerPage = 8;
+		if(isset($_GET['pp']) && (!empty($$_GET['pp']) && ctype_digit($_GET['pp']) == 1 )) {
+			$sheetsPerPage = $_GET['pp'];
+		} else {
+			$sheetsPerPage = 8;
+		}
 
 		$sheetManager = new Datasheet();
 		$numberOfSheets = $sheetManager->count();
@@ -72,15 +76,11 @@ class BlogController
 		return load_template('mentions.php', array());
 	}
 
-	public function executeUsersSpace() {
-		return load_template('users.php', array());
-	}
+	// public function executeUserLogin() {
+	// 	return load_template('userlogin.php', array());
+	// }
 
-	public function executeUserLogin() {
-		return load_template('userlogin.php', array());
-	}
-
-	public function executeUserRegister() {
-		return load_template('register.php', array());
-	}
+	// public function executeUserRegister() {
+	// 	return load_template('register.php', array());
+	// }
 }

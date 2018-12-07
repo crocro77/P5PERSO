@@ -208,11 +208,32 @@ class AdminController
 			}
 		}
 
-		$listOfsheets = $sheetManager->getList();
+		$sheetsPerPage = 5;
+
+		$sheetManager = new Datasheet();
+		$numberOfSheets = $sheetManager->count();
+
+		$numberOfPages = ceil($numberOfSheets / $sheetsPerPage);
+
+		$currentPage = 1;
+		
+		if (isset($_GET['page']) && !empty($_GET['page'])) {
+			$currentPage = intval($_GET['page']);
+
+			if ($currentPage > $numberOfPages) {
+				$currentPage = $numberOfPages;
+			}
+		} else {
+			$currentPage = 1;
+		}
+		
+		$firstSheet = ($currentPage - 1) * $sheetsPerPage;
+
+		$listOfsheets = $sheetManager->getList($firstSheet, $sheetsPerPage);
 		$listOfComments = $commentManager->getAllComments();
 		$signaledComments = $commentManager->getSignaledComments();
 
-		return load_template('admin/admin.php', array('listOfsheets' => $listOfsheets, 'selectedTab' => $selectedTab, 'sheet' => $sheet, 'signaledComments' => $signaledComments, 'listOfComments' => $listOfComments));
+		return load_template('admin/admin.php', array('listOfsheets' => $listOfsheets, 'numberOfPages' => $numberOfPages, 'currentPage' => $currentPage, 'selectedTab' => $selectedTab, 'sheet' => $sheet, 'signaledComments' => $signaledComments, 'listOfComments' => $listOfComments));
 	}
 	
 }

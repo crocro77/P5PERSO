@@ -1,6 +1,15 @@
 <div id="list" class="grey lighten-3">
 <h2 id="to-the-top">Liste des fiches</h2>
 <hr/>
+<ul class="pagination center">
+	<?php
+    for ($i=ord("A");$i<=ord("Z");$i++)
+    {
+        echo "<a href=?list=".chr($i).">".chr($i)."</a> ";
+    }
+    ?>
+</ul>
+<hr/>
 <?php
 if(empty($listOfsheets)) {
 	echo '<p>Vous n\'avez pas encore publié de fiche. <a href="index.php?p=admin&amp;menu=write">Commencez ici</a></p>';

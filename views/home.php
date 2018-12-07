@@ -1,6 +1,6 @@
 <br />
 <div id="home" class="container">
-	<div id="illustration">
+	<div id="">
 		<div id="slider">
 			<img id="sliderImage" src="public/img/GG.jpg" alt="sliderImage">
 		</div>
@@ -11,7 +11,20 @@
 		<br />
 	</div>
 	<hr>
+	<form class="center" method="get">
+		<label>Nombre de fiches par page</label>
+			<select name="pp">
+				<option value="2">2</option>
+				<option value="4">4</option>
+				<option value="6">6</option>
+				<option value="8">8</option>
+				<option value="10">10</option>
+			</select>
+		<input type="hidden" name="p" value="<?php echo $currentPage ?>" />
+		<button class="btn" type="submit">Appliquer</button>
+	</form>
 	<ul class="pagination center">
+	<li class="<?php if($currentPage == '1'){ echo "disabled"; } ?>"><a href="?page=<?php if ($currentPage != '1'){ echo $currentPage-1; } else { echo $currentPage; } ?>">&laquo;</a></li>
 	<?php
     for ($i = 1; $i <= $numberOfPages; $i++) {
         if ($i == $currentPage) {
@@ -20,7 +33,8 @@
             echo '<li class="waves-effect"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
         }
     }
-    ?>	
+    ?>
+	<li class="<?php if($currentPage == '1'){ echo "disabled"; } ?>"><a href="?page=<?php if ($currentPage != '1'){ echo $currentPage+1; } else { echo $currentPage; } ?>">&raquo;</a></li>
 	</ul>
 	<hr>
 	<div id="anchor" class="row">
