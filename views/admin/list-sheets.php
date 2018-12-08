@@ -3,9 +3,9 @@
 <hr/>
 <ul class="pagination center">
 	<?php
-    for ($i=ord("A");$i<=ord("Z");$i++)
+    for ($i = ord("A"); $i <= ord("Z"); $i++)
     {
-        echo "<a href=?list=".chr($i).">".chr($i)."</a> ";
+        echo "<li class='page-item'><a id='pagination-alphabet' class='page-link' href=?list=".chr($i).">".chr($i)."</a></li> ";
     }
     ?>
 </ul>

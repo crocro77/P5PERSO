@@ -59,8 +59,8 @@ class Users extends ObjectModel
         $sql = "SELECT * FROM users WHERE email = :email AND pass = :pass";
         $req = $db->prepare($sql);
         $req->execute($user);
-        $exist = $req->rowCount($sql);
-		return $exist;
+        $login = $req->rowCount($sql);
+		return $login;
 	}
 
 	// SETTERS 

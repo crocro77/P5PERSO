@@ -33,7 +33,7 @@ class UsersController
             $pseudo = htmlspecialchars(trim($_POST['pseudo']));
             $pass = sha1(htmlspecialchars(trim($_POST['pass'])));
     
-            if(user_exist($email,$pass) == 1){
+            if(user_login($email,$pass) == 1){
                 $_SESSION['chat'] = $pseudo;
                 header("Location:index.php?page=chat");
             }else{

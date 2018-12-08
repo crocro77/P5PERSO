@@ -8,12 +8,16 @@
             <?php
                 require_once('includes/dashboard-tables.php');
                 $tables = [
-                    "Fiche(s)"          =>  "datasheet",
-                    "Commentaire(s)"    =>  "comments",
+                    "Fiche(s)"              =>  "datasheet",
+                    "Commentaire(s)"        =>  "comments",
+                    "Membre(s)"             =>  "users",
+                    "Ligne(s) sur le Chat"  =>  "chat",
                 ];
                 $colors = [
-                    "datasheet"         =>  "green",
-                    "comments"          =>  "orange",
+                    "datasheet"             =>  "green",
+                    "comments"              =>  "orange",
+                    "users"                 =>  "blue",
+                    "chat"                  =>  "red",
                 ];
                 foreach($tables as $table_name => $table){
                     ?>

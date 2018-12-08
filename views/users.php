@@ -1,6 +1,6 @@
 <br />
 <div id="users" class="container grey lighten-3 center">
-    <h1>Bienvenue sur l'Espace Membre</h1>
+    <h1>Bienvenue sur l'Espace Membres</h1>
         <p>Connectez-vous ou inscrivez-vous!</p>
          
         <div class="row">

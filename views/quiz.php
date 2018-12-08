@@ -2,7 +2,8 @@
 <div id="quiz" class="container grey lighten-3">
 	<div class="row center">
 
-        <h1>Game Gear Quiz</h1>
+        <h2>Bienvenue sur le Quiz Game Gear</h2>
+        <h4>Testez vos connaissances sur la portable de SEGA en 10 questions !</h4>
         <br />
 
         <form action="index.php?p=score" method='post' id='quizForm'>

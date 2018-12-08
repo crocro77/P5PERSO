@@ -75,12 +75,4 @@ class BlogController
 	public function executeMentions() {
 		return load_template('mentions.php', array());
 	}
-
-	// public function executeUserLogin() {
-	// 	return load_template('userlogin.php', array());
-	// }
-
-	// public function executeUserRegister() {
-	// 	return load_template('register.php', array());
-	// }
 }

@@ -1,9 +1,7 @@
 <br />
 <div id="home" class="container">
-	<div id="">
-		<div id="slider">
-			<img id="sliderImage" src="public/img/GG.jpg" alt="sliderImage">
-		</div>
+	<div id="slider">
+		<img id="sliderImage" src="public/img/GG.jpg" alt="sliderImage">
 	</div>
 	<br />	
 	<div class="row">
@@ -17,11 +15,11 @@
 				<option value="2">2</option>
 				<option value="4">4</option>
 				<option value="6">6</option>
-				<option value="8">8</option>
+				<option selected="selected" value="8">8</option>
 				<option value="10">10</option>
 			</select>
 		<input type="hidden" name="p" value="<?php echo $currentPage ?>" />
-		<button class="btn" type="submit">Appliquer</button>
+		<button id="apply-btn" class="btn" type="submit">Appliquer</button>
 	</form>
 	<ul class="pagination center">
 	<li class="<?php if($currentPage == '1'){ echo "disabled"; } ?>"><a href="?page=<?php if ($currentPage != '1'){ echo $currentPage-1; } else { echo $currentPage; } ?>">&laquo;</a></li>

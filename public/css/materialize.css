@@ -9816,3 +9816,11 @@ nav,
   font-size: 30px;
   font-weight: bold;
 }
+
+#pagination-alphabet {
+  color: black;
+}
+
+#apply-btn {
+  font-size: 10px;
+}
