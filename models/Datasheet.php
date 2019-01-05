@@ -57,7 +57,6 @@ class Datasheet extends ObjectModel
 		$request = $db->query($sql);
 		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Datasheet');
 		$listOfSheets = $request->fetchAll();
-		// On boucle sur la liste des chapitres afin d'instancier des objets Date pour date
 		foreach($listOfSheets as $sheet)
 		{
 			$sheet->setDate(new DateTime($sheet->getDate()));
@@ -66,7 +65,7 @@ class Datasheet extends ObjectModel
 		return $listOfSheets;
 	}
 
-		/**
+	/**
 	 * Obtient un chapitre unique (pour la vue Single)
 	 * @param int $id L'id du chapitre
 	 * @return chapter l'objet chapitre
@@ -86,7 +85,7 @@ class Datasheet extends ObjectModel
 		return $chapter;
 	}
 
-		/**
+	/**
 	 * Ajoute une fiche dans la base de données.
 	 * @param chapter $chapter L'objet chapitre
 	 */
@@ -174,7 +173,7 @@ class Datasheet extends ObjectModel
 		$request->execute();
 	}
 
-		/**
+	/**
 	 * Met à jour l'image d'un chapitre.
 	 * @param string $screenshot L'image
 	 */

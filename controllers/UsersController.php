@@ -14,7 +14,7 @@ class UsersController
         if(isset($_POST['submit'])){
             $pseudo = htmlspecialchars(trim($_POST['pseudo']));
             $email = htmlspecialchars(trim($_POST['email']));
-            $pass = sha1(htmlspecialchars(trim($_POST['passw'])));
+            $pass = sha1(htmlspecialchars(trim($_POST['pass'])));
     
             if(email_taken($email) == 1){
                 $error_email = "L'adresse email est déjà utilisée...";
@@ -33,7 +33,7 @@ class UsersController
             $pseudo = htmlspecialchars(trim($_POST['pseudo']));
             $pass = sha1(htmlspecialchars(trim($_POST['pass'])));
     
-            if(user_login($email,$pass) == 1){
+            if(user_login($email, $pass) == 1){
                 $_SESSION['chat'] = $pseudo;
                 header("Location:index.php?page=chat");
             }else{

@@ -37,7 +37,6 @@
     </div>
 </div>
 
-<!-- On appelle la librairie TinyMCE pour l'édition du champ A propos -->
 <script src="//cloud.tinymce.com/stable/tinymce.min.js?apiKey=c851wd1npuo4c59ed6f7fp6doripcdhfdi1ltt9hpr29wt3x"></script>
 <script type="text/javascript" src="public/js/script.js"></script>
 <script>tinymce.init({

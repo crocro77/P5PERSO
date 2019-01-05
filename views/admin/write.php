@@ -9,7 +9,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['id'])) {
 	echo '<h3>Nouvelle fiche</h3>';
 	echo '</div>';
 }
-// Si l'on n'est pas en train d'éditer un article. 
+
 if(!isset($_GET['action'])) {
 	echo '<p>Vous pouvez rédiger dès à présent une nouvelle fiche.</p>';
 }
@@ -17,6 +17,7 @@ if(isset($_SESSION['flash'])) {
 	include('includes/flash-msg.php');
 }
 ?>
+
 <form action="" method="post" enctype="multipart/form-data">
 	<div class="form-group">
 		<label for="title">Titre </label>
@@ -75,14 +76,12 @@ if(isset($_SESSION['flash'])) {
 	</div>
 	<br />
 	<?php
-	// Si on édite un article, le bouton d'envoi devient 'Mettre à jour'.
 	if(isset($_GET['action']) && $_GET['action'] == 'edit') {
 		?>
 		<input type="hidden" name="id" value="<?= $sheet->getId(); ?>" />
 		<button type="submit" class="btn btn-warning">Mettre à jour</button>
 		<?php
 	}
-	// Sinon, le bouton d'envoi permet de publier un article.
 	else {
 		?>
 		<button type="submit" class="btn btn-publish">Publier</button>
@@ -91,7 +90,7 @@ if(isset($_SESSION['flash'])) {
 	?>
 </form>
 </div>
-<!-- On appelle la librairie TinyMCE pour la page Ecriture/Edition -->
+
 <script src="//cloud.tinymce.com/stable/tinymce.min.js?apiKey=c851wd1npuo4c59ed6f7fp6doripcdhfdi1ltt9hpr29wt3x"></script>
 <script type="text/javascript" src="public/js/preview_image.js"></script>
 <script>tinymce.init({

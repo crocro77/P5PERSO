@@ -20,12 +20,21 @@
         ?>
     </div>
 
-    <div class="row col l">
-        <form action="" method="post">
+    <div class="row">
+        <form id="form-chat" action="" method="post">
             <p>
-                <label for="pseudo">Pseudo</label><input type="text" name="pseudo" id="pseudo" /><br />
-                <label for="message">Message</label><input type="text" name="message" id="message" /><br />
-                <input type="submit" class="btn btn-default btn-sm" value="Envoyer" />
+            <div class="form-group">
+                <label for="pseudo">Pseudo</label>
+                <div class="col-sm-offset-1 col-sm-2">
+                    <input type="text" name="pseudo" id="pseudo" /><br />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="message" class="col-sm-1 control-label">Message</label><input type="text" name="message" id="message" />
+                <div class="col-sm-offset-1 col-sm-2">
+                    <input type="submit" class="btn btn-default btn-sm" value="Envoyer" />
+                </div>
+            </div>
             </p>
         </form>
     </div>
