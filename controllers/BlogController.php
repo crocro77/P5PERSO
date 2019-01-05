@@ -32,7 +32,7 @@ class BlogController
 		$firstSheet = ($currentPage - 1) * $sheetsPerPage;
 		$listOfSheets = $sheetManager->getList($firstSheet, $sheetsPerPage);
 
-		return load_template('home.php', array('listOfSheets' => $listOfSheets, 'numberOfPages' => $numberOfPages, 'currentPage' => $currentPage));
+		return load_template('front/home.php', array('listOfSheets' => $listOfSheets, 'numberOfPages' => $numberOfPages, 'currentPage' => $currentPage));
 	}
 	
 	public function executeSingle() {
@@ -62,17 +62,17 @@ class BlogController
 		$sheetUnique = $sheetManager->getUnique($_GET['id']);
 		$listOfComments = $commentManager->getSheetComments($_GET['id']);
 
-		return load_template('single.php', array('sheetUnique' => $sheetUnique, 'listOfComments' => $listOfComments));
+		return load_template('front/single.php', array('sheetUnique' => $sheetUnique, 'listOfComments' => $listOfComments));
 	}
 
 	public function executeAbout() {
 		$aboutManager = new About();
 		$aboutDescription = $aboutManager->getAboutDescription();
 
-		return load_template('about.php', array('aboutDescription' => $aboutDescription));
+		return load_template('front/about.php', array('aboutDescription' => $aboutDescription));
 	}
 
 	public function executeMentions() {
-		return load_template('mentions.php', array());
+		return load_template('front/mentions.php', array());
 	}
 }

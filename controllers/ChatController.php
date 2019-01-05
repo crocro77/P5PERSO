@@ -20,6 +20,6 @@ class ChatController
         }
 
 
-		return load_template('chat.php', array('listOfChatMessages' => $listOfChatMessages));
+		return load_template('front/chat.php', array('listOfChatMessages' => $listOfChatMessages));
     }
 }

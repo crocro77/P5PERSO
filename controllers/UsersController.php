@@ -6,7 +6,7 @@ class UsersController
 {
     // La page inscription/connexion de l'espace membres
     public function executeUsersSpace() {
-		return load_template('users.php', array());
+		return load_template('front/users.php', array());
     }
     
     // La page inscription
@@ -24,7 +24,7 @@ class UsersController
                 header("Location:index.php?page=chat");
             }
         }
-        return load_template('register.php', array());
+        return load_template('front/register.php', array());
     }
 
     // La page connexion
@@ -42,6 +42,6 @@ class UsersController
     
     
         }
-        return load_template('userlogin.php', array());
+        return load_template('front/userlogin.php', array());
     }
 }
