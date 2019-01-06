@@ -35,7 +35,7 @@ if(empty($listOfsheets)) {
                         <br/><br/>
                         <form method="post" role="form" action="index.php?p=admin&menu=list&action=delete&id=<?= $sheet->getId(); ?>">
                             <input type="hidden" name="id" value="<?= $sheet->getId(); ?>">
-                            <input type="submit" value="Supprimer le chapitre" class="btn btn-danger">
+                            <input type="submit" value="Supprimer la fiche" class="btn btn-danger">
                         </form>
                     </div>
                 </div>

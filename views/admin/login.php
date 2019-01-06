@@ -14,12 +14,12 @@
 				<div class="row">
 					<div class="input-field col s12">
 						<label for="username">Nom d'utilisateur</label>
-						<input class="form-control" type="text" name="username" required />
+						<input class="form-control" type="text" name="username" id="username"  />
 					</div>
 
 					<div class="input-field col s12">
 						<label for="password">Mot de passe</label>
-						<input class="form-control" type="password" name="password" required />
+						<input class="form-control" type="password" name="password" id="password"  />
 					</div>
 				</div>
 

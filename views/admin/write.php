@@ -92,17 +92,5 @@ if(isset($_SESSION['flash'])) {
 </div>
 
 <script src="//cloud.tinymce.com/stable/tinymce.min.js?apiKey=c851wd1npuo4c59ed6f7fp6doripcdhfdi1ltt9hpr29wt3x"></script>
-<script type="text/javascript" src="public/js/preview_image.js"></script>
-<script>tinymce.init({
-	selector: 'textarea',
-	height: 500,
-	menubar: false,
-    plugins: [
-        'advlist autolink lists link image charmap print preview anchor',
-        'searchreplace visualblocks code fullscreen',
-        'insertdatetime media save table contextmenu paste code'
-    ],
-    toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-    content_css: '//www.tinymce.com/css/codepen.min.css'
-    });
-</script>
+<script type="text/javascript" src="public/js/tinymce.js"></script>
+<script type="text/javascript" src="public/js/clignotement.js"></script>

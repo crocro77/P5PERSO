@@ -9,21 +9,21 @@ if (isset($_GET['p'])) {
 switch ($p) {
 	case "home":
 		$pageTitle .= ' - Bienvenue';
-		$controller = new BlogController();
+		$controller = new FrontController();
 		$content = $controller->executeHome();
 		break;
 	case "single":
-		$controller = new BlogController();
+		$controller = new FrontController();
 		$content = $controller->executeSingle();
 		break;
 	case "about":
 		$pageTitle .= ' - À propos';
-		$controller = new BlogController();
+		$controller = new FrontController();
 		$content = $controller->executeAbout();
 		break;
 	case "mentions":
 		$pageTitle .= ' - Mentions légales';
-		$controller = new BlogController();
+		$controller = new FrontController();
 		$content = $controller->executeMentions();
 		break;
 	case "chat":
@@ -66,19 +66,13 @@ switch ($p) {
 		}
 		break;
 	case "login":
-		if(isset($_SESSION['username']) AND $_SESSION['username'] == 'ntonyyy') {
-			header('Location: index.php');
-		} else {
-			$pageTitle .= ' - Connexion';
-			$controller = new AdminController();
-			$content = $controller->executeLogin();
-		}
+		$pageTitle .= ' - Connexion';
+		$controller = new AuthentificationController();
+		$content = $controller->executeLogin();
 		break;
 	case "logout":
-		session_start();
-		session_destroy();
-		header('Location: index.php');
-		exit();
+		$controller = new AuthentificationController();
+		$content = $controller->executeLogout();
 		break;
 	default:
 		$controller = new ErrorController();

@@ -2,7 +2,7 @@
 
 require_once('includes/template-loader.php');
 
-class BlogController
+class FrontController
 {
 	public function executeHome()
 	{
@@ -75,4 +75,48 @@ class BlogController
 	public function executeMentions() {
 		return load_template('front/mentions.php', array());
 	}
+
+	public function executeSingleChapter()
+    {
+		// récupération d'un chapitre et de ses commentaires
+		if(isset($_GET['id'])) {
+			$chapterManager = new Chapter();
+			$chapterUnique = $chapterManager->getUnique($_GET['id']);
+			$commentManager = new Comment();
+			$listOfComments = $commentManager->getChapterComments($_GET['id']);
+	
+			return load_template('front/single.php', array('chapterUnique' => $chapterUnique, 'listOfComments' => $listOfComments));
+		}
+    }
+
+    public function executeCommentChapter()
+    {
+		// ajout d'un commentaire
+		if(isset($_GET['id'])) {
+			if(!empty($_POST['author']) || (empty($_POST['author']) && isset($_SESSION['username']) && !empty($_POST['comment']))) {
+				$comment = new Comment();
+				$comment->setPostId($_GET['id']);
+				if(isset($_SESSION['username'])) {
+					$comment->setAuthor($_SESSION['username']);
+				} else {
+					$comment->setAuthor($_POST['author']);
+				}
+				$comment->setComment($_POST['comment']);
+				$commentManager = new Comment();
+				$commentManager->add($comment);
+				header('Location: index.php?p=single&id='.($_GET['id']).'#comments');
+			}
+		}
+    }
+
+    public function executeSignalComment($commentId)
+    {    
+		// signalement d'un commentaire
+		if(isset($_GET['id'])) {
+			$commentManager = new Comment();
+			$comment = $commentManager->getSpecificComment($_GET['commentId']);
+			$commentManager->signal($comment);
+			header('Location: index.php?p=single&id='.($_GET['id']).'#comments');
+		}
+    }
 }

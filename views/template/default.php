@@ -32,7 +32,7 @@
         </div>
     </nav>
 
-      <?= $content; ?>
+      <?php echo $content; ?>
    
     <footer>
       <p id="titleDetail">© 2018 <a href="#" data-activates="mobile-menu" id="admin-btn" class="button-collapse">ntonyyy</a> - <a title="Mentions légales" id="mention-btn" href="index.php?p=mentions" class="grey-text text-lighten-4">Mentions légales</a></p>
