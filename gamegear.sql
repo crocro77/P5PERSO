@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 06 déc. 2018 à 12:09
+-- Généré le :  Dim 06 jan. 2019 à 19:21
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -39,7 +39,28 @@ CREATE TABLE IF NOT EXISTS `about` (
 --
 
 INSERT INTO `about` (`id`, `description`) VALUES
-(1, 'Bienvenue sur le site\r\n- En travaux -');
+(1, 'Bienvenue sur le site\r\n\r\n- En travaux - Projet 5 personnel formation développeur web junior OpenClassrooms');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ;
+
+--
+-- Déchargement des données de la table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`) VALUES
+(1, 'ntonyyy', '5089c85ccf5f86430ff2df9f5fea88eedcaa659d');
 
 -- --------------------------------------------------------
 
@@ -60,6 +81,7 @@ CREATE TABLE IF NOT EXISTS `chat` (
 --
 
 INSERT INTO `chat` (`id`, `pseudo`, `message`) VALUES
+(7, 'Bob', 'Ca va super bien !'),
 (1, 'ntonyyy', 'coucou'),
 (2, 'ntonyyy', 'Comment allez vous ?');
 
