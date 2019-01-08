@@ -1,0 +1,12 @@
+{
+    "name": "anthony/p5perso",
+    "authors": [
+        {
+            "name": "ntonyyy",
+            "email": "anthony.fumo@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "~1.0"
+    }
+}
