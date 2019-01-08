@@ -1,5 +1,6 @@
 <?php
 
+// Routing
 if (isset($_GET['p'])) {
 	$p = $_GET['p'];
 } else {

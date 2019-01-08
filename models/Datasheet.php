@@ -77,12 +77,12 @@ class Datasheet extends ObjectModel
 		$request->bindValue(':id', (int) $id);
 		$request->execute();
 		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Datasheet');
-		$chapter = $request->fetch();
-		if($chapter === false) {
+		$sheet = $request->fetch();
+		if($sheet === false) {
 			header("Location:index.php");
 		}
-		$chapter->setDate(new DateTime($chapter->getDate()));
-		return $chapter;
+		$sheet->setDate(new DateTime($sheet->getDate()));
+		return $sheet;
 	}
 
 	/**

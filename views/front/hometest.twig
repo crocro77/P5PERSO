@@ -1,0 +1,57 @@
+{% extends 'template/layout.twig' %}
+
+{% block content %}
+<br />
+<div id="home" class="container">
+	<div id="slider">
+		<img id="sliderImage" src="public/img/GG.jpg" alt="sliderImage">
+	</div>
+	<br />
+	<div class="row">
+		<h1 class=" light-blue darken-4" id="site-title">Index des jeux Game Gear</h1>
+		<br />
+	</div>
+	<hr>
+	<ul class="pagination center">
+	<li class="{% if currentPage == '1' %} disabled {% endif %}"><a href="?page={% if currentPage != '1' %}currentPage-1 {% else %} currentPage {% endif %}">&laquo;</a></li>
+	{% for i in 1.. numberOfPages %}   
+        {% if i == currentPage %}
+            <li class='page-item'><a class='page-link'>{{ i }}</a></li>                  
+        {% else %}
+            <li class="waves-effect"><a class="page-link" href="?page='{{ i }}">{{ i }}</a></li>
+        {% endif %}
+	{% endfor %}
+	<li class="{% if currentPage == '1' %} disabled {% endif %}"><a href="?page={% if currentPage != '1' %}currentPage+1 {% else %} currentPage {% endif %}">&raquo;</a></li>
+	</ul>
+	<hr>
+	<div id="anchor" class="row">
+		<div class="col-xs-12">
+		{% for sheet in datasheet %}
+			<div class="col l6 m6 s12">
+				<div class="card">
+					<div class="card-content">
+						<h5 class="grey-text text-darken-2">{{ sheet.title }}</h5>
+						<h6 class="grey-text">
+						Le {{ sheet.date|date("d/m/Y") }} par {{ sheet.author }}
+						</h6>
+					</div>
+					<div class="card-image waves-effect waves-block waves-light">
+						<a href="index.php?p=single&amp;id={{ sheet.id }}"><img src="public/img/{{ sheet.cover }}" alt="{{ sheet.title }}"/></a>
+					</div>
+					<div class="card-content">
+						<span class="card-title activator grey-text text-darken-4"><i title="Screenshot" class="material-icons right">image</i></span>
+						<p><a href="index.php?p=single&amp;id={{ sheet.id }}">Voir la fiche complète</a></p>
+					</div>
+					<div class="card-reveal">
+						<span class="card-title grey-text text-darken-4 center">{{ sheet.title }}<i class="material-icons right">close</i></span>
+							<img id="card-reveal-screenshot" src="public/img/{{ sheet.screenshot }}" alt="{{ sheet.title }}"/>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+		</div>
+	</div>
+	<hr>
+</div>
+
+{% endblock %}
