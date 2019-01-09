@@ -31,9 +31,9 @@ if(empty($listOfsheets)) {
                         <br/><br/>
                         <a class="btn btn-default btn-sm" href="index.php?p=single&id=<?= $sheet->getId(); ?>">Voir la fiche complète</a>
                         <br/><br/>
-                        <a class="btn btn-default btn-sm" href="index.php?p=admin&tab=write&action=edit&id=<?= $sheet->getId(); ?>">Éditer la fiche</a>
+                        <a class="btn btn-default btn-sm" href="index.php?p=edit&id=<?= $sheet->getId(); ?>">Éditer la fiche</a>
                         <br/><br/>
-                        <form method="post" role="form" action="index.php?p=admin&menu=list&action=delete&id=<?= $sheet->getId(); ?>">
+                        <form method="post" role="form" onclick="return confirm('Etes vous sûr de vouloir supprimer cette fiche ?')" action="index.php?p=admin&menu=list&action=deletesheet&id=<?= $sheet->getId(); ?>">
                             <input type="hidden" name="id" value="<?= $sheet->getId(); ?>">
                             <input type="submit" value="Supprimer la fiche" class="btn btn-danger">
                         </form>

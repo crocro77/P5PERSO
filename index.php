@@ -2,7 +2,7 @@
 
 session_start();
 
-require 'vendor/autoload.php';
+// require 'vendor/autoload.php';
 
 /**
  * Autoloader permettant de charger les différentes classes.
@@ -21,7 +21,9 @@ function autoload($classname)
 
 spl_autoload_register('autoload');
 
-require 'routertest.php';
-// require 'router.php';
-// require 'views/template/default.php';
-require 'views/template/layout.twig';
+$pageTitle = "World of Game Gear";
+
+require 'router.php';
+require 'views/template/default.php';
+// require 'routertest.php';
+// require 'views/template/layout.twig';

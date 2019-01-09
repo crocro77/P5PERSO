@@ -9,7 +9,7 @@
 		<br />
 	</div>
 	<hr>
-	<form class="center" method="get">
+	<!-- <form class="center" method="get">
 		<label>Nombre de fiches par page</label>
 			<select name="pp">
 				<option value="2">2</option>
@@ -20,7 +20,7 @@
 			</select>
 		<input type="hidden" name="p" value="<?php echo $currentPage ?>" />
 		<button id="apply-btn" class="btn" type="submit">Appliquer</button>
-	</form>
+	</form> -->
 	<ul class="pagination center">
 	<li class="<?php if($currentPage == '1'){ echo "disabled"; } ?>"><a href="?page=<?php if ($currentPage != '1'){ echo $currentPage-1; } else { echo $currentPage; } ?>">&laquo;</a></li>
 	<?php

@@ -100,9 +100,9 @@ class Datasheet extends ObjectModel
 		$req->bindValue(':publisher', $sheet->getPublisher());
 		$req->bindValue(':release_date', $sheet->getReleaseDate());
 		$req->bindValue(':genre', $sheet->getGenre());
-		$req->bindValue(':cover', $sheet->getCover() ? $sheet->getCover() : 'cover.png');
-		$req->bindValue(':screenshot', $sheet->getScreenshot() ? $sheet->getScreenshot() : 'screenshot.png');
-		$req->bindValue(':track', $sheet->getTrack() ? $sheet->getTrack() : 'track.mp3');
+		$req->bindValue(':cover', $sheet->getCover());
+		$req->bindValue(':screenshot', $sheet->getScreenshot());
+		$req->bindValue(':track', $sheet->getTrack());
 		$req->bindValue(':trackname', $sheet->getTrackName() ? $sheet->getTrackName() : 'SEGA');
 		$req->execute();
 	}
@@ -116,21 +116,28 @@ class Datasheet extends ObjectModel
 	 * @param string $publisher L'editeur
 	 * @param int $release_date La date de sortie
 	 * @param string $genre le genre
+	 * @param string $cover la cover
+	 * @param string $screenshot le screenshot
+	 * @param string $track la track
+	 * @param string $trackname le nom de la track
 	 * @param int $id L'id
 	 */
-	public static function updateSheet($title, $author, $content, $developer, $publisher, $release_date, $genre, $trackname, $id)
+	public function updateSheet()
 	{
 		$db = Database::getDBConnection();
-		$request = $db->prepare('UPDATE datasheet SET title = :title, author = :author, content = :content, developer = :developer, publisher = :publisher, release_date = :release_date, genre = :genre, trackname = :trackname, date = NOW() WHERE id = :id');
-		$request->bindValue(':title', $title);
-		$request->bindValue(':author', $author);
-		$request->bindValue(':content', $content);
-		$request->bindValue(':developer', $developer);
-		$request->bindValue(':publisher', $publisher);
-		$request->bindValue(':release_date', (int) $release_date);
-		$request->bindValue(':genre', $genre);
-		$request->bindValue(':trackname', $trackname);
-		$request->bindValue(':id', (int) $id);
+		$request = $db->prepare('UPDATE datasheet SET title = :title, author = :author, content = :content, developer = :developer, publisher = :publisher, release_date = :release_date, genre = :genre,  cover = :cover, screenshot = :screenshot, track = :track, trackname = :trackname, date = NOW() WHERE id = :id');
+		$request->bindValue(':title', $this->getTitle());
+		$request->bindValue(':author', $this->getAuthor());
+		$request->bindValue(':content', $this->getContent());
+		$request->bindValue(':developer', $this->getDeveloper());
+		$request->bindValue(':publisher', $this->getPublisher());
+		$request->bindValue(':release_date', (int) $this->getReleaseDate());
+		$request->bindValue(':genre', $this->getGenre());
+		$request->bindValue(':cover', $this->getCover());
+		$request->bindValue(':screenshot', $this->getScreenshot());
+		$request->bindValue(':track', $this->getTrack());
+		$request->bindValue(':trackname', $this->getTrackName());
+		$request->bindValue(':id', (int) $this->getId());
 		$request->execute();
 	}
 
@@ -138,53 +145,53 @@ class Datasheet extends ObjectModel
 	 * Met à jour de la cover de la fiche.
 	 * @param string $cover La cover
 	 */
-	public static function updateCover($cover, $id)
-	{
-		$db = Database::getDBConnection();
-		$request = $db->prepare('UPDATE datasheet SET cover = :cover WHERE id = :id');
-		$request->bindValue(':cover', $cover);
-		$request->bindValue(':id', (int) $id);
-		$request->execute();
-	}
+	// public static function updateCover($cover, $id)
+	// {
+	// 	$db = Database::getDBConnection();
+	// 	$request = $db->prepare('UPDATE datasheet SET cover = :cover WHERE id = :id');
+	// 	$request->bindValue(':cover', $cover);
+	// 	$request->bindValue(':id', (int) $id);
+	// 	$request->execute();
+	// }
 
 	/**
 	 * Met à jour du screenshot d'une fiche.
 	 * @param string $screenshot Le screenshot
 	 */
-	public static function updateScreenshot($screenshot, $id)
-	{
-		$db = Database::getDBConnection();
-		$request = $db->prepare('UPDATE datasheet SET screenshot = :screenshot WHERE id = :id');
-		$request->bindValue(':screenshot', $screenshot);
-		$request->bindValue(':id', (int) $id);
-		$request->execute();
-	}
+	// public static function updateScreenshot($screenshot, $id)
+	// {
+	// 	$db = Database::getDBConnection();
+	// 	$request = $db->prepare('UPDATE datasheet SET screenshot = :screenshot WHERE id = :id');
+	// 	$request->bindValue(':screenshot', $screenshot);
+	// 	$request->bindValue(':id', (int) $id);
+	// 	$request->execute();
+	// }
 
 	/**
 	 * Met à jour l'image d'un chapitre.
 	 * @param string $screenshot L'image
 	 */
-	public static function updateTrack($track, $id)
-	{
-		$db = Database::getDBConnection();
-		$request = $db->prepare('UPDATE datasheet SET track = :track WHERE id = :id');
-		$request->bindValue(':track', $track);
-		$request->bindValue(':id', (int) $id);
-		$request->execute();
-	}
+	// public static function updateTrack($track, $id)
+	// {
+	// 	$db = Database::getDBConnection();
+	// 	$request = $db->prepare('UPDATE datasheet SET track = :track WHERE id = :id');
+	// 	$request->bindValue(':track', $track);
+	// 	$request->bindValue(':id', (int) $id);
+	// 	$request->execute();
+	// }
 
 	/**
 	 * Met à jour l'image d'un chapitre.
 	 * @param string $screenshot L'image
 	 */
-	public static function updateTrackName($trackname, $id)
-	{
-		$db = Database::getDBConnection();
-		$request = $db->prepare('UPDATE datasheet SET trackname = :trackname WHERE id = :id');
-		$request->bindValue(':trackname', $trackname);
-		$request->bindValue(':id', (int) $id);
-		$request->execute();
-	}
+	// public static function updateTrackName($trackname, $id)
+	// {
+	// 	$db = Database::getDBConnection();
+	// 	$request = $db->prepare('UPDATE datasheet SET trackname = :trackname WHERE id = :id');
+	// 	$request->bindValue(':trackname', $trackname);
+	// 	$request->bindValue(':id', (int) $id);
+	// 	$request->execute();
+	// }
 	
 	/**
 	 * Supprime un chapitre de la bdd
@@ -225,7 +232,8 @@ class Datasheet extends ObjectModel
 	 */
 	public function setTitle($title)
 	{
-		if(is_string($title) && !empty($title)) {
+		if(is_string($title) && !empty($title) && strlen($title) < 255)
+		{
 			$this->title = $title;
 		}
 	}
@@ -236,7 +244,7 @@ class Datasheet extends ObjectModel
 	 */
 	public function setContent($content)
 	{
-		if(is_string($content) && !empty($content)) 
+		if(is_string($content) && !empty($content) && strlen($content) < 65535) 
 		{
 			$this->content = $content;
 		}
@@ -248,7 +256,7 @@ class Datasheet extends ObjectModel
 	 */
 	public function setDeveloper($developer)
 	{
-		if(is_string($developer) && !empty($developer)) 
+		if(is_string($developer) && !empty($developer) && strlen($developer) < 255) 
 		{
 			$this->developer = $developer;
 		}
@@ -260,7 +268,7 @@ class Datasheet extends ObjectModel
 	 */
 	public function setPublisher($publisher)
 	{
-		if(is_string($publisher) && !empty($publisher)) 
+		if(is_string($publisher) && !empty($publisher) && strlen($publisher) < 255) 
 		{
 			$this->publisher = $publisher;
 		}
@@ -281,7 +289,7 @@ class Datasheet extends ObjectModel
 	 */
 	public function setGenre($genre)
 	{
-		if(is_string($genre) && !empty($genre)) 
+		if(is_string($genre) && !empty($genre) && strlen($genre) < 255) 
 		{
 			$this->genre = $genre;
 		}
@@ -293,9 +301,11 @@ class Datasheet extends ObjectModel
 	 */
 	public function setCover($cover)
 	{
-		if(is_string($cover) && !empty($cover)) 
+		if(is_string($cover) && !empty($cover) && strlen($cover) < 255) 
 		{
 			$this->cover = $cover;
+		} else {
+			$this->cover = 'cover.png';
 		}
 	}
 
@@ -305,9 +315,11 @@ class Datasheet extends ObjectModel
 	 */
 	public function setScreenshot($screenshot)
 	{
-		if(is_string($screenshot) && !empty($screenshot)) 
+		if(is_string($screenshot) && !empty($screenshot) && strlen($screenshot) < 255) 
 		{
 			$this->screenshot = $screenshot;
+		} else {
+			$this->screenshot = 'screenshot.png';
 		}
 	}
 
@@ -317,7 +329,7 @@ class Datasheet extends ObjectModel
 	 */
 	public function setAuthor($author)
 	{
-		if(is_string($author) && !empty($author)) 
+		if(is_string($author) && !empty($author) && strlen($author) < 255) 
 		{
 			$this->author = $author;
 		}
@@ -338,9 +350,11 @@ class Datasheet extends ObjectModel
 	 */
 	public function setTrack($track)
 	{
-		if(is_string($track) && !empty($track)) 
+		if(is_string($track) && !empty($track) && strlen($track) < 255) 
 		{
 			$this->track = $track;
+		} else {
+			$this->track = 'track.mp3';
 		}
 	}
 
@@ -350,9 +364,11 @@ class Datasheet extends ObjectModel
 	 */
 	public function setTrackName($trackname)
 	{
-		if(is_string($trackname) && !empty($trackname)) 
+		if(is_string($trackname) && !empty($trackname) && strlen($trackname) < 255) 
 		{
 			$this->trackname = $trackname;
+		// } else {
+		// 	$this->trackname = 'SEGA';
 		}
 	}
 	

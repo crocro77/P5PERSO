@@ -23,8 +23,8 @@ if (empty($listOfComments)) {
 						<td class="center"><a href="?p=single&amp;id=<?= $comment->getPostId(); ?>"><?= $comment->getPostId(); ?></a></td>
 						<td><em><?= htmlspecialchars($comment->getComment()); ?></em></td>
 						<td><strong><?= htmlspecialchars($comment->getAuthor()); ?></strong></td>
-						<td><a href="?p=admin&amp;tab=comments&amp;action=seenComment&amp;commentId=<?= $comment->getId(); ?>" title="Indiqué comme vu"><i class="material-icons">remove_red_eye</i></a>
-							<a href="?p=admin&amp;tab=comments&amp;action=deleteComment&amp;commentId=<?= $comment->getId(); ?>" title="Supprimer le commentaire"><i class="material-icons">delete</i></a>
+						<td><a href="?p=admin&amp;tab=comments&amp;action=seencomment&amp;commentId=<?= $comment->getId(); ?>" title="Indiqué comme vu"><i class="material-icons">remove_red_eye</i></a>
+							<a href="?p=admin&amp;tab=comments&amp;action=deletecomment&amp;commentId=<?= $comment->getId(); ?>" title="Supprimer le commentaire"><i class="material-icons">delete</i></a>
 						</td>
 					</tr>
 					<?php
@@ -56,8 +56,8 @@ if (empty($listOfComments)) {
 							<td><em><?= htmlspecialchars($signaledComment->getComment()); ?></em></td>
 							<td><?= $signaledComment->getCommentDate()->format('d/m/y'); ?></td>
 							<td>
-								<a title="Valider le commentaire" href="?p=admin&amp;tab=comments&amp;action=validateComment&amp;commentId=<?= $signaledComment->getId(); ?>"><i class="material-icons">done</i></a>
-								<a title="Supprimer le commentaire" href="?p=admin&amp;tab=comments&amp;action=deleteComment&amp;commentId=<?= $signaledComment->getId(); ?>"><i class="material-icons">delete</i></a>
+								<a title="Valider le commentaire" href="?p=admin&amp;tab=comments&amp;action=validatecomment&amp;commentId=<?= $signaledComment->getId(); ?>"><i class="material-icons">done</i></a>
+								<a title="Supprimer le commenaitre" href="?p=admin&amp;tab=comments&amp;action=deletecomment&amp;commentId=<?= $signaledComment->getId(); ?>" onclick="return confirm('Etes vous sûr de vouloir supprimer ce commentaire ?')"><i class="material-icons">delete</i></a>
 							</td>
 						</tr>
 					<?php

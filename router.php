@@ -1,6 +1,34 @@
 <?php
 
-// Routing
+if (isset($_GET['action'])) {
+	switch ($_GET['action']) {
+		case "postcomment":
+			$commentController = new FrontController();
+			$content = $commentController->executeCommentSheet();
+			break;
+		case "signalcomment":
+			$signalController = new FrontController();
+			$content = $signalController->executeSignalComment($_GET['commentId']);
+			break;
+		case "validatecomment":
+			$validateComment = new AdminController();
+			$content = $validateComment->executeValidateComment();
+			break;
+		case "deletecomment":
+			$deleteComment = new AdminController();
+			$content = $deleteComment->executeDeleteComment();
+			break;
+		case "seencomment":
+			$seenComment = new AdminController();
+			$content = $seenComment->executeSeenComment();
+			break;
+		case "deletesheet":
+			$deleteChapter = new AdminController();
+			$content = $deleteChapter->executeDeleteSheet();
+			break;
+	}
+}
+
 if (isset($_GET['p'])) {
 	$p = $_GET['p'];
 } else {
@@ -15,17 +43,17 @@ switch ($p) {
 		break;
 	case "single":
 		$controller = new FrontController();
-		$content = $controller->executeSingle();
-		break;
-	case "about":
-		$pageTitle .= ' - À propos';
-		$controller = new FrontController();
-		$content = $controller->executeAbout();
+		$content = $controller->executeSingleSheet();
 		break;
 	case "mentions":
 		$pageTitle .= ' - Mentions légales';
 		$controller = new FrontController();
 		$content = $controller->executeMentions();
+		break;
+	case "about":
+		$pageTitle .= ' - À propos';
+		$controller = new AboutController();
+		$content = $controller->executeAbout();
 		break;
 	case "chat":
 		$pageTitle .= ' - Chat';
@@ -58,13 +86,17 @@ switch ($p) {
 		$content = $controller->executeUserRegister();
 		break;
 	case "admin":
-		if(!isset($_SESSION['username']) OR isset($_SESSION['username']) AND $_SESSION['username'] !== 'ntonyyy') {
-			header('Location: index.php?p=login');
-		} else {
-			$pageTitle .= ' - Tableau de bord';
-			$controller = new AdminController();
-			$content = $controller->executeAdminPanel();
-		}
+		$pageTitle .= ' - Tableau de bord';
+		$controller = new AdminController();
+		$content = $controller->executeAdminDashboard();
+		break;
+	case "write":
+		$createController = new AdminController();
+		$content = $createController->executeCreateSheet();
+		break;
+	case "edit":
+		$updateChapter = new AdminController();
+		$content = $updateChapter->executeUpdateSheet();
 		break;
 	case "login":
 		$pageTitle .= ' - Connexion';

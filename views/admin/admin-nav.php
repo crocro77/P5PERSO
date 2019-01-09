@@ -10,7 +10,7 @@
 			<p>Mes Fiches</p>
 		</li>
 		<li class="tab" <?php if($selectedTab == 'write')  echo 'class="active"' ?>>
-			<a title="Ecrire" href="index.php?p=admin&tab=write"><i class="material-icons">edit</i></a>
+			<a title="Ecrire" href="index.php?p=write"><i class="material-icons">edit</i></a>
 			<p>Ecrire</p>
 		</li>
 		<li class="tab" <?php if($selectedTab == 'comments') echo 'class="active"' ?>>

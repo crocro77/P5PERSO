@@ -40,66 +40,62 @@
             </audio>
         </div>
         <hr>
-    <h4>Commentaire(s)</h4>
-    <?php
+        <h4 id="comments">Commentaire(s)</h4>
+    <?php    
     if ($listOfComments != false) {
-        foreach ($listOfComments as $comment) {
-            ?>
-        <strong><?= htmlspecialchars($comment->getAuthor()); ?> (Le <?= date("d/m/Y", strtotime($comment->getCommentDate())) ?>) a dit :</strong><?php
-                                                                                                                                                ?>
+        foreach($listOfComments as $comment) {
+    ?>
+        <strong><?= htmlspecialchars($comment->getAuthor()); ?> (Le <?= date("d/m/Y", strtotime($comment->getCommentDate())) ?>) a dit :</strong>
         <blockquote>
-            <p>
-                <?= htmlspecialchars($comment->getComment()); ?>
-                <?php
-                if (empty($comment->getSignaled())) { // Si l'attribut 'signaler' est vide, on affiche le lien pour signaler.
-                    ?>
-                <a href="index.php?p=single&amp;id=<?= $sheetUnique->getId(); ?>&amp;action=signal&amp;commentId=<?= $comment->getId(); ?>"><small class="signal pull-right">Signaler</small></a>
-                <?php
-                // Sinon, on affiche un message d'alerte pour prévenir que le commentaire a été signalé.
+            <?= htmlspecialchars($comment->getComment()); ?>
+            <?php
+            if(empty($comment->getSignaled())) { // Si l'attribut 'signaler' est vide, on affiche le lien pour signaler.
+            ?>
+            <a href="index.php?p=single&amp;id=<?= $sheetUnique->getId(); ?>&amp;action=signalcomment&amp;commentId=<?= $comment->getId(); ?>"><small class="signal pull-right">Signaler</small></a>
+            <?php
+            // Sinon, on affiche un message d'alerte pour prévenir que le commentaire a été signalé.
             } else {
                 echo '<em class="orange">Le commentaire a été signalé et est en attente de modération.</em>';
             }
             ?>
-            </p>
         </blockquote>
         <?php
-
-    }
-} else {
-    echo "<p>Aucun commentaire n'a été publié, soyez le premier à réagir !</p>";
-}
-?>
+        }
+    } else {
+        echo "Aucun commentaire n'a été publié, soyez le premier à réagir !";
+    }   
+        ?>
 	<hr>
 	<h4 id="poster-commentaire">Commenter</h4>
 		<div class="write-comment">
             <?php
-            if (isset($_SESSION['username'])) {
+            if(isset($_SESSION['username'])) {
                 echo '<p>Vous postez un commentaire en tant que <strong>' . $_SESSION['username'] . '</strong></p>';
             }
             ?>
-            <form class="form-horizontal" action="index.php?p=single&amp;id=<?= $sheetUnique->getId(); ?>#comments" method="post">
+            <p>Le pseudo et le commentaire sont obligatoires pour valider votre commentaire.</p>
+            <form class="form-horizontal" action="index.php?p=single&amp;id=<?= $sheetUnique->getId(); ?>&amp;action=postcomment#comments" method="post">
                 <?php
-                if (!isset($_SESSION['username'])) {
-                    ?>
+                if(!isset($_SESSION['username'])) {
+                ?>
                 <div class="form-group">
                     <label for="author" class="col-sm-1 control-label">Pseudo </label>
                     <div class="col-sm-offset-1 col-sm-2">
-                        <input type="text" name="author" class="form-control" />
+                        <input type="text" name="author" id="author" class="form-control" required/>
                     </div>
                 </div>
                 <?php
-
-            }
-            ?>
+                }
+                ?>
                 <div class="form-group">
                     <label for="comment" class="col-sm-1 control-label">Commentaire</label>
                         <div class="col-sm-offset-1 col-sm-10">
-                            <textarea name="comment" class="materialize-textarea"></textarea>
+                            <textarea name="comment" id="comment" class="materialize-textarea" required></textarea>
                         </div>
                 </div>
                     <input type="hidden" name="id" value="<?= $sheetUnique->getId(); ?>">
                 <div class="col s12">
-                    <button type="submit" name ="submit" class="btn btn-default btn-sm">Envoyer votre commentaire</button>
+                    <button type="submit" name ="submit" class="btn light-blue waves-effect">Envoyer votre commentaire</button>
                 </div>
             </form>
         </div>
