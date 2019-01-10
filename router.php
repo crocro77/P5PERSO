@@ -26,6 +26,18 @@ if (isset($_GET['action'])) {
 			$deleteChapter = new AdminController();
 			$content = $deleteChapter->executeDeleteSheet();
 			break;
+		case "addaboutdescription":
+			$addAbout = new AboutController();
+			$content = $addAbout->executeAddAbout();
+			break;
+		case "updateaboutdescription":
+			$updateAbout = new AboutController();
+			$content = $updateAbout->executeUpdateAbout();
+			break;
+		case "deleteaboutdescription":
+			$deleteAbout = new AboutController();
+			$content = $deleteAbout->executeDeleteAbout();
+			break;
 	}
 }
 

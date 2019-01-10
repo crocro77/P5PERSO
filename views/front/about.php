@@ -7,7 +7,7 @@
         if (empty($aboutDescription)) {
             $message = '<p>Cette page n\'a pas encore été complétée.</p>';
             if (isset($_SESSION['username']) and $_SESSION['username'] == 'ntonyyy') {
-                $message .= ' <p><a href="index.php?p=admin&amp;menu=settings">Le faire maintenant.</a></p>';
+                $message .= ' <p><a href="index.php?p=admin&amp;tab=settings">Le faire maintenant.</a></p>';
             }
         echo $message;
         } else {

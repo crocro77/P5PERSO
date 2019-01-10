@@ -30,7 +30,6 @@ class About extends ObjectModel {
         $db = Database::getDBConnection();
 		$req = $db->prepare('INSERT INTO about (description) VALUES (:description)');
 		$req->bindValue(':description', $about->getDescription());
-		
 		$req->execute();
 	}
 
