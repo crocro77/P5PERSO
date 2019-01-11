@@ -38,9 +38,13 @@ if (isset($_GET['action'])) {
 			$deleteAbout = new AboutController();
 			$content = $deleteAbout->executeDeleteAbout();
 			break;
-		case "postmessage":
+		case "postchatmessage":
 			$chatMessage = new ChatController();
 			$content = $chatMessage->executeAddMessage();
+			break;
+		case "postmessage":
+			$contactMessage = new ContactController();
+			$content = $contactMessage->executeSendMessage();
 			break;
 	}
 }
@@ -70,6 +74,11 @@ switch ($p) {
 		$pageTitle .= ' - À propos';
 		$controller = new AboutController();
 		$content = $controller->executeAbout();
+		break;
+	case "contact":
+		$pageTitle .= ' - Contact';
+		$controller = new ContactController();
+		$content = $controller->executeContact();
 		break;
 	case "chat":
 		$pageTitle .= ' - Chat';

@@ -24,6 +24,7 @@
                     <li><a title="Quiz" href="index.php?p=quiz"><i class="material-icons">gamepad</i></a></li>
                     <li><a title="Espace Membres" href="index.php?p=user"><i class="material-icons">portrait</i></a></li>
                     <li><a title="A propos" href="index.php?p=about"><i class="material-icons">info</i></a></li>
+                    <li><a title="Contact" href="index.php?p=contact"><i class="material-icons">mail_outline</i></a></li>
                 </ul>
                 <ul class="side-nav" id="mobile-menu">
                   <li><a title="Administration" href="index.php?p=admin"><i class="material-icons">lock</i></a></li>
