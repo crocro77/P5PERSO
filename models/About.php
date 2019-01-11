@@ -79,7 +79,7 @@ class About extends ObjectModel {
 	 */
 	public function setDescription($description) {
 		if(is_string($description) AND !empty($description)) {
-			$this->description = $description;
+			$this->description;
 		}
 	}
 

@@ -1,11 +1,18 @@
 <div id="settings" class="center settings grey lighten-3">
 	<div class="page-header">
 		<h2>Réglages</h2>
+		<?php
+	if(isset($_SESSION['flash'])) {
+		include('includes/flash-msg.php');
+	}
+	?>
 	</div>
 
 	<h4>Page &laquo; À propos &raquo;</h4>
 
 	<p class="text-justify">Entrez une description de votre site, fournissez des informations de contact et ce qui vous paraîtra important. Cela apparaitra dans la page &laquo; À propos &raquo; de votre site.</p>
+
+	
 
 	<form action="" method="post">
 		<textarea name="description" class="form-control"><?php if(!empty(About::getAboutDescription())) echo About::getAboutDescription(); ?></textarea><br>
