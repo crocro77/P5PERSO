@@ -46,6 +46,13 @@ if (isset($_GET['action'])) {
 			$contactMessage = new ContactController();
 			$content = $contactMessage->executeSendMessage();
 			break;
+		case "memberregister":
+			$memberRegister = new UsersController();
+			$content = $memberRegister->executeAddUser();
+			break;
+		case "memberaccess":
+			$memberAccess = new UsersController();
+			$content = $memberAccess->executeUserAccess();
 	}
 }
 

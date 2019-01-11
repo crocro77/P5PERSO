@@ -43,20 +43,20 @@ class Users extends ObjectModel
         $register = array(
             'pseudo' => $pseudo,
             'email'	 => $email,
-            'pass'	 => $pass
+            'pass'	 => sha1($pass)
         );
-        $sql = "INSERT INTO users(pseudo, email, pass) VALUES(:pseudo, :email, :pass)";
+        $sql = "INSERT INTO users(pseudo, email, pass, register_date) VALUES(:pseudo, :email, :pass, NOW())";
         $req = $db->prepare($sql);
         $req->execute($register);
 	}
 	
-	public static function user_login($pseudo, $password){
+	public static function user_login($pseudo, $pass){
         $db = Database::getDBConnection();
         $user = array(
             'pseudo' => $pseudo,
-            'pass'   => $pass
+            'pass'   => sha1($pass)
         );
-        $sql = "SELECT * FROM users WHERE email = :email AND pass = :pass";
+        $sql = "SELECT * FROM users WHERE pseudo = :pseudo AND pass = :pass";
         $req = $db->prepare($sql);
         $req->execute($user);
         $login = $req->rowCount($sql);
