@@ -21,7 +21,7 @@
     </div>
 
     <div class="row">
-        <form id="form-chat" action="" method="post">
+        <form id="form-chat" action="index.php?p=chat&action=postmessage" method="post">
             <p>
             <div class="form-group">
                 <label for="pseudo">Pseudo</label>

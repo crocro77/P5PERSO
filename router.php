@@ -38,6 +38,10 @@ if (isset($_GET['action'])) {
 			$deleteAbout = new AboutController();
 			$content = $deleteAbout->executeDeleteAbout();
 			break;
+		case "postmessage":
+			$chatMessage = new ChatController();
+			$content = $chatMessage->executeAddMessage();
+			break;
 	}
 }
 
