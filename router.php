@@ -48,11 +48,8 @@ if (isset($_GET['action'])) {
 			break;
 		case "memberregister":
 			$memberRegister = new UsersController();
-			$content = $memberRegister->executeAddUser();
+			$content = $memberRegister->executeNewUser();
 			break;
-		case "memberaccess":
-			$memberAccess = new UsersController();
-			$content = $memberAccess->executeUserAccess();
 	}
 }
 
