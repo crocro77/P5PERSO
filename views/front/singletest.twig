@@ -10,11 +10,11 @@
     </div>
 </div>
 <div id="single" class="container grey lighten-3">
-    <h2 id="post-title" class="center"><?= htmlspecialchars($sheetUnique->getTitle()); ?></h2>
+    <h2 id="post-title" class="center">{{ sheet.title }}<?= htmlspecialchars($sheetUnique->getTitle()); ?></h2>
         <div class="row center">
             <img class="chapterUniqueImage" src="public/img/<?= $sheetUnique->getScreenshot() ?>" alt="<?= htmlspecialchars($sheetUnique->getTitle()); ?>" >
         </div>
-        <h6 class="center">Par <?= htmlspecialchars($sheetUnique->getAuthor()); ?> le <?= $sheetUnique->getDate()->format('d/m/Y') ?></h6>
+        <h6 class="center">Par {{ sheet.author }}<?= htmlspecialchars($sheetUnique->getAuthor()); ?> le {{ sheet.date|date("d/m/Y") }}<?= $sheetUnique->getDate()->format('d/m/Y') ?></h6>
         <table>
             <thead>
                 <th>Développeur</th>
@@ -23,22 +23,22 @@
                 <th>Genre</th>
             </thead>
             <tbody>
-                <td><?= $sheetUnique->getDeveloper() ?></td>
-                <td><?= $sheetUnique->getPublisher() ?></td>
-                <td><?= $sheetUnique->getReleaseDate() ?></td>
-                <td><?= $sheetUnique->getGenre() ?></td>
+                <td>{{ sheet.developer }}<?= $sheetUnique->getDeveloper() ?></td>
+                <td>{{ sheet.publisher }}<?= $sheetUnique->getPublisher() ?></td>
+                <td>{{ sheet.release_date }}<?= $sheetUnique->getReleaseDate() ?></td>
+                <td>{{ sheet.genre }}<?= $sheetUnique->getGenre() ?></td>
             </tbody>
         </table>
         <br />
         <div class="center">
-            <img src="public/img/<?= $sheetUnique->getCover() ?>" alt="<?= htmlspecialchars($sheetUnique->getTitle()); ?>" width="183px" heigth="256px">
+            <img src="public/img/{{ sheet.cover }}<?= $sheetUnique->getCover() ?>" alt="{{ sheet.title }}<?= htmlspecialchars($sheetUnique->getTitle()); ?>" width="183px" heigth="256px">
         </div>
-        <p class="sheetParagraph"><?= $sheetUnique->getContent(); ?></p>
+        <p class="sheetParagraph">{{ sheet.content }}<?= $sheetUnique->getContent(); ?></p>
         <br />
         <div class="center">
-            <h5>Bonus : Extrait de l'OST "<?= $sheetUnique->getTrackName(); ?>"</h5>
+            <h5>Bonus : Extrait de l'OST "{{ sheet.trackname }}<?= $sheetUnique->getTrackName(); ?>"</h5>
             <audio controls>
-                <source src="public/mp3/<?= $sheetUnique->getTrack(); ?>" type="audio/mpeg">
+                <source src="public/mp3/{{ sheet.track }}<?= $sheetUnique->getTrack(); ?>" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
         </div>
