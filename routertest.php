@@ -21,76 +21,47 @@ switch ($p) {
 	case "single":
 		echo $twig->render('front/singletest.twig');//['sheetUnique' => Datasheet::getUnique($id)]);
 		break;
+	case "about":
+		echo $twig->render('front/abouttest.twig');
+		break;
+	case "contact":
+		echo $twig->render('front/contacttest.twig');
+		break;
+	case "mentions":
+		echo $twig->render('front/mentionstest.twig');	
+		break;
+	case "chat":
+		echo $twig->render('front/chattest.twig');
+		break;
+	case "quiz":
+		echo $twig->render('front/quiztest.twig');
+		break;
+	case "score":
+		echo $twig->render('front/scoretest.twig');
+		break;
+	case "user":
+		echo $twig->render('front/userstest.twig');
+		break;
+	case "connection":
+		echo $twig->render('front/userlogintest.twig');
+		break;
+	case "register":
+		echo $twig->render('front/registertest.twig');
+		break;
+	case "login":
+		echo $twig->render('admin/logintest.twig');
+		break;
+	case "admin":
+		if(!isset($_SESSION['username']) OR isset($_SESSION['username']) AND $_SESSION['username'] !== 'ntonyyy') {
+			header('Location: index.php?p=login');
+		} else {
+			echo $twig->render('admin/dashboard.twig');
+		}
+	case "logout":
+		$controller = new AuthentificationController();
+		$content = $controller->executeLogout();
+		break;
+	default:
+		$controller = new ErrorController();
+		$content = $controller->executeError();
 }
-// switch ($p) {
-// 	case "home":
-// 		$pageTitle .= ' - Bienvenue';
-// 		$controller = new FrontController();
-// 		$content = $controller->executeHome();
-// 		break;
-// 	case "single":
-// 		$controller = new FrontController();
-// 		$content = $controller->executeSingle();
-// 		break;
-// 	case "about":
-// 		$pageTitle .= ' - À propos';
-// 		$controller = new FrontController();
-// 		$content = $controller->executeAbout();
-// 		break;
-// 	case "mentions":
-// 		$pageTitle .= ' - Mentions légales';
-// 		$controller = new FrontController();
-// 		$content = $controller->executeMentions();
-// 		break;
-// 	case "chat":
-// 		$pageTitle .= ' - Chat';
-// 		$controller = new ChatController();
-// 		$content = $controller->executeChat();
-// 		break;
-// 	case "quiz":
-// 		$pageTitle .= ' - Quiz';
-// 		$controller = new QuizController();
-// 		$content = $controller->executeQuiz();
-// 		break;
-// 	case "score":
-// 		$pageTitle .= ' - Score du Quiz';
-// 		$controller = new QuizController();
-// 		$content = $controller->executeScoreQuiz();
-// 		break;
-// 	case "user":
-// 		$pageTitle .= ' - Espace Membres';
-// 		$controller = new UsersController();
-// 		$content = $controller->executeUsersSpace();
-// 		break;
-// 	case "connection":
-// 		$pageTitle .= ' - Connexion à l\'Espace Membres';
-// 		$controller = new UsersController();
-// 		$content = $controller->executeUserLogin();
-// 		break;
-// 	case "register":
-// 		$pageTitle .= ' - Inscription à l\'Espace Membres';
-// 		$controller = new UsersController();
-// 		$content = $controller->executeUserRegister();
-// 		break;
-// 	case "admin":
-// 		if(!isset($_SESSION['username']) OR isset($_SESSION['username']) AND $_SESSION['username'] !== 'ntonyyy') {
-// 			header('Location: index.php?p=login');
-// 		} else {
-// 			$pageTitle .= ' - Tableau de bord';
-// 			$controller = new AdminController();
-// 			$content = $controller->executeAdminPanel();
-// 		}
-// 		break;
-// 	case "login":
-// 		$pageTitle .= ' - Connexion';
-// 		$controller = new AuthentificationController();
-// 		$content = $controller->executeLogin();
-// 		break;
-// 	case "logout":
-// 		$controller = new AuthentificationController();
-// 		$content = $controller->executeLogout();
-// 		break;
-// 	default:
-// 		$controller = new ErrorController();
-// 		$content = $controller->executeError();
-// }
