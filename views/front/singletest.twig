@@ -10,6 +10,7 @@
     </div>
 </div>
 <div id="single" class="container grey lighten-3">
+    {% for sheet in datasheet %}
     <h2 id="post-title" class="center">{{ sheet.title }}<?= htmlspecialchars($sheetUnique->getTitle()); ?></h2>
         <div class="row center">
             <img class="chapterUniqueImage" src="public/img/<?= $sheetUnique->getScreenshot() ?>" alt="<?= htmlspecialchars($sheetUnique->getTitle()); ?>" >
@@ -42,19 +43,16 @@
                 Your browser does not support the audio element.
             </audio>
         </div>
+    {% endfor %}
         <hr>
     <h4>Commentaire(s)</h4>
-    <?php
-    if ($listOfComments != false) {
-        foreach ($listOfComments as $comment) {
-            ?>
-        <strong><?= htmlspecialchars($comment->getAuthor()); ?> (Le <?= date("d/m/Y", strtotime($comment->getCommentDate())) ?>) a dit :</strong><?php
-                                                                                                                                                ?>
+    {% if listOfComments != false %}
+    {% for comment in comments %}{
+        <strong>{{ comment.author }} (Le {{ comment.date|date("d/m/Y") }}) a dit :</strong><?ph                                                                                                                                               ?>
         <blockquote>
             <p>
-                <?= htmlspecialchars($comment->getComment()); ?>
-                <?php
-                if (empty($comment->getSignaled())) { // Si l'attribut 'signaler' est vide, on affiche le lien pour signaler.
+                {{ comment.comment }}
+                {% if (empty($comment->getSignaled())) { // Si l'attribut 'signaler' est vide, on affiche le lien pour signaler.
                     ?>
                 <a href="index.php?p=single&amp;id=<?= $sheetUnique->getId(); ?>&amp;action=signal&amp;commentId=<?= $comment->getId(); ?>"><small class="signal pull-right">Signaler</small></a>
                 <?php
@@ -106,6 +104,8 @@
                 </div>
             </form>
         </div>
+        {% endfor %}
+        {% endif %}
 </div>
 
 {% endblock %}
