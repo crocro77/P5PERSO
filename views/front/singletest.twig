@@ -46,52 +46,41 @@
     {% endfor %}
         <hr>
     <h4>Commentaire(s)</h4>
-    {% if listOfComments != false %}
-    {% for comment in comments %}{
-        <strong>{{ comment.author }} (Le {{ comment.date|date("d/m/Y") }}) a dit :</strong><?ph                                                                                                                                               ?>
-        <blockquote>
-            <p>
-                {{ comment.comment }}
-                {% if (empty($comment->getSignaled())) { // Si l'attribut 'signaler' est vide, on affiche le lien pour signaler.
-                    ?>
-                <a href="index.php?p=single&amp;id=<?= $sheetUnique->getId(); ?>&amp;action=signal&amp;commentId=<?= $comment->getId(); ?>"><small class="signal pull-right">Signaler</small></a>
-                <?php
-                // Sinon, on affiche un message d'alerte pour prévenir que le commentaire a été signalé.
-            } else {
-                echo '<em class="orange">Le commentaire a été signalé et est en attente de modération.</em>';
-            }
-            ?>
-            </p>
-        </blockquote>
-        <?php
 
-    }
-} else {
-    echo "<p>Aucun commentaire n'a été publié, soyez le premier à réagir !</p>";
-}
-?>
+    {% if listOfComments == 1 %}
+        {% for comment in comments %}
+            <strong>{{ comment.author }} (Le {{ comment.date|date("d/m/Y") }}) a dit :</strong>                                                                                                                                              ?>
+            <blockquote>
+                <p>
+                    {{ comment.comment }}
+                    {% if comment.getSignaled == 1 %}
+                        <a href="index.php?p=single&amp;id=<?= $sheetUnique->getId(); ?>&amp;action=signal&amp;commentId=<?= $comment->getId(); ?>"><small class="signal pull-right">Signaler</small></a>
+                    {% else %}
+                        <em class="orange">Le commentaire a été signalé et est en attente de modération.</em>
+                    {% endif %}
+                </p>
+            </blockquote>
+        {% endfor %}}
+    {% else %}
+        <p>Aucun commentaire n'a été publié, soyez le premier à réagir !</p>
+    {% endif %}
+
 	<hr>
 	<h4 id="poster-commentaire">Commenter</h4>
 		<div class="write-comment">
-            <?php
-            if (isset($_SESSION['username'])) {
-                echo '<p>Vous postez un commentaire en tant que <strong>' . $_SESSION['username'] . '</strong></p>';
-            }
-            ?>
+            {% if {{ session.username }} == 1 %}
+                <p>Vous postez un commentaire en tant que <strong>' . {{ session.username }} . '</strong></p>
+            {% endif %}
             <form class="form-horizontal" action="index.php?p=single&amp;id=<?= $sheetUnique->getId(); ?>#comments" method="post">
-                <?php
-                if (!isset($_SESSION['username'])) {
-                    ?>
+                {% if {{ session.username }} == 0 %}
                 <div class="form-group">
                     <label for="author" class="col-sm-1 control-label">Pseudo </label>
                     <div class="col-sm-offset-1 col-sm-2">
                         <input type="text" name="author" class="form-control" />
                     </div>
                 </div>
-                <?php
+                {% endif %}
 
-            }
-            ?>
                 <div class="form-group">
                     <label for="comment" class="col-sm-1 control-label">Commentaire</label>
                         <div class="col-sm-offset-1 col-sm-10">
@@ -104,8 +93,6 @@
                 </div>
             </form>
         </div>
-        {% endfor %}
-        {% endif %}
 </div>
 
 {% endblock %}

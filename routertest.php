@@ -10,8 +10,8 @@ if (isset($_GET['p'])) {
 // Rendu du template
 $loader = new Twig_Loader_Filesystem(__DIR__ . '/views/');
 $twig = new Twig_Environment($loader, [
-	'cache' => false // __DIR__ . '/tmp'
-
+	'cache' => false, // __DIR__ . '/tmp'
+	'session'   => $_SESSION,
 ]);
 
 switch ($p) {
@@ -19,7 +19,7 @@ switch ($p) {
 		echo $twig->render('front/hometest.twig', ['datasheet' => Datasheet::getList(), ]);
 		break;
 	case "single":
-		echo $twig->render('front/singletest.twig');//['sheetUnique' => Datasheet::getUnique($id)]);
+		echo $twig->render('front/singletest.twig');//, ['sheetUnique' => Datasheet::getUnique($id), ]);
 		break;
 	case "about":
 		echo $twig->render('front/abouttest.twig');
