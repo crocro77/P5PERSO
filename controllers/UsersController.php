@@ -9,6 +9,9 @@ class UsersController
 		if(isset($_SESSION['username'])) {
 			header("Location:index.php?p=member&tab=dashboard");
 		}
+		if(isset($_SESSION['username']) == 'ntonyyy') {
+			header("Location:index.php?p=admin");
+		}
 
 		return load_template('front/users.php', array());
     }

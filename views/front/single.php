@@ -39,6 +39,29 @@
                 Your browser does not support the audio element.
             </audio>
         </div>
+        <!-- test api ebay -->
+        <!-- <h4>Ce jeu sur eBay</h4>
+            <div id="results"></div>
+            <script> function _cb_findItemsByKeywords(root) { var items = root && root.findItemsByKeywordsResponse && root.findItemsByKeywordsResponse[0] && root.findItemsByKeywordsResponse[0].searchResult && root.findItemsByKeywordsResponse[0].searchResult[0] && root.findItemsByKeywordsResponse[0].searchResult[0].item || []; var html = []; html.push('
+            <table width="100%" border="0" cellspacing="0" cellpadding="3">
+                <tbody>'); for (var i = 0; i < items.length; ++i) { var item = items[i]; var shippingInfo = item.shippingInfo && item.shippingInfo[0] || {}; var sellingStatus = item.sellingStatus && item.sellingStatus[0] || {}; var listingInfo = item.listingInfo && item.listingInfo[0] || {}; var title = item.title; var subtitle = item.subtitle || ''; var pic = item.galleryURL; var viewitem = item.viewItemURL; var currentPrice = sellingStatus.currentPrice && sellingStatus.currentPrice[0] || {}; var displayPrice = currentPrice['@currencyId'] + ' ' + currentPrice['__value__']; var buyItNowAvailable = listingInfo.buyItNowAvailable && listingInfo.buyItNowAvailable[0] === 'true'; var freeShipping = shippingInfo.shippingType && shippingInfo.shippingType[0] === 'Free'; if (null !== title && null !== viewitem) { html.push('
+                <tr>
+                    <td class="image-container">
+                    <img src="' + pic + '"border = "0">
+                    </td>'); html.push('
+                    <td class="data-container">
+                        <a class="item-link" href="' + viewitem + '"target="_blank">'); html.push('
+                        <p class="title">' + title + '</p>'); html.push('
+                        <p class="subtitle">' + subtitle + '</p>'); html.push('
+                        <p class="price">' + displayPrice + '</p>'); if (buyItNowAvailable) { html.push('
+                        <p class="bin">Buy It Now</p>'); } if (freeShipping) { html.push('
+                        <p class="fs">Free shipping</p>'); } html.push('
+                        </a>
+                    </td>
+                    </tr>'); } } html.push(" 
+                </tbody>
+                </table>"); document.getElementById("results").innerHTML = html.join(""); } 
+            </script> -->
         <hr>
         <h4 id="comments">Commentaire(s)</h4>
     <?php    

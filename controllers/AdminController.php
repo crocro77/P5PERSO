@@ -21,29 +21,8 @@ class AdminController
 			$selectedTab = $_GET['tab'];
 		}
 
-		$sheetsPerPage = 100;
-
 		$sheetManager = new Datasheet();
-		$numberOfSheets = $sheetManager->count();
-
-		$numberOfPages = ceil($numberOfSheets / $sheetsPerPage);
-
-		$currentPage = 1;
-		
-		if (isset($_GET['page']) && !empty($_GET['page'])) {
-			$currentPage = intval($_GET['page']);
-
-			if ($currentPage > $numberOfPages) {
-				$currentPage = $numberOfPages;
-			}
-		} else {
-			$currentPage = 1;
-		}
-		
-		$firstSheet = ($currentPage - 1) * $sheetsPerPage;
-
-		$listOfsheets = $sheetManager->getList($firstSheet, $sheetsPerPage);
-
+		$listOfsheets = $sheetManager->getList();
 		$commentManager = new Comment();
         $listOfComments = $commentManager->getAllComments();
 		$signaledComments = $commentManager->getSignaledComments();

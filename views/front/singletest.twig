@@ -68,7 +68,7 @@
 	<hr>
 	<h4 id="poster-commentaire">Commenter</h4>
 		<div class="write-comment">
-            {% if {{ session.username }} == 1 %}
+            {% if {{ app.session }} == 1 %}
                 <p>Vous postez un commentaire en tant que <strong>' . {{ session.username }} . '</strong></p>
             {% endif %}
             <form class="form-horizontal" action="index.php?p=single&amp;id=<?= $sheetUnique->getId(); ?>#comments" method="post">

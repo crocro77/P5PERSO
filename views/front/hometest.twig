@@ -14,7 +14,7 @@
 	</div>
 	<hr>
 	<ul class="pagination center">
-	<li class="{% if currentPage == '1' %} disabled {% endif %}"><a href="?page={% if currentPage != '1' %}currentPage-1 {% else %} currentPage {% endif %}">&laquo;</a></li>
+	{% if currentPage == '1' %}<li class="disabled">{% endif %}<a href="?page={% if currentPage != '1' %}currentPage-1 {% else %} currentPage {% endif %}">&laquo;</a></li>
 	{% for i in 1.. numberOfPages %}   
         {% if i == currentPage %}
             <li class='page-item'><a class='page-link'>{{ i }}</a></li>                  
