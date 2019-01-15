@@ -118,7 +118,7 @@
                 </div>
                     <input type="hidden" name="id" value="<?= $sheetUnique->getId(); ?>">
                 <div class="col s12">
-                    <button type="submit" name ="submit" class="btn light-blue waves-effect">Envoyer votre commentaire</button>
+                    <button type="submit" name ="submit" class="btn btn-default btn-sm waves-effect">Envoyer votre commentaire</button>
                 </div>
             </form>
         </div>
