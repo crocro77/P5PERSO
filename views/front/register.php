@@ -7,7 +7,7 @@
                 <a class="btn btn-default btn-sm" href="index.php">Retour à l'accueil</a>
             </div>
 			<h2 class="center-align">Inscription</h2>
-			<form action="index.php?p=register&action=memberregister" method="post">
+			<form method="post">
 				<div class="row">
 					<div class="input-field col s12">
 						<label for="pseudo">Pseudo</label>

@@ -26,7 +26,7 @@
             <div class="form-group">
                 <label for="pseudo">Pseudo</label>
                 <div class="col-sm-offset-1 col-sm-2">
-                    <input type="text" name="pseudo" id="pseudo" /><br />
+                    <input type="text" name="pseudo" id="pseudo" value="<?php if (isset($_SESSION['username'])) echo ($_SESSION['username']); ?>" /><br />
                 </div>
             </div>
             <div class="form-group">

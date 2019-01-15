@@ -46,10 +46,6 @@ if (isset($_GET['action'])) {
 			$contactMessage = new ContactController();
 			$content = $contactMessage->executeSendMessage();
 			break;
-		case "memberregister":
-			$memberRegister = new UsersController();
-			$content = $memberRegister->executeNewUser();
-			break;
 	}
 }
 
@@ -112,16 +108,25 @@ switch ($p) {
 	case "register":
 		$pageTitle .= ' - Inscription à l\'Espace Membres';
 		$controller = new UsersController();
-		$content = $controller->executeUserRegister();
+		$content = $controller->executeNewUser();
 		break;
 	case "admin":
 		$pageTitle .= ' - Tableau de bord';
 		$controller = new AdminController();
 		$content = $controller->executeAdminDashboard();
 		break;
+	case "member":
+		$pageTitle .= ' - Tableau de bord';
+		$controller = new UsersController();
+		$content = $controller->executeUserDashboard();
+		break;
 	case "write":
 		$createController = new AdminController();
 		$content = $createController->executeCreateSheet();
+		break;
+	case "memberwrite":
+		$createController = new UsersController();
+		$content = $createController->executeMemberCreateSheet();
 		break;
 	case "edit":
 		$updateChapter = new AdminController();

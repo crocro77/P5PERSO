@@ -29,7 +29,13 @@
                 if ($answer8 == "A"){$score++;}
                 if ($answer9 == "B"){$score++;}
                 if ($answer10 == "C"){$score++;}
-                echo "<p id='score-result' class='center'>Votre score est de<br> $score/10</p>";
+
+                if (isset($_SESSION['username'])) {
+                    echo ($_SESSION['username']);
+                } else {
+                    echo "<p>Cher visiteur :</p>";
+                }
+                    echo "<p id='score-result' class='center'>Votre score est de<br> $score/10</p>";
 
                 if($score > 0 && $score < 5){
                     echo "<p class='center'>Pas terrible</p>";

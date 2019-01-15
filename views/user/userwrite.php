@@ -1,32 +1,22 @@
 <div id="write" class="grey lighten-3">
-<?php 
-// Si l'on édite un chapitre
-if(isset($action) && $action == 'edit')  {
-	echo '<h5>Mettre à jour la fiche</h5>';
-}
-
-// Si l'on n'est pas en train d'éditer un chapitre. 
-if(!isset($action)) {
-	echo '<p>Vous pouvez rédiger dès à présent une nouvelle fiche.</p>';
-}
-
+    <h5>Nouvelle fiche</h5>
+<?php
 if(isset($_SESSION['flash'])) {
 	include('includes/flash-msg.php');
 }
 
-?>
-
-<?php
 $repopulateTitle = '';
+$repopulateAuthor = '';
 $repopulateContent = '';
 $repopulateDeveloper = '';
 $repopulatePublisher = '';
 $repopulateReleaseDate = '';
 $repopulateGenre = '';
 $repopulateTrackname = '';
-if(isset($_POST['title']) || isset($_POST['content']) || isset($_POST['developer']) || isset($_POST['publisher']) || isset($_POST['release_date']) || isset($_POST['genre']) || isset($_POST['trackname']))
+if(isset($_POST['title']) || isset($_POST['author']) || isset($_POST['content']) || isset($_POST['developer']) || isset($_POST['publisher']) || isset($_POST['release_date']) || isset($_POST['genre']) || isset($_POST['trackname']))
 {
-	$repopulateTitle = $_POST['title'];
+    $repopulateTitle = $_POST['title'];
+    $repopulateAuthor = $_POST['author'];
 	$repopulateContent = $_POST['content'];
 	$repopulateDeveloper = $_POST['developer'];
 	$repopulatePublisher = $_POST['publisher'];
@@ -39,31 +29,31 @@ if(isset($_POST['title']) || isset($_POST['content']) || isset($_POST['developer
 <form action="" method="post" enctype="multipart/form-data">
 	<div class="form-group">
 		<label for="title">Titre </label>
-		<input type="text" name="title" class="form-control" value="<?php if(isset($action) && $action == 'edit') echo $sheet->getTitle(); else echo $repopulateTitle ?>">
+		<input type="text" name="title" class="form-control" value="<?php echo $repopulateTitle ?>">
 	</div>
 	<div class="form-group">
 		<label for="author">Auteur </label>
-		<input type="text" name="author" class="form-control" value="<?php if(isset($_GET['action']) && $_GET['action'] == 'edit') echo $sheet->getAuthor(); else echo "ntonyyy" ?>" />
+		<input type="text" name="author" class="form-control" value="<?php echo $repopulateAuthor ?>" />
 	</div>
 	<div class="form-group">
 		<label for="developer">Développeur </label>
-		<input type="text" name="developer" class="form-control" value="<?php if(isset($action) && $action == 'edit') echo $sheet->getDeveloper(); else echo $repopulateDeveloper ?>" />
+		<input type="text" name="developer" class="form-control" value="<?php echo $repopulateDeveloper ?>" />
 	</div>
 	<div class="form-group">
 		<label for="publisher">Editeur </label>
-		<input type="text" name="publisher" class="form-control" value="<?php if(isset($action) && $action == 'edit') echo $sheet->getPublisher(); else echo $repopulatePublisher ?>" />
+		<input type="text" name="publisher" class="form-control" value="<?php echo $repopulatePublisher ?>" />
 	</div>
 	<div class="form-group">
 		<label for="release_date">Année de sortie </label>
-		<input type="number" min="1990" max="1997" name="release_date" class="form-control" value="<?php if(isset($action) && $action == 'edit') echo $sheet->getReleaseDate(); else echo $repopulateReleaseDate ?>" />
+		<input type="number" min="1990" max="1997" name="release_date" class="form-control" value="<?php echo $repopulateReleaseDate ?>" />
 	</div>
 	<div class="form-group">
 		<label for="genre">Genre </label>
-		<input type="text" name="genre" class="form-control" value="<?php if(isset($action) && $action == 'edit') echo $sheet->getGenre(); else echo $repopulateGenre ?>" />
+		<input type="text" name="genre" class="form-control" value="<?php echo $repopulateGenre ?>" />
 	</div>
 	<div class="form-group">
 		<label for="content">Contenu </label>
-		<textarea name="content" class="form-control"><?php if(isset($action) && $action == 'edit') echo $sheet->getContent(); else echo $repopulateContent ?></textarea>
+		<textarea name="content" class="form-control"><?php echo $repopulateContent ?></textarea>
 	</div>
 	<br />
 	<img id="output_cover_image" width="25%" height="25%"/>
@@ -90,22 +80,10 @@ if(isset($_POST['title']) || isset($_POST['content']) || isset($_POST['developer
     </div>
 	<div class="form-group">
 		<label for="trackname">Nom de la track</label>
-		<input type="text" name="trackname" class="form-control" value="<?php if(isset($action) && $action == 'edit') echo $sheet->getTrackName(); else echo $repopulateTrackname ?>" />
+		<input type="text" name="trackname" class="form-control" value="<?php echo $repopulateTrackname ?>" />
 	</div>
 	<br />
-	<?php
-	if(isset($action) && $action == 'edit') {
-		?>
-		<input type="hidden" name="id" value="<?= $sheet->getId(); ?>" />
-		<button type="submit" class="btn btn-warning">Mettre à jour</button>
-		<?php
-	}
-	else {
-		?>
 		<button type="submit" class="btn btn-publish">Publier</button>
-		<?php
-	}
-	?>
 </form>
 </div>
 
