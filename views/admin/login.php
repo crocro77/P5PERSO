@@ -1,8 +1,14 @@
 <br />
-<div class="container">
+<div class="container grey lighten-3">
 	<div class="row">
 		<div class="class col l4 m6 s12 offset-l4 offset-m3">
+			<br />
+            <div class="center">
+                <a class="btn btn-default btn-sm" href="index.php">Retour à l'accueil</a>
+            </div>
+            <br />
 			<div class="card-panel">
+			
 				<div class="row">
 					<div class="col s6 offset-s3">
 						<img id="admin-connection" src="public/img/admin.png" alt="Administrateur">
@@ -24,9 +30,10 @@
 				</div>
 
 				<div class="center">
-					<button type="submit" name="submit" class="waves-effect waves-light btn light-blue"><i class="material-icons left">person</i>Se connecter</button>
+					<button type="submit" name="submit" class="waves-effect waves-light btn btn-default btn-sm"><i class="material-icons left">person</i>Se connecter</button>
 				</div>
 			</form>
+			<br />
 		</div>
 	</div>
 </div>

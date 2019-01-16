@@ -9,9 +9,6 @@ class UsersController
 		if(isset($_SESSION['username'])) {
 			header("Location:index.php?p=member&tab=dashboard");
 		}
-		if(isset($_SESSION['username']) == 'ntonyyy') {
-			header("Location:index.php?p=admin");
-		}
 
 		return load_template('front/users.php', array());
     }
@@ -77,7 +74,10 @@ class UsersController
 			$selectedTab = $_GET['tab'];
 		}
 
-		return load_template('user/user.php', array('selectedTab' => $selectedTab));
+		$sheetManager = new Datasheet();
+		$listOfsheets = $sheetManager->getList();
+
+		return load_template('user/user.php', array('listOfsheets' => $listOfsheets,'selectedTab' => $selectedTab));
 	}
 
 	public function executeMemberCreateSheet()
