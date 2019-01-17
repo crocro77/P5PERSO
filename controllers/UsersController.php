@@ -130,4 +130,12 @@ class UsersController
 		
 		return load_template('user/user.php', array('selectedTab' => 'write'));
 	}
+
+	public function executeDeleteUser()
+	{
+		$userManager = new Users();
+		$userManager->deleteUser();
+		// session_destroy();
+		header("Location:index.php?p=user");
+	}
 }

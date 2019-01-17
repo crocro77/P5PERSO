@@ -11,7 +11,6 @@ if (isset($_GET['p'])) {
 $loader = new Twig_Loader_Filesystem(__DIR__ . '/views/');
 $twig = new Twig_Environment($loader, [
 	'cache' => false, // __DIR__ . '/tmp'
-	'session'   => $_SESSION,
 ]);
 
 switch ($p) {

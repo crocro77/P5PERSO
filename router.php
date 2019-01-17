@@ -46,6 +46,10 @@ if (isset($_GET['action'])) {
 			$contactMessage = new ContactController();
 			$content = $contactMessage->executeSendMessage();
 			break;
+		case "deleteaccount":
+			$deleteAccount = new UsersController();
+			$content = $deleteAccount->executeDeleteUser();
+		break;
 	}
 }
 
