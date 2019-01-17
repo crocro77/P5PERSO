@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 06 jan. 2019 à 19:21
+-- Généré le :  jeu. 17 jan. 2019 à 18:44
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `about` (
 --
 
 INSERT INTO `about` (`id`, `description`) VALUES
-(1, 'Bienvenue sur le site\r\n\r\n- En travaux - Projet 5 personnel formation développeur web junior OpenClassrooms');
+(1, 'Bienvenue sur le site - En travaux - Projet 5 personnel formation développeur web junior OpenClassrooms');
 
 -- --------------------------------------------------------
 
@@ -83,7 +83,8 @@ CREATE TABLE IF NOT EXISTS `chat` (
 INSERT INTO `chat` (`id`, `pseudo`, `message`) VALUES
 (7, 'Bob', 'Ca va super bien !'),
 (1, 'ntonyyy', 'coucou'),
-(2, 'ntonyyy', 'Comment allez vous ?');
+(2, 'ntonyyy', 'Comment allez vous ?'),
+(12, 'TOTO', 'hello');
 
 -- --------------------------------------------------------
 
@@ -108,8 +109,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
 --
 
 INSERT INTO `comments` (`id`, `post_id`, `comment`, `comment_date`, `author`, `signaled`, `seen`) VALUES
-(1, 16, 'test', '2018-11-27 10:55:18', 'test', 0, 0),
-(2, 16, 'test', '2018-11-27 10:55:44', 'test', 1, 0);
+(4, 19, 'test', '2019-01-14 00:00:00', 'test', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -191,7 +191,7 @@ INSERT INTO `datasheet` (`id`, `title`, `content`, `developer`, `publisher`, `re
 (32, 'Sonic the Hedgehog 2', 'Super Speed! Sonic\'s back and better than ever. He\'s a blur in blue! A blaze of action! With his new Super Spin Dash. And a new, fabulous friend, \"Tails\" the Fox. You won\'t believe it \'til you see it. And when you play, you won\'t stop. Super Play! Defy gravity in hair-raising loop-de-loops. Grab Power Sneakers and race like lightning through the mazes. All at break-neck speed! Super Power! Sonic\'s attitude is can-do. The mad scientist Dr. Robotnik is planning a world takeover. Sonic gets tough in the fight to save his friends and squash Robotnik for good!', 'Aspect', 'SEGA', 1992, 'platform', 'sonic2.jpg', '', 'ntonyyy', '2018-11-30 13:26:33', '', ''),
 (33, 'Sonic the Hedgehog Chaos', 'Dr. Robotnik\'s stolen the red Chaos Emerald, and it\'s up to Sonic The Hedgehog to get it back! As Sonic or \"Tails\" the two-tailed fox, you\'ll zip through the Zones, using your quick moves and quicker thinking to collect rings and evade Robotnik\'s latest batch of badniks!', 'Aspect', 'SEGA', 1993, 'platform', 'sonicchaos.jpg', '', 'ntonyyy', '2018-11-30 13:26:33', '', ''),
 (34, 'Sonic the Hedgehog Triple Trouble', 'Sonic and Tails are back with three times the fun and three times the trouble! Dr. Robotnik is building the ultimate super-weapon with the help of Knuckles, but you can stop him by getting the Chaos Emeralds first. Rip across snow and water on Sonic\'s new jet skateboard or zip underwater in Tails\' \"Sea Fox\". But look out - Nack the Weasel is after the Emeralds, too!', 'Aspect', 'SEGA', 1994, 'platform', 'sonictripletrouble.jpg', '', 'ntonyyy', '2018-11-30 13:26:33', '', ''),
-(19, 'Aerial Assault', '<p>It\'s the 21st century and N.A.C., a feared terrorist group of the galaxy, threatens to destroy Earth. They\'ve developed the super weapon \"EL\" that will blast away Earth\'s ozone layer. And they\'ve threatened to use it! As the world\'s top jet fighter pilot, you\'re in command of the of the ultimate in combat aircraft - the \"Freedom Fighter.\" Armed with the latest in new high-tech weaponry, you and your jet are Earth\'s only chance against the merciless N.A.C. Good luck!</p>', 'SIMS', 'SEGA', 1992, 'shoot them up', '440476e7fd4f01bf12f6973852b12b671543963201.jpg', '2accf76b1d97e62f53436160f0a8cc631543963201.png', 'ntonyyy', '2018-12-04 22:42:14', '5f674cafeaeaf294ff9d6a4725be8d651543963201.mp3', 'EL'),
+(19, 'Aerial Assault', '<p>It\'s the 21st century and N.A.C., a feared terrorist group of the galaxy, threatens to destroy Earth. They\'ve developed the super weapon \"EL\" that will blast away Earth\'s ozone layer. And they\'ve threatened to use it! As the world\'s top jet fighter pilot, you\'re in command of the of the ultimate in combat aircraft - the \"Freedom Fighter.\" Armed with the latest in new high-tech weaponry, you and your jet are Earth\'s only chance against the merciless N.A.C.</p>', 'SIMS', 'SEGA', 1992, 'shoot them up', '440476e7fd4f01bf12f6973852b12b671543963201.jpg', '2accf76b1d97e62f53436160f0a8cc631543963201.png', 'ntonyyy', '2019-01-09 18:51:36', '5f674cafeaeaf294ff9d6a4725be8d651543963201.mp3', 'EL'),
 (20, 'Aladdin', '<p>Hang on to your carpet for ACTION and FUN! Aladdin slashes his shining scimitar to fight through Agrabah, escape the Sultan\'s dungeon, survive the fiery Cave of Wonders, snatch the Genie\'s Lamp and save Princess Jasmine from the evil Jafar! Aladdin battles thieves and desert warriors, and barely dodges danger on his high-speed carpet. Palace Guards drop their drawers and camels spit dirt wads. Aladdin ping-pongs like a pinball INSIDE the Genie\'s Lamp!</p>', 'SIMS', 'SEGA', 1994, 'platform', '650c33ea72fdc4d236e21d5f07f007541544091018.jpg', '904909db952d623fed6080c311b1297b1544091018.jpg', 'ntonyyy', '2018-12-06 10:10:18', '215ecfee04e50f81fced8ddc156226ee1544091018.mp3', 'One Jump Ahead'),
 (21, 'Baku Baku', '<p>You\'re the zookeeper in a crazy kingdom. But you\'d better watch out - once you dive into the Baku Baku den, there\'s no turning back... To win, match each animal with its favorite food. Challenge computer characters or go head-to-head in 2-player mode. Beautiful 3D graphics and stunning colors bring puzzling to the next level. Variable game speed lets you go slow-mo or full throttle. Better be clever - surprises await true Baku masters...</p>', 'Minato Giken', 'SEGA', 1996, 'puzzle', 'e3d7da2e8a1dc5533bc05e7417223b791544091422.jpg', '1959bb6e599bc19e3806cc41181b89f41544091422.jpg', 'ntonyyy', '2018-12-06 10:17:02', '04d2c2efd3972bd8456b0adf986b2de91544091422.mp3', 'Frantic Action'),
 (22, 'Bust-a-Move', '<p>Which will burst first: your concentration or the level you\'re working on? It takes more than just swinging the bubble-turret and taking aim on the falling ceiling; tactical planning and mental dexterity are the only way to string together three or more bubbles and 100 wins to make it through all the bubble and ego-bursting rounds of Bust-A-Move!</p>', 'Santos', 'Taito', 1996, 'puzzle', '2e98ab3a2fb7ef6cf91ea7e4638e745c1544091751.jpg', '3746a893a0f96da17b9c672d23a0d8f01544091751.jpg', 'ntonyyy', '2018-12-06 10:22:31', '9d6895fb7a21bb5d487e82e9e7bf5f6f1544091751.mp3', 'Let\'s go to Pao Pao Island'),
@@ -230,6 +230,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `register_date` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `pseudo`, `pass`, `email`, `register_date`) VALUES
+(7, 'deletetest', 'a0ff094025db6249d90f911e531633bdaea45616', 'deletetest@blabla.com', '2019-01-17'),
+(6, 'TOTO', '17e66b77b21bf57f6ea4efc179b416f10e9bdc6b', 'TOTO@toto.com', '2019-01-15');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
