@@ -8,15 +8,13 @@
 			<h3>À propos</h3>
 		</div>
 		{% if aboutDescription == 0 %}
-            message = '<p>Cette page n\'a pas encore été complétée.</p>'
-            if ($_SESSION['username']) && $_SESSION['username'] == 'ntonyyy') {
-                message .= ' <p><a href="index.php?p=admin&amp;tab=settings">Le faire maintenant.</a></p>';
-            }
-        echo message;
-        } else {
-        echo aboutDescription;
-        }
-        %}
+            <p>Cette page n'a pas encore été complétée.</p>'
+            {% if {{ app.session }} == 'ntonyyy' %}
+                <p><a href="index.php?p=admin&amp;tab=settings">Le faire maintenant.</a></p>
+            {% endif %}
+        {% else %}
+            aboutDescription
+        {% endif %}
 	</div>
 </div>
 

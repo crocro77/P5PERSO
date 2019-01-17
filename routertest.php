@@ -18,7 +18,7 @@ switch ($p) {
 		echo $twig->render('front/hometest.twig', ['datasheet' => Datasheet::getList(), ]);
 		break;
 	case "single":
-		echo $twig->render('front/singletest.twig');//, ['sheetUnique' => Datasheet::getUnique($id), ]);
+		echo $twig->render('front/singletest.twig');// ['sheetUnique' => Datasheet::getUnique($id), 'listOfComments' => Comment::getAllComments(), ]);
 		break;
 	case "about":
 		echo $twig->render('front/abouttest.twig');
