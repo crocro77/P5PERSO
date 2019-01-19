@@ -3,8 +3,11 @@
         <h1>Bienvenue sur le Chat</h1>
     </div>
     
-    <div class="row" id="chatWindow">
-        <?php
+    <div id="chatWindow">
+     
+    </div>
+    <!-- <div class="row" id="chatWindow">
+        <>>?php
         if (empty($listOfChatMessages)) {
             echo '<div class="alert alert-danger">';
             echo '<p>Aucun message n\'a été encore publié pour le moment dans le chat. Patientez un peu ou créez une nouvelle discussion !</p>';
@@ -12,13 +15,13 @@
         } else {
             foreach ($listOfChatMessages as $chatMessage) { ?>
                 <div>
-                    <p id="chatLine"><span id="chatPseudo"><?= htmlspecialchars($chatMessage->getPseudo()); ?></span> <span id="chatMessage"><?= htmlspecialchars($chatMessage->getMessage()); ?></p></span>
+                    <p id="chatLine"><span id="chatPseudo"><>?= htmlspecialchars($chatMessage->getPseudo()); ?></span> <span id="chatMessage"><>?= htmlspecialchars($chatMessage->getMessage()); ?></p></span>
                 </div>
-            <?php
+            <>?php
             }
         }
         ?>
-    </div>
+    </div> -->
 
     <div class="row">
         <form id="form-chat" action="index.php?p=chat&action=postchatmessage" method="post">
@@ -39,3 +42,5 @@
         </form>
     </div>
 </div>
+
+<script type="text/javascript" src="public/js/chat.js"></script>

@@ -9,31 +9,14 @@
 		<br />
 	</div>
 	<hr>
-	<!-- <form class="center" method="get">
-		<label>Nombre de fiches par page</label>
-			<select name="pp">
-				<option value="2">2</option>
-				<option value="4">4</option>
-				<option value="6">6</option>
-				<option selected="selected" value="8">8</option>
-				<option value="10">10</option>
-			</select>
-		<input type="hidden" name="p" value="<?php echo $currentPage ?>" />
-		<button id="apply-btn" class="btn" type="submit">Appliquer</button>
-	</form> -->
 	<ul class="pagination center">
-	<li class="<?php if($currentPage == '1'){ echo "disabled"; } ?>"><a href="?page=<?php if ($currentPage != '1'){ echo $currentPage-1; } else { echo $currentPage; } ?>">&laquo;</a></li>
-	<?php
-    for ($i = 1; $i <= $numberOfPages; $i++) {
-        if ($i == $currentPage) {
-            echo "<li class='page-item'><a class='page-link'>$i</a></li>";
-        } else {
-            echo '<li class="waves-effect"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
-        }
-    }
-    ?>
-	<li class="<?php if($currentPage == '1'){ echo "disabled"; } ?>"><a href="?page=<?php if ($currentPage != '1'){ echo $currentPage+1; } else { echo $currentPage; } ?>">&raquo;</a></li>
-	</ul>
+        <?php  
+        $character = range('A', 'Z');
+        foreach($character as $alphabet) {
+			echo '<li class="waves-effect"><a class="page-link" href="?char='.$alphabet.'">'.$alphabet.'</a></li>'; 
+		}
+        ?>  
+    </ul> 
 	<hr>
 	<div id="anchor" class="row">
 		<div class="col-xs-12">

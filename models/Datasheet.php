@@ -46,13 +46,35 @@ class Datasheet extends ObjectModel
 	 */
 	public static function getList($firstSheet = -1, $sheetsPerPage = -1) 
 	{
-		$sql = 'SELECT * FROM datasheet ORDER BY title ASC';
+		// $sql = 'SELECT * FROM datasheet ORDER BY title ASC';
 		
-		// Vérification de la validité des données reçues.
-		if($firstSheet != -1 OR $sheetsPerPage != -1)
-		{
-			$sql .= ' LIMIT ' . (int) $sheetsPerPage . ' OFFSET ' . (int) $firstSheet;
-		}
+		// // Vérification de la validité des données reçues.
+		// if($firstSheet != -1 OR $sheetsPerPage != -1)
+		// {
+		// 	$sql .= ' LIMIT ' . (int) $sheetsPerPage . ' OFFSET ' . (int) $firstSheet;
+		// }
+		// $db = Database::getDBConnection();
+		// $request = $db->query($sql);
+		// $request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Datasheet');
+		// $listOfSheets = $request->fetchAll();
+		// foreach($listOfSheets as $sheet)
+		// {
+		// 	$sheet->setDate(new DateTime($sheet->getDate()));
+		// }
+		// $request->closeCursor();
+		// return $listOfSheets;
+
+		$char = '';  
+		if(isset($_GET["char"]))  
+		{  
+			$char = $_GET["char"];  
+			$char = preg_replace('#[^a-z]#i', '', $char);  
+			$sql = "SELECT * FROM datasheet WHERE title LIKE '$char%' ORDER BY title ASC";  
+		}  
+		else  
+		{  
+			$sql = "SELECT * FROM datasheet ORDER BY title ASC";  
+		} 
 		$db = Database::getDBConnection();
 		$request = $db->query($sql);
 		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Datasheet');
@@ -63,6 +85,7 @@ class Datasheet extends ObjectModel
 		}
 		$request->closeCursor();
 		return $listOfSheets;
+		$result = mysqli_query($connect, $query); // 
 	}
 
 	/**

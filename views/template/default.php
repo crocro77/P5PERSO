@@ -12,7 +12,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="public/js/materialize.js"></script>
     <script type="text/javascript" src="public/js/slider.js"></script>
-    <script type="text/javascript" src="public/js/responsive.js"></script>  
+    <script type="text/javascript" src="public/js/responsive.js"></script>
   </head>
   <body class="grey darken-3">
     <nav id="nav-bar" class="blue-grey darken-4">

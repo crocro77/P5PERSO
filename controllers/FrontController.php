@@ -6,33 +6,10 @@ class FrontController
 {
 	public function executeHome()
 	{
-		if(isset($_GET['pp']) && (!empty($$_GET['pp']) && ctype_digit($_GET['pp']) == 1 )) {
-			$sheetsPerPage = $_GET['pp'];
-		} else {
-			$sheetsPerPage = 8;
-		}
-
 		$sheetManager = new Datasheet();
-		$numberOfSheets = $sheetManager->count();
+		$listOfSheets = $sheetManager->getList();
 
-		$numberOfPages = ceil($numberOfSheets / $sheetsPerPage);
-
-		$currentPage = 1;
-		
-		if (isset($_GET['page']) && !empty($_GET['page'])) {
-			$currentPage = intval($_GET['page']);
-
-			if ($currentPage > $numberOfPages) {
-				$currentPage = $numberOfPages;
-			}
-		} else {
-			$currentPage = 1;
-		}
-		
-		$firstSheet = ($currentPage - 1) * $sheetsPerPage;
-		$listOfSheets = $sheetManager->getList($firstSheet, $sheetsPerPage);
-
-		return load_template('front/home.php', array('listOfSheets' => $listOfSheets, 'numberOfPages' => $numberOfPages, 'currentPage' => $currentPage));
+		return load_template('front/home.php', array('listOfSheets' => $listOfSheets));
 	}
 	
 	public function executeSingleSheet()

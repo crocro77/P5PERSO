@@ -16,7 +16,6 @@ class AdminController
 	{
 		$selectedTab = 'dashboard';
 
-		// onglet de l'espace admin
 		if (isset($_GET['tab'])) {
 			$selectedTab = $_GET['tab'];
 		}
@@ -110,29 +109,6 @@ class AdminController
 					header("Location:index.php?p=admin&tab=list");
 				}
 
-				// if (isset($_POST['id'])) {
-				// 	$sheet = new Datasheet();
-				// 	$sheet->updateSheet($title, $author, $content, $developer, $publisher, $release_date, $genre, $trackname, $id);
-				// 	if ($cover) {
-				// 		$sheet->updateCover($cover, $id);
-				// 		header("Location:index.php");
-				// 	}
-				// 	if ($screenshot) {
-				// 		$sheet->updateScreenshot($screenshot, $id);
-				// 		header("Location:index.php");
-				// 	}
-				// 	if ($track) {
-				// 		$sheet->updateTrack($track, $id);
-				// 		header("Location:index.php");
-				// 	}
-				// 	if ($trackname) {
-				// 		$sheet->updateTrackName($trackname, $id);
-				// 		header("Location:index.php");
-				// 	} else {
-				// 		header("Location:index.php");
-				// 	}
-				// }
-
 				$selectedTab = 'write';
 				$action = 'edit';
 				return load_template('admin/admin.php', array('selectedTab' => $selectedTab, 'sheet' => $sheet, 'action' => $action));
@@ -144,7 +120,6 @@ class AdminController
 
 	public function executeDeleteSheet()
 	{
-		// suppression d'un chapitre
 		$sheetManager = new Datasheet();
 		$sheetManager->deleteSheet();
 		header("Location:index.php?p=admin&tab=list");
@@ -152,7 +127,6 @@ class AdminController
 
 	public function executeValidateComment()
 	{
-		// validation d'un commentaire signalé
 		if(isset($_GET['commentId'])) {
 			$commentManager = new Comment();
 			$commentManager->validateComment($_GET['commentId']);
@@ -162,7 +136,6 @@ class AdminController
 
 	public function executeDeleteComment()
 	{
-		// suppression d'un commentaire
 		if(isset($_GET['commentId'])) {
 			$commentManager = new Comment();
 			$commentManager->deleteComment($_GET['commentId']);
@@ -172,7 +145,6 @@ class AdminController
 
 	public function executeSeenComment()
 	{
-		// marqué un commentaire comme vu
 		if(isset($_GET['commentId'])) {
 			$commentManager = new Comment();
 			$commentManager->seenComment($_GET['commentId']);
