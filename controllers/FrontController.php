@@ -7,7 +7,7 @@ class FrontController
 	public function executeHome()
 	{
 		$sheetManager = new Datasheet();
-		$listOfSheets = $sheetManager->getList();
+		$listOfSheets = $sheetManager->getListAlpha();
 
 		return load_template('front/home.php', array('listOfSheets' => $listOfSheets));
 	}

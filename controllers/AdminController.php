@@ -20,13 +20,31 @@ class AdminController
 			$selectedTab = $_GET['tab'];
 		}
 
+		// Nombre de fiche voulu par page.
+		$sheetsPerPage = 5;
+		// On compte le nombre total de fiche présents dans la bdd.
 		$sheetManager = new Datasheet();
-		$listOfsheets = $sheetManager->getList();
+		$numberOfSheets = $sheetManager->count();
+		// Nombre de pages.
+		$numberOfPages = ceil($numberOfSheets / $sheetsPerPage);
+		$currentPage = 1;
+
+		if (isset($_GET['tabpage']) && !empty($_GET['tabpage'])) {
+			$currentPage = intval($_GET['tabpage']);
+			if ($currentPage > $numberOfPages) {
+				$currentPage = $numberOfPages;
+			}
+		} else {
+			$currentPage = 1;
+		}
+		
+		$firstSheet = ($currentPage - 1) * $sheetsPerPage;
+		$listOfSheets = $sheetManager->getList($firstSheet, $sheetsPerPage);
 		$commentManager = new Comment();
         $listOfComments = $commentManager->getAllComments();
 		$signaledComments = $commentManager->getSignaledComments();
 
-		return load_template('admin/admin.php', array('listOfsheets' => $listOfsheets, 'selectedTab' => $selectedTab, 'signaledComments' => $signaledComments, 'listOfComments' => $listOfComments));
+		return load_template('admin/admin.php', array('listOfSheets' => $listOfSheets, 'numberOfPages' => $numberOfPages, 'selectedTab' => $selectedTab, 'signaledComments' => $signaledComments, 'listOfComments' => $listOfComments, 'currentPage' => $currentPage));
 	}
 
 	public function executeCreateSheet()

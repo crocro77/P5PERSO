@@ -11,7 +11,7 @@ class ContactController
 
     public function executeSendMessage()
     {
-        if(isset($_POST['mailform']))
+        if(isset($_POST['submit']))
         {
             if(!empty($_POST['contactname']) AND !empty($_POST['contactmail']) AND !empty($_POST['contactmessage']))
             {

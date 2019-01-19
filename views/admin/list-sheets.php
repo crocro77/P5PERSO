@@ -1,5 +1,17 @@
 <div id="list" class="grey lighten-3">
-<h2 id="to-the-top">Liste des fiches</h2>
+<h2 id="to-the-top" class="center">Liste des fiches</h2>
+<hr/>
+<ul class="pagination center">
+	<?php
+    for ($i = 1; $i <= $numberOfPages; $i++) {
+        if ($i == $currentPage) {
+            echo "<li class='page-item'><a class='page-link'>$i</a></li>";
+        } else {
+            echo '<li class="waves-effect"><a class="page-link" href="?p=admin&tab=list&tabpage=' . $i . '">' . $i . '</a></li>';
+        }
+    }
+    ?>	
+</ul>
 <hr/>
 <?php
 if(empty($listOfsheets)) {

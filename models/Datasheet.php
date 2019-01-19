@@ -39,31 +39,13 @@ class Datasheet extends ObjectModel
 	}
 
 	/**
-	 * Obtient la liste des fiches.
+	 * Obtient la liste des fiches par ordre alphabétique.
 	 * @param int $firstSheet La première fiche
 	 * @param int $sheetsPerPage Le nombre de fiches par page
 	 * @return Sheet objects La liste
 	 */
-	public static function getList($firstSheet = -1, $sheetsPerPage = -1) 
+	public static function getListAlpha() 
 	{
-		// $sql = 'SELECT * FROM datasheet ORDER BY title ASC';
-		
-		// // Vérification de la validité des données reçues.
-		// if($firstSheet != -1 OR $sheetsPerPage != -1)
-		// {
-		// 	$sql .= ' LIMIT ' . (int) $sheetsPerPage . ' OFFSET ' . (int) $firstSheet;
-		// }
-		// $db = Database::getDBConnection();
-		// $request = $db->query($sql);
-		// $request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Datasheet');
-		// $listOfSheets = $request->fetchAll();
-		// foreach($listOfSheets as $sheet)
-		// {
-		// 	$sheet->setDate(new DateTime($sheet->getDate()));
-		// }
-		// $request->closeCursor();
-		// return $listOfSheets;
-
 		$char = '';  
 		if(isset($_GET["char"]))  
 		{  
@@ -85,7 +67,33 @@ class Datasheet extends ObjectModel
 		}
 		$request->closeCursor();
 		return $listOfSheets;
-		$result = mysqli_query($connect, $query); // 
+	}
+
+	/**
+	 * Obtient la liste des fiches.
+	 * @param int $firstSheet La première fiche
+	 * @param int $sheetsPerPage Le nombre de fiches par page
+	 * @return Sheet objects La liste
+	 */
+	public static function getList($firstSheet = -1, $sheetsPerPage = -1)
+	{
+		$sql = 'SELECT * FROM datasheet ORDER BY title ASC';
+		
+		// Vérification de la validité des données reçues.
+		if($firstSheet != -1 OR $sheetsPerPage != -1)
+		{
+			$sql .= ' LIMIT ' . (int) $sheetsPerPage . ' OFFSET ' . (int) $firstSheet;
+		}
+		$db = Database::getDBConnection();
+		$request = $db->query($sql);
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Datasheet');
+		$listOfSheets = $request->fetchAll();
+		foreach($listOfSheets as $sheet)
+		{
+			$sheet->setDate(new DateTime($sheet->getDate()));
+		}
+		$request->closeCursor();
+		return $listOfSheets;
 	}
 
 	/**

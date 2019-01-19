@@ -6,7 +6,7 @@
 			<p>Tableau de bord</p>
 		</li>
 		<li class="tab" <?php if($selectedTab == 'list') echo 'class="active"' ?>>
-			<a title="Les fiches" href="index.php?p=admin&tab=list"><i class="material-icons">view_list</i></a>
+			<a title="Les fiches" href="index.php?p=admin&tab=list&tabpage=1"><i class="material-icons">view_list</i></a>
 			<p>Les Fiches</p>
 		</li>
 		<li class="tab" <?php if($selectedTab == 'write')  echo 'class="active"' ?>>
