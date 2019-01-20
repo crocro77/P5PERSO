@@ -40,4 +40,3 @@
 
 <script src="//cloud.tinymce.com/stable/tinymce.min.js?apiKey=c851wd1npuo4c59ed6f7fp6doripcdhfdi1ltt9hpr29wt3x"></script>
 <script type="text/javascript" src="public/js/tinymce.js"></script>
-<script type="text/javascript" src="public/js/clignotement.js"></script>

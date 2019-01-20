@@ -1,5 +1,9 @@
 <?php
 
+// namespace App\Model;
+
+// use \App\Model\ObjectModel;
+
 class Datasheet extends ObjectModel
 {
 	private $id;
