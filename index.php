@@ -4,10 +4,10 @@ session_start();
 
 // require 'vendor/autoload.php';
 
-/**
- * Autoloader permettant de charger les différentes classes.
- * @param string $classname Le nom de la classe à charger
- */
+// require 'models/Autoloader.php';
+//\app\
+// Autoloader::register();
+
 function autoload($classname)
 {
 	if (file_exists($file = 'controllers/' . $classname . '.php')) {

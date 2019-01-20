@@ -1,10 +1,6 @@
 <?php
 
-// namespace App\Controller;
-
-// require_once("models/Datasheet.php");
-
-// use \App\Model\Datasheet;
+// namespace app;
 
 require_once('includes/template-loader.php');
 

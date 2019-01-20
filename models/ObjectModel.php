@@ -1,5 +1,7 @@
 <?php
 
+// namespace app;
+
 abstract class ObjectModel
 {
     // Attribut nécessaire à la connexion avec la base de données.

@@ -1,8 +1,6 @@
 <?php
 
-// namespace App\Model;
-
-// use \App\Model\ObjectModel;
+// namespace app;
 
 class Datasheet extends ObjectModel
 {
