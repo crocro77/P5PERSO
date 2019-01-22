@@ -1,28 +1,30 @@
 <?php
 
-// namespace app;
+// namespace App;
 
-require_once('includes/template-loader.php');
+// require_once('includes/template-loader.php');
 
-class FrontController
+class FrontController extends Controller
 {
 	public function executeHome()
 	{
-		$sheetManager = new Datasheet();
-		$listOfSheets = $sheetManager->getListAlpha();
+		// $sheetManager = new Datasheet();
+		// $listOfSheets = $sheetManager->getListAlpha();
 
-		return load_template('front/home.php', array('listOfSheets' => $listOfSheets));
+		// return load_template('front/home.php', array('listOfSheets' => $listOfSheets));
+		echo $this->twig->render('front/hometest.twig', ['datasheet' => Datasheet::getListAlpha(), ]);
 	}
 	
 	public function executeSingleSheet()
     {
 		if(isset($_GET['id'])) {
-			$sheetManager = new Datasheet();
-			$sheetUnique = $sheetManager->getUnique($_GET['id']);
-			$commentManager = new Comment();
-			$listOfComments = $commentManager->getSheetComments($_GET['id']);
+			// $sheetManager = new Datasheet();
+			// $sheetUnique = $sheetManager->getUnique($_GET['id']);
+			// $commentManager = new Comment();
+			// $listOfComments = $commentManager->getSheetComments($_GET['id']);
 	
-			return load_template('front/single.php', array('sheetUnique' => $sheetUnique, 'listOfComments' => $listOfComments));
+			// return load_template('front/single.php', array('sheetUnique' => $sheetUnique, 'listOfComments' => $listOfComments));
+			echo $this->twig->render('front/singletest.twig', ['sheetUnique' => Datasheet::getUnique($_GET['id']), 'comment' => Comment::getSheetComments($_GET['id']), ]);
 		}
     }
 
@@ -56,6 +58,7 @@ class FrontController
 	}
 
 	public function executeMentions() {
-		return load_template('front/mentions.php', array());
+		// return load_template('front/mentions.php', array());
+		echo $this->twig->render('front/mentionstest.twig');
 	}
 }

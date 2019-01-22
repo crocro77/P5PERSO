@@ -82,7 +82,7 @@ switch ($p) {
 	case "contact":
 		$pageTitle .= ' - Contact';
 		$controller = new ContactController();
-		$content = $controller->executeContact();
+		$content = $controller->executeContactForm();
 		break;
 	case "chat":
 		$pageTitle .= ' - Chat';

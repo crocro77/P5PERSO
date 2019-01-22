@@ -14,16 +14,10 @@
 	</div>
 	<hr>
 	<ul class="pagination center">
-	{% if currentPage == '1' %}<li class="disabled">{% endif %}<a href="?page={% if currentPage != '1' %}currentPage-1 {% else %} currentPage {% endif %}">&laquo;</a></li>
-	{% for i in 1.. numberOfPages %}   
-        {% if i == currentPage %}
-            <li class='page-item'><a class='page-link'>{{ i }}</a></li>                  
-        {% else %}
-            <li class="waves-effect"><a class="page-link" href="?page='{{ i }}">{{ i }}</a></li>
-        {% endif %}
-	{% endfor %}
-	<li class="{% if currentPage == '1' %} disabled {% endif %}"><a href="?page={% if currentPage != '1' %}currentPage+1 {% else %} currentPage {% endif %}">&raquo;</a></li>
-	</ul>
+		{% for letter in 'A'..'Z' %}
+			<li class="waves-effect"><a class="page-link" href="?char={{ letter }}">{{ letter }}</a></li>
+		{% endfor %} 
+    </ul>
 	<hr>
 	<div id="anchor" class="row">
 		<div class="col-xs-12">

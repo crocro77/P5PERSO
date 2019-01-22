@@ -1,8 +1,8 @@
 <?php
 
-require_once('includes/template-loader.php');
+// require_once('includes/template-loader.php');
 
-class AuthentificationController
+class AuthentificationController extends Controller
 {
 	public function executeLogin()
 	{
@@ -36,7 +36,8 @@ class AuthentificationController
 			}
 		}
 
-		return load_template('admin/login.php', array());
+		// return load_template('admin/login.php', array());
+		echo $this->twig->render('admin/logintest.twig');
 	}
 
 	public function executeLogout()

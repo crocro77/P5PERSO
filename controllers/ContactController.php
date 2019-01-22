@@ -1,12 +1,13 @@
 <?php
 
-require_once('includes/template-loader.php');
+// require_once('includes/template-loader.php');
 
-class ContactController
+class ContactController extends Controller
 {
-    public function executeContact()
+    public function executeContactForm()
     {
-		return load_template('front/contact.php', array());
+        // return load_template('front/contact.php', array());
+        echo $this->twig->render('front/contacttest.twig');
     }
 
     public function executeSendMessage()
@@ -35,6 +36,7 @@ class ContactController
                 ';
 
                 mail("anthony.fumo@gmail.com", "CONTACT - World of Game Gear", $message, $header);
+                echo 'coucou';
                 $msg="Votre message a bien été envoyé !";
             } else {
                 $msg="Tous les champs doivent être complétés !";

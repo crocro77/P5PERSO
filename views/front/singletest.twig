@@ -10,7 +10,6 @@
     </div>
 </div>
 <div id="single" class="container grey lighten-3">
-    {% for sheetUnique in datasheet %}
     <h2 id="post-title" class="center">{{ sheetUnique.title }}</h2>
         <div class="row center">
             <img class="chapterUniqueImage" src="public/img/{{ sheetUnique.screenshot }}" alt="{{ sheetUnique.title }}" >
@@ -26,7 +25,7 @@
             <tbody>
                 <td>{{ sheetUnique.developer }}</td>
                 <td>{{ sheetUnique.publisher }}</td>
-                <td>{{ sheetUnique.release_date }}</td>
+                <td>{{ sheetUnique.releasedate }}</td>
                 <td>{{ sheetUnique.genre }}</td>
             </tbody>
         </table>
@@ -34,16 +33,16 @@
         <div class="center">
             <img src="public/img/{{ sheetUnique.cover }}" alt="{{ sheetUnique.title }}" width="183px" heigth="256px">
         </div>
-        <p class="sheetParagraph">{{ sheetUnique.content }}</p>
+            <p class="sheetParagraph">{{ sheetUnique.content }}</p>
         <br />
         <div class="center">
             <h5>Bonus : Extrait de l'OST "{{ sheetUnique.trackname }}"</h5>
             <audio controls>
-                <source src="public/mp3/{{ sheet.track }}" type="audio/mpeg">
+                <source src="public/mp3/{{ sheetUnique.track }}" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
         </div>
-    {% endfor %}
+    {# {% endfor %} #}
         <hr>
     <h4>Commentaire(s)</h4>
 
@@ -68,18 +67,18 @@
 	<hr>
 	<h4 id="poster-commentaire">Commenter</h4>
 		<div class="write-comment">
-            {% if {{ app.session }} == 1 %}
+            {# {% if {{ app.session }} == 1 %}
                 <p>Vous postez un commentaire en tant que <strong>' . {{ session.username }} . '</strong></p>
-            {% endif %}
+            {% endif %} #}
             <form class="form-horizontal" action="index.php?p=single&amp;id=<?= $sheetUnique->getId(); ?>#comments" method="post">
-                {% if {{ session.username }} == 0 %}
+                {# {% if {{ session.username }} == 0 %} #}
                 <div class="form-group">
                     <label for="author" class="col-sm-1 control-label">Pseudo </label>
                     <div class="col-sm-offset-1 col-sm-2">
                         <input type="text" name="author" class="form-control" />
                     </div>
                 </div>
-                {% endif %}
+                {# {% endif %} #}
 
                 <div class="form-group">
                     <label for="comment" class="col-sm-1 control-label">Commentaire</label>

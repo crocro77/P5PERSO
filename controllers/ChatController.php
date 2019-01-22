@@ -1,15 +1,16 @@
 <?php
 
-require_once('includes/template-loader.php');
+// require_once('includes/template-loader.php');
 
-class ChatController
+class ChatController extends Controller
 {
 	public function executeChat()
 	{
 		$chatManager = new Chat();
 		$listOfChatMessages = $chatManager->getChatMessages();
 		
-		return load_template('front/chat.php', array('listOfChatMessages' => $listOfChatMessages));
+		// return load_template('front/chat.php', array('listOfChatMessages' => $listOfChatMessages));
+		echo $this->twig->render('front/chattest.twig', ['message' => Chat::getChatMessages(), ]);
 	}
 	
 	public function executeAddMessage()

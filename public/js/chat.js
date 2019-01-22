@@ -2,11 +2,11 @@
 // 	function refreshChat() {
 // 		$.ajax({
 // 			url: "views/front/chat.php",
-// 			success: function () {
-// 				$('#chatLine').html('<p>Toto</p>');
-// 				console.log($('#chatLine'));
+// 			success: function (data) {
+// 				$('#chatWindow').append(data);
+// 				// console.log($('#chatLine'));
 // 			}
 // 		});
 // 	}
-// 	setInterval(refreshChat, 10000)
+// 	setInterval(refreshChat, 3000)
 // });

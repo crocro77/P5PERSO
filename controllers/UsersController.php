@@ -1,8 +1,8 @@
 <?php
 
-require_once('includes/template-loader.php');
+// require_once('includes/template-loader.php');
 
-class UsersController
+class UsersController extends Controller
 {
     public function executeUsersSpace()
     {
@@ -10,7 +10,8 @@ class UsersController
 			header("Location:index.php?p=member&tab=dashboard");
 		}
 
-		return load_template('front/users.php', array());
+		// return load_template('front/users.php', array());
+		echo $this->twig->render('front/userstest.twig');
     }
     
     public function executeNewUser()
@@ -26,9 +27,11 @@ class UsersController
                 Users::register($pseudo, $email, $pass);
 			}
 			header("Location:index.php?p=connection");
+			
         }
 		
-		return load_template('front/register.php', array());
+		// return load_template('front/register.php', array());
+		echo $this->twig->render('front/registertest.twig');
     }
 
     public function executeUserLogin()
@@ -63,7 +66,8 @@ class UsersController
 			}
 		}
 
-		return load_template('front/userlogin.php', array());
+		// return load_template('front/userlogin.php', array());
+		echo $this->twig->render('front/userlogintest.twig');
 	}
 
 	public function executeUserDashboard()
@@ -77,7 +81,8 @@ class UsersController
 		$sheetManager = new Datasheet();
 		$listOfsheets = $sheetManager->getList();
 
-		return load_template('user/user.php', array('listOfsheets' => $listOfsheets,'selectedTab' => $selectedTab));
+		// return load_template('user/user.php', array('listOfsheets' => $listOfsheets,'selectedTab' => $selectedTab));
+		echo $this->twig->render('user/usertest.twig');
 	}
 
 	public function executeMemberCreateSheet()

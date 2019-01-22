@@ -8,20 +8,17 @@
     </div>
     
     <div class="row" id="chatWindow">
-        <?php
-        if (empty($listOfChatMessages)) {
-            echo '<div class="alert alert-danger">';
-            echo '<p>Aucun message n\'a été encore publié pour le moment dans le chat. Patientez un peu ou créez une nouvelle discussion !</p>';
-            echo '</div>';
-        } else {
-            foreach ($listOfChatMessages as $chatMessage) { ?>
+        {% if listOfChatMessages == 0 %}
+            <div class="alert alert-danger">';
+                <p>Aucun message n\'a été encore publié pour le moment dans le chat. Patientez un peu ou créez une nouvelle discussion !</p>';
+            </div>';
+        {% else %}
+            {% for message in chat %}
                 <div>
-                    <p id="chatLine"><span id="chatPseudo"><?= htmlspecialchars($chatMessage->getPseudo()); ?></span> <span id="chatMessage"><?= htmlspecialchars($chatMessage->getMessage()); ?></p></span>
+                    <p id="chatLine"><span id="chatPseudo">{{ message.pseudo }}</span> <span id="chatMessage">{{ message.message }}</p></span>
                 </div>
-            <?php
-            }
-        }
-        ?>
+            {% endfor %}
+        {% endif %}
     </div>
 
     <div class="row">

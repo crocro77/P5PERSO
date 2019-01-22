@@ -1,10 +1,11 @@
 <?php
 
-require_once('includes/template-loader.php');
+// require_once('includes/template-loader.php');
 
-class ErrorController
+class ErrorController extends Controller
 {
 	public function executeError() {
-		return load_template('front/error.php', array());
+		// return load_template('front/error.php', array());
+		echo $this->twig->render('front/errortest.twig');
 	}
 }
