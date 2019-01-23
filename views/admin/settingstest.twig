@@ -1,15 +1,15 @@
-{% extends 'template/layout.twig' %}
+{# {% extends 'template/layout.twig' %} #}
 
 {% block content %}
 
 <div id="settings" class="center settings grey lighten-3">
 	<div class="page-header">
 		<h2>Réglages</h2>
-		<?php
-	if(isset($_SESSION['flash'])) {
-		include('includes/flash-msg.php');
-	}
-	?>
+
+		{% if _session.flash is defined %}
+			{% include 'includes/flash-msg.php' %}
+		{% endif %}
+
 	</div>
 
 	<h4>Page &laquo; À propos &raquo;</h4>
@@ -19,8 +19,12 @@
 	
 
 	<form action="" method="post">
-		<textarea name="description" class="form-control"><?php if(!empty(About::getAboutDescription())) echo About::getAboutDescription(); ?></textarea><br>
-		<?php if(empty(About::getAboutDescription())) echo '<input type="submit" class="btn btn-publish" href="index.php?p=admin&amp;tab=settings&amp;action=addaaboutdescription" value="Valider la description">'; else echo '<input type="submit" class="btn btn-warning" href="index.php?p=admin&amp;tab=settings&amp;action=updateaboutdescription" value="Mettre à jour la description">'; ?>
+		<textarea name="description" class="form-control">{% if aboutDescription %} {{ aboutDescription }} {% endif %}</textarea><br>
+		{% if not aboutDescription %}
+			<input type="submit" class="btn btn-publish" href="index.php?p=admin&amp;tab=settings&amp;action=addaaboutdescription" value="Valider la description">
+		{% else %}
+			<input type="submit" class="btn btn-warning" href="index.php?p=admin&amp;tab=settings&amp;action=updateaboutdescription" value="Mettre à jour la description">
+		{% endif %}
 		<a class="btn btn-danger" onclick="return confirm('Etes vous sûr de vouloir supprimer la description ?')" href="index.php?p=admin&amp;tab=settings&amp;action=deleteaboutdescription">Supprimer la description</a>
 	</form>
 	

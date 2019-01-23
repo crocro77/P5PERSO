@@ -10,7 +10,7 @@ class AboutController extends Controller
         $aboutDescription = $aboutManager->getAboutDescription();
 
         // return load_template('front/about.php', array('aboutDescription' => $aboutDescription));
-        echo $this->twig->render('front/abouttest.twig');
+        echo $this->twig->render('front/abouttest.twig', ['aboutDescription' => About::getAboutDescription()]);
     }
 
     public function executeAddAbout()

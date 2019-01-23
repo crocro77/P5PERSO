@@ -1,18 +1,18 @@
-{# {% extends 'template/layout.twig' %} #}
+{% extends 'template/layout.twig' %}
 
 {% block content %}
 
 <br />
 
 <div class="container">
-    {% include 'views/admin/admin-navtest.twig' %}
+    {% include 'admin/admin-navtest.twig' %}
     {% if selectedTab == 'dashboard' %} 
         {% include 'admin/dashboardtest.twig' %}
     {% elseif selectedTab == 'list' %}
         {% include 'admin/list-sheetstest.twig' %}
     {% elseif selectedTab == 'write' %}
         {% include 'admin/writetest.twig' %}
-    {% elseif selectedTab == 'write' %}
+    {% elseif selectedTab == 'comments' %}
         {% include 'admin/commentstest.twig' %}
     {% elseif selectedTab == 'settings' %}
         {% include 'admin/settingstest.twig' %}

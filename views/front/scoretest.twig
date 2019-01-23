@@ -9,43 +9,61 @@
 
             <h1>Résultat</h1>
             <br />
+            {% set answer1 = _post['answerOne'] is defined %}
+            {% set answer2 = _post['answerTwo'] is defined %}
+            {% set answer3 = _post['answerThree'] is defined %}
+            {% set answer4 = _post['answerFour'] is defined %}
+            {% set answer5 = _post['answerFive'] is defined %}
+            {% set answer6 = _post['answerSix'] is defined %}
+            {% set answer7 = _post['answerSeven'] is defined %}
+            {% set answer8 = _post['answerEight'] is defined %}
+            {% set answer9 = _post['answerNine'] is defined %}
+            {% set answer110 = _post['answerTen'] is defined %}
+            {% set score = 0 %}
 
-            <?php
-                $answer1 = $_POST['answerOne'];
-                $answer2 = $_POST['answerTwo'];
-                $answer3 = $_POST['answerThree'];
-                $answer4 = $_POST['answerFour'];
-                $answer5 = $_POST['answerFive'];
-                $answer6 = $_POST['answerSix'];
-                $answer7 = $_POST['answerSeven'];
-                $answer8 = $_POST['answerEight'];
-                $answer9 = $_POST['answerNine'];
-                $answer10 = $_POST['answerTen'];
-                $score = 0;
+            {% if answer1 == "A" %}
+                {% set score = score + 1 %}
+            {% endif %}
+             {% if answer2 == "C" %}
+                {% set score = score + 1 %}
+            {% endif %}
+             {% if answer3 == "A" %}
+                {% set score = score + 1 %}
+            {% endif %}
+             {% if answer4 == "B" %}
+                {% set score = score + 1 %}
+            {% endif %}
+             {% if answer5 == "C" %}
+                {% set score = score + 1 %}
+            {% endif %}
+             {% if answer6 == "A" %}
+                {% set score = score + 1 %}
+            {% endif %}
+             {% if answer7 == "B" %}
+                {% set score = score + 1 %}
+            {% endif %}
+             {% if answer8 == "A" %}
+                {% set score = score + 1 %}
+            {% endif %}
+             {% if answer9 == "B" %}
+                {% set score = score + 1 %}
+            {% endif %}
+             {% if answer10 == "C" %}
+                {% set score = score + 1 %}
+            {% endif %}
                 
-                if ($answer1 == "A"){$score++;}
-                if ($answer2 == "C"){$score++;}
-                if ($answer3 == "A"){$score++;}
-                if ($answer4 == "B"){$score++;}
-                if ($answer5 == "C"){$score++;}
-                if ($answer6 == "A"){$score++;}
-                if ($answer7 == "B"){$score++;}
-                if ($answer8 == "A"){$score++;}
-                if ($answer9 == "B"){$score++;}
-                if ($answer10 == "C"){$score++;}
-                echo "<p id='score-result' class='center'>Votre score est de<br> $score/10</p>";
+            <p id='score-result' class='center'>Votre score est de<br> {{ score }}/10</p>
 
-                if($score > 0 && $score < 5){
-                    echo "<p class='center'>Pas terrible</p>";
-                } elseif ($score > 5 && $score < 10){
-                    echo "<p class='center'>Très bien</p>";
-                } elseif ($score == 10){
-                    echo "<p class='center'>Waouh ! Parfait !</p>";
-                } else {
-                    echo "<p class='center'>Aïe Aïe Aïe</p>";
-                }
+                {% if score > 0 and score < 5 %}
+                    <p class='center'>Pas terrible</p>
+                {% elseif score > 5 and score < 10 %}
+                    <p class='center'>Très bien</p>
+                {% elseif score == 10 %}
+                    <p class='center'>Waouh ! Parfait !</p>
+                {% else %}
+                    <p class='center'>Aïe Aïe Aïe</p>s
+                {% endif %}
                 
-            ?>
             
             <a title="Quiz" class="btn btn-default btn-sm" href="index.php?p=quiz">Retour au quiz</a>
         </div>

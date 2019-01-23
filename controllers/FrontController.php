@@ -8,8 +8,8 @@ class FrontController extends Controller
 {
 	public function executeHome()
 	{
-		// $sheetManager = new Datasheet();
-		// $listOfSheets = $sheetManager->getListAlpha();
+		$sheetManager = new Datasheet();
+		$listOfSheets = $sheetManager->getListAlpha();
 
 		// return load_template('front/home.php', array('listOfSheets' => $listOfSheets));
 		echo $this->twig->render('front/hometest.twig', ['datasheet' => Datasheet::getListAlpha(), ]);
@@ -18,13 +18,13 @@ class FrontController extends Controller
 	public function executeSingleSheet()
     {
 		if(isset($_GET['id'])) {
-			// $sheetManager = new Datasheet();
-			// $sheetUnique = $sheetManager->getUnique($_GET['id']);
-			// $commentManager = new Comment();
-			// $listOfComments = $commentManager->getSheetComments($_GET['id']);
+			$sheetManager = new Datasheet();
+			$sheetUnique = $sheetManager->getUnique($_GET['id']);
+			$commentManager = new Comment();
+			$listOfComments = $commentManager->getSheetComments($_GET['id']);
 	
 			// return load_template('front/single.php', array('sheetUnique' => $sheetUnique, 'listOfComments' => $listOfComments));
-			echo $this->twig->render('front/singletest.twig', ['sheetUnique' => Datasheet::getUnique($_GET['id']), 'comment' => Comment::getSheetComments($_GET['id']), ]);
+			echo $this->twig->render('front/singletest.twig', ['sheetUnique' => Datasheet::getUnique($_GET['id']), 'listOfComments' => $listOfComments, 'comment' => Comment::getSheetComments($_GET['id']), ]);
 		}
     }
 

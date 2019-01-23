@@ -79,10 +79,10 @@ class UsersController extends Controller
 		}
 
 		$sheetManager = new Datasheet();
-		$listOfsheets = $sheetManager->getList();
+		$listOfsheets = $sheetManager->getListAlpha();
 
 		// return load_template('user/user.php', array('listOfsheets' => $listOfsheets,'selectedTab' => $selectedTab));
-		echo $this->twig->render('user/usertest.twig', ['listOfsheets' => $listOfsheets,'selectedTab' => $selectedTab]);
+		echo $this->twig->render('user/usertest.twig', ['datasheet' => Datasheet::getListAlpha(), 'listOfsheets' => $listOfsheets,'selectedTab' => $selectedTab]);
 	}
 
 	public function executeMemberCreateSheet()

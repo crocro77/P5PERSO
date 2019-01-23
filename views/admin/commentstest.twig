@@ -1,4 +1,4 @@
-{% extends 'template/layout.twig' %}
+{# {% extends 'template/layout.twig' %} #}
 
 {% block content %}
 
@@ -6,11 +6,13 @@
 <div class="page-header">
 	<h3 id="to-the-top" class="center">Commentaire(s)</h3>
 </div>
-<?php
-if($signaledComments) echo '<p class="center"><i id="flash" class="material-icons">warning</i><br/><strong>Un ou plusieurs commentaire(s) signalé(s) : <a href="#signaled-comment">Action requise !</a></strong></p>';
-if (empty($listOfComments)) {
-	echo '<p>Aucun commentaire n\'a été posté pour le moment.</p>';
-} else { ?>
+{% if signaledComments %}
+	<p class="center"><i id="flash" class="material-icons">warning</i><br/><strong>Un ou plusieurs commentaire(s) signalé(s) : <a href="#signaled-comment">Action requise !</a></strong></p>';
+{% endif %}
+
+{% if not listOfComments %} %}
+	<p>Aucun commentaire n\'a été posté pour le moment.</p>
+{% else %}
 <div class="row">
 	<div class="container">
 		<table class="table">
@@ -21,28 +23,23 @@ if (empty($listOfComments)) {
 				<th>Action</th>
 			</thead>
 			<tbody>
-				<?php
-			foreach ($listOfComments as $comment) { ?>
-					<tr id="commentaire_<?= $comment->getId() ?>"> 
-						<td class="center"><a href="?p=single&amp;id=<?= $comment->getPostId(); ?>"><?= $comment->getPostId(); ?></a></td>
-						<td><em><?= htmlspecialchars($comment->getComment()); ?></em></td>
-						<td><strong><?= htmlspecialchars($comment->getAuthor()); ?></strong></td>
-						<td><a href="?p=admin&amp;tab=comments&amp;action=seencomment&amp;commentId=<?= $comment->getId(); ?>" title="Indiqué comme vu"><i class="material-icons">remove_red_eye</i></a>
-							<a href="?p=admin&amp;tab=comments&amp;action=deletecomment&amp;commentId=<?= $comment->getId(); ?>" title="Supprimer le commentaire"><i class="material-icons">delete</i></a>
+				{% for comm in comment %}
+					<tr id="commentaire_{{ comm.id }}"> 
+						<td class="center"><a href="?p=single&amp;id={{ comm.postid }}">{{ comm.postid }}</a></td>
+						<td><em>{{ comm.comment }}</em></td>
+						<td><strong>{{ comm.author }}</strong></td>
+						<td><a href="?p=admin&amp;tab=comments&amp;action=seencomment&amp;commentId={{ comm.id }}" title="Indiqué comme vu"><i class="material-icons">remove_red_eye</i></a>
+							<a href="?p=admin&amp;tab=comments&amp;action=deletecomment&amp;commentId={{ comm.id }}" title="Supprimer le commentaire"><i class="material-icons">delete</i></a>
 						</td>
 					</tr>
-					<?php
-			}
-			?>
+				{% endfor %}
 			</tbody>
 		</table>
 		<div class="col-xs-12 signaled-comments">
 			<h4 id="signaled-comment" class="center">Commentaire(s) signalé(s)</h4>
-			<?php 
-		if (empty($signaledComments)) {
-			echo 'Aucun commentaire n\'a été signalé pour le moment.';
-		} else {
-			?>
+			{% if not signaledComments %}
+				<p>Aucun commentaire n'a été signalé pour le moment.<p>
+			{% else %}
 			<table class="table table-striped table-bordered table-hover table-condensed">
 				<thead>
 					<th>Auteur</th>
@@ -52,30 +49,22 @@ if (empty($listOfComments)) {
 				</thead>
 													
 				<tbody>
-					<?php
-				foreach ($signaledComments as $signaledComment) {
-					?>
+					{% for signaledComment in signaledComments %}
 						<tr>
-							<td><strong><?= htmlspecialchars($signaledComment->getAuthor()); ?></strong></td>
-							<td><em><?= htmlspecialchars($signaledComment->getComment()); ?></em></td>
-							<td><?= $signaledComment->getCommentDate()->format('d/m/y'); ?></td>
+							<td><strong>{{ signaledComment.author }}</strong></td>
+							<td><em>{{ signaledComment.comment }}</em></td>
+							<td>{{ signaledComment.commentDate|date("d/m/Y") }}</td>
 							<td>
 								<a title="Valider le commentaire" href="?p=admin&amp;tab=comments&amp;action=validatecomment&amp;commentId=<?= $signaledComment->getId(); ?>"><i class="material-icons">done</i></a>
 								<a title="Supprimer le commenaitre" href="?p=admin&amp;tab=comments&amp;action=deletecomment&amp;commentId=<?= $signaledComment->getId(); ?>" onclick="return confirm('Etes vous sûr de vouloir supprimer ce commentaire ?')"><i class="material-icons">delete</i></a>
 							</td>
 						</tr>
-					<?php
-				}
-				?>
+					{% endfor %}
+			{% endif %}
 				</tbody>
 			</table>
-			<?php
-		}
-		?>
 		</div>
-		<?php
-	}
-	?>
+{% endif %}
 	</div>
 	<a href="#to-the-top" title="Retour en haut" class="right"><i class="material-icons">arrow_upward</i></a>
 </div>

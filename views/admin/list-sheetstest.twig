@@ -1,41 +1,39 @@
-{% extends 'template/layout.twig' %}
+{# {% extends 'template/layout.twig' %} #}
 
 {% block content %}
 
 <div id="list" class="grey lighten-3">
 <h2 id="to-the-top">Liste des fiches</h2>
-<hr/>
+<hr>
 <ul class="pagination center">
-    {% for letter in 'A'..'Z' %}
-		<li class="waves-effect"><a class="page-link" href="?char={{ letter }}">{{ letter }}</a></li>
+	{% for letter in 'A'..'Z' %}
+		<li class="waves-effect"><a class="page-link" href="index.php?p=admin&tab=list&char={{ letter }}">{{ letter }}</a></li>
 	{% endfor %} 
 </ul>
-<hr/>
-<?php
-if(empty($listOfsheets)) {
-	echo '<p>Vous n\'avez pas encore publié de fiche. <a href="index.php?p=admin&amp;menu=write">Commencez ici</a></p>';
-} else {
-    foreach($listOfsheets as $sheet){
-        ?>
+<hr>
+{% if not datasheet %}
+    <p>Vous n'avez pas encore publié de fiche. <a href="index.php?p=admin&amp;menu=write">Commencez ici</a></p>
+{% else %}
+    {% for sheet in datasheet %}
         <div class="row">
             <div class="col s12">
-                <h4 id="post-title"><?= htmlspecialchars($sheet->getTitle()); ?></h4>
+                <h4 id="post-title">{{ sheet.title }}</h4>
                 <p>
-                    <small>Rédigé le <?= $sheet->getDate()->format('d/m/Y à H:i'); ?></small>
+                    <small>Rédigé le {{ sheet.date|date("d/m/Y") }} par {{ sheet.author }}</small>
                 </p>
                 <div class="row">
                     <div class="col s12 m6 l8">
-                    <?= substr($sheet->getContent(), 0, 1000) . '...'; ?>...
+                    {{ sheet.content|slice(0, 500) }}...    
                     </div>
                     <div class="col s12 m6 l4 center">
-                        <img src="public/img/<?= $sheet->getCover() ?>" class="responsive-img" alt="<?= htmlspecialchars($sheet->getTitle()); ?>"/>
+                        <img src="public/img/{{ sheet.cover }}" class="responsive-img" alt="{{ sheet.title }}"/>
                         <br/><br/>
-                        <a class="btn btn-default btn-sm" href="index.php?p=single&id=<?= $sheet->getId(); ?>">Voir la fiche complète</a>
+                        <a class="btn btn-default btn-sm" href="index.php?p=single&id={{ sheet.id }}">Voir la fiche complète</a>
                         <br/><br/>
-                        <a class="btn btn-default btn-sm" href="index.php?p=edit&id=<?= $sheet->getId(); ?>">Éditer la fiche</a>
+                        <a class="btn btn-default btn-sm" href="index.php?p=edit&id={{ sheet.id }}">Éditer la fiche</a>
                         <br/><br/>
-                        <form method="post" role="form" onclick="return confirm('Etes vous sûr de vouloir supprimer cette fiche ?')" action="index.php?p=admin&menu=list&action=deletesheet&id=<?= $sheet->getId(); ?>">
-                            <input type="hidden" name="id" value="<?= $sheet->getId(); ?>">
+                        <form method="post" role="form" onclick="return confirm('Etes vous sûr de vouloir supprimer cette fiche ?')" action="index.php?p=admin&menu=list&action=deletesheet&id={{ sheet.id }}">
+                            <input type="hidden" name="id" value="{{ sheet.id }}">
                             <input type="submit" value="Supprimer la fiche" class="btn btn-danger">
                         </form>
                     </div>
@@ -43,10 +41,8 @@ if(empty($listOfsheets)) {
                 <hr/>
             </div>
         </div>
-    <?php
-    }
-}
-?>
+    {% endfor %}
+{% endif %}
 <a href="#to-the-top" title="Retour en haut" class="right"><i class="material-icons">arrow_upward</i></a>
 </div>
 

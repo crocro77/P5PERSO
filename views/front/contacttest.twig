@@ -6,15 +6,30 @@
 <div id="about" class="container grey lighten-3 center">
 	<div class="container">
 		<div class="page-header">
-            <h2>Formulaire de contact !</h2>
+            <h2>Formulaire de contact</h2>
         </div>
         <br />
+        
         <form method="POST" action="index.php?p=contact&action=postmessage">
-            <input type="text" name="contactname" placeholder="Votre nom" value="{% if _post.contactname %} {{ _post.contactname }} {% endif %}" /><br /><br />
-            <input type="email" name="contactmail" placeholder="Votre email" value="{% if _post.contactmail %} {{ _post.contactmail }} {% endif %}" /><br /><br />
-            <textarea name="contactmessage" placeholder="Votre message">{% if _post.contactmessage %} {{ _post.contactmessage }} {% endif %}</textarea><br /><br />
-            <input class="btn btn-default btn-sm" type="submit" value="Envoyer votre message" name="mailform"/>
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="contactname">Votre nom</label>
+                    <input type="text" name="contactname" value="{% if _post.contactname %} {{ _post.contactname }} {% endif %}" /><br /><br />
+                </div>
+                <div class="input-field col s12">
+                    <label for="contactmail">Votre adresse mail</label>
+                    <input type="email" name="contactmail" value="{% if _post.contactmail %} {{ _post.contactmail }} {% endif %}" /><br /><br />
+                </div>
+                <div class="input-field col s12">
+                    <label for="contactmessage">Votre message</label>
+                    <textarea class="materialize-textarea" name="contactmessage">{% if _post.contactmessage %} {{ _post.contactmessage }} {% endif %}</textarea><br /><br />
+                </div>
+                <div class="center">
+                    <input class="btn btn-default btn-sm" type="submit" value="Envoyer votre message" name="mailform"/>
+                </div>
+            </div>
         </form>
+        
         <br />
         {% if msg %} 
             {{ msg }}

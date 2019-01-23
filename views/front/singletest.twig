@@ -48,18 +48,18 @@
 
     {% if listOfComments %}
         {% for singlecomment in comment %}
-            <strong>{{ singlecomment.author }} (Le {{ singlecomment.date|date("d/m/Y") }}) a dit :</strong>                                                                                                                                              ?>
+            <strong>{{ singlecomment.author }} (Le {{ singlecomment.date|date("d/m/Y") }}) a dit :</strong>
             <blockquote>
                 <p>
                     {{ singlecomment.comment }}
-                    {% if comment.getSignaled %}
+                    {% if not comment.getSignaled %}
                         <a href="index.php?p=single&amp;id={{ sheetUnique.id }}&amp;action=signal&amp;commentId={{ singlecomment.id }}"><small class="signal pull-right">Signaler</small></a>
                     {% else %}
                         <em class="orange">Le commentaire a été signalé et est en attente de modération.</em>
                     {% endif %}
                 </p>
             </blockquote>
-        {% endfor %}}
+        {% endfor %}
     {% else %}
         <p>Aucun commentaire n'a été publié, soyez le premier à réagir !</p>
     {% endif %}
@@ -70,7 +70,7 @@
             {% if _session.username %}
                 <p>Vous postez un commentaire en tant que <strong>{{ _session.username }}</strong></p>
             {% endif %}
-            <form class="form-horizontal" action="index.php?p=single&amp;id=<?= $sheetUnique->getId(); ?>#comments" method="post">
+            <form class="form-horizontal" action="index.php?p=single&amp;id={{ sheetUnique.id }}#comments" method="post">
                 {% if not _session.username %}
                 <div class="form-group">
                     <label for="author" class="col-sm-1 control-label">Pseudo </label>
@@ -86,7 +86,7 @@
                             <textarea name="comment" class="materialize-textarea"></textarea>
                         </div>
                 </div>
-                    <input type="hidden" name="id" value="<?= $sheetUnique->getId(); ?>">
+                    <input type="hidden" name="id" value="{{ sheetUnique.id }}">
                 <div class="col s12">
                     <button type="submit" name ="submit" class="btn btn-default btn-sm">Envoyer votre commentaire</button>
                 </div>

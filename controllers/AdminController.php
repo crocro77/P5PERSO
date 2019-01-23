@@ -6,6 +6,7 @@ class AdminController extends Controller
 {
 	public function __construct()
 	{
+		parent::__construct();
 		if(!isset($_SESSION['username']) OR isset($_SESSION['username']) AND $_SESSION['username'] !== 'ntonyyy') {
 			header('Location: index.php?p=login');
 			exit();
@@ -20,32 +21,34 @@ class AdminController extends Controller
 			$selectedTab = $_GET['tab'];
 		}
 
-		// Nombre de fiche voulu par page.
-		$sheetsPerPage = 5;
-		// On compte le nombre total de fiche présents dans la bdd.
-		$sheetManager = new Datasheet();
-		$numberOfSheets = $sheetManager->count();
-		// Nombre de pages.
-		$numberOfPages = ceil($numberOfSheets / $sheetsPerPage);
-		$currentPage = 1;
+		// // Nombre de fiche voulu par page.
+		// $sheetsPerPage = 5;
+		// // On compte le nombre total de fiche présents dans la bdd.
+		// $sheetManager = new Datasheet();
+		// $numberOfSheets = $sheetManager->count();
+		// // Nombre de pages.
+		// $numberOfPages = ceil($numberOfSheets / $sheetsPerPage);
+		// $currentPage = 1;
 
-		if (isset($_GET['tabpage']) && !empty($_GET['tabpage'])) {
-			$currentPage = intval($_GET['tabpage']);
-			if ($currentPage > $numberOfPages) {
-				$currentPage = $numberOfPages;
-			}
-		} else {
-			$currentPage = 1;
-		}
+		// if (isset($_GET['tabpage']) && !empty($_GET['tabpage'])) {
+		// 	$currentPage = intval($_GET['tabpage']);
+		// 	if ($currentPage > $numberOfPages) {
+		// 		$currentPage = $numberOfPages;
+		// 	}
+		// } else {
+		// 	$currentPage = 1;
+		// }
 		
-		$firstSheet = ($currentPage - 1) * $sheetsPerPage;
-		$listOfSheets = $sheetManager->getList($firstSheet, $sheetsPerPage);
+		// $firstSheet = ($currentPage - 1) * $sheetsPerPage;
+		// $listOfSheets = $sheetManager->getList($firstSheet, $sheetsPerPage);
+		$aboutManager = new About();
+        $aboutDescription = $aboutManager->getAboutDescription();
 		$commentManager = new Comment();
         $listOfComments = $commentManager->getAllComments();
 		$signaledComments = $commentManager->getSignaledComments();
 
 		// return load_template('admin/admin.php', array('listOfSheets' => $listOfSheets, 'numberOfPages' => $numberOfPages, 'selectedTab' => $selectedTab, 'signaledComments' => $signaledComments, 'listOfComments' => $listOfComments, 'currentPage' => $currentPage));
-		echo $this->twig->render('admin/admintest.twig');
+		echo $this->twig->render('admin/admintest.twig', ['datasheet' => Datasheet::getListAlpha(),'comment' => Comment::getAllComments(), 'listOfComments' => $listOfComments, 'selectedTab' => $selectedTab, 'signaledComments' => $signaledComments, 'aboutDescription' => About::getAboutDescription(), ]);
 	}
 
 	public function executeCreateSheet()
@@ -97,7 +100,7 @@ class AdminController extends Controller
 		}
 		
 		// return load_template('admin/admin.php', array('selectedTab' => 'write'));
-		echo $this->twig->render('admin/admintest.twig');
+		echo $this->twig->render('admin/admintest.twig', ['selectedTab' => 'write']);
 	}
 
 	public function executeUpdateSheet()
@@ -132,7 +135,7 @@ class AdminController extends Controller
 				$selectedTab = 'write';
 				$action = 'edit';
 				// return load_template('admin/admin.php', array('selectedTab' => $selectedTab, 'sheet' => $sheet, 'action' => $action));
-				echo $this->twig->render('admin/admintest.twig');
+				echo $this->twig->render('admin/admintest.twig', ['selectedTab' => $selectedTab, 'sheet' => $sheet, 'action' => $action]);
 			} else {
 				header("Location:index.php?p=admin&tab=list");
 			}

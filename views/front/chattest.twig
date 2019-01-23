@@ -8,7 +8,7 @@
     </div>
     
     <div class="row" id="chatWindow">
-        {% if listOfChatMessages == 0 %}
+        {% if not listOfChatMessages %}
             <div class="alert alert-danger">';
                 <p>Aucun message n\'a été encore publié pour le moment dans le chat. Patientez un peu ou créez une nouvelle discussion !</p>';
             </div>';
