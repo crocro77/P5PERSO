@@ -44,7 +44,7 @@ if (isset($_GET['action'])) {
 			break;
 		case "postmessage":
 			$contactMessage = new ContactController();
-			$content = $contactMessage->executeSendMessage();
+			$content = $contactMessage->executeContactForm();
 			break;
 		case "deleteaccount":
 			$deleteAccount = new UsersController();

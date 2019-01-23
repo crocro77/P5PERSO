@@ -1,5 +1,18 @@
 <?php
-// tableau de couleur des tables de la bdd pour le dashboard
+
+$tables = [
+    "Fiche(s)"              =>  "datasheet",
+    "Commentaire(s)"        =>  "comments",
+    "Membre(s)"             =>  "users",
+    "Ligne(s) sur le Chat"  =>  "chat",
+];
+$colors = [
+    "datasheet"             =>  "green",
+    "comments"              =>  "orange",
+    "users"                 =>  "blue",
+    "chat"                  =>  "red",
+];
+
 function inTable($table){
     $db = Database::getDBConnection();
     $query = $db->query("SELECT COUNT(id) FROM $table");

@@ -6,12 +6,9 @@
 <h2 id="to-the-top">Liste des fiches</h2>
 <hr/>
 <ul class="pagination center">
-	<?php
-    for ($i = ord("A"); $i <= ord("Z"); $i++)
-    {
-        echo "<li class='page-item'><a id='pagination-alphabet' class='page-link' href=?list=".chr($i).">".chr($i)."</a></li> ";
-    }
-    ?>
+    {% for letter in 'A'..'Z' %}
+		<li class="waves-effect"><a class="page-link" href="?char={{ letter }}">{{ letter }}</a></li>
+	{% endfor %} 
 </ul>
 <hr/>
 <?php

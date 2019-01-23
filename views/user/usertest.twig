@@ -4,11 +4,15 @@
 
 <br />
 <div class="container">
-    {% include 'views/user/user-navtest.twig' %}
-    {% if selectedTab == 'dashboard' %} {% include 'views/user/userdashboardtest.twig' %}
-    {% elseif selectedTab == 'list' %} {% include 'views/user/user-list-sheetstest.twig' %}
-    {% elseif selectedTab == 'write' %} {% include 'views/user/userwritetest.twig' %}
-    {% elseif selectedTab == 'settings' %} {% include 'views/user/usersettingstest.twig' %}
+    {% include 'user/user-navtest.twig' %}
+    {% if selectedTab == 'dashboard' %}
+        {% include 'user/userdashboardtest.twig' %}
+    {% elseif selectedTab == 'list' %}
+        {% include 'user/user-list-sheetstest.twig' %}
+    {% elseif selectedTab == 'memberwrite' %}
+        {% include 'user/userwritetest.twig' %}
+    {% elseif selectedTab == 'settings' %}
+        {% include 'user/usersettingstest.twig' %}
     {% endif %}
 </div>
 

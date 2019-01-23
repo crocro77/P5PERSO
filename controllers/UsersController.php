@@ -82,7 +82,7 @@ class UsersController extends Controller
 		$listOfsheets = $sheetManager->getList();
 
 		// return load_template('user/user.php', array('listOfsheets' => $listOfsheets,'selectedTab' => $selectedTab));
-		echo $this->twig->render('user/usertest.twig');
+		echo $this->twig->render('user/usertest.twig', ['listOfsheets' => $listOfsheets,'selectedTab' => $selectedTab]);
 	}
 
 	public function executeMemberCreateSheet()
@@ -133,7 +133,8 @@ class UsersController extends Controller
 			}	
 		}
 		
-		return load_template('user/user.php', array('selectedTab' => 'write'));
+		// return load_template('user/user.php', array('selectedTab' => 'write'));
+		echo $this->twig->render('user/usertest.twig');
 	}
 
 	public function executeDeleteUser()

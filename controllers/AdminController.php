@@ -96,7 +96,8 @@ class AdminController extends Controller
 			}	
 		}
 		
-		return load_template('admin/admin.php', array('selectedTab' => 'write'));
+		// return load_template('admin/admin.php', array('selectedTab' => 'write'));
+		echo $this->twig->render('admin/admintest.twig');
 	}
 
 	public function executeUpdateSheet()
@@ -130,7 +131,8 @@ class AdminController extends Controller
 
 				$selectedTab = 'write';
 				$action = 'edit';
-				return load_template('admin/admin.php', array('selectedTab' => $selectedTab, 'sheet' => $sheet, 'action' => $action));
+				// return load_template('admin/admin.php', array('selectedTab' => $selectedTab, 'sheet' => $sheet, 'action' => $action));
+				echo $this->twig->render('admin/admintest.twig');
 			} else {
 				header("Location:index.php?p=admin&tab=list");
 			}

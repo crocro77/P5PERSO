@@ -29,7 +29,8 @@ class AboutController extends Controller
 				$_SESSION['flash']['error'] = '<ul>' . $errors . '</ul>';
 			}	
         }
-        return load_template('front/about.php', array('aboutDescription' => $aboutDescription));
+        // return load_template('front/about.php', array('aboutDescription' => $aboutDescription));
+        echo $this->twig->render('front/abouttest.twig');
     }
 
     public function executeUpdateAbout()
@@ -44,7 +45,8 @@ class AboutController extends Controller
                 }
             }
         }
-        return load_template('front/about.php', array('aboutDescription' => $aboutDescription));
+        // return load_template('front/about.php', array('aboutDescription' => $aboutDescription));
+        echo $this->twig->render('front/abouttest.twig');
     }
 
     public function executeDeleteAbout()

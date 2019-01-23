@@ -11,18 +11,7 @@
 			<div class="center">
             <?php
                 require_once('includes/dashboard-tables.php');
-                $tables = [
-                    "Fiche(s)"              =>  "datasheet",
-                    "Commentaire(s)"        =>  "comments",
-                    "Membre(s)"             =>  "users",
-                    "Ligne(s) sur le Chat"  =>  "chat",
-                ];
-                $colors = [
-                    "datasheet"             =>  "green",
-                    "comments"              =>  "orange",
-                    "users"                 =>  "blue",
-                    "chat"                  =>  "red",
-                ];
+                
                 foreach($tables as $table_name => $table){
                     ?>
                         <div class="col l6 m6 s12">

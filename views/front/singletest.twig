@@ -46,14 +46,14 @@
         <hr>
     <h4>Commentaire(s)</h4>
 
-    {% if listOfComments == 1 %}
-        {% for comment in comments %}
-            <strong>{{ comment.author }} (Le {{ comment.date|date("d/m/Y") }}) a dit :</strong>                                                                                                                                              ?>
+    {% if listOfComments %}
+        {% for singlecomment in comment %}
+            <strong>{{ singlecomment.author }} (Le {{ singlecomment.date|date("d/m/Y") }}) a dit :</strong>                                                                                                                                              ?>
             <blockquote>
                 <p>
-                    {{ comment.comment }}
-                    {% if comment.getSignaled == 1 %}
-                        <a href="index.php?p=single&amp;id=<?= $sheetUnique->getId(); ?>&amp;action=signal&amp;commentId=<?= $comment->getId(); ?>"><small class="signal pull-right">Signaler</small></a>
+                    {{ singlecomment.comment }}
+                    {% if comment.getSignaled %}
+                        <a href="index.php?p=single&amp;id={{ sheetUnique.id }}&amp;action=signal&amp;commentId={{ singlecomment.id }}"><small class="signal pull-right">Signaler</small></a>
                     {% else %}
                         <em class="orange">Le commentaire a été signalé et est en attente de modération.</em>
                     {% endif %}
@@ -67,18 +67,18 @@
 	<hr>
 	<h4 id="poster-commentaire">Commenter</h4>
 		<div class="write-comment">
-            {# {% if {{ app.session }} == 1 %}
-                <p>Vous postez un commentaire en tant que <strong>' . {{ session.username }} . '</strong></p>
-            {% endif %} #}
+            {% if _session.username %}
+                <p>Vous postez un commentaire en tant que <strong>{{ _session.username }}</strong></p>
+            {% endif %}
             <form class="form-horizontal" action="index.php?p=single&amp;id=<?= $sheetUnique->getId(); ?>#comments" method="post">
-                {# {% if {{ session.username }} == 0 %} #}
+                {% if not _session.username %}
                 <div class="form-group">
                     <label for="author" class="col-sm-1 control-label">Pseudo </label>
                     <div class="col-sm-offset-1 col-sm-2">
                         <input type="text" name="author" class="form-control" />
                     </div>
                 </div>
-                {# {% endif %} #}
+                {% endif %}
 
                 <div class="form-group">
                     <label for="comment" class="col-sm-1 control-label">Commentaire</label>

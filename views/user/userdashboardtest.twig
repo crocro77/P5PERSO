@@ -1,11 +1,11 @@
-{% extends 'template/layout.twig' %}
+{# {% extends 'template/layout.twig' %} #}
 
 {% block content %}
 
 <div class="row grey lighten-3">
 	<div id="dashboard" class="col-xs-12">
         <div class="center">
-			<h6>Bienvenue <?php echo ($_SESSION['username']) ?></h6>
+			<h6>Bienvenue {{ _session.username }}</h6>
 		</div>  
 		<div class="center">
 			<h3>Tableau de bord</h3>
@@ -14,18 +14,7 @@
 			<div class="center">
             <?php
                 require_once('includes/dashboard-tables.php');
-                $tables = [
-                    "Fiche(s)"              =>  "datasheet",
-                    "Commentaire(s)"        =>  "comments",
-                    "Membre(s)"             =>  "users",
-                    "Ligne(s) sur le Chat"  =>  "chat",
-                ];
-                $colors = [
-                    "datasheet"             =>  "green",
-                    "comments"              =>  "orange",
-                    "users"                 =>  "blue",
-                    "chat"                  =>  "red",
-                ];
+               
                 foreach($tables as $table_name => $table){
                     ?>
                         <div class="col l6 m6 s12">
@@ -47,3 +36,5 @@
         </div>
 	</div>
 </div>
+
+{% endblock %}
