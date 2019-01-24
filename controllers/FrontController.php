@@ -2,6 +2,8 @@
 
 // namespace App;
 
+// include 'controllers/Controller.php';
+
 class FrontController extends Controller
 {
 	public function executeHome()

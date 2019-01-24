@@ -7,16 +7,15 @@ require 'vendor/autoload.php';
 // require 'models/Autoloader.php';
 //\App\Autoloader::register();
 
-function autoload($classname)
+function autoload($class)
 {
-	if (file_exists($file = 'controllers/' . $classname . '.php')) {
+	$class = str_replace('App\\', '', $class);
+	if (file_exists($file = 'controllers/' . $class . '.php')) {
 		require $file;
-	} elseif (file_exists($file = 'models/' . $classname . '.php')) {
-		require $file;
-	} elseif (file_exists($file = 'includes/' . $classname . '.php')) {
+	} elseif (file_exists($file = 'models/' . $class . '.php')) {
 		require $file;
 	}
-}
+} 
 
 spl_autoload_register('autoload');
 

@@ -129,7 +129,7 @@ class UsersController extends Controller
 		}
 		
 		// return load_template('user/user.php', array('selectedTab' => 'write'));
-		echo $this->twig->render('user/usertest.twig');
+		echo $this->twig->render('user/usertest.twig', ['selectedTab' => 'write']);
 	}
 
 	public function executeDeleteUser()

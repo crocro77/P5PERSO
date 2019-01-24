@@ -34,7 +34,7 @@
 	</div>
 	<div class="form-group">
 		<label for="author">Auteur </label>
-		<input type="text" name="author" class="form-control" value="{{ repopulateAuthor }}" />
+		<input type="text" name="author" class="form-control" value="{% if _session.username %} {{ _session.username }} {% else %} {{ repopulateAuthor }} {% endif %}" />
 	</div>
 	<div class="form-group">
 		<label for="developer">Développeur </label>
