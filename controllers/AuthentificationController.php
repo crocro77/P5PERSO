@@ -37,7 +37,7 @@ class AuthentificationController extends Controller
 		}
 
 		// return load_template('admin/login.php', array());
-		echo $this->twig->render('admin/logintest.twig');
+		echo $this->twig->render('admin/login.twig');
 	}
 
 	public function executeLogout()

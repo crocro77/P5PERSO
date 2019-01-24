@@ -12,7 +12,7 @@ class FrontController extends Controller
 		$listOfSheets = $sheetManager->getListAlpha();
 
 		// return load_template('front/home.php', array('listOfSheets' => $listOfSheets));
-		echo $this->twig->render('front/hometest.twig', ['datasheet' => Datasheet::getListAlpha(), ]);
+		echo $this->twig->render('front/home.twig', ['datasheet' => Datasheet::getListAlpha(), ]);
 	}
 	
 	public function executeSingleSheet()
@@ -24,7 +24,7 @@ class FrontController extends Controller
 			$listOfComments = $commentManager->getSheetComments($_GET['id']);
 	
 			// return load_template('front/single.php', array('sheetUnique' => $sheetUnique, 'listOfComments' => $listOfComments));
-			echo $this->twig->render('front/singletest.twig', ['sheetUnique' => Datasheet::getUnique($_GET['id']), 'listOfComments' => $listOfComments, 'comment' => Comment::getSheetComments($_GET['id']), ]);
+			echo $this->twig->render('front/single.twig', ['sheetUnique' => Datasheet::getUnique($_GET['id']), 'listOfComments' => $listOfComments, 'comment' => Comment::getSheetComments($_GET['id']), ]);
 		}
     }
 
@@ -59,6 +59,6 @@ class FrontController extends Controller
 
 	public function executeMentions() {
 		// return load_template('front/mentions.php', array());
-		echo $this->twig->render('front/mentionstest.twig');
+		echo $this->twig->render('front/mentions.twig');
 	}
 }

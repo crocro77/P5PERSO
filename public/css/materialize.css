@@ -9831,3 +9831,10 @@ nav,
   display: block;
   margin: auto;
 }
+
+#list-pagination {
+  background-color: darkgray;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 3px;
+}

@@ -51,11 +51,11 @@
 	</div>
 	<div class="form-group">
 		<label for="publisher">Editeur </label>
-		<input type="text" name="publisher" class="form-control" value="{% if action is defined and action == 'edit' %} {{ sheet.publisher }} {% else %} {{ repopulatePublisher }} {% endif %}"" />
+		<input type="text" name="publisher" class="form-control" value="{% if action is defined and action == 'edit' %} {{ sheet.publisher }} {% else %} {{ repopulatePublisher }} {% endif %}"/>
 	</div>
 	<div class="form-group">
 		<label for="release_date">Année de sortie </label>
-		<input type="number" min="1990" max="1997" name="release_date" class="form-control" value="{% if action is defined and action == 'edit' %} {{ sheet.release_date }} {% else %} {{ repopulateReleaseDate }} {% endif %}">
+		<input type="number" min="1990" max="1997" name="release_date" class="form-control" value="{% if action is defined and action == 'edit' %} {{ sheet.releasedate }} {% else %} {{ repopulateReleaseDate }} {% endif %}">
 	</div>
 	<div class="form-group">
 		<label for="genre">Genre </label>
@@ -63,7 +63,7 @@
 	</div>
 	<div class="form-group">
 		<label for="content">Contenu </label>
-		<textarea name="content" class="form-control">{% if action is defined and action == 'edit' %} {{ sheet.content }} {% else %} {{ repopulateContent }} {% endif %}"</textarea>
+		<textarea name="content" class="form-control">{% if action is defined and action == 'edit' %} {{ sheet.content }} {% else %} {{ repopulateContent }} {% endif %}</textarea>
 	</div>
 	<br />
 	<img id="output_cover_image" width="25%" height="25%"/>

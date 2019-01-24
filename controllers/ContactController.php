@@ -7,7 +7,7 @@ class ContactController extends Controller
     public function executeContactForm()
     {
         // return load_template('front/contact.php', array());
-        echo $this->twig->render('front/contacttest.twig');
+        echo $this->twig->render('front/contact.twig');
     }
 
     public function executeSendMessage()

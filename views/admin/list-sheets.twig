@@ -3,14 +3,12 @@
 {% block content %}
 
 <div id="list" class="grey lighten-3">
-<h2 id="to-the-top">Liste des fiches</h2>
-<hr>
-<ul class="pagination center">
+<h2 id="to-the-top" class="center">Liste des fiches</h2>
+<ul id="list-pagination" class="pagination center">
 	{% for letter in 'A'..'Z' %}
 		<li class="waves-effect"><a class="page-link" href="index.php?p=admin&tab=list&char={{ letter }}">{{ letter }}</a></li>
 	{% endfor %} 
 </ul>
-<hr>
 {% if not datasheet %}
     <p>Vous n'avez pas encore publié de fiche. <a href="index.php?p=admin&amp;menu=write">Commencez ici</a></p>
 {% else %}

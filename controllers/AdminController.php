@@ -48,7 +48,7 @@ class AdminController extends Controller
 		$signaledComments = $commentManager->getSignaledComments();
 
 		// return load_template('admin/admin.php', array('listOfSheets' => $listOfSheets, 'numberOfPages' => $numberOfPages, 'selectedTab' => $selectedTab, 'signaledComments' => $signaledComments, 'listOfComments' => $listOfComments, 'currentPage' => $currentPage));
-		echo $this->twig->render('admin/admintest.twig', ['datasheet' => Datasheet::getListAlpha(),'comment' => Comment::getAllComments(), 'listOfComments' => $listOfComments, 'selectedTab' => $selectedTab, 'signaledComments' => $signaledComments, 'aboutDescription' => About::getAboutDescription(), ]);
+		echo $this->twig->render('admin/admin.twig', ['datasheet' => Datasheet::getListAlpha(),'comment' => Comment::getAllComments(), 'listOfComments' => $listOfComments, 'selectedTab' => $selectedTab, 'signaledComments' => $signaledComments, 'aboutDescription' => About::getAboutDescription(), ]);
 	}
 
 	public function executeCreateSheet()
@@ -100,7 +100,7 @@ class AdminController extends Controller
 		}
 		
 		// return load_template('admin/admin.php', array('selectedTab' => 'write'));
-		echo $this->twig->render('admin/admintest.twig', ['selectedTab' => 'write']);
+		echo $this->twig->render('admin/admin.twig', ['selectedTab' => 'write']);
 	}
 
 	public function executeUpdateSheet()
@@ -135,7 +135,7 @@ class AdminController extends Controller
 				$selectedTab = 'write';
 				$action = 'edit';
 				// return load_template('admin/admin.php', array('selectedTab' => $selectedTab, 'sheet' => $sheet, 'action' => $action));
-				echo $this->twig->render('admin/admintest.twig', ['selectedTab' => $selectedTab, 'sheet' => $sheet, 'action' => $action]);
+				echo $this->twig->render('admin/admin.twig', ['selectedTab' => $selectedTab, 'sheet' => $sheet, 'action' => $action]);
 			} else {
 				header("Location:index.php?p=admin&tab=list");
 			}

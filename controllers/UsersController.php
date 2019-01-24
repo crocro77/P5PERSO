@@ -11,7 +11,7 @@ class UsersController extends Controller
 		}
 
 		// return load_template('front/users.php', array());
-		echo $this->twig->render('front/userstest.twig');
+		echo $this->twig->render('front/users.twig');
     }
     
     public function executeNewUser()
@@ -31,7 +31,7 @@ class UsersController extends Controller
         }
 		
 		// return load_template('front/register.php', array());
-		echo $this->twig->render('front/registertest.twig');
+		echo $this->twig->render('front/register.twig');
     }
 
     public function executeUserLogin()
@@ -67,7 +67,7 @@ class UsersController extends Controller
 		}
 
 		// return load_template('front/userlogin.php', array());
-		echo $this->twig->render('front/userlogintest.twig');
+		echo $this->twig->render('front/userlogin.twig');
 	}
 
 	public function executeUserDashboard()
@@ -82,7 +82,7 @@ class UsersController extends Controller
 		$listOfsheets = $sheetManager->getListAlpha();
 
 		// return load_template('user/user.php', array('listOfsheets' => $listOfsheets,'selectedTab' => $selectedTab));
-		echo $this->twig->render('user/usertest.twig', ['datasheet' => Datasheet::getListAlpha(), 'listOfsheets' => $listOfsheets,'selectedTab' => $selectedTab]);
+		echo $this->twig->render('user/user.twig', ['datasheet' => Datasheet::getListAlpha(), 'listOfsheets' => $listOfsheets,'selectedTab' => $selectedTab]);
 	}
 
 	public function executeMemberCreateSheet()

@@ -4,13 +4,11 @@
 
 <div id="list" class="grey lighten-3">
 <h2 class="center" id="to-the-top">Liste des fiches</h2>
-<hr>
-<ul class="pagination center">
+<ul id="list-pagination" class="pagination center">
 	{% for letter in 'A'..'Z' %}
 		<li class="waves-effect"><a class="page-link" href="index.php?p=member&tab=list&char={{ letter }}">{{ letter }}</a></li>
 	{% endfor %} 
 </ul>
-<hr>
 {% for sheet in datasheet %}
         <div class="row">
             <div class="col s12">

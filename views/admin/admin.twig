@@ -5,17 +5,17 @@
 <br />
 
 <div class="container">
-    {% include 'admin/admin-navtest.twig' %}
+    {% include 'admin/admin-nav.twig' %}
     {% if selectedTab == 'dashboard' %} 
-        {% include 'admin/dashboardtest.twig' %}
+        {% include 'admin/dashboard.twig' %}
     {% elseif selectedTab == 'list' %}
-        {% include 'admin/list-sheetstest.twig' %}
+        {% include 'admin/list-sheets.twig' %}
     {% elseif selectedTab == 'write' %}
-        {% include 'admin/writetest.twig' %}
+        {% include 'admin/write.twig' %}
     {% elseif selectedTab == 'comments' %}
-        {% include 'admin/commentstest.twig' %}
+        {% include 'admin/comments.twig' %}
     {% elseif selectedTab == 'settings' %}
-        {% include 'admin/settingstest.twig' %}
+        {% include 'admin/settings.twig' %}
     {% endif %}
 </div>
 
