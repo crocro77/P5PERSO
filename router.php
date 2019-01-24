@@ -61,7 +61,6 @@ if (isset($_GET['p'])) {
 
 switch ($p) {
 	case "home":
-		$pageTitle .= ' - Bienvenue';
 		$controller = new FrontController();
 		$content = $controller->executeHome();
 		break;
@@ -70,57 +69,46 @@ switch ($p) {
 		$content = $controller->executeSingleSheet();
 		break;
 	case "mentions":
-		$pageTitle .= ' - Mentions légales';
 		$controller = new FrontController();
 		$content = $controller->executeMentions();
 		break;
 	case "about":
-		$pageTitle .= ' - À propos';
 		$controller = new AboutController();
 		$content = $controller->executeAbout();
 		break;
 	case "contact":
-		$pageTitle .= ' - Contact';
 		$controller = new ContactController();
 		$content = $controller->executeContactForm();
 		break;
 	case "chat":
-		$pageTitle .= ' - Chat';
 		$controller = new ChatController();
 		$content = $controller->executeChat();
 		break;
 	case "quiz":
-		$pageTitle .= ' - Quiz';
 		$controller = new QuizController();
 		$content = $controller->executeQuiz();
 		break;
 	case "score":
-		$pageTitle .= ' - Score du Quiz';
 		$controller = new QuizController();
 		$content = $controller->executeScoreQuiz();
 		break;
 	case "user":
-		$pageTitle .= ' - Espace Membres';
 		$controller = new UsersController();
 		$content = $controller->executeUsersSpace();
 		break;
 	case "connection":
-		$pageTitle .= ' - Connexion à l\'Espace Membres';
 		$controller = new UsersController();
 		$content = $controller->executeUserLogin();
 		break;
 	case "register":
-		$pageTitle .= ' - Inscription à l\'Espace Membres';
 		$controller = new UsersController();
 		$content = $controller->executeNewUser();
 		break;
 	case "admin":
-		$pageTitle .= ' - Tableau de bord';
 		$controller = new AdminController();
 		$content = $controller->executeAdminDashboard();
 		break;
 	case "member":
-		$pageTitle .= ' - Tableau de bord';
 		$controller = new UsersController();
 		$content = $controller->executeUserDashboard();
 		break;
@@ -137,7 +125,6 @@ switch ($p) {
 		$content = $updateChapter->executeUpdateSheet();
 		break;
 	case "login":
-		$pageTitle .= ' - Connexion';
 		$controller = new AuthentificationController();
 		$content = $controller->executeLogin();
 		break;
