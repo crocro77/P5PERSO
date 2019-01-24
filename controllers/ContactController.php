@@ -1,7 +1,5 @@
 <?php
 
-// require_once('includes/template-loader.php');
-
 class ContactController extends Controller
 {
     public function executeContactForm()

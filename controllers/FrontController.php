@@ -2,8 +2,6 @@
 
 // namespace App;
 
-// require_once('includes/template-loader.php');
-
 class FrontController extends Controller
 {
 	public function executeHome()
@@ -58,7 +56,6 @@ class FrontController extends Controller
 	}
 
 	public function executeMentions() {
-		// return load_template('front/mentions.php', array());
 		echo $this->twig->render('front/mentions.twig');
 	}
 }

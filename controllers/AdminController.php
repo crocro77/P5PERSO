@@ -1,7 +1,5 @@
 <?php
 
-// require_once('includes/template-loader.php');
-
 class AdminController extends Controller
 {
 	public function __construct()
@@ -21,26 +19,6 @@ class AdminController extends Controller
 			$selectedTab = $_GET['tab'];
 		}
 
-		// // Nombre de fiche voulu par page.
-		// $sheetsPerPage = 5;
-		// // On compte le nombre total de fiche présents dans la bdd.
-		// $sheetManager = new Datasheet();
-		// $numberOfSheets = $sheetManager->count();
-		// // Nombre de pages.
-		// $numberOfPages = ceil($numberOfSheets / $sheetsPerPage);
-		// $currentPage = 1;
-
-		// if (isset($_GET['tabpage']) && !empty($_GET['tabpage'])) {
-		// 	$currentPage = intval($_GET['tabpage']);
-		// 	if ($currentPage > $numberOfPages) {
-		// 		$currentPage = $numberOfPages;
-		// 	}
-		// } else {
-		// 	$currentPage = 1;
-		// }
-		
-		// $firstSheet = ($currentPage - 1) * $sheetsPerPage;
-		// $listOfSheets = $sheetManager->getList($firstSheet, $sheetsPerPage);
 		$aboutManager = new About();
         $aboutDescription = $aboutManager->getAboutDescription();
 		$commentManager = new Comment();

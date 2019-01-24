@@ -12,15 +12,6 @@ class About extends ObjectModel {
 			$this->hydrate($value);
 		}
 	}
-
-	// public function hydrate($data) {
-	// 	foreach($data as $key => $value) {
-	// 		$method = 'set'.ucfirst($key);
-	// 		if(method_exists([$this, $method])) {
-	// 			$this->$method($value);
-	// 		}
-	// 	}
-    // }
     
     /**
 	 * Permet d'ajouter un objet About (description) en base de données.

@@ -1,7 +1,5 @@
 <?php
 
-// require_once('includes/template-loader.php');
-
 class AboutController extends Controller
 {
     public function executeAbout()

@@ -1,7 +1,5 @@
 <?php
 
-// require_once('includes/template-loader.php');
-
 class UsersController extends Controller
 {
     public function executeUsersSpace()
@@ -10,7 +8,6 @@ class UsersController extends Controller
 			header("Location:index.php?p=member&tab=dashboard");
 		}
 
-		// return load_template('front/users.php', array());
 		echo $this->twig->render('front/users.twig');
     }
     
@@ -30,7 +27,6 @@ class UsersController extends Controller
 			
         }
 		
-		// return load_template('front/register.php', array());
 		echo $this->twig->render('front/register.twig');
     }
 
@@ -66,7 +62,6 @@ class UsersController extends Controller
 			}
 		}
 
-		// return load_template('front/userlogin.php', array());
 		echo $this->twig->render('front/userlogin.twig');
 	}
 
@@ -141,7 +136,6 @@ class UsersController extends Controller
 	{
 		$userManager = new Users();
 		$userManager->deleteUser();
-		// session_destroy();
 		header("Location:index.php?p=user");
 	}
 }

@@ -21,16 +21,6 @@ class Comment extends ObjectModel
 		}
 	}
 
-	// public function hydrate($data)
-	// {
-	// 	foreach($data as $key => $value) {
-	// 		$method = 'set'.ucfirst($key);
-	// 		if(method_exists([$this, $method])) {
-	// 			$this->$method($value);
-	// 		}
-	// 	}
-	// }
-
 	/**
 	 * Obtient les commentaires d'un chapitre spécifique
 	 * @param id $chapterId L'id du chapitre
