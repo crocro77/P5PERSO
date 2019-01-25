@@ -8,6 +8,10 @@ class UsersController extends Controller
 			header("Location:index.php?p=member&tab=dashboard");
 		}
 
+		if(isset($_SESSION['username']) AND $_SESSION['username'] == 'ntonyyy') {
+			header("Location:index.php?p=admin&tab=dashboard");
+		}
+
 		echo $this->twig->render('front/users.twig');
     }
     
@@ -129,7 +133,7 @@ class UsersController extends Controller
 		}
 		
 		// return load_template('user/user.php', array('selectedTab' => 'write'));
-		echo $this->twig->render('user/usertest.twig', ['selectedTab' => 'write']);
+		echo $this->twig->render('user/user.twig', ['selectedTab' => 'memberwrite']);
 	}
 
 	public function executeDeleteUser()

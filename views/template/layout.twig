@@ -22,7 +22,7 @@
                 <ul class="right hide-on-med-and-down">
                     <li><a title="Chat" href="index.php?p=chat"><i class="material-icons">chat_bubble</i></a></li>
                     <li><a title="Quiz" href="index.php?p=quiz"><i class="material-icons">gamepad</i></a></li>
-                    <li><a title="Espace Membres" href="index.php?p=user"><i class="material-icons">portrait</i></a></li>
+                    <li><a title="{% if _session.username == 'ntonyyy' %}Administration{% else %}Espace Membres{% endif %}" href="index.php?p=user"><i class="material-icons">portrait</i></a></li>
                     <li><a title="A propos" href="index.php?p=about"><i class="material-icons">info</i></a></li>
                     <li><a title="Contact" href="index.php?p=contact"><i class="material-icons">mail_outline</i></a></li>
                 </ul>
