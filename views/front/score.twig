@@ -18,7 +18,7 @@
             {% set answer7 = _post['answerSeven'] %}
             {% set answer8 = _post['answerEight'] %}
             {% set answer9 = _post['answerNine'] %}
-            {% set answer110 = _post['answerTen'] %}
+            {% set answer10 = _post['answerTen'] %}
             {% set score = 0 %}
 
             {% if answer1 == "A" %}
@@ -51,7 +51,12 @@
              {% if answer10 == "C" %}
                 {% set score = score + 1 %}
             {% endif %}
-                
+            
+            {% if _session.username %}
+                <p>{{_session.username }}</p>
+            {% else %}
+                <p>Cher visiteur :</p>
+            {% endif %}
             <p id='score-result' class='center'>Votre score est de<br> {{ score }}/10</p>
 
                 {% if score > 0 and score < 5 %}
@@ -61,7 +66,7 @@
                 {% elseif score == 10 %}
                     <p class='center'>Waouh ! Parfait !</p>
                 {% else %}
-                    <p class='center'>Aïe Aïe Aïe</p>s
+                    <p class='center'>Aïe Aïe Aïe</p>
                 {% endif %}
                 
             
