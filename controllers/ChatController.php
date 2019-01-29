@@ -27,7 +27,8 @@ class ChatController extends Controller
 
 	public function executeUpdateChat()
 	{
-		$var = ['string' => 0, 'tomate' => 'bleue'];
+		$chatMessage = new Chat();
+		$var = ['pseudo' => $chatMessage->setPseudo($_POST['pseudo']), 'message' => $chatMessage->setMessage($_POST['message'])];
 		echo json_encode($var);
 	}
 }
