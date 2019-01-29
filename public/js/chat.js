@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	function refreshChat() {
 		$.ajax({
-			url: "?p=chat",
+			url: "?p=updatechat",
 			success: function (data) {
                 let msg = JSON.parse(data);
 				$('#chatWindow').append(msg.pseudo);

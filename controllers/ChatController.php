@@ -2,6 +2,14 @@
 
 class ChatController extends Controller
 {
+	public function __construct()
+	{
+		if(!isset($_SESSION['username'])) {
+			header('Location: index.php?p=user');
+			exit();
+		}
+	}
+
 	public function executeChat()
 	{
 		$chatManager = new Chat();

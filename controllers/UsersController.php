@@ -71,6 +71,11 @@ class UsersController extends Controller
 
 	public function executeUserDashboard()
 	{
+		if(!isset($_SESSION['username'])) {
+			header('Location: index.php?p=user');
+			exit();
+		}
+
 		$selectedTab = 'dashboard';
 
 		if (isset($_GET['tab'])) {
@@ -86,6 +91,11 @@ class UsersController extends Controller
 
 	public function executeMemberCreateSheet()
     {
+		if(!isset($_SESSION['username'])) {
+			header('Location: index.php?p=user');
+			exit();
+		}
+		
 		if(isset($_POST['title']) && isset($_POST['author']) && isset($_POST['content']) && isset($_POST['developer']) && isset($_POST['publisher']) && isset($_POST['release_date']) && isset($_POST['genre'])){
 			$errors = '';
 			if (empty($_POST['title'])) {
