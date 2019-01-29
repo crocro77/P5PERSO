@@ -14,9 +14,13 @@ function autoload($class)
 		require $file;
 	} elseif (file_exists($file = 'models/' . $class . '.php')) {
 		require $file;
+	} elseif (file_exists($file = 'includes/' . $class . '.php')) {
+		require $file;
+	} elseif (file_exists($file = $class . '.php')) {
+		require $file;
 	}
 } 
 
 spl_autoload_register('autoload');
 
-require 'router.php';
+require 'routeur.php';

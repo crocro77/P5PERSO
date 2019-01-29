@@ -22,9 +22,10 @@ class FrontController extends Controller
 			$sheetUnique = $sheetManager->getUnique($_GET['id']);
 			$commentManager = new Comment();
 			$listOfComments = $commentManager->getSheetComments($_GET['id']);
+			$signaledComments = $commentManager->getSignaledComments();
 	
 			// return load_template('front/single.php', array('sheetUnique' => $sheetUnique, 'listOfComments' => $listOfComments));
-			echo $this->twig->render('front/single.twig', ['sheetUnique' => Datasheet::getUnique($_GET['id']), 'listOfComments' => $listOfComments, 'comment' => Comment::getSheetComments($_GET['id']), ]);
+			echo $this->twig->render('front/single.twig', ['sheetUnique' => Datasheet::getUnique($_GET['id']), 'listOfComments' => $listOfComments, 'comment' => Comment::getSheetComments($_GET['id']), 'signaledComments' => $signaledComments ]);
 		}
     }
 

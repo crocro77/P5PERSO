@@ -9,9 +9,9 @@
     
     <div class="row" id="chatWindow">
         {% if not listOfChatMessages %}
-            <div class="alert alert-danger">';
+            <div class="alert alert-danger">
                 <p>Aucun message n'a été encore publié pour le moment dans le chat. Patientez un peu ou créez une nouvelle discussion !</p>
-            </div>';
+            </div>
         {% else %}
             {% for message in chat %}
                 <div>

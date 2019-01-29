@@ -24,4 +24,10 @@ class ChatController extends Controller
             $chatMessage->addChatMessage();
         }
 	}
+
+	public function executeUpdateChat()
+	{
+		$var = ['string' => 0, 'tomate' => 'bleue'];
+		echo json_encode($var);
+	}
 }
