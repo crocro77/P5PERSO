@@ -67,26 +67,26 @@ class Datasheet extends ObjectModel
 	 * @param int $sheetsPerPage Le nombre de fiches par page
 	 * @return Sheet objects La liste
 	 */
-	public static function getList($firstSheet = -1, $sheetsPerPage = -1)
-	{
-		$sql = 'SELECT * FROM datasheet ORDER BY title ASC';
+	// public static function getList($firstSheet = -1, $sheetsPerPage = -1)
+	// {
+	// 	$sql = 'SELECT * FROM datasheet ORDER BY title ASC';
 		
-		// Vérification de la validité des données reçues.
-		if($firstSheet != -1 OR $sheetsPerPage != -1)
-		{
-			$sql .= ' LIMIT ' . (int) $sheetsPerPage . ' OFFSET ' . (int) $firstSheet;
-		}
-		$db = Database::getDBConnection();
-		$request = $db->query($sql);
-		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Datasheet');
-		$listOfSheets = $request->fetchAll();
-		foreach($listOfSheets as $sheet)
-		{
-			$sheet->setDate(new DateTime($sheet->getDate()));
-		}
-		$request->closeCursor();
-		return $listOfSheets;
-	}
+	// 	// Vérification de la validité des données reçues.
+	// 	if($firstSheet != -1 OR $sheetsPerPage != -1)
+	// 	{
+	// 		$sql .= ' LIMIT ' . (int) $sheetsPerPage . ' OFFSET ' . (int) $firstSheet;
+	// 	}
+	// 	$db = Database::getDBConnection();
+	// 	$request = $db->query($sql);
+	// 	$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Datasheet');
+	// 	$listOfSheets = $request->fetchAll();
+	// 	foreach($listOfSheets as $sheet)
+	// 	{
+	// 		$sheet->setDate(new DateTime($sheet->getDate()));
+	// 	}
+	// 	$request->closeCursor();
+	// 	return $listOfSheets;
+	// }
 
 	/**
 	 * Obtient un chapitre unique (pour la vue Single)

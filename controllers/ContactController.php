@@ -1,10 +1,12 @@
 <?php
 
+//require_once('includes/template-loader.php');
+
 class ContactController extends Controller
 {
     public function executeContactForm()
     {
-        // return load_template('front/contact.php', array());
+        //return load_template('front/contact.php', array());
         echo $this->twig->render('front/contact.twig');
     }
 

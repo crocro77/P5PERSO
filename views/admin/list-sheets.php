@@ -1,23 +1,20 @@
 <div id="list" class="grey lighten-3">
 <h2 id="to-the-top" class="center">Liste des fiches</h2>
 <hr/>
-<ul class="pagination center">
-	<?php
-    for ($i = 1; $i <= $numberOfPages; $i++) {
-        if ($i == $currentPage) {
-            echo "<li class='page-item'><a class='page-link'>$i</a></li>";
-        } else {
-            echo '<li class="waves-effect"><a class="page-link" href="?p=admin&tab=list&tabpage=' . $i . '">' . $i . '</a></li>';
-        }
-    }
-    ?>	
+<ul id="list-pagination" class="pagination center">
+    <?php  
+        $character = range('A', 'Z');
+        foreach($character as $alphabet) {
+			echo '<li class="waves-effect"><a class="page-link" href="index.php?p=admin&tab=list&char='.$alphabet.'">'.$alphabet.'</a></li>'; 
+		}
+    ?>  
 </ul>
 <hr/>
 <?php
-if(empty($listOfsheets)) {
-	echo '<p>Vous n\'avez pas encore publié de fiche. <a href="index.php?p=admin&amp;menu=write">Commencez ici</a></p>';
+if(empty($listOfSheets)) {
+	echo '<p>Vous n\'avez pas encore publié de fiche. <a href="index.php?p=admin&amp;p=write">Commencez ici</a></p>';
 } else {
-    foreach($listOfsheets as $sheet){
+    foreach($listOfSheets as $sheet){
         ?>
         <div class="row">
             <div class="col s12">

@@ -4,23 +4,19 @@ session_start();
 
 require 'vendor/autoload.php';
 
-// require 'models/Autoloader.php';
-//\App\Autoloader::register();
-
-function autoload($class)
+function autoload($classname)
 {
-	$class = str_replace('App\\', '', $class);
-	if (file_exists($file = 'controllers/' . $class . '.php')) {
+	if (file_exists($file = 'controllers/' . $classname . '.php')) {
 		require $file;
-	} elseif (file_exists($file = 'models/' . $class . '.php')) {
+	} elseif (file_exists($file = 'models/' . $classname . '.php')) {
 		require $file;
-	} elseif (file_exists($file = 'includes/' . $class . '.php')) {
-		require $file;
-	} elseif (file_exists($file = $class . '.php')) {
+	} elseif (file_exists($file = 'includes/' . $classname . '.php')) {
 		require $file;
 	}
-} 
+}
 
 spl_autoload_register('autoload');
 
+// $pageTitle = "World of Game Gear";
 require 'routeur.php';
+// require 'views/template/default.php';

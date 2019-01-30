@@ -1,8 +1,6 @@
 <?php
 
-// namespace App;
-
-// include 'controllers/Controller.php';
+//require_once('includes/template-loader.php');
 
 class FrontController extends Controller
 {
@@ -11,7 +9,7 @@ class FrontController extends Controller
 		$sheetManager = new Datasheet();
 		$listOfSheets = $sheetManager->getListAlpha();
 
-		// return load_template('front/home.php', array('listOfSheets' => $listOfSheets));
+		//return load_template('front/home.php', array('listOfSheets' => $listOfSheets));
 		echo $this->twig->render('front/home.twig', ['datasheet' => Datasheet::getListAlpha(), ]);
 	}
 	
@@ -24,7 +22,7 @@ class FrontController extends Controller
 			$listOfComments = $commentManager->getSheetComments($_GET['id']);
 			$signaledComments = $commentManager->getSignaledComments();
 	
-			// return load_template('front/single.php', array('sheetUnique' => $sheetUnique, 'listOfComments' => $listOfComments));
+			//return load_template('front/single.php', array('sheetUnique' => $sheetUnique, 'listOfComments' => $listOfComments));
 			echo $this->twig->render('front/single.twig', ['sheetUnique' => Datasheet::getUnique($_GET['id']), 'listOfComments' => $listOfComments, 'comment' => Comment::getSheetComments($_GET['id']), 'signaledComments' => $signaledComments ]);
 		}
     }
@@ -59,6 +57,7 @@ class FrontController extends Controller
 	}
 
 	public function executeMentions() {
+		//return load_template('front/mentions.php', array());
 		echo $this->twig->render('front/mentions.twig');
 	}
 }

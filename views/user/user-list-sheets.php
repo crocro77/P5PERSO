@@ -1,6 +1,14 @@
 <div id="list" class="grey lighten-3">
 <h2 id="to-the-top">Liste des fiches</h2>
 <hr/>
+<ul id="list-pagination" class="pagination center">
+    <?php  
+        $character = range('A', 'Z');
+        foreach($character as $alphabet) {
+			echo '<li class="waves-effect"><a class="page-link" href="index.php?p=member&tab=list&char='.$alphabet.'">'.$alphabet.'</a></li>'; 
+		}
+    ?>  
+</ul>
 <?php
     foreach($listOfsheets as $sheet){
         ?>

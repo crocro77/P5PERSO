@@ -1,10 +1,12 @@
 <?php
 
+//require_once('includes/template-loader.php');
+
 class AdminController extends Controller
 {
 	public function __construct()
 	{
-		parent::__construct();
+		parent::__construct();	
 		if(!isset($_SESSION['username']) OR isset($_SESSION['username']) AND $_SESSION['username'] !== 'ntonyyy') {
 			header('Location: index.php?p=login');
 			exit();
@@ -19,13 +21,15 @@ class AdminController extends Controller
 			$selectedTab = $_GET['tab'];
 		}
 
+		$sheetManager = new Datasheet();
+		$listOfSheets = $sheetManager->getListAlpha();
 		$aboutManager = new About();
         $aboutDescription = $aboutManager->getAboutDescription();
 		$commentManager = new Comment();
         $listOfComments = $commentManager->getAllComments();
 		$signaledComments = $commentManager->getSignaledComments();
 
-		// return load_template('admin/admin.php', array('listOfSheets' => $listOfSheets, 'numberOfPages' => $numberOfPages, 'selectedTab' => $selectedTab, 'signaledComments' => $signaledComments, 'listOfComments' => $listOfComments, 'currentPage' => $currentPage));
+		//return load_template('admin/admin.php', array('listOfSheets' => $listOfSheets, 'selectedTab' => $selectedTab, 'signaledComments' => $signaledComments, 'listOfComments' => $listOfComments));
 		echo $this->twig->render('admin/admin.twig', ['datasheet' => Datasheet::getListAlpha(),'comment' => Comment::getAllComments(), 'listOfComments' => $listOfComments, 'selectedTab' => $selectedTab, 'signaledComments' => $signaledComments, 'aboutDescription' => About::getAboutDescription(), ]);
 	}
 
@@ -77,7 +81,7 @@ class AdminController extends Controller
 			}	
 		}
 		
-		// return load_template('admin/admin.php', array('selectedTab' => 'write'));
+		//return load_template('admin/admin.php', array('selectedTab' => 'write'));
 		echo $this->twig->render('admin/admin.twig', ['selectedTab' => 'write']);
 	}
 
@@ -112,7 +116,7 @@ class AdminController extends Controller
 
 				$selectedTab = 'write';
 				$action = 'edit';
-				// return load_template('admin/admin.php', array('selectedTab' => $selectedTab, 'sheet' => $sheet, 'action' => $action));
+				//return load_template('admin/admin.php', array('selectedTab' => $selectedTab, 'sheet' => $sheet, 'action' => $action));
 				echo $this->twig->render('admin/admin.twig', ['selectedTab' => $selectedTab, 'sheet' => $sheet, 'action' => $action]);
 			} else {
 				header("Location:index.php?p=admin&tab=list");

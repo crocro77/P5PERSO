@@ -6,7 +6,7 @@
 		<div class="row">
 			<div class="center">
             <?php
-                require_once('includes/dashboard-tables.php');
+                require_once('includes/DashboardTables.php');
                 $tables = [
                     "Fiche(s)"              =>  "datasheet",
                     "Commentaire(s)"        =>  "comments",
