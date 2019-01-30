@@ -6,6 +6,7 @@ class ChatController extends Controller
 {
 	public function __construct()
 	{
+		parent::__construct();
 		if(!isset($_SESSION['username'])) {
 			header('Location: index.php?p=user');
 			exit();
@@ -38,6 +39,7 @@ class ChatController extends Controller
 	public function executeUpdateChat()
 	{
 		$chatMessage = new Chat();
+		$listOfChatMessages = $chatMessage->getChatMessages();
 		$var = ['pseudo' => $chatMessage->setPseudo($_POST['pseudo']), 'message' => $chatMessage->setMessage($_POST['message'])];
 		echo json_encode($var);
 	}
