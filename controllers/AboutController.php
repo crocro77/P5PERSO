@@ -30,7 +30,7 @@ class AboutController extends Controller
 			}	
         }
         //return load_template('front/about.php', array('aboutDescription' => $aboutDescription));
-        echo $this->twig->render('front/about.twig');
+        echo $this->twig->render('admin/admin.twig');
     }
 
     public function executeUpdateAbout()
@@ -46,7 +46,7 @@ class AboutController extends Controller
             }
         }
         //return load_template('front/about.php', array('aboutDescription' => $aboutDescription));
-        echo $this->twig->render('front/about.twig');
+        echo $this->twig->render('admin/admin.twig');
     }
 
     public function executeDeleteAbout()

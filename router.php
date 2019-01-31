@@ -12,8 +12,10 @@ class Router {
 
     /* Execute the specified route defined */
     function execute() {
-        $path = $_SERVER['REQUEST_URI'];
-        var_dump($_SERVER['REQUEST_URI']);
+        $url = 'http://localhost/';
+        $path = parse_url($url.$_SERVER['REQUEST_URI']);
+        // $path = $_SERVER['REQUEST_URI'];
+        var_dump($path);
 
  
         /* Check if the given route is defined,
@@ -76,16 +78,131 @@ $router->execute();
 
 
 
-// $url = '';
-// if(isset($_GET['url'])) {
-//     $url = $_GET['url'];
+// class Router
+// {
+// 	/**
+// 	* @var array $_listUri List of URI's to match against
+// 	*/
+// 	private $_listUri = array();
+// 	/**
+// 	* @var array $_listCall List of closures to call
+// 	*/
+// 	private $_listCall = array();
+// 	/**
+// 	* @var string $_trim Used class-wide items to clean strings
+// 	*/
+// 	private $_trim = '/\^$';
+// 	/**
+// 	* add - Adds a URI and Function to the two lists
+// 	*
+// 	* @param string $uri A path such as about/system
+// 	* @param object $function An anonymous function
+// 	*/
+// 	public function add($uri, $function)
+// 	{
+//         $uri = trim($uri, $this->_trim);
+// 		$this->_listUri[] = $uri;
+// 		$this->_listCall[] = $function;
+// 	}
+// 	/**
+// 	* listen
+//     * @desc Looks for a match for the URI and runs the related function
+// 	*/
+// 	public function listen()
+// 	{
+// 		$uri = isset($_REQUEST['uri']) ? $_REQUEST['uri'] : '/home';
+//         $uri = trim($uri, $this->_trim);
+//         var_dump($uri);
+// 		$replacementValues = array();
+// 		/**
+// 		* List through the stored URI's
+// 		*/
+// 		foreach ($this->_listUri as $listKey => $listUri)
+// 		{
+// 			/**
+// 			* See if there is a match
+// 			*/
+// 			if (preg_match("#^$listUri$#", $uri))
+// 			{
+// 				/**
+// 				* Replace the values
+// 				*/
+// 				$realUri = explode('/', $uri);
+// 				$fakeUri = explode('/', $listUri);
+// 				/**
+// 				* Gather the .+ values with the real values in the URI
+// 				*/
+// 				foreach ($fakeUri as $key => $value)
+// 				{
+// 					if ($value == '.+')
+// 					{
+// 						$replacementValues[] = $realUri[$key];
+// 					}
+// 				}
+// 				/**
+// 				* Pass an array for arguments
+// 				*/
+// 				call_user_func_array($this->_listCall[$listKey], $replacementValues);
+// 			}
+// 		} // End of Loop
+// 	} // end of Listen
 // }
 
-// if($url == '') {
-//     require 'views/front/home.twig';
-// } elseif(preg_match('#article-([0-9]+)#', $url, $params)) {
-//     $idArticle = $params[1];
-//     require 'article.twig';
-// } else {
-//     require 'error.twig';
-// }
+// $route = new Router();
+
+// $route->add('/home', function() {
+// 	$controller = new FrontController();
+//     $controller->executeHome();
+// });
+// $route->add('/single', function() {
+// 	 $controller = new FrontController();
+//     $controller->executeSingleSheet();
+// });
+// $route->add('/contact', function() {
+// 	$controller = new ContactController();
+//     $controller->executeContactForm();
+// });
+// $route->add('/about', function() {
+// 	$controller = new AboutController();
+// 	$content = $controller->executeAbout();
+// });
+// $route->add('/mentions', function() {
+// 	$controller = new FrontController();
+// 	$content = $controller->executeMentions();
+// });
+// $route->add('/quiz', function() {
+//     $controller = new QuizController();
+//     $content = $controller->executeQuiz();
+// });
+// $route->add('/score', function() {
+//     $controller = new QuizController();
+// 	$content = $controller->executeScoreQuiz();
+// });
+// $route->add('/user', function() {
+// 	$controller = new UsersController();
+// 	$content = $controller->executeUsersSpace();
+// });
+// $route->add('/register', function() {
+// 	$controller = new UsersController();
+// 	$content = $controller->executeNewUser();
+// });
+// $route->add('/connection', function() {
+// 	$controller = new UsersController();
+// 	$content = $controller->executeUserLogin();
+// });
+// $route->add('/chat', function() {
+// 	$controller = new ChatController();
+// 	$content = $controller->executeChat();
+// });
+// $route->add('/login', function() {
+// 	$controller = new AuthentificationController();
+// 	$content = $controller->executeLogin();
+// });
+// $route->add('/this/is/the/.+/story/of/.+', function($first, $second) {
+// 	echo "This is the $first story of $second";
+// });
+// $route->add('/admin', function() {
+//     $controller = new AdminController();
+// 	$content = $controller->executeAdminDashboard();
+// });
+// $route->listen();
