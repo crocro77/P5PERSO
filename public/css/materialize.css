@@ -9639,6 +9639,7 @@
     border : 3px solid rgb(235, 235, 148);
     width: 750px;
     height: 420px;
+    overflow: scroll;
   }
 
   #chatPseudo {

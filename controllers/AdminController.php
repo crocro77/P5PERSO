@@ -1,7 +1,5 @@
 <?php
 
-//require_once('includes/template-loader.php');
-
 class AdminController extends Controller
 {
 	public function __construct()
@@ -29,7 +27,6 @@ class AdminController extends Controller
         $listOfComments = $commentManager->getAllComments();
 		$signaledComments = $commentManager->getSignaledComments();
 
-		//return load_template('admin/admin.php', array('listOfSheets' => $listOfSheets, 'selectedTab' => $selectedTab, 'signaledComments' => $signaledComments, 'listOfComments' => $listOfComments));
 		echo $this->twig->render('admin/admin.twig', ['datasheet' => Datasheet::getListAlpha(),'comment' => Comment::getAllComments(), 'listOfComments' => $listOfComments, 'selectedTab' => $selectedTab, 'signaledComments' => $signaledComments, 'aboutDescription' => About::getAboutDescription(), ]);
 	}
 
@@ -81,7 +78,6 @@ class AdminController extends Controller
 			}	
 		}
 		
-		//return load_template('admin/admin.php', array('selectedTab' => 'write'));
 		echo $this->twig->render('admin/admin.twig', ['selectedTab' => 'write']);
 	}
 
@@ -116,7 +112,7 @@ class AdminController extends Controller
 
 				$selectedTab = 'write';
 				$action = 'edit';
-				//return load_template('admin/admin.php', array('selectedTab' => $selectedTab, 'sheet' => $sheet, 'action' => $action));
+
 				echo $this->twig->render('admin/admin.twig', ['selectedTab' => $selectedTab, 'sheet' => $sheet, 'action' => $action]);
 			} else {
 				header("Location:index.php?p=admin&tab=list");

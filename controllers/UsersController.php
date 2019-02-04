@@ -14,7 +14,6 @@ class UsersController extends Controller
 			header("Location:index.php?p=admin&tab=dashboard");
 		}
 
-		//return load_template('front/users.php', array());
 		echo $this->twig->render('front/users.twig');
     }
     
@@ -33,7 +32,6 @@ class UsersController extends Controller
 			header("Location:index.php?p=connection");
 			
         }
-		//return load_template('front/register.php', array());
 		echo $this->twig->render('front/register.twig');
     }
 
@@ -68,7 +66,6 @@ class UsersController extends Controller
 				header("Location:index.php?p=member&tab=dashboard");
 			}
 		}
-		//return load_template('front/userlogin.php', array());
 		echo $this->twig->render('front/userlogin.twig');
 	}
 
@@ -88,7 +85,6 @@ class UsersController extends Controller
 		$sheetManager = new Datasheet();
 		$listOfsheets = $sheetManager->getListAlpha();
 
-		//return load_template('user/user.php', array('listOfsheets' => $listOfsheets,'selectedTab' => $selectedTab));
 		echo $this->twig->render('user/user.twig', ['datasheet' => Datasheet::getListAlpha(), 'listOfsheets' => $listOfsheets,'selectedTab' => $selectedTab]);
 	}
 
@@ -145,7 +141,6 @@ class UsersController extends Controller
 			}	
 		}
 		
-		//return load_template('user/user.php', array('selectedTab' => 'write'));
 		echo $this->twig->render('user/user.twig', ['selectedTab' => 'memberwrite']);
 	}
 

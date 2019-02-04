@@ -1,7 +1,5 @@
 <?php
 
-// namespace App;
-
 class Comment extends ObjectModel
 {	
 	private $id;

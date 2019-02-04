@@ -2,6 +2,7 @@
 
 class Router {
 
+	const DIRECTORY = 'PROJET5PERSO';
     /* Routes array where we store the various routes defined. */
     private $routes;
 
@@ -13,11 +14,11 @@ class Router {
     /* Execute the specified route defined */
     function execute() {
         $url = 'http://localhost/';
-        $path = parse_url($url.$_SERVER['REQUEST_URI']);
-        // $path = $_SERVER['REQUEST_URI'];
-        var_dump($path);
-
- 
+        $urldata = parse_url($url.$_SERVER['REQUEST_URI']);
+		$path = $urldata['path'];
+		$path =	trim ($path, '/');
+		$path = preg_replace('/'.self::DIRECTORY.'/','',$path);
+		
         /* Check if the given route is defined,
          * or execute the default '/' home route.
          */
@@ -40,16 +41,23 @@ $router->add_route('/home', function(){
 });
 
 /* Add another route as a closure */
-$router->add_route('/game', function(){
+$router->add_route('/game/sheet', function(){
     $controller = new FrontController();
     $controller->executeSingleSheet();
     // echo 'Greetings, my fellow men.';
 });
 
 /* Add another route as a closure */
-$router->add_route('/contact', function(){
-    $controller = new ContactController();
-    $controller->executeContactForm();
+$router->add_route('/chat', function(){
+    $controller = new ChatController();
+    $controller->executeChat();
+    // echo 'Greetings, my fellow men.';
+});
+
+/* Add another route as a closure */
+$router->add_route('/chat/update', function(){
+    $controller = new ChatController();
+    $controller->executeUpdateChat();
     // echo 'Greetings, my fellow men.';
 });
 
@@ -93,23 +101,27 @@ $router->execute();
 // 	*/
 // 	private $_trim = '/\^$';
 // 	/**
-// 	* add - Adds a URI and Function to the two lists
+// 	* add_route - Adds a URI and Function to the two lists
 // 	*
 // 	* @param string $uri A path such as about/system
 // 	* @param object $function An anonymous function
 // 	*/
-// 	public function add($uri, $function)
+// 	public function add_Route($uri, $function)
 // 	{
 //         $uri = trim($uri, $this->_trim);
 // 		$this->_listUri[] = $uri;
 // 		$this->_listCall[] = $function;
 // 	}
 // 	/**
-// 	* listen
+// 	* execute
 //     * @desc Looks for a match for the URI and runs the related function
 // 	*/
-// 	public function listen()
+// 	public function execute()
 // 	{
+//         $url = 'http://localhost/'; 
+//         $path = parse_url($url.$_SERVER['REQUEST_URI']);
+//         // $path = $_SERVER['REQUEST_URI'];
+//         var_dump($path);
 // 		$uri = isset($_REQUEST['uri']) ? $_REQUEST['uri'] : '/home';
 //         $uri = trim($uri, $this->_trim);
 //         var_dump($uri);
@@ -150,59 +162,59 @@ $router->execute();
 
 // $route = new Router();
 
-// $route->add('/home', function() {
+// $route->add_route('/home', function() {
 // 	$controller = new FrontController();
 //     $controller->executeHome();
 // });
-// $route->add('/single', function() {
+// $route->add_route('/single', function() {
 // 	 $controller = new FrontController();
 //     $controller->executeSingleSheet();
 // });
-// $route->add('/contact', function() {
+// $route->add_route('/contact', function() {
 // 	$controller = new ContactController();
 //     $controller->executeContactForm();
 // });
-// $route->add('/about', function() {
+// $route->add_route('/about', function() {
 // 	$controller = new AboutController();
 // 	$content = $controller->executeAbout();
 // });
-// $route->add('/mentions', function() {
+// $route->add_route('/mentions', function() {
 // 	$controller = new FrontController();
 // 	$content = $controller->executeMentions();
 // });
-// $route->add('/quiz', function() {
+// $route->add_route('/quiz', function() {
 //     $controller = new QuizController();
 //     $content = $controller->executeQuiz();
 // });
-// $route->add('/score', function() {
+// $route->add_route('/score', function() {
 //     $controller = new QuizController();
 // 	$content = $controller->executeScoreQuiz();
 // });
-// $route->add('/user', function() {
+// $route->add_route('/user', function() {
 // 	$controller = new UsersController();
 // 	$content = $controller->executeUsersSpace();
 // });
-// $route->add('/register', function() {
+// $route->add_route('/register', function() {
 // 	$controller = new UsersController();
 // 	$content = $controller->executeNewUser();
 // });
-// $route->add('/connection', function() {
+// $route->add_route('/connection', function() {
 // 	$controller = new UsersController();
 // 	$content = $controller->executeUserLogin();
 // });
-// $route->add('/chat', function() {
+// $route->add_route('/chat', function() {
 // 	$controller = new ChatController();
 // 	$content = $controller->executeChat();
 // });
-// $route->add('/login', function() {
+// $route->add_route('/login', function() {
 // 	$controller = new AuthentificationController();
 // 	$content = $controller->executeLogin();
 // });
-// $route->add('/this/is/the/.+/story/of/.+', function($first, $second) {
-// 	echo "This is the $first story of $second";
-// });
-// $route->add('/admin', function() {
+// // $route->add('/this/is/the/.+/story/of/.+', function($first, $second) {
+// // 	echo "This is the $first story of $second";
+// // });
+// $route->add_route('/admin', function() {
 //     $controller = new AdminController();
 // 	$content = $controller->executeAdminDashboard();
 // });
-// $route->listen();
+// $route->execute();

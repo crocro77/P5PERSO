@@ -1,7 +1,5 @@
 <?php
 
-//require_once('includes/template-loader.php');
-
 class ChatController extends Controller
 {
 	public function __construct()
@@ -18,7 +16,6 @@ class ChatController extends Controller
 		$chatManager = new Chat();
 		$listOfChatMessages = $chatManager->getChatMessages();
 		
-		// return load_template('front/chat.php', array('listOfChatMessages' => $listOfChatMessages));
 		echo $this->twig->render('front/chat.twig', ['chat' => Chat::getChatMessages(), 'listOfChatMessages' => $listOfChatMessages ]);
 	}
 	
@@ -39,8 +36,7 @@ class ChatController extends Controller
 	public function executeUpdateChat()
 	{
 		$chatMessage = new Chat();
-		$listOfChatMessages = $chatMessage->getChatMessages();
-		$var = ['pseudo' => $chatMessage->setPseudo($_POST['pseudo']), 'message' => $chatMessage->setMessage($_POST['message'])];
-		echo json_encode($var);
+		$listOfNewMessages = $chatMessage->getNewMessages();
+		echo json_encode($listOfChatMessages);
 	}
 }

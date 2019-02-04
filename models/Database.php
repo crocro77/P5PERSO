@@ -1,7 +1,5 @@
 <?php
 
-// namespace App;
-
 abstract class Database
 {
     private static $db=null;

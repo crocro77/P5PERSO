@@ -46,6 +46,9 @@ class About extends ObjectModel {
 		return $res;
 	}
 
+	/**
+	 * Supprime la description
+	 */
 	public static function deleteDescription() {
         $db = Database::getDBConnection();
 		$res = $db->exec('TRUNCATE TABLE about');

@@ -2,17 +2,19 @@ $(document).ready(function () {
 	function refreshChat() {
 		$.ajax({
 			dataType: "Json",
-			url: "../views/front/chat.twig",
-			data: data,
+			url: "http://localhost/PROJET5PERSO/chat/update",
 			type: 'GET',
 			success: function (data) {
-				var array1 = ['pseudo', 'message'];
-				array1.forEach(function(data) {
-					let msg = JSON.parse(data);
-				},
-				$('#chatWindow').append(msg.pseudo),
-				$('#chatWindow').append(msg.message),
-			}
+				data.forEach(function(element) {
+					let msg = 
+					`<div>
+						<p id="chatLine">
+							<span id="chatPseudo">${element.pseudo}</span> <span id="chatMessage">${element.message}</span>
+						</p>
+					</div>`;
+					$('#chatWindow').append(msg)
+				})
+			},
 		});
 	}
 	setInterval(refreshChat, 5000)
