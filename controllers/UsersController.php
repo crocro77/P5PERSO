@@ -1,17 +1,15 @@
 <?php
 
-require_once('includes/template-loader.php');
-
 class UsersController extends Controller
 {
     public function executeUsersSpace()
     {
 		if(isset($_SESSION['username'])) {
-			header("Location:index.php?p=member&tab=dashboard");
+			header("Location:member");
 		}
 
 		if(isset($_SESSION['username']) AND $_SESSION['username'] == 'ntonyyy') {
-			header("Location:index.php?p=admin&tab=dashboard");
+			header("Location:admin");
 		}
 
 		echo $this->twig->render('front/users.twig');
@@ -29,7 +27,7 @@ class UsersController extends Controller
             }else{
                 Users::register($pseudo, $email, $pass);
 			}
-			header("Location:index.php?p=connection");
+			header("Location:connection");
 			
         }
 		echo $this->twig->render('front/register.twig');
@@ -63,7 +61,7 @@ class UsersController extends Controller
 				<?php
 			} else {
 				$_SESSION['username'] = $pseudo;
-				header("Location:index.php?p=member&tab=dashboard");
+				header("Location:member");
 			}
 		}
 		echo $this->twig->render('front/userlogin.twig');
@@ -72,7 +70,7 @@ class UsersController extends Controller
 	public function executeUserDashboard()
 	{
 		if(!isset($_SESSION['username'])) {
-			header('Location: index.php?p=user');
+			header('Location: user');
 			exit();
 		}
 
@@ -91,7 +89,7 @@ class UsersController extends Controller
 	public function executeMemberCreateSheet()
     {
 		if(!isset($_SESSION['username'])) {
-			header('Location: index.php?p=user');
+			header('Location: user');
 			exit();
 		}
 		
@@ -148,6 +146,6 @@ class UsersController extends Controller
 	{
 		$userManager = new Users();
 		$userManager->deleteUser();
-		header("Location:index.php?p=user");
+		header("Location:user");
 	}
 }

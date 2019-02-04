@@ -37,7 +37,7 @@ class FrontController extends Controller
 				$comment->setComment($_POST['comment']);
 				$commentManager = new Comment();
 				$commentManager->add($comment);
-				header('Location: index.php?p=single&id='.($_GET['id']).'#comments');
+				header('Location: game/sheet/'.($_GET['id']).'#comments');
 			}
 		}
     }
@@ -48,7 +48,7 @@ class FrontController extends Controller
 			$commentManager = new Comment();
 			$comment = $commentManager->getSpecificComment($_GET['commentId']);
 			$commentManager->signal($comment);
-			header('Location: index.php?p=single&id='.($_GET['id']).'#comments');
+			header('Location: game/sheet/'.($_GET['id']).'#comments');
 		}
 	}
 

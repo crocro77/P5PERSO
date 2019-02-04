@@ -38,7 +38,7 @@ class AboutController extends Controller
                 if(isset($_POST['description'])) {
                     $aboutUpdate->setDescription($_POST['description']);
                     $aboutUpdate->update($description, $id);
-                    header("Location:index.php?p=about");
+                    header("Location:about");
                 }
             }
         }
@@ -50,6 +50,6 @@ class AboutController extends Controller
     {
 		$aboutManager = new About();
 		$aboutManager->deleteDescription();
-		header("Location:index.php?p=admin&tab=settings");
+		header("Location:admin/setting.php?p=admin&tab=settings");
     }
 }

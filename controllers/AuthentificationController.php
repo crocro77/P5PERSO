@@ -30,7 +30,7 @@ class AuthentificationController extends Controller
 				<?php
 			} else {
 				$_SESSION['username'] = $username;
-				header("Location:index.php?p=admin");
+				header("Location:admin");
 			}
 		}
 
@@ -40,6 +40,6 @@ class AuthentificationController extends Controller
 	public function executeLogout()
 	{
 		session_destroy();
-		header('Location: index.php');
+		header('Location: home');
     }
 }
