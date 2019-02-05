@@ -29,14 +29,14 @@ class ChatController extends Controller
 				$chatMessage->setPseudo($_POST['pseudo']);
 			}
 			$chatMessage->setMessage($_POST['message']);
-            $chatMessage->addChatMessage();
+			$chatMessage->addChatMessage();
         }
 	}
 
 	public function executeUpdateChat()
 	{
 		$chatMessage = new Chat();
-		$listOfNewMessages = $chatMessage->getNewMessages();
+		$listOfNewMessages = $chatMessage->getNewMessages($id);
 		echo json_encode($listOfChatMessages);
 	}
 }

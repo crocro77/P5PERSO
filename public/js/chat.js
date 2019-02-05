@@ -1,11 +1,13 @@
 $(document).ready(function () {
+	var id = 0;
 	function refreshChat() {
 		$.ajax({
 			dataType: "Json",
-			url: "http://localhost/PROJET5PERSO/chat/update",
+			url: "http://localhost/PROJET5PERSO/chat/update?id="+id,
 			type: 'GET',
 			success: function (data) {
 				data.forEach(function(element) {
+					id = element.id;
 					let msg = 
 					`<div>
 						<p id="chatLine">

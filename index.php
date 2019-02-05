@@ -17,6 +17,4 @@ function autoload($classname)
 
 spl_autoload_register('autoload');
 
-// $pageTitle = "World of Game Gear";
 require 'Router.php';
-// require 'views/template/default.php';

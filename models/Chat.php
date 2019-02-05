@@ -19,7 +19,7 @@ class Chat extends ObjectModel
     public static function getChatMessages()
     {
         $db = Database::getDBConnection();
-        $request = $db->query('SELECT pseudo, message FROM chat ORDER BY id ASC');
+        $request = $db->query('SELECT pseudo, message, id FROM chat ORDER BY id ASC');
         $request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Chat');
         $listOfChatMessages = $request->fetchAll();
         return $listOfChatMessages;
@@ -28,7 +28,7 @@ class Chat extends ObjectModel
 	public static function getNewMessages($id)
 	{
 		$db = Database::getDBConnection();
-		$request = $db->query('SELECT pseudo, message FROM chat WHERE id > :id ORDER BY id ASC');
+		$request = $db->query('SELECT pseudo, message, id FROM chat WHERE id > :id ORDER BY id ASC');
 		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Chat');
 		$req->bindValue(':id', (int) $id);
         $listOfNewMessages = $request->fetchAll();
