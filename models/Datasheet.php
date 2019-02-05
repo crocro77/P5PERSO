@@ -28,8 +28,6 @@ class Datasheet extends ObjectModel
 
 	/**
 	 * Obtient la liste des fiches par ordre alphabétique.
-	 * @param int $firstSheet La première fiche
-	 * @param int $sheetsPerPage Le nombre de fiches par page
 	 * @return Sheet objects La liste
 	 */
 	public static function getListAlpha() 
@@ -58,9 +56,9 @@ class Datasheet extends ObjectModel
 	}
 
 	/**
-	 * Obtient un chapitre unique (pour la vue Single)
-	 * @param int $id L'id du chapitre
-	 * @return chapter l'objet chapitre
+	 * Obtient une fich unique (pour la vue Single)
+	 * @param int $id L'id de la fiche
+	 * @return sheet l'objet fiche
 	 */
 	public static function getUnique($id)
 	{
@@ -79,7 +77,7 @@ class Datasheet extends ObjectModel
 
 	/**
 	 * Ajoute une fiche dans la base de données.
-	 * @param chapter $chapter L'objet chapitre
+	 * @param sheet $sheet L'objet fiche
 	 */
 	public static function addSheet(Datasheet $sheet)
 	{
@@ -100,7 +98,7 @@ class Datasheet extends ObjectModel
 	}
 
 	/**
-	 * Met à jour les valeurs d'un chapitre.
+	 * Met à jour les valeurs d'une fiche.
 	 * @param string $title Le titre
 	 * @param string $author L'auteur
 	 * @param string $content Le contenu
@@ -134,7 +132,7 @@ class Datasheet extends ObjectModel
 	}
 	
 	/**
-	 * Supprime un chapitre de la bdd
+	 * Supprime une fiche de la bdd
 	 */
 	public static function deleteSheet()
 	{
@@ -143,7 +141,7 @@ class Datasheet extends ObjectModel
 	}
 
 		/**
-	 * Supprime tous les articles de la base de données. Remet l'id de base à 0.
+	 * Supprime toutes les fiches de la base de données. Remet l'id de base à 0.
 	 */
 	public static function deleteAll()
 	{

@@ -20,8 +20,8 @@ class Comment extends ObjectModel
 	}
 
 	/**
-	 * Obtient les commentaires d'un chapitre spécifique
-	 * @param id $chapterId L'id du chapitre
+	 * Obtient les commentaires d'une fiche spécifique
+	 * @param id $chapterId L'id de la fiche
 	 * @return Comment objet Les commentaires.
 	 */
 	public static function getSheetComments($post_id) {
@@ -64,7 +64,7 @@ class Comment extends ObjectModel
 	}
 
 	/**
-	 * Obtient tous les commentaires, triés par id du chapitre et date de publication.
+	 * Obtient tous les commentaires, triés par id de la fiche et date de publication.
 	 * @return Comment objet Les commentaires.
 	 */
 	public static function getAllComments() {

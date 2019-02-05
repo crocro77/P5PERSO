@@ -14,6 +14,6 @@ abstract class Controller
 		$this->twig->addGlobal('_session', $_SESSION);
 		$this->twig->addGlobal('_post', $_POST);
 		$this->twig->addGlobal('_get', $_GET);
-		$this->twig->addExtension(new FlashExtension());
+		$this->twig->addExtension(new FlashExtension);
 	}
 }

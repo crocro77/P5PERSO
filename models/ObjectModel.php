@@ -1,7 +1,5 @@
 <?php
 
-// namespace App;
-
 abstract class ObjectModel
 {
     // Attribut nécessaire à la connexion avec la base de données.
@@ -17,10 +15,6 @@ abstract class ObjectModel
         $this->db = Database::getDBConnection();
     }
 
-    /**
-	 * Compte le nombre de chapitres et de commentaires dans la base de données.
-	 * @return int Le nombre de chapitres
-	 */
 	public function count()
 	{
         $query = 'SELECT COUNT(*) FROM '.$this->tableName;
