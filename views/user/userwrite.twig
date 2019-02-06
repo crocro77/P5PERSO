@@ -2,90 +2,86 @@
 
 <div id="write" class="grey lighten-3">
     <h5>Nouvelle fiche</h5>
-
-{% if _session.flash is defined %}
-	{% include function %}
-{% endif %}
-
-{% set repopulateTitle = '' %}
-{% set repopulateAuthor = '' %}
-{% set repopulateContent = '' %}
-{% set repopulateDeveloper = '' %}
-{% set repopulatePublisher = '' %}
-{% set repopulateReleaseDate = '' %}
-{% set repopulateGenre = '' %}
-{% set repopulateTrackname = '' %}
-
-{% if _post.title or _post.author or _post.content or _post.developer or _post.publisher or _post.release_date or _post.genre or _post.trackname is defined %}
-    {% set repopulateTitle = _post.title %}
-	{% set repopulateAuthor = _post.author %}
-	{% set repopulateContent = _post.content %}
-	{% set repopulateDeveloper = _post.developer %}
-	{% set repopulatePublisher = _post.publisher %}
-	{% set repopulateReleaseDate = _post.release_date %}
-	{% set repopulateGenre = _post.genre %}
-	{% set repopulateTrackname = _post.trackname %}
-{% endif %}
-
-<form action="" method="post" enctype="multipart/form-data">
-	<div class="form-group">
-		<label for="title">Titre </label>
-		<input type="text" name="title" class="form-control" value="{{repopulateTitle }}">
-	</div>
-	<div class="form-group">
-		<label for="author">Auteur </label>
-		<input type="text" name="author" class="form-control" value="{% if _session.username %}{{_session.username }} {% else %}{{repopulateAuthor }} {% endif %}" />
-	</div>
-	<div class="form-group">
-		<label for="developer">Développeur </label>
-		<input type="text" name="developer" class="form-control" value="{{repopulateDeveloper }}" />
-	</div>
-	<div class="form-group">
-		<label for="publisher">Editeur </label>
-		<input type="text" name="publisher" class="form-control" value="{{repopulatePublisher }}" />
-	</div>
-	<div class="form-group">
-		<label for="release_date">Année de sortie </label>
-		<input type="number" min="1990" max="1997" name="release_date" class="form-control" value="{{repopulateReleaseDate }}" />
-	</div>
-	<div class="form-group">
-		<label for="genre">Genre </label>
-		<input type="text" name="genre" class="form-control" value="{{repopulateGenre }}" />
-	</div>
-	<div class="form-group">
-		<label for="content">Contenu </label>
-		<textarea name="content" class="form-control">{{repopulateContent }}</textarea>
-	</div>
-	<br />
-	<img id="output_cover_image" width="25%" height="25%"/>
-	<div class="col s12">
-        <div class="btn btn-black waves-effect waves-light input-field file-field col s3">
-			<input type="file" name="file" onchange="preview_cover_image(event)">
-    		<input type="submit" value="Cover de la fiche" name="submit">
-        </div>
-	</div>
 	
-	<img id="output_screenshot_image" width="25%" height="25%"/>
-	<div class="col s12">
-        <div class="btn btn-black waves-effect waves-light input-field file-field col s3">
-			<input type="file" name="file3" onchange="preview_screenshot_image(event)">
-    		<input type="submit" value="Screenshot de la fiche" name="submit">
-        </div>
-    </div>
+	{% set repopulateTitle = '' %}
+	{% set repopulateAuthor = '' %}
+	{% set repopulateContent = '' %}
+	{% set repopulateDeveloper = '' %}
+	{% set repopulatePublisher = '' %}
+	{% set repopulateReleaseDate = '' %}
+	{% set repopulateGenre = '' %}
+	{% set repopulateTrackname = '' %}
 
-	<div class="col s12">
-        <div class="btn btn-black waves-effect waves-light input-field file-field col s3">
-			<input type="file" name="file2">
-    		<input type="submit" value="Track bonus de l'OST" name="submit">
-        </div>
-    </div>
-	<div class="form-group">
-		<label for="trackname">Nom de la track</label>
-		<input type="text" name="trackname" class="form-control" value="{{repopulateTrackname }}" />
-	</div>
-	<br />
-		<button type="submit" class="btn btn-publish">Publier</button>
-</form>
+	{% if _post.title or _post.author or _post.content or _post.developer or _post.publisher or _post.release_date or _post.genre or _post.trackname is defined %}
+		{% set repopulateTitle = _post.title %}
+		{% set repopulateAuthor = _post.author %}
+		{% set repopulateContent = _post.content %}
+		{% set repopulateDeveloper = _post.developer %}
+		{% set repopulatePublisher = _post.publisher %}
+		{% set repopulateReleaseDate = _post.release_date %}
+		{% set repopulateGenre = _post.genre %}
+		{% set repopulateTrackname = _post.trackname %}
+	{% endif %}
+
+	<form action="" method="post" enctype="multipart/form-data">
+		<div class="form-group">
+			<label for="title">Titre </label>
+			<input type="text" name="title" class="form-control" value="{{repopulateTitle }}">
+		</div>
+		<div class="form-group">
+			<label for="author">Auteur </label>
+			<input type="text" name="author" class="form-control" value="{% if _session.username %}{{_session.username }} {% else %}{{repopulateAuthor }} {% endif %}" />
+		</div>
+		<div class="form-group">
+			<label for="developer">Développeur </label>
+			<input type="text" name="developer" class="form-control" value="{{repopulateDeveloper }}" />
+		</div>
+		<div class="form-group">
+			<label for="publisher">Editeur </label>
+			<input type="text" name="publisher" class="form-control" value="{{repopulatePublisher }}" />
+		</div>
+		<div class="form-group">
+			<label for="release_date">Année de sortie </label>
+			<input type="number" min="1990" max="1997" name="release_date" class="form-control" value="{{repopulateReleaseDate }}" />
+		</div>
+		<div class="form-group">
+			<label for="genre">Genre </label>
+			<input type="text" name="genre" class="form-control" value="{{repopulateGenre }}" />
+		</div>
+		<div class="form-group">
+			<label for="content">Contenu </label>
+			<textarea name="content" class="form-control">{{repopulateContent }}</textarea>
+		</div>
+		<br />
+		<img id="output_cover_image" width="25%" height="25%"/>
+		<div class="col s12">
+			<div class="btn btn-black waves-effect waves-light input-field file-field col s3">
+				<input type="file" name="file" onchange="preview_cover_image(event)">
+				<input type="submit" value="Cover de la fiche" name="submit">
+			</div>
+		</div>
+		
+		<img id="output_screenshot_image" width="25%" height="25%"/>
+		<div class="col s12">
+			<div class="btn btn-black waves-effect waves-light input-field file-field col s3">
+				<input type="file" name="file3" onchange="preview_screenshot_image(event)">
+				<input type="submit" value="Screenshot de la fiche" name="submit">
+			</div>
+		</div>
+
+		<div class="col s12">
+			<div class="btn btn-black waves-effect waves-light input-field file-field col s3">
+				<input type="file" name="file2">
+				<input type="submit" value="Track bonus de l'OST" name="submit">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="trackname">Nom de la track</label>
+			<input type="text" name="trackname" class="form-control" value="{{repopulateTrackname }}" />
+		</div>
+		<br />
+			<button type="submit" class="btn btn-publish">Publier</button>
+	</form>
 </div>
 
 <script src="//cloud.tinymce.com/stable/tinymce.min.js?apiKey=c851wd1npuo4c59ed6f7fp6doripcdhfdi1ltt9hpr29wt3x"></script>

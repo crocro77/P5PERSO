@@ -135,7 +135,13 @@ class UsersController extends Controller
 				$sheet->addSheet($sheet);
 				header("Location:index.php");
 			} else {
-				$_SESSION['flash']['error'] = '<ul>' . $errors . '</ul>';
+				?>
+				<div class="card red">
+					<div class="card-content white-text">
+						<?php echo $errors."<br/>"; ?>
+					</div>
+				</div>
+				<?php
 			}	
 		}
 		

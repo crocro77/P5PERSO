@@ -23,7 +23,13 @@ class AboutController extends Controller
                 $aboutAdd->add($about);
                 header("Location:index.php?p=about");
             } else {
-				$_SESSION['flash']['error'] = '<ul>' . $errors . '</ul>';
+                ?>
+				<div class="card red">
+					<div class="card-content white-text">
+						<?php echo $error."<br/>"; ?>
+					</div>
+				</div>
+				<?php
 			}	
         }
 

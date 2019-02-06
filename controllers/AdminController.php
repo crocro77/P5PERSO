@@ -74,7 +74,13 @@ class AdminController extends Controller
 				$sheet->addSheet($sheet);
 				header("Location:index.php?p=admin&tab=list");
 			} else {
-				$_SESSION['flash']['error'] = '<ul>' . $errors . '</ul>';
+				?>
+				<div class="card red">
+					<div class="card-content white-text">
+						<?php echo $error."<br/>"; ?>
+					</div>
+				</div>
+				<?php
 			}	
 		}
 		

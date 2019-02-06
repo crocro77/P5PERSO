@@ -97,6 +97,26 @@ $router->add_route('/admin', function(){
     $controller->executeAdminDashboard();
 });
 
+$router->add_route('/admin/list', function(){
+    $controller = new AdminController();
+    $controller->executeAdminDashboard();
+});
+
+$router->add_route('/admin/comments', function(){
+    $controller = new AdminController();
+    $controller->executeAdminDashboard();
+});
+
+$router->add_route('/admin/settings/', function(){
+    $controller = new AdminController();
+    $controller->executeAdminDashboard();
+});
+
+$router->add_route('/admin', function(){
+    $controller = new AdminController();
+    $controller->executeAdminDashboard();
+});
+
 $router->add_route('/logout', function(){
     $controller = new AuthentificationController();
 	$controller->executeLogout();
@@ -122,8 +142,12 @@ $router->add_route('/edit', function(){
     $updateChapter->executeUpdateSheet();
 });
 
-// $controller = new ErrorController();
-// $controller->executeError();
+$router->add_route('/404', function(){
+    if($path = false) {
+        $controller = new ErrorController();
+        $controller->executeError();
+    }
+});
 
 /* Add a route as a callback function */
 // $router->add_route('/callback', 'myFunction');
@@ -134,7 +158,6 @@ $router->add_route('/edit', function(){
 // }
 
 $router->execute();
-
 
 /// ANCIEN ROUTER ///
 
