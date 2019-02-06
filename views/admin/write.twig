@@ -10,9 +10,17 @@
 	<p>Vous pouvez rédiger dès à présent un nouveau chapitre.</p>
 {% endif %}
 
-{% if _session.flash is defined %}
+{# TEST 1  #}
+{# {% if _session.flash is defined %}
 	{% include function %}
-{% endif %}
+{% endif %} #}
+
+{# TEST 2
+<ul class="alert alert-danger">
+    {% for msg in flash('error') %}
+    <li>{{ msg }}</li>
+    {% endfor %}
+</ul> #}
 
 {% set repopulateTitle = '' %}
 {% set repopulateAuthor = '' %}
