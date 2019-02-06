@@ -3,6 +3,7 @@
 session_start();
 
 require 'vendor/autoload.php';
+include 'includes/helpers.php';
 
 function autoload($classname)
 {

@@ -6,7 +6,7 @@ class AdminController extends Controller
 	{
 		parent::__construct();	
 		if(!isset($_SESSION['username']) OR isset($_SESSION['username']) AND $_SESSION['username'] !== 'ntonyyy') {
-			header('Location: index.php?p=login');
+			header('Location:login');
 			exit();
 		}
 	}

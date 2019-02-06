@@ -1,0 +1,2 @@
+User-Agent: *
+Disallow: /localhost/PROJET5PERSO/views/front/error.twig/

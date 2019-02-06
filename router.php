@@ -20,7 +20,7 @@ class Router {
         if(array_key_exists($path, $this->routes)) {
             $this->routes[$path]();
         } else {
-            $this->routes['/home']();
+            $this->routes['/404']();
         }
     }   
 }
@@ -97,7 +97,7 @@ $router->add_route('/admin', function(){
     $controller->executeAdminDashboard();
 });
 
-$router->add_route('/admin/list', function(){
+$router->add_route('/adminlist', function(){
     $controller = new AdminController();
     $controller->executeAdminDashboard();
 });
@@ -143,10 +143,8 @@ $router->add_route('/edit', function(){
 });
 
 $router->add_route('/404', function(){
-    if($path = false) {
         $controller = new ErrorController();
         $controller->executeError();
-    }
 });
 
 /* Add a route as a callback function */
