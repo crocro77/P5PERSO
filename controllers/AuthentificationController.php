@@ -30,7 +30,7 @@ class AuthentificationController extends Controller
 				<?php
 			} else {
 				$_SESSION['username'] = $username;
-				header("Location:admin");
+				header("Location:admin?tab=dashboard");
 			}
 		}
 

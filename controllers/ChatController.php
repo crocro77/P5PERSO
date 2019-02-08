@@ -6,7 +6,7 @@ class ChatController extends Controller
 	{
 		parent::__construct();
 		if(!isset($_SESSION['username'])) {
-			header('Location: index.php?p=user');
+			header('Location: user');
 			exit();
 		}
 	}

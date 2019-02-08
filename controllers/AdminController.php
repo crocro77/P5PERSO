@@ -72,7 +72,7 @@ class AdminController extends Controller
 					$sheet->setTrackName($_POST['trackname']);
 				}
 				$sheet->addSheet($sheet);
-				header("Location:index.php?p=admin&tab=list");
+				header("Location:admin?tab=list");
 			} else {
 				?>
 				<div class="card red">
@@ -113,7 +113,7 @@ class AdminController extends Controller
 						$sheet->setTrack($track);
 					}
 					$sheet->updateSheet();
-					header("Location:index.php?p=admin&tab=list");
+					header("Location:admin?tab=list");
 				}
 
 				$selectedTab = 'write';
@@ -121,7 +121,7 @@ class AdminController extends Controller
 
 				echo $this->twig->render('admin/admin.twig', ['selectedTab' => $selectedTab, 'sheet' => $sheet, 'action' => $action]);
 			} else {
-				header("Location:index.php?p=admin&tab=list");
+				header("Location:admin?tab=list");
 			}
 		}
 	}
@@ -130,7 +130,14 @@ class AdminController extends Controller
 	{
 		$sheetManager = new Datasheet();
 		$sheetManager->deleteSheet();
-		header("Location:index.php?p=admin&tab=list");
+		header("Location:admin?tab=list");
+	}
+
+	public function executeDeleteAllSheet()
+	{
+		$sheetManager = new Datasheet();
+		$sheetManager->deleteAll();
+		header("Location:admin?tab=list");
 	}
 
 	public function executeValidateComment()
@@ -138,7 +145,7 @@ class AdminController extends Controller
 		if(isset($_GET['commentId'])) {
 			$commentManager = new Comment();
 			$commentManager->validateComment($_GET['commentId']);
-			header("Location:index.php?p=admin&tab=comments");
+			header("Location:admin?tab=comments");
 		}
 	}
 
@@ -147,8 +154,15 @@ class AdminController extends Controller
 		if(isset($_GET['commentId'])) {
 			$commentManager = new Comment();
 			$commentManager->deleteComment($_GET['commentId']);
-			header("Location:index.php?p=admin&tab=comments");
+			header("Location:admin?tab=comments");
 		}
+	}
+
+	public function executeDeleteAllComments()
+	{
+		$commentManager = new Comment();
+		$commentManager->deleteAll();
+		header("Location:admin?tab=comments");
 	}
 
 	public function executeSeenComment()
@@ -156,7 +170,14 @@ class AdminController extends Controller
 		if(isset($_GET['commentId'])) {
 			$commentManager = new Comment();
 			$commentManager->seenComment($_GET['commentId']);
-			header("Location:index.php?p=admin&tab=comments");
+			header("Location:admin?tab=comments");
 		}
+	}
+
+	public function deleteChatMessages()
+	{
+		$chatManager = new Chat();
+		$chatManager->deleteAllMessages();
+		header("Location:admin?tab=dashboard");
 	}
 }

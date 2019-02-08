@@ -1,16 +1,16 @@
 {% block content %}
 
 <div class="row grey lighten-3">
-	<div id="dashboard" class="col-xs-12">
+	<div id="dashboard">
         <div class="center">
 			<h6>Bienvenue {{ _session.username }}</h6>
 		</div>  
 		<div class="center">
 			<h3>Tableau de bord</h3>
 		</div>  
-		<div class="row">
+		<div id="dashboardtable">
 			<div class="center">
-                <div class="col l6 m6 s12">
+                <div>
                     <div class="card">
                         <div class="card-content green white-text">
                             <span class="card-title">FICHE(S)</span>
@@ -20,6 +20,7 @@
                 </div>
 			</div>	
         </div>
+        <br />
         <div class="center">
 			<a class="btn btn-default btn-sm" onclick="return confirm('Etes vous sûr de vouloir vous déconnecter ?')" title="Se déconnecter" href="logout"><i class="material-icons left">exit_to_app</i>Se déconnecter</a></li>
         </div>

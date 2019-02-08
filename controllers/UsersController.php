@@ -5,11 +5,11 @@ class UsersController extends Controller
     public function executeUsersSpace()
     {
 		if(isset($_SESSION['username'])) {
-			header("Location:member");
+			header("Location:member?tab=dashboard");
 		}
 
 		if(isset($_SESSION['username']) AND $_SESSION['username'] == 'ntonyyy') {
-			header("Location:admin");
+			header("Location:admin?tab=dashboard");
 		}
 
 		echo $this->twig->render('front/users.twig');
@@ -61,7 +61,7 @@ class UsersController extends Controller
 				<?php
 			} else {
 				$_SESSION['username'] = $pseudo;
-				header("Location:member");
+				header("Location:member?tab=dashboard");
 			}
 		}
 		echo $this->twig->render('front/userlogin.twig');

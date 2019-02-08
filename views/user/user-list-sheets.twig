@@ -4,7 +4,7 @@
 <h2 class="center" id="to-the-top">Liste des fiches</h2>
 <ul id="list-pagination" class="pagination center">
 	{% for letter in 'A'..'Z' %}
-		<li class="waves-effect"><a class="page-link" href="index.php?p=member&tab=list&char={{ letter }}">{{ letter }}</a></li>
+		<li class="waves-effect"><a class="page-link" href="member?tab=list&char={{ letter }}">{{ letter }}</a></li>
 	{% endfor %} 
 </ul>
 {% for sheet in datasheet %}

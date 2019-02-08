@@ -54,7 +54,7 @@
                     {% if signaledComments %}
                         <em class="orange">Le commentaire a été signalé et est en attente de modération.</em>
                     {% else %}
-                        <a href="game/sheet?id={{ sheetUnique.id }}&amp;action=signalcomment&amp;commentId={{ singlecomment.id }}"><small class="signal pull-right">Signaler</small></a>
+                        <a href="sheet?id={{ sheetUnique.id }}&amp;action=signalcomment&amp;commentId={{ singlecomment.id }}"><small class="signal pull-right">Signaler</small></a>
                     {% endif %}
                 </p>
             </blockquote>
@@ -69,7 +69,7 @@
             {% if _session.username %}
                 <p>Vous postez un commentaire en tant que <strong>{{ _session.username }}</strong></p>
             {% endif %}
-            <form class="form-horizontal" action="game/sheet?id={{ sheetUnique.id }}#comments" method="post">
+            <form class="form-horizontal" action="sheet?id={{ sheetUnique.id }}#comments" method="post">
                 {% if not _session.username %}
                 <div class="form-group">
                     <label for="author" class="col-sm-1 control-label">Pseudo </label>
