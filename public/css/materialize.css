@@ -9621,7 +9621,7 @@
     max-height: 304px;
   }
 
-  #mention-btn {
+  #mention-btn, #admin-btn {
     color: white;
   }
 
@@ -9858,4 +9858,9 @@ nav,
 #sonic_error {
   width: 8%;
   height: 8%;
+}
+
+#ggquiz {
+  width: 35%;
+  height: 35%;
 }

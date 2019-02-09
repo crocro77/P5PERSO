@@ -18,7 +18,8 @@
     <nav id="nav-bar" class="blue-grey darken-4">
         <div class="container">
             <div class="nav-wrapper">
-              <a class="navbar-brand" href="home">World of Game Gear</a>       
+              <a class="navbar-brand" href="home">World of Game Gear</a>
+              <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     {% if _session.username %}<li><a title="Chat" href="http://localhost/PROJET5PERSO/chat"><i class="material-icons">chat_bubble</i></a></li>{% endif %}
                     <li><a title="Quiz" href="http://localhost/PROJET5PERSO/quiz"><i class="material-icons">gamepad</i></a></li>
@@ -26,17 +27,24 @@
                     <li><a title="A propos" href="http://localhost/PROJET5PERSO/about"><i class="material-icons">info</i></a></li>
                     <li><a title="Contact" href="http://localhost/PROJET5PERSO/contact"><i class="material-icons">mail_outline</i></a></li>
                 </ul>
-                <ul class="side-nav" id="mobile-menu">
-                  <li><a title="Administration" href="http://localhost/PROJET5PERSO/login"><i class="material-icons">lock</i></a></li>
-                </ul>
             </div>
         </div>
+
+            <ul class="side-nav" id="mobile-menu">
+      {% if _session.username %}<li><a title="Chat" href="http://localhost/PROJET5PERSO/chat"><i class="material-icons">chat_bubble</i></a></li>{% endif %}
+      <li><a title="Quiz" href="http://localhost/PROJET5PERSO/quiz"><i class="material-icons">gamepad</i></a></li>
+      <li><a title="{% if _session.username == 'ntonyyy' %}Administration{% else %}Espace Membres{% endif %}" href="http://localhost/PROJET5PERSO/user"><i class="material-icons">portrait</i></a></li>
+      <li><a title="A propos" href="http://localhost/PROJET5PERSO/about"><i class="material-icons">info</i></a></li>
+      <li><a title="Contact" href="http://localhost/PROJET5PERSO/contact"><i class="material-icons">mail_outline</i></a></li>
+    </ul>
     </nav>
+    
+
 
       {% block content %}{% endblock %}
    
     <footer>
-      <p id="titleDetail">© 2018 <a href="#" data-activates="mobile-menu" id="admin-btn" class="button-collapse">ntonyyy</a> - <a title="Mentions légales" id="mention-btn" href="http://localhost/PROJET5PERSO/mentions" class="grey-text text-lighten-4">Mentions légales</a></p>
+      <p id="titleDetail">© 2018 <a href="http://localhost/PROJET5PERSO/login" id="admin-btn">ntonyyy</a> - <a title="Mentions légales" id="mention-btn" href="http://localhost/PROJET5PERSO/mentions" class="grey-text text-lighten-4">Mentions légales</a></p>
     </footer>   
 
   </body>

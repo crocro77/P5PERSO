@@ -140,6 +140,7 @@ $router->add_route('/404', function(){
 /// ACTION ROUTER ///
 
 $router->add_route('comment/post', function(){
+    var_dump($_SERVER[$uri]);
     $commentController = new FrontController();
     $commentController->executeCommentSheet();
 });

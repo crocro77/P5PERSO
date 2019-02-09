@@ -13,14 +13,17 @@
         <form method="POST" action="contact/postmessage">
             <div class="row">
                 <div class="input-field col s12">
+                    <i class="material-icons prefix">account_circle</i>
                     <label for="contactname">Votre nom</label>
                     <input type="text" name="contactname" value="{% if _post.contactname %} {{ _post.contactname }} {% endif %}" /><br /><br />
                 </div>
                 <div class="input-field col s12">
+                    <i class="material-icons prefix">contact_mail</i>
                     <label for="contactmail">Votre adresse mail</label>
                     <input type="email" name="contactmail" value="{% if _post.contactmail %} {{ _post.contactmail }} {% endif %}" /><br /><br />
                 </div>
                 <div class="input-field col s12">
+                    <i class="material-icons prefix">mode_edit</i>
                     <label for="contactmessage">Votre message</label>
                     <textarea class="materialize-textarea" name="contactmessage">{% if _post.contactmessage %} {{ _post.contactmessage }} {% endif %}</textarea><br /><br />
                 </div>
