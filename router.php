@@ -15,7 +15,7 @@ class Router {
         $urldata = parse_url($url.$_SERVER['REQUEST_URI']);
 		$path = $urldata['path'];
 		$path =	trim ($path, '/');
-		$path = preg_replace('/'.self::DIRECTORY.'/','',$path);
+        $path = preg_replace('/'.self::DIRECTORY.'/','',$path);
 		
         if(array_key_exists($path, $this->routes)) {
             $this->routes[$path]();
@@ -135,7 +135,7 @@ $router->add_route('/404', function(){
 //     echo "This is a callback function named '" .  __FUNCTION__ ."'";
 // }
 
-$router->execute();
+
 
 /// ACTION ROUTER ///
 
@@ -198,3 +198,5 @@ $router->add_route('member/deleteaccount', function(){
     $deleteAccount = new UsersController();
     $deleteAccount->executeDeleteUser();
 });
+
+$router->execute();

@@ -6,13 +6,13 @@
     <div>
         <h1 id="site-title">Liste des jeux Game Gear</h1>
         <br />
-        <p id="titleDetail"><a class="btn btn-default btn-sm" href="../home">Retour à la page d'accueil</a></p>
+        <p id="titleDetail"><a class="btn btn-default btn-sm" href="http://localhost/PROJET5PERSO/home">Retour à la page d'accueil</a></p>
     </div>
 </div>
 <div id="single" class="container grey lighten-3">
-    <h2 id="post-title" class="center">{{ sheetUnique.title }}</h2>
+    <h2 id="post-title" class="center"><img src="http://localhost/PROJET5PERSO/public/img/sega-game-gear-icon.png"> {{ sheetUnique.title }} <img src="http://localhost/PROJET5PERSO/public/img/sega-game-gear-icon.png"> </h2>
         <div class="row center">
-            <img class="chapterUniqueImage" src="public/img/{{ sheetUnique.screenshot }}" alt="{{ sheetUnique.title }}" >
+            <img class="chapterUniqueImage" src="http://localhost/PROJET5PERSO/public/img/{{ sheetUnique.screenshot }}" alt="{{ sheetUnique.title }}" >
         </div>
         <h6 class="center">Par {{ sheetUnique.author }} le {{ sheetUnique.date|date("d/m/Y") }}</h6>
         <table>
@@ -31,14 +31,14 @@
         </table>
         <br />
         <div class="center">
-            <img src="public/img/{{ sheetUnique.cover }}" alt="{{ sheetUnique.title }}" width="183px" heigth="256px">
+            <img src="http://localhost/PROJET5PERSO/public/img/{{ sheetUnique.cover }}" alt="{{ sheetUnique.title }}" width="183px" heigth="256px">
         </div>
             <p class="sheetParagraph">{{ sheetUnique.content }}</p>
         <br />
         <div class="center">
             <h5>Bonus : Extrait de l'OST "{{ sheetUnique.trackname }}"</h5>
             <audio controls>
-                <source src="public/mp3/{{ sheetUnique.track }}" type="audio/mpeg">
+                <source src="http://localhost/PROJET5PERSO/public/mp3/{{ sheetUnique.track }}" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
         </div>
@@ -69,7 +69,7 @@
             {% if _session.username %}
                 <p>Vous postez un commentaire en tant que <strong>{{ _session.username }}</strong></p>
             {% endif %}
-            <form class="form-horizontal" action="sheet?id={{ sheetUnique.id }}#comments" method="post">
+            <form class="form-horizontal" action="comment/post?id={{ sheetUnique.id }}" method="post">
                 {% if not _session.username %}
                 <div class="form-group">
                     <label for="author" class="col-sm-1 control-label">Pseudo </label>

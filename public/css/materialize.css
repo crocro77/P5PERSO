@@ -9844,3 +9844,18 @@ nav,
   display: flex;
   justify-content: center;
 }
+
+#sonic_userspace {
+  width: 5%;
+  height: 5%;
+}
+
+#sonic_contact {
+  width: 10%;
+  height: 10%;
+}
+
+#sonic_error {
+  width: 8%;
+  height: 8%;
+}
