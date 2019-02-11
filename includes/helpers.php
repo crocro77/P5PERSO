@@ -1,7 +1,12 @@
 <?php
 
-function helpers()
+function generateURL($path)
 {
-    $domain = $_SERVER['SERVER_NAME'];
-    var_dump($domain);
+    $domain = 'http://localhost';
+    $directory = 'PROJET5PERSO';
+
+    $url = $domain.'/'.$directory.'/'.$path;
+
+    return $url;
+
 }   

@@ -10,8 +10,8 @@ $(document).ready(function () {
 					id = element.id;
 					let msg = 
 					`<div>
-						<p id="chatLine">
-							<span id="chatPseudo">${element.pseudo}</span> <span id="chatMessage">${element.message}</span>
+						<p class="chatLine">
+							<span class="chatPseudo">${element.pseudo}</span> <span class="chatMessage">${element.message}</span>
 						</p>
 					</div>`;
 					$('#chatWindow').append(msg)

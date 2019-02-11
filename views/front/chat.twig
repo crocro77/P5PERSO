@@ -15,14 +15,14 @@
         {% else %}
             {% for message in chat %}
                 <div>
-                    <p id="chatLine"><span id="chatPseudo">{{ message.pseudo }}</span> <span id="chatMessage">{{ message.message }}</p></span>
+                    <p class="chatLine"><span class="chatPseudo">{{ message.pseudo }}</span> <span class="chatMessage">{{ message.message }}</p></span>
                 </div>
             {% endfor %}
         {% endif %}
     </div>
 
     <div class="row">
-        <form id="form-chat" action="chat/postchatmessage" method="post">
+        <form id="form-chat" action="http://localhost/PROJET5PERSO/chat/postchatmessage" method="post">
             <p>
             <div class="form-group">
                 <label for="pseudo">Pseudo</label>
@@ -41,6 +41,6 @@
     </div>
 </div>
 
-<script type="text/javascript" src="public/js/chat.js"></script>
+<script type="text/javascript" src="http://localhost/PROJET5PERSO/public/js/chat.js"></script>
 
 {% endblock %}

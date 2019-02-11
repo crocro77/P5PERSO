@@ -14,5 +14,16 @@ abstract class Controller
 		$this->twig->addGlobal('_session', $_SESSION);
 		$this->twig->addGlobal('_post', $_POST);
 		$this->twig->addGlobal('_get', $_GET);
+
+		$function = new Twig_SimpleFunction('generateURL', function () {
+			function generateURL($path)
+			{
+				$domain = 'http://localhost';
+				$directory = 'PROJET5PERSO';
+				$url = $domain.'/'.$directory.'/'.$path;
+				return $url;
+			}   
+		});
+		$this->twig->addFunction($function);
 	}
 }

@@ -30,13 +30,20 @@ class ChatController extends Controller
 			}
 			$chatMessage->setMessage($_POST['message']);
 			$chatMessage->addChatMessage();
+			header('Location: http://localhost/PROJET5PERSO/chat');
         }
 	}
 
 	public function executeUpdateChat()
 	{
 		$chatMessage = new Chat();
-		$listOfNewMessages = $chatMessage->getNewMessages($id);
-		echo json_encode($listOfChatMessages);
+		$listOfNewMessages = $chatMessage->getNewMessages($_GET['id']);
+		$messages = [];
+		foreach ($listOfNewMessages as $key => $message) {
+			$messages[$key]['id'] = $message->getId();
+			$messages[$key]['pseudo'] = $message->getPseudo();
+			$messages[$key]['message'] = $message->getMessage();
+		}  
+		echo json_encode($messages);
 	}
 }

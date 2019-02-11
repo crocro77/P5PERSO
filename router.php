@@ -139,63 +139,62 @@ $router->add_route('/404', function(){
 
 /// ACTION ROUTER ///
 
-$router->add_route('comment/post', function(){
-    var_dump($_SERVER[$uri]);
+$router->add_route('/comment/post', function(){
     $commentController = new FrontController();
     $commentController->executeCommentSheet();
 });
 
-$router->add_route('comment/signal', function(){
+$router->add_route('/comment/signal', function(){
     $signalController = new FrontController();
-    $signalController->executeSignalComment($_GET['commentId']);
+    $signalController->executeSignalComment();
 });
 
-$router->add_route('comment/validate', function(){
+$router->add_route('/comment/validate', function(){
     $validateComment = new AdminController();
  	$validateComment->executeValidateComment();
 });
 
-$router->add_route('comment/delete', function(){
+$router->add_route('/comment/delete', function(){
     $deleteComment = new AdminController();
     $deleteComment->executeDeleteComment();
 });
 
-$router->add_route('comment/seen', function(){
+$router->add_route('/comment/seen', function(){
     $seenComment = new AdminController();
     $seenComment->executeSeenComment();
 });
 
-$router->add_route('sheet/delete', function(){
+$router->add_route('/sheet/delete', function(){
     $deleteChapter = new AdminController();
     $deleteChapter->executeDeleteSheet();
 });
 
-$router->add_route('about/adddescription', function(){
+$router->add_route('/about/adddescription', function(){
     $addAbout = new AboutController();
     $addAbout->executeAddAbout();
 });
 
-$router->add_route('about/updatedescrption', function(){
+$router->add_route('/about/updatedescrption', function(){
     $updateAbout = new AboutController();
     $updateAbout->executeUpdateAbout();
 });
 
-$router->add_route('about/deletedescription', function(){
+$router->add_route('/about/deletedescription', function(){
     $deleteAbout = new AboutController();
     $deleteAbout->executeDeleteAbout();
 });
 
-$router->add_route('chat/postchatmessage', function(){
+$router->add_route('/chat/postchatmessage', function(){
     $chatMessage = new ChatController();
     $chatMessage->executeAddMessage();  
 });
 
-$router->add_route('contact/postcontactmessage', function(){
+$router->add_route('/contact/postcontactmessage', function(){
     $contactMessage = new ContactController();
     $contactMessage->executeContactForm();
 });
 
-$router->add_route('member/deleteaccount', function(){
+$router->add_route('/member/deleteaccount', function(){
     $deleteAccount = new UsersController();
     $deleteAccount->executeDeleteUser();
 });

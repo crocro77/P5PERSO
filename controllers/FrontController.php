@@ -17,18 +17,16 @@ class FrontController extends Controller
 			$sheetUnique = $sheetManager->getUnique($_GET['id']);
 			$commentManager = new Comment();
 			$listOfComments = $commentManager->getSheetComments($_GET['id']);
-			$signaledComments = $commentManager->getSignaledComments();
 	
-			echo $this->twig->render('front/single.twig', ['sheetUnique' => Datasheet::getUnique($_GET['id']), 'listOfComments' => $listOfComments, 'comment' => Comment::getSheetComments($_GET['id']), 'signaledComments' => $signaledComments ]);
+			echo $this->twig->render('front/single.twig', ['sheetUnique' => Datasheet::getUnique($_GET['id']), 'listOfComments' => $listOfComments, 'comment' => Comment::getSheetComments($_GET['id'])]);
 		}
     }
 
     public function executeCommentSheet()
     {
-		if(isset($_GET['id'])) {
 			if(!empty($_POST['author']) || (empty($_POST['author']) && isset($_SESSION['username']) && !empty($_POST['comment']))) {
 				$comment = new Comment();
-				$comment->setPostId($_GET['id']);
+				$comment->setPostId($_POST['id']);
 				if(isset($_SESSION['username'])) {
 					$comment->setAuthor($_SESSION['username']);
 				} else {
@@ -37,18 +35,17 @@ class FrontController extends Controller
 				$comment->setComment($_POST['comment']);
 				$commentManager = new Comment();
 				$commentManager->add($comment);
-				header('Location: game/sheet/'.($_GET['id']).'#comments');
+				header('Location: '.generateURL('game/sheet?id='.$_POST['id'].'#comments'));
 			}
-		}
     }
 
-    public function executeSignalComment($commentId)
+    public function executeSignalComment()
     {    
 		if(isset($_GET['id'])) {
 			$commentManager = new Comment();
 			$comment = $commentManager->getSpecificComment($_GET['commentId']);
 			$commentManager->signal($comment);
-			header('Location: game/sheet/'.($_GET['id']).'#comments');
+			header('Location: '.generateURL('game/sheet?id='.$_GET['commentId'].'#comments'));
 		}
 	}
 
