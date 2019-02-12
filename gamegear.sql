@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 30 jan. 2019 à 09:53
+-- Généré le :  mar. 12 fév. 2019 à 11:00
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -85,9 +85,13 @@ INSERT INTO `chat` (`id`, `pseudo`, `message`) VALUES
 (1, 'ntonyyy', 'coucou'),
 (2, 'ntonyyy', 'Comment allez vous ?'),
 (12, 'TOTO', 'hello'),
-(53, 'TOTO', 're'),
-(52, 'ntonyyy', 'azeaze'),
-(51, 'test', 'test');
+(62, 'ntonyyy', 'jehehzhe'),
+(61, 'ntonyyy', 'dd'),
+(60, 'TOTO', 'ooo'),
+(59, 'ntonyyy', 'test'),
+(57, 'TOTO', 'rrr'),
+(58, 'TOTO', 'yy'),
+(56, 'TOTO', 'az');
 
 -- --------------------------------------------------------
 
@@ -113,7 +117,17 @@ CREATE TABLE IF NOT EXISTS `comments` (
 
 INSERT INTO `comments` (`id`, `post_id`, `comment`, `comment_date`, `author`, `signaled`, `seen`) VALUES
 (5, 13, 'test', '2019-01-22 00:00:00', 'test', 0, 0),
-(4, 19, 'test', '2019-01-14 00:00:00', 'test', 1, 0);
+(4, 19, 'test', '2019-01-14 00:00:00', 'test', 0, 0),
+(6, 19, 'aa', '2019-02-11 11:09:14', 'aa', 0, 0),
+(8, 19, 'rrr', '2019-02-11 11:10:39', 'rrr', 0, 0),
+(9, 19, 'zz', '2019-02-11 11:11:28', 'zzz', 0, 0),
+(11, 19, 'erezrzr', '2019-02-11 11:34:46', 'ttttt', 1, 0),
+(12, 19, 'uuu', '2019-02-11 11:36:20', 'uuu', 0, 0),
+(13, 19, 'yy', '2019-02-11 11:37:05', 'uy', 0, 0),
+(14, 19, 'c', '2019-02-11 11:37:36', 'c', 0, 0),
+(15, 19, 'v', '2019-02-11 11:38:55', 'v', 0, 0),
+(17, 19, 'z', '2019-02-11 11:39:59', 'zezezezeze', 0, 0),
+(18, 19, 'i', '2019-02-11 11:40:13', 'i', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -145,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `datasheet` (
 
 INSERT INTO `datasheet` (`id`, `title`, `content`, `developer`, `publisher`, `release_date`, `genre`, `cover`, `screenshot`, `author`, `date`, `track`, `trackname`) VALUES
 (1, 'Astérix and the Secret Mission', '<p>Getafix the Druid is out of magic potion! If Caesar finds out, it\'s invasion for sure. Asterix and Obelix set out to find the necessary herbs. A mission through all sorts of Roman-infested terrain - seas and rivers, forests and deserts, temples and ruins.</p>', 'SEGA', 'SEGA', 1993, 'Romans on the Gaul', '43f6493ef01c5a27d2aa20854f5540b51543962907.jpg', '722ee9164649da8317154987752618c01543962907.jpg', 'ntonyyy', '2018-12-04 22:35:07', '5cea0bdf2a4d682bf5d4aa0dc4a089f31543962907.mp3', 'Romans on the Gaul'),
-(2, 'Batman Returns', '<p>Leap with Batman into wild acrobatic battle! The Penguin has Gotham City gripped in his twisted flippers. Track the Dark Knight\'s most feared enemies through intense search-and-destroy danger! Attack the deranged Red Triangle Circus Gang with the Caped Crusader\'s own weapons. Swing on grappling hooks across collapsing rooftops. Pitch deadly Batarangs. Rage down goon-infested streets in the Batmobile. Waylay mobs of street thugs by hurling smoke bombs, wrist-shields and swarms of bats from Batman\'s Utility Belt. Dodge Catwoman\'s slashing claws and swinging kick. Duel with the homicidal Juggler. Fight murderous Gargoyles and machinegun-toting clowns. Then slog through poisoned sewers to a heart-stopping face-off in The Penguin\'s lair!</p>', 'Aspect', 'SEGA', 1992, 'action', '6e410c8881cbb9fdfe95cb3a80115c0a1544091547.jpg', '8145a48e4a347553974ce7ebfa2d67a61544091547.jpg', 'ntonyyy', '2018-12-06 10:19:07', '91e73698d2291bc7e5420b99dce2895e1544091547.mp3', 'Stage 1 Gotham City'),
+(2, 'Batman Returns ', '<p>Leap with Batman into wild acrobatic battle! The Penguin has Gotham City gripped in his twisted flippers! Track the Dark Knight\'s most feared enemies through intense search-and-destroy danger! Attack the deranged Red Triangle Circus Gang with the Caped Crusader\'s own weapons. Swing on grappling hooks across collapsing rooftops. Pitch deadly Batarangs. Rage down goon-infested streets in the Batmobile. Waylay mobs of street thugs by hurling smoke bombs, wrist-shields and swarms of bats from Batman\'s Utility Belt. Dodge Catwoman\'s slashing claws and swinging kick. Duel with the homicidal Juggler. Fight murderous Gargoyles and machinegun-toting clowns. Then slog through poisoned sewers to a heart-stopping face-off in The Penguin\'s lair!</p>', 'Aspect ', 'SEGA ', 1992, 'action ', '6e410c8881cbb9fdfe95cb3a80115c0a1544091547.jpg', '8145a48e4a347553974ce7ebfa2d67a61544091547.jpg', 'ntonyyy ', '2019-02-11 17:48:15', '91e73698d2291bc7e5420b99dce2895e1544091547.mp3', 'Stage 1 Gotham City '),
 (3, 'Castle of Illusion starring Mickey Mouse', '<p>The search is on! Mickey Tackles magnificent lands where fantasy and danger become real. A waterspout whirls Mickey around. A frantic Toyland suddenly flips upside down. To stay on his feet, Mickey runs, leaps, and bounces, slinging apples and marbles at his enemies. Mickey is on the trail of a wicked Witch named Mizrabel, who has kidnaped Minnie. Mickey must find seven gems hidden in the fantastic chambers and underground mazes of Mizrabel\'s Castle of Illusion and use them to save Minnie. In this scary adventure, Mickey must brave chomping Bonefish, vaporous Ghosts, and taunting Bats. He must battle knights and leaping dragons! Wobble with Mickey on floating leaves, but look out for spiders! Venture into a looney library where even the books attack! Then, get ready to challenfe your most dangerous foe, evil Witch Mizrabel herself!</p>', 'SEGA', 'SEGA', 1991, 'platform', 'b4916e9b65bdcdb91a6a84f9a78fe9541544092132.jpg', '8df33b409c7818d4663869af920399e51544092132.jpg', 'ntonyyy', '2018-12-06 10:28:52', 'ce57c7e67d2d3e74afed2079dd878a3d1544092132.mp3', 'Swimming in the Tea'),
 (4, 'Cool Spot', '<p>Charge, blast and hurdle through this fun and frantic adventure without losing your cool - or your shades! As COOL SPOT, you\'ll stop at nothing to rescue your SPOT buddies when they get snatched by powers uncool! Shoot the curl, get loco on a runaway train, and whip through a stomach-dropping rollercoaster ride in a carbonated quest to chill out your foes! Graphics so hot - you\'ll need your own shades!</p>', 'Virgin Games', 'Virgin Games', 1993, 'platform', '7b454338c1c7dd6f973e64d4ba24d09f1544093007.jpg', '02544894cdbd83eec5e8fd1b8570474e1544093007.jpg', 'ntonyyy', '2018-12-06 10:43:27', 'b07962d09004d0ac307365f9fc37e6b21544093007.mp3', 'Rave Dance Tune'),
 (5, 'Ecco the Dolphin', 'You are Ecco, a powerful young dolphin. A mysterious storm has swept your family from the sea. The search to find them will take you through vast underwater realms of treachery, beauty and adventure. Use your sonar to discover hidden caverns and unlock the secrets of crystal glyphs. Charge packs of bloodthirsty sharks. Dive deep... but don\'t linger too long, because you\'re a mammal and need air to breathe. In your quest, you\'ll discover that more than your family\'s safety is at stake. The fate of the whole world rests on your wits and fins. Explore giant levels of solving puzzles and fighting denizens of the sea. Knife through the waters, flip above the waves, with motions created from real dolphins.', 'Novotrade', 'SEGA', 1994, 'action-adventure', 'ecco.jpg', 'https://gamefaqs.akamaized.net/screens/0/e/1/gfs_87571_2_4.jpg', 'ntonyyy', '2018-11-25 16:01:53', 'http://66.90.93.122/soundfiles/sega-game-gear-sgc/ecco-the-dolphin/11%20-%20Dark%20Water.mp3', 'Dark Water'),
@@ -243,7 +257,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `pseudo`, `pass`, `email`, `register_date`) VALUES
 (8, 'gg', 'f5678f1aa83c871e4d0218f20af62aa11dcbae74', 'gg@gg.com', '2019-01-22'),
 (7, 'deletetest', 'a0ff094025db6249d90f911e531633bdaea45616', 'deletetest@blabla.com', '2019-01-17'),
-(6, 'TOTO', '17e66b77b21bf57f6ea4efc179b416f10e9bdc6b', 'TOTO@toto.com', '2019-01-15');
+(6, 'TOTO', '17e66b77b21bf57f6ea4efc179b416f10e9bdc6b', 'TOTO@toto.com', '2019-01-15'),
+(9, 'newuser', '9adcb29710e807607b683f62e555c22dc5659713', 'newuser@newuser.com', '2019-02-11');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
