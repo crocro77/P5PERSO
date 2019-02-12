@@ -30,7 +30,7 @@ class ChatController extends Controller
 			}
 			$chatMessage->setMessage($_POST['message']);
 			$chatMessage->addChatMessage();
-			header('Location: http://localhost/PROJET5PERSO/chat');
+			header('Location: '.generateURL('chat'));
         }
 	}
 

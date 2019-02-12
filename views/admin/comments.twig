@@ -26,8 +26,8 @@
 						<td class="center"><a href="?p=single&amp;id={{ comm.postid }}">{{ comm.postid }}</a></td>
 						<td><em>{{ comm.comment }}</em></td>
 						<td><strong>{{ comm.author }}</strong></td>
-						<td><a href="?p=admin&amp;tab=comments&amp;action=seencomment&amp;commentId={{ comm.id }}" title="Indiqué comme vu"><i class="material-icons">remove_red_eye</i></a>
-							<a href="?p=admin&amp;tab=comments&amp;action=deletecomment&amp;commentId={{ comm.id }}" title="Supprimer le commentaire"><i class="material-icons">delete</i></a>
+						<td><a href="{{generateURL}}comment/seen?commentId={{ comm.id }}" title="Indiqué comme vu"><i class="material-icons">remove_red_eye</i></a>
+							<a href="{{generateURL}}comment/delete?commentId={{ comm.id }}" title="Supprimer le commentaire" onclick="return confirm('Etes vous sûr de vouloir supprimer ce commentaire ?')"><i class="material-icons">delete</i></a>
 						</td>
 					</tr>
 				{% endfor %}
@@ -53,8 +53,8 @@
 							<td><em>{{ signaledComment.comment }}</em></td>
 							<td>{{ signaledComment.commentDate|date("d/m/Y") }}</td>
 							<td>
-								<a title="Valider le commentaire" href="?p=admin&amp;tab=comments&amp;action=validatecomment&amp;commentId=<?= $signaledComment->getId(); ?>"><i class="material-icons">done</i></a>
-								<a title="Supprimer le commenaitre" href="?p=admin&amp;tab=comments&amp;action=deletecomment&amp;commentId=<?= $signaledComment->getId(); ?>" onclick="return confirm('Etes vous sûr de vouloir supprimer ce commentaire ?')"><i class="material-icons">delete</i></a>
+								<a title="Valider le commentaire" href="{{generateURL}}comment/validate?commentId={{ signaledComment.id }}"><i class="material-icons">done</i></a>
+								<a title="Supprimer le commenaitre" href="{{generateURL}}comment/delete?commentId={{ signaledComment.id }}" onclick="return confirm('Etes vous sûr de vouloir supprimer ce commentaire ?')"><i class="material-icons">delete</i></a>
 							</td>
 						</tr>
 					{% endfor %}
@@ -68,6 +68,6 @@
 </div>
 </div>
 
-<script type="text/javascript" src="public/js/clignotement.js"></script>
+<script type="text/javascript" src="http://localhost/PROJET5PERSO/public/js/clignotement.js"></script>
 
 {% endblock %}

@@ -12,33 +12,32 @@
 	<form action="" method="post">
 		<textarea name="description" class="form-control">{% if aboutDescription %} {{ aboutDescription }} {% endif %}</textarea><br>
 		{% if not aboutDescription %}
-			<input type="submit" class="btn btn-publish" href="admin?tab=settings/addaaboutdescription" value="Valider la description">
+			<input type="submit" class="btn btn-publish" href="{{generateURL}}about/adddescription" value="Valider la description">
 		{% else %}
-			<input type="submit" class="btn btn-warning" href="admin?tab=settings/updateaboutdescription" value="Mettre à jour la description">
+			<input type="submit" class="btn btn-warning" href="{{generateURL}}about/updatedescrption" value="Mettre à jour la description">
 		{% endif %}
-		<a id="delete-description-btn" class="btn btn-danger" onclick="return confirm('Etes vous sûr de vouloir supprimer la description ?')" href="admin?tab=settings/deleteaboutdescription">Supprimer la description</a>
+		<a id="delete-description-btn" class="btn btn-danger" onclick="return confirm('Etes vous sûr de vouloir supprimer la description ?')" href="{{generateURL}}about/deletedescription">Supprimer la description</a>
 	</form>
 	
 	<br>
 
 	<h4>Vos fiches</h4>
 
-	<p><a class="btn btn-danger" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer toutes les fiches ?'));" href="admin?tab=settings/deleteallsheets">Supprimer toutes les fiches</a></p>
-	<p><a class="btn btn-danger" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer tous les commentaires ?'));" href="admin?tab=settings/deleteallcomments">Supprimer tous les commentaires</a></p>
+	<p><a class="btn btn-danger" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer toutes les fiches ?'));" href="{{generateURL}}sheet/deleteall">Supprimer toutes les fiches</a></p>
+	<p><a class="btn btn-danger" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer tous les commentaires ?'));" href="{{generateURL}}comment/deleteall">Supprimer tous les commentaires</a></p>
 	<br>
 
 	<h4>Le Chat</h4>
-	<p><a class="btn btn-danger" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer tous les messages du chat ?'));" href="admin?tab=settings/deleteallmessages">Supprimer tous les messages du chat</a></p>
+	<p><a class="btn btn-danger" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer tous les messages du chat ?'));" href="{{generateURL}}chat/deleteall">Supprimer tous les messages du chat</a></p>
 
 	<h4>Votre compte</h4>
 
 	<div class="center">
-		<a class="btn btn-default btn-sm" title="Se déconnecter" onclick="return confirm('Etes vous sûr de vouloir vous déconnecter ?')" href="logout"><i class="material-icons left">exit_to_app</i>Se déconnecter</a></li>
+		<a class="btn btn-default btn-sm" title="Se déconnecter" onclick="return confirm('Etes vous sûr de vouloir vous déconnecter ?')" href="{{generateURL}}logout"><i class="material-icons left">exit_to_app</i>Se déconnecter</a></li>
     </div>
 </div>
 
 <script src="//cloud.tinymce.com/stable/tinymce.min.js?apiKey=c851wd1npuo4c59ed6f7fp6doripcdhfdi1ltt9hpr29wt3x"></script>
-<script type="text/javascript" src="public/js/tinymce.js"></script>
-<script type="text/javascript" src="public/js/clignotement.js"></script>
+<script type="text/javascript" src="http://localhost/PROJET5PERSO/public/js/tinymce.js"></script>
 
 {% endblock %}

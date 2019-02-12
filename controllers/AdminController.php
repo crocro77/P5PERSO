@@ -130,14 +130,14 @@ class AdminController extends Controller
 	{
 		$sheetManager = new Datasheet();
 		$sheetManager->deleteSheet();
-		header("Location:admin?tab=list");
+		header("Location:http://localhost/PROJET5PERSO/admin?tab=list");
 	}
 
 	public function executeDeleteAllSheet()
 	{
 		$sheetManager = new Datasheet();
 		$sheetManager->deleteAll();
-		header("Location:admin?tab=list");
+		header("Location:http://localhost/PROJET5PERSO/admin?tab=list");
 	}
 
 	public function executeValidateComment()
@@ -145,7 +145,7 @@ class AdminController extends Controller
 		if(isset($_GET['commentId'])) {
 			$commentManager = new Comment();
 			$commentManager->validateComment($_GET['commentId']);
-			header("Location:admin?tab=comments");
+			header("Location:http://localhost/PROJET5PERSO/admin?tab=comments");
 		}
 	}
 
@@ -154,7 +154,7 @@ class AdminController extends Controller
 		if(isset($_GET['commentId'])) {
 			$commentManager = new Comment();
 			$commentManager->deleteComment($_GET['commentId']);
-			header("Location:admin?tab=comments");
+			header("Location:http://localhost/PROJET5PERSO/admin?tab=comments");
 		}
 	}
 
@@ -162,7 +162,7 @@ class AdminController extends Controller
 	{
 		$commentManager = new Comment();
 		$commentManager->deleteAll();
-		header("Location:admin?tab=comments");
+		header("Location:http://localhost/PROJET5PERSO/admin?tab=comments");
 	}
 
 	public function executeSeenComment()
@@ -170,7 +170,7 @@ class AdminController extends Controller
 		if(isset($_GET['commentId'])) {
 			$commentManager = new Comment();
 			$commentManager->seenComment($_GET['commentId']);
-			header("Location:admin?tab=comments");
+			header("Location:http://localhost/PROJET5PERSO/admin?tab=comments");
 		}
 	}
 
@@ -178,6 +178,6 @@ class AdminController extends Controller
 	{
 		$chatManager = new Chat();
 		$chatManager->deleteAllMessages();
-		header("Location:admin?tab=dashboard");
+		header("Location:http://localhost/PROJET5PERSO/admin?tab=dashboard");
 	}
 }

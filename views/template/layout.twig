@@ -21,18 +21,18 @@
               <a class="navbar-brand" href="home">World of Game Gear</a>
               <a href="#" data-activates="mobile-menu" id="button-collapse" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    {% if _session.username %}<li><a title="Chat" href="http://localhost/PROJET5PERSO/chat"><i class="material-icons">chat_bubble</i></a></li>{% endif %}
-                    <li><a title="Quiz" href="http://localhost/PROJET5PERSO/quiz"><i class="material-icons">gamepad</i></a></li>
-                    <li><a title="{% if _session.username == 'ntonyyy' %}Administration{% else %}Espace Membres{% endif %}" href="http://localhost/PROJET5PERSO/user"><i class="material-icons">portrait</i></a></li>
-                    <li><a title="A propos" href="http://localhost/PROJET5PERSO/about"><i class="material-icons">info</i></a></li>
-                    <li><a title="Contact" href="http://localhost/PROJET5PERSO/contact"><i class="material-icons">mail_outline</i></a></li>
+                    {% if _session.username %}<li><a title="Chat" href="{{generateURL}}chat"><i class="material-icons">chat_bubble</i></a></li>{% endif %}
+                    <li><a title="Quiz" href="{{generateURL}}quiz"><i class="material-icons">gamepad</i></a></li>
+                    <li><a title="{% if _session.username == 'ntonyyy' %}Administration{% else %}Espace Membres{% endif %}" href="{{generateURL}}user"><i class="material-icons">portrait</i></a></li>
+                    <li><a title="A propos" href="{{generateURL}}about"><i class="material-icons">info</i></a></li>
+                    <li><a title="Contact" href="{{generateURL}}contact"><i class="material-icons">mail_outline</i></a></li>
                 </ul>
                 <ul class="sidenav" id="mobile-menu">
-                  {% if _session.username %}<li><a title="Chat" href="http://localhost/PROJET5PERSO/chat"><i class="material-icons">chat_bubble</i></a></li>{% endif %}
-                  <li><a title="Quiz" href="http://localhost/PROJET5PERSO/quiz"><i class="material-icons">gamepad</i></a></li>
-                  <li><a title="{% if _session.username == 'ntonyyy' %}Administration{% else %}Espace Membres{% endif %}" href="http://localhost/PROJET5PERSO/user"><i class="material-icons">portrait</i></a></li>
-                  <li><a title="A propos" href="http://localhost/PROJET5PERSO/about"><i class="material-icons">info</i></a></li>
-                  <li><a title="Contact" href="http://localhost/PROJET5PERSO/contact"><i class="material-icons">mail_outline</i></a></li>
+                  {% if _session.username %}<li><a title="Chat" href="{{generateURL}}chat"><i class="material-icons">chat_bubble</i></a>CHAT</li>{% endif %}
+                  <li><a title="Quiz" href="{{generateURL}}quiz"><i class="material-icons">gamepad</i></a>QUIZ</li>
+                  <li><a title="{% if _session.username == 'ntonyyy' %}Administration{% else %}Espace Membres{% endif %}" href="{{generateURL}}user"><i class="material-icons">portrait</i></a>{% if _session.username == 'ntonyyy' %}Administration{% else %}Espace Membres{% endif %}  </li>
+                  <li><a title="A propos" href="{{generateURL}}about"><i class="material-icons">info</i></a>ABOUT</li>
+                  <li><a title="Contact" href="{{generateURL}}contact"><i class="material-icons">mail_outline</i></a>CONTACT</li>
                 </ul>
             </div>
         </div>
@@ -41,7 +41,7 @@
       {% block content %}{% endblock %}
    
     <footer>
-      <p id="titleDetail">© 2018 <a href="http://localhost/PROJET5PERSO/login" id="admin-btn">ntonyyy</a> - <a title="Mentions légales" id="mention-btn" href="http://localhost/PROJET5PERSO/mentions" class="grey-text text-lighten-4">Mentions légales</a></p>
+      <p id="titleDetail">© 2018 <a href="{{generateURL}}login" id="admin-btn">ntonyyy</a> - <a title="Mentions légales" id="mention-btn" href="{{generateURL}}mentions" class="grey-text text-lighten-4">Mentions légales</a></p>
     </footer>
 
   </body>

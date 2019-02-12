@@ -4,11 +4,6 @@ class ContactController extends Controller
 {
     public function executeContactForm()
     {
-        echo $this->twig->render('front/contact.twig');
-    }
-
-    public function executeSendMessage()
-    {
         if(isset($_POST['submit']))
         {
             if(!empty($_POST['contactname']) AND !empty($_POST['contactmail']) AND !empty($_POST['contactmessage']))
@@ -33,11 +28,11 @@ class ContactController extends Controller
                 ';
 
                 mail("anthony.fumo@gmail.com", "CONTACT - World of Game Gear", $message, $header);
-                echo 'coucou';
                 $msg="Votre message a bien été envoyé !";
             } else {
                 $msg="Tous les champs doivent être complétés !";
             }
         }
+        echo $this->twig->render('front/contact.twig');
     }
 }

@@ -9,11 +9,11 @@
 
 	<h5>Suppression du compte</h5>
 	<div class="center">
-		<a class="btn btn-danger" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer votre compte ?'));" href="member?tab=settings/deleteaccount">Supprimer votre compte</a>
+		<a class="btn btn-danger" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer votre compte ?'));" href="{{generateURL}}member/deleteaccount">Supprimer votre compte</a>
 	</div>
 	<br />
 	<div class="center">
-		<a class="btn btn-default btn-sm" onclick="return confirm('Etes vous sûr de vouloir vous déconnecter ?')" title="Se déconnecter" href="logout"><i class="material-icons left">exit_to_app</i>Se déconnecter</a></li>
+		<a class="btn btn-default btn-sm" onclick="return confirm('Etes vous sûr de vouloir vous déconnecter ?')" title="Se déconnecter" href="{{generateURL}}logout"><i class="material-icons left">exit_to_app</i>Se déconnecter</a></li>
     </div>
 </div>
 

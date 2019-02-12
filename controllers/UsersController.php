@@ -5,11 +5,11 @@ class UsersController extends Controller
     public function executeUsersSpace()
     {
 		if(isset($_SESSION['username'])) {
-			header("Location:member?tab=dashboard");
+			header('Location: '.generateURL('member?tab=dashboard'));
 		}
 
 		if(isset($_SESSION['username']) AND $_SESSION['username'] == 'ntonyyy') {
-			header("Location:admin?tab=dashboard");
+			header('Location: '.generateURL('admin?tab=dashboard'));
 		}
 
 		echo $this->twig->render('front/users.twig');
@@ -27,7 +27,7 @@ class UsersController extends Controller
             }else{
                 Users::register($pseudo, $email, $pass);
 			}
-			header("Location:connection");
+			header('Location: '.generateURL('connection'));
 			
         }
 		echo $this->twig->render('front/register.twig');
@@ -61,7 +61,7 @@ class UsersController extends Controller
 				<?php
 			} else {
 				$_SESSION['username'] = $pseudo;
-				header("Location:member?tab=dashboard");
+				header('Location: '.generateURL('member?tab=dashboard'));
 			}
 		}
 		echo $this->twig->render('front/userlogin.twig');
@@ -70,7 +70,7 @@ class UsersController extends Controller
 	public function executeUserDashboard()
 	{
 		if(!isset($_SESSION['username'])) {
-			header('Location: user');
+			header('Location: '.generateURL('user'));
 			exit();
 		}
 
@@ -89,7 +89,7 @@ class UsersController extends Controller
 	public function executeMemberCreateSheet()
     {
 		if(!isset($_SESSION['username'])) {
-			header('Location: user');
+			header('Location: '.generateURL('user'));
 			exit();
 		}
 		
@@ -133,7 +133,7 @@ class UsersController extends Controller
 					$sheet->setTrackName($_POST['trackname']);
 				}
 				$sheet->addSheet($sheet);
-				header("Location:index.php");
+				header('Location: '.generateURL('home'));
 			} else {
 				?>
 				<div class="card red">
@@ -152,6 +152,6 @@ class UsersController extends Controller
 	{
 		$userManager = new Users();
 		$userManager->deleteUser();
-		header("Location:user");
+		header('Location: '.generateURL('home'));
 	}
 }

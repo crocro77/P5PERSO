@@ -9642,19 +9642,19 @@
     overflow: scroll;
   }
 
-  #chatPseudo {
+  .chatPseudo {
     font-weight: bold;
     font-family: 'Ubuntu';
     color: white;
   }
 
-  #chatMessage {
+  .chatMessage {
     font-style: italic;
     font-family: 'Ubuntu';
     color: white;
   }
 
-  #chatLine {
+  .chatLine {
     line-height: 30%;
   }
 

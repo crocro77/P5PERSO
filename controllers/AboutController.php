@@ -21,7 +21,7 @@ class AboutController extends Controller
                 $aboutAdd = new About();
                 $aboutAdd->setDescription($_POST['description']);
                 $aboutAdd->add($about);
-                header("Location:about");
+                header('Location: '.generateURL('about'));
             } else {
                 ?>
 				<div class="card red">
@@ -44,7 +44,7 @@ class AboutController extends Controller
                 if(isset($_POST['description'])) {
                     $aboutUpdate->setDescription($_POST['description']);
                     $aboutUpdate->update($description, $id);
-                    header("Location:about");
+                    header('Location: '.generateURL('about'));
                 }
             }
         }
@@ -56,6 +56,6 @@ class AboutController extends Controller
     {
 		$aboutManager = new About();
 		$aboutManager->deleteDescription();
-		header("Location:admin?tab=settings");
+		header('Location: '.generateURL('admin?tab=settings'));
     }
 }
