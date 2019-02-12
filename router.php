@@ -174,7 +174,7 @@ $router->add_route('/about/adddescription', function(){
     $addAbout->executeAddAbout();
 });
 // NON
-$router->add_route('/about/updatedescrption', function(){
+$router->add_route('/about/updatedescription', function(){
     $updateAbout = new AboutController();
     $updateAbout->executeUpdateAbout();
 });

@@ -14,7 +14,7 @@
 		{% if not aboutDescription %}
 			<input type="submit" class="btn btn-publish" href="{{generateURL}}about/adddescription" value="Valider la description">
 		{% else %}
-			<input type="submit" class="btn btn-warning" href="{{generateURL}}about/updatedescrption" value="Mettre à jour la description">
+			<input type="submit" class="btn btn-warning" href="{{generateURL}}about/updatedescription" value="Mettre à jour la description">
 		{% endif %}
 		<a id="delete-description-btn" class="btn btn-danger" onclick="return confirm('Etes vous sûr de vouloir supprimer la description ?')" href="{{generateURL}}about/deletedescription">Supprimer la description</a>
 	</form>
