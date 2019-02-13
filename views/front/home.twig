@@ -13,7 +13,7 @@
 		<br />
 	</div>
 	<hr>
-	<ul class="pagination center">
+	<ul id="list-pagination" class="pagination center">
 		{% for letter in 'A'..'Z' %}
 			<li class="waves-effect"><a class="page-link" href="{{generateURL}}?char={{ letter }}">{{ letter }}</a></li>
 		{% endfor %} 

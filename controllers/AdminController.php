@@ -77,7 +77,7 @@ class AdminController extends Controller
 				?>
 				<div class="card red">
 					<div class="card-content white-text">
-						<?php echo $error."<br/>"; ?>
+						<?php echo $errors."<br/>"; ?>
 					</div>
 				</div>
 				<?php
