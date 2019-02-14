@@ -33,7 +33,7 @@
         <div class="center">
             <img src="http://localhost/PROJET5PERSO/public/img/{{ sheetUnique.cover }}" alt="{{ sheetUnique.title }}" width="183px" heigth="256px">
         </div>
-            <p class="sheetParagraph">{{ sheetUnique.content }}</p>
+            <p class="sheetParagraph">{{ sheetUnique.content|raw }}</p>
         <br />
         <div class="center">
             <h5>Bonus : Extrait de l'OST "{{ sheetUnique.trackname }}"</h5>
