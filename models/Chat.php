@@ -29,7 +29,6 @@ class Chat extends ObjectModel
 	{
 		$db = Database::getDBConnection();
 		$request = $db->prepare('SELECT pseudo, message, id FROM chat WHERE id > :id ORDER BY id ASC');
-		// "SELECT id FROM chat ORDER BY id DESC LIMIT 0, 1"
 		$request->bindValue(':id', (int) $id);
 		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Chat');
 		$request->execute();
@@ -37,30 +36,12 @@ class Chat extends ObjectModel
         return $listOfNewMessages;
 	}
 
-	// public static function getNewMessages($id)
-	// {
-	// 	$db = Database::getDBConnection();
-	// 	$r = $db->prepare("SELECT id FROM chat ORDER BY id DESC LIMIT 0, 1");
-	// 	$last = $r->fetch(PDO::FETCH_ASSOC);
-	// 	$rep = ['messages'=>[],'last'=>$last['id']];
-	
-	// 	if($id){
-	// 		$request = $db->prepare('SELECT pseudo, message, id FROM chat WHERE id > :id ORDER BY id ASC');
-	// 		$request->bindValue(':id', (int) $id);
-	// 		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Chat');
-	// 		$request->execute();
-	// 		$rep['messages'] = $request->fetchAll();       
-	// 	}
-	// 	return $rep;
-	// }
-
     // Insertion du message à l'aide d'une requête préparée
     public static function addChatMessage()
     {
         $db = Database::getDBConnection();
         $request = $db->prepare('INSERT INTO chat (pseudo, message) VALUES(?, ?)');
         $request->execute(array($_POST['pseudo'], $_POST['message']));
-        header('Location: index.php?p=chat');
 	}
 	
 	
