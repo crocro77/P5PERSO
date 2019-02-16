@@ -53,12 +53,12 @@ class Users extends ObjectModel
 		return $login;
 	}
 
-	public static function deleteUser()
-	{
-		$db = Database::getDBConnection();
-		$req = $db->prepare("DELETE FROM users WHERE id = ?");
-		$req->execute(array($id));
-	}
+	// public static function deleteUser($id)
+	// {
+	// 	$db = Database::getDBConnection();
+	// 	$req = $db->prepare("DELETE FROM users WHERE id = ?");
+	// 	$req->execute(array($id));
+	// }
 
 	// SETTERS 
 	

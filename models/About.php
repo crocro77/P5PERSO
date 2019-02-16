@@ -17,10 +17,10 @@ class About extends ObjectModel {
 	 * Permet d'ajouter un objet About (description) en base de données.
 	 * @param string $about L'objet About
 	 */
-    public static function add(About $about) {
+    public function add(){
         $db = Database::getDBConnection();
 		$req = $db->prepare('INSERT INTO about (description) VALUES (:description)');
-		$req->bindValue(':description', $about->getDescription());
+		$req->bindValue(':description', $this->getDescription());
 		$req->execute();
 	}
 
@@ -28,11 +28,11 @@ class About extends ObjectModel {
 	 * Permet de mettre à jour la valeur de l'objet About en base de données.
 	 * @param string $about L'objet About
 	 */
-	public static function update($description, $id) {
+	public function update() {
         $db = Database::getDBConnection();
-		$req = $db->prepare('UPDATE about SET description = :description WHERE id = :id');
-		$req->bindValue(':description', $description);
-		$req->bindValue(':id', (int) $id);
+		$req = $db->prepare('UPDATE about SET description = :description WHERE id = 1');
+		$req->bindValue(':description', $this->description);
+		$req->bindValue(':id', (int) $this->id);
 		$req->execute();
 	}
 
@@ -73,7 +73,7 @@ class About extends ObjectModel {
 	 */
 	public function setDescription($description) {
 		if(is_string($description) AND !empty($description)) {
-			$this->description;
+			$this->description = $description;
 		}
 	}
 

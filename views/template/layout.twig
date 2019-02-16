@@ -4,45 +4,45 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>World of Game Gear</title>
-    <link rel="shortcut icon" href="http://localhost/PROJET5PERSO/public/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{generateURL('public/img/favicon.ico')}}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link type="text/css" rel="stylesheet" href="http://localhost/PROJET5PERSO/public/css/style.css">
+    <link type="text/css" rel="stylesheet" href="{{generateURL('public/css/style.css')}}">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js">></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="text/javascript" src="http://localhost/PROJET5PERSO/public/js/slider.js"></script>
-    <script type="text/javascript" src="http://localhost/PROJET5PERSO/public/js/responsive.js"></script>  
+    <script type="text/javascript" src="{{generateURL('public/js/slider.js')}}"></script>
+    <script type="text/javascript" src="{{generateURL('public/js/responsive.js')}}"></script>  
   </head>
   <body class="grey darken-3">
 
-          <nav>
+        <nav>
           <div class="nav-wrapper blue-grey darken-4">
             <a href="home" class="navbar-brand">World of Game Gear</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-menu" class="right hide-on-med-and-down">
-              {% if _session.username %}<li><a title="Chat" href="{{generateURL}}chat"><i class="material-icons">chat_bubble</i></a></li>{% endif %}
-              <li><a title="Quiz" href="{{generateURL}}quiz"><i class="material-icons">gamepad</i></a></li>
-              <li><a title="{% if _session.username == 'ntonyyy' %}Administration{% else %}Espace Membres{% endif %}" href="{{generateURL}}user"><i class="material-icons">portrait</i></a></li>
-              <li><a title="A propos" href="{{generateURL}}about"><i class="material-icons">info</i></a></li>
-              <li><a title="Contact" href="{{generateURL}}contact"><i class="material-icons">mail_outline</i></a></li>
+              {% if _session.username %}<li><a title="Chat" href="{{generateURL('chat')}}"><i class="material-icons">chat_bubble</i></a></li>{% endif %}
+              <li><a title="Quiz" href="{{generateURL('quiz')}}"><i class="material-icons">gamepad</i></a></li>
+              <li><a title="{% if _session.username == 'ntonyyy' %}Administration{% else %}Espace Membres{% endif %}" href="{{generateURL('user')}}"><i class="material-icons">portrait</i></a></li>
+              <li><a title="A propos" href="{{generateURL('about')}}"><i class="material-icons">info</i></a></li>
+              <li><a title="Contact" href="{{generateURL('contact')}}"><i class="material-icons">mail_outline</i></a></li>
             </ul>
           </div>
         </nav>
 
         <ul class="sidenav" id="mobile-demo">
-          {% if _session.username %}<li><a title="Chat" href="{{generateURL}}chat"><i class="material-icons">chat_bubble CHAT</i></a></li>{% endif %}
-          <li><a title="Quiz" href="{{generateURL}}quiz"><i class="material-icons">gamepad QUIZ</i></a></li>
-          <li><a title="{% if _session.username == 'ntonyyy' %}Administration{% else %}Espace Membres{% endif %}" href="{{generateURL}}user"><i class="material-icons">portrait {% if _session.username == 'ntonyyy' %}ADMINISTRATION{% else %}ESPACE MEMBRES{% endif %}</i></a></li>
-          <li><a title="A propos" href="{{generateURL}}about"><i class="material-icons">info A PROPOS</i></a></li>
-          <li><a title="Contact" href="{{generateURL}}contact"><i class="material-icons">mail_outline CONTACT</i></a></li>
+          {% if _session.username %}<li><a title="Chat" href="{{generateURL('chat')}}"><i class="material-icons">chat_bubble CHAT</i></a></li>{% endif %}
+          <li><a title="Quiz" href="{{generateURL('quiz')}}"><i class="material-icons">gamepad QUIZ</i></a></li>
+          <li><a title="{% if _session.username == 'ntonyyy' %}Administration{% else %}Espace Membres{% endif %}" href="{{generateURL('user')}}"><i class="material-icons">portrait {% if _session.username == 'ntonyyy' %}ADMINISTRATION{% else %}ESPACE MEMBRES{% endif %}</i></a></li>
+          <li><a title="A propos" href="{{generateURL('about')}}"><i class="material-icons">info A PROPOS</i></a></li>
+          <li><a title="Contact" href="{{generateURL('contact')}}"><i class="material-icons">mail_outline CONTACT</i></a></li>
         </ul>
     
       {% block content %}{% endblock %}
    
     <footer>
-      <p id="titleDetail">© 2018 <a href="{{generateURL}}login" id="admin-btn">ntonyyy</a> - <a title="Mentions légales" id="mention-btn" href="{{generateURL}}mentions" class="grey-text text-lighten-4">Mentions légales</a></p>
+      <p id="titleDetail">© 2018 <a href="{{generateURL('login')}}" id="admin-btn">ntonyyy</a> - <a title="Mentions légales" id="mention-btn" href="{{generateURL}}mentions" class="grey-text text-lighten-4">Mentions légales</a></p>
     </footer>
 
   </body>

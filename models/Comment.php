@@ -138,11 +138,11 @@ class Comment extends ObjectModel
 	/**
 	 * Delete all comments
 	 */
-	public static function deleteAll() {
-		$db = Database::getDBConnection();
-		$result = $db->exec('TRUNCATE TABLE comments');
-		return $result;
-	}
+	// public static function deleteAll() {
+	// 	$db = Database::getDBConnection();
+	// 	$result = $db->exec('TRUNCATE TABLE comments');
+	// 	return $result;
+	// }
 
 	// SETTERS 
 	

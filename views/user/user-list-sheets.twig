@@ -4,7 +4,7 @@
 <h2 class="center" id="to-the-top">Liste des fiches</h2>
 <ul id="list-pagination" class="pagination center">
 	{% for letter in 'A'..'Z' %}
-		<li class="waves-effect"><a class="page-link" href="{{generateURL}}member?tab=list&char={{ letter }}">{{ letter }}</a></li>
+		<li class="waves-effect"><a class="page-link" href="{{generateURL('member?tab=list&char=')}}{{ letter }}">{{ letter }}</a></li>
 	{% endfor %} 
 </ul>
 {% for sheet in datasheet %}
@@ -19,9 +19,9 @@
                     {{ sheet.content|slice(0, 500)|raw }}...
                     </div>
                     <div class="col s12 m6 l4 center">
-                        <img src="{{generateURL}}public/img/{{ sheet.cover }}" class="responsive-img" alt="{{ sheet.title }}"/>
+                        <img src="{{generateURL('public/img/')}}{{ sheet.cover }}" class="responsive-img" alt="{{ sheet.title }}"/>
                         <br/><br/>
-                        <a class="btn btn-default btn-sm" href="{{generateURL}}game/sheet?id={{ sheet.id }}">Voir la fiche complète</a>
+                        <a class="btn btn-default btn-sm" href="{{generateURL('game/sheet?id=')}}{{ sheet.id }}">Voir la fiche complète</a>
                     </div>
                 </div>
                 <hr/>

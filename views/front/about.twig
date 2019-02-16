@@ -10,10 +10,10 @@
 		{% if not aboutDescription %}
             <p>Cette page n'a pas encore été complétée.</p>
             {% if _session.username == 'ntonyyy' %}
-                <p><a href="admin?tab=settings">Le faire maintenant.</a></p>
+                <p><a href="{{generateURL('admin?tab=settings')}}">Le faire maintenant.</a></p>
             {% endif %}
         {% else %}
-            {{ aboutDescription }}
+            {{ aboutDescription|raw }}
         {% endif %}
 	</div>
 </div>

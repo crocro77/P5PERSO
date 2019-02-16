@@ -43,9 +43,10 @@ class FrontController extends Controller
     {    
 		if(isset($_GET['id'])) {
 			$commentManager = new Comment();
-			$comment = $commentManager->getSpecificComment($_GET['commentId']);
+			$comment = $commentManager->getSpecificComment($_GET['id']);
+			// if id isset
 			$commentManager->signal($comment);
-			header('Location: '.generateURL('game/sheet?id='.$_POST['commentId'].'#comments'));
+			header('Location: ' . $_SERVER['HTTP_REFERER']);
 		}
 	}
 

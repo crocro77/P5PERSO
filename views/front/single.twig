@@ -31,7 +31,7 @@
         </table>
         <br />
         <div class="center">
-            <img src="http://localhost/PROJET5PERSO/public/img/{{ sheetUnique.cover }}" alt="{{ sheetUnique.title }}" width="183px" heigth="256px">
+            <img src="{{generateURL('public/img/')}}{{ sheetUnique.cover }}" alt="{{ sheetUnique.title }}" width="183px" heigth="256px">
         </div>
             <p class="sheetParagraph">{{ sheetUnique.content|raw }}</p>
         <br />
@@ -54,7 +54,7 @@
                     {% if singlecomment.signaled  %}
                         <em class="orange">Le commentaire a été signalé et est en attente de modération.</em>
                     {% else %}
-                        <a href="http://localhost/PROJET5PERSO/comment/signal"><small class="signal pull-right">Signaler</small></a>
+                        <a href="http://localhost/PROJET5PERSO/comment/signal?id={{singlecomment.id}}"><small class="signal pull-right">Signaler</small></a>
                     {% endif %}
                 </p>
             </blockquote>

@@ -148,10 +148,10 @@ class UsersController extends Controller
 		echo $this->twig->render('user/user.twig', ['selectedTab' => 'memberwrite']);
 	}
 
-	public function executeDeleteUser()
-	{
-		$userManager = new Users();
-		$userManager->deleteUser();
-		header('Location: '.generateURL('home'));
-	}
+	// public function executeDeleteUser()
+	// {
+	// 	$userManager = new Users();
+	// 	$userManager->deleteUser();
+	// 	header('Location: '.generateURL('home'));
+	// }
 }

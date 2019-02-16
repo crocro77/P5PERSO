@@ -28,22 +28,18 @@
                     <div class="card">
                         <div class="card-content blue white-text">
                             <span class="card-title">MEMBRE(S)</span>
-                            <h4>{{ users|length }}</h4>
+                            <h4>{{ users }}</h4>
                         </div>
                     </div>
 
                     <div class="card">
                         <div class="card-content red white-text">
                             <span class="card-title">LIGNE(S) SUR LE CHAT</span>
-                            <h4>{{ chat|length }}</h4>
+                            <h4>{{ chat }}</h4>
                         </div>
                     </div>
                 </div>
 			</div>	
-        </div>
-        <br />
-        <div class="center">
-			<a class="btn btn-default btn-sm" onclick="return confirm('Etes vous sûr de vouloir vous déconnecter ?')" title="Se déconnecter" href="{{generateURL}}logout"><i class="material-icons left">exit_to_app</i>Se déconnecter</a></li>
         </div>
 	</div>
 </div>

@@ -4,23 +4,23 @@
 <div class="center">
 	<ul id="admin-nav" class="flex-container  white">
 		<li class="tab" {% if selectedTab == 'dashboard' %} class="active" {% endif %}>
-			<a title="Tableau de bord" href="{{generateURL}}admin?tab=dashboard"><i class="material-icons">dashboard</i></a>
+			<a title="Tableau de bord" href="{{generateURL('admin?tab=dashboard')}}"><i class="material-icons">dashboard</i></a>
 			<p>Tableau de bord</p>
 		</li>
 		<li class="tab" {% if selectedTab == 'list' %} class="active" {% endif %}>
-			<a title="Les fiches" href="{{generateURL}}admin?tab=list"><i class="material-icons">view_list</i></a>
+			<a title="Les fiches" href="{{generateURL('admin?tab=list')}}"><i class="material-icons">view_list</i></a>
 			<p>Les Fiches</p>
 		</li>
 		<li class="tab" {% if selectedTab == 'write' %} class="active" {% endif %}>
-			<a title="Ecrire" href="{{generateURL}}write"><i class="material-icons">edit</i></a>
+			<a title="Ecrire" href="write"><i class="material-icons">edit</i></a>
 			<p>Ecrire</p>
 		</li>
 		<li class="tab" {% if selectedTab == 'comments' %} class="active" {% endif %}>
-			<a title="Commentaires" href="{{generateURL}}admin?tab=comments"><i class="material-icons">comment</i></a>
+			<a title="Commentaires" href="{{generateURL('admin?tab=comments')}}"><i class="material-icons">comment</i></a>
 			<p>Les Commentaires</p>
 		</li>
         <li class="tab" {% if selectedTab == 'settings' %} class="active" {% endif %}>
-			<a title="Paramètres" href="{{generateURL}}admin?tab=settings"><i class="material-icons">settings</i></a>
+			<a title="Paramètres" href="{{generateURL('admin?tab=settings')}}"><i class="material-icons">settings</i></a>
 			<p>Paramètres</p>
 		</li>
 	</ul>

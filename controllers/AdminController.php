@@ -19,17 +19,27 @@ class AdminController extends Controller
 			$selectedTab = $_GET['tab'];
 		}
 
-		$sheetManager = new Datasheet();
-		$listOfSheets = $sheetManager->getListAlpha();
-		$aboutManager = new About();
-        $aboutDescription = $aboutManager->getAboutDescription();
 		$commentManager = new Comment();
         $listOfComments = $commentManager->getAllComments();
 		$signaledComments = $commentManager->getSignaledComments();
+		$userManager = new Users();
+		$userNumber = $userManager->count();
+		$chatManager = new Chat();
+		$chatMsgNumber = $chatManager->count();
 
-		echo $this->twig->render('admin/admin.twig', ['datasheet' => Datasheet::getListAlpha(),'comment' => Comment::getAllComments(), 'listOfComments' => $listOfComments, 'selectedTab' => $selectedTab, 'signaledComments' => $signaledComments, 'aboutDescription' => About::getAboutDescription(), ]);
+		echo $this->twig->render('admin/admin.twig',
+			[
+				'chat' => $chatMsgNumber,
+				'users' => $userNumber,
+				'datasheet' => Datasheet::getListAlpha(),
+				'comment' => Comment::getAllComments(),
+				'listOfComments' => $listOfComments,
+				'selectedTab' => $selectedTab,
+				'signaledComments' => $signaledComments, 
+				'aboutDescription' => About::getAboutDescription(),
+			]);
 	}
-
+	
 	public function executeCreateSheet()
     {
 		if(isset($_POST['title']) && isset($_POST['author']) && isset($_POST['content']) && isset($_POST['developer']) && isset($_POST['publisher']) && isset($_POST['release_date']) && isset($_POST['genre'])){
@@ -56,6 +66,9 @@ class AdminController extends Controller
 				$errors .= '<li>Le genre est obligatoire.</li>';
 			}
 			if (empty($errors)) {
+				$cover = "";
+				$track = "";
+				$screenshot = "";
 				$sheet = new Datasheet();
 				$sheet->setTitle($_POST['title']);
 				$sheet->setContent($_POST['content']);
@@ -64,7 +77,99 @@ class AdminController extends Controller
 				$sheet->setPublisher($_POST['publisher']);
 				$sheet->setReleaseDate($_POST['release_date']);
 				$sheet->setGenre($_POST['genre']);
-				include 'includes/file-upload.php';
+				// upload de la cover de la fiche
+				if (isset($_FILES['file'])) {
+					$file = $_FILES['file']['name'];
+					$max_size = 2000000;
+					$size = $_FILES['file']['size'];
+					$extensions = array('.png', '.jpg', '.jpeg', '.gif', '.PNG', '.JPG', '.JPEG', '.GIF');
+					$extension = strrchr($file, '.');
+					if (!in_array($extension, $extensions)) {
+						$error = "Cette image n'est pas valable";
+					}
+					if ($size > $max_size) {
+						$error = "Le fichier est trop volumineux";
+					}
+					if (!isset($error)) {
+						$coverKey = md5($_FILES['file']['name']) . time() . $extension;
+						move_uploaded_file($_FILES['file']['tmp_name'], 'public/img/' . $coverKey);
+						$cover = $coverKey;
+					} else {
+						?>
+						<div class="card red">
+							<div class="card-content white-text">
+								<?php
+									foreach($errors as $error){
+										echo $error."<br/>";
+									}
+								?>
+							</div>
+						</div>
+						<?php
+					}
+				}
+				// upload de la track de la fiche
+				if (isset($_FILES['file2'])) {
+					$file = $_FILES['file2']['name'];
+					$max_size = 200000000;
+					$size = $_FILES['file2']['size'];
+					$extensions = array('.mp3', '.MP3');
+					$extension = strrchr($file, '.');
+					if (!in_array($extension, $extensions)) {
+						$error = "Cette musique n'est pas valable";
+					}
+					if ($size > $max_size) {
+						$error = "Le fichier est trop volumineux";
+					}
+					if (!isset($error)) {
+						$trackKey = md5($_FILES['file2']['name']) . time() . $extension;
+						move_uploaded_file($_FILES['file2']['tmp_name'], 'public/mp3/' . $trackKey);
+						$track = $trackKey;
+					} else {
+						?>
+						<div class="card red">
+							<div class="card-content white-text">
+								<?php
+									foreach($errors as $error){
+										echo $error."<br/>";
+									}
+								?>
+							</div>
+						</div>
+						<?php
+					}
+				}
+				// upload du screenshot de la fiche
+				if (isset($_FILES['file3'])) {
+					$file = $_FILES['file3']['name'];
+					$max_size = 2000000;
+					$size = $_FILES['file3']['size'];
+					$extensions = array('.png', '.jpg', '.jpeg', '.gif', '.PNG', '.JPG', '.JPEG', '.GIF');
+					$extension = strrchr($file, '.');
+					if (!in_array($extension, $extensions)) {
+						$error = "Cette image n'est pas valable";
+					}
+					if ($size > $max_size) {
+						$error = "Le fichier est trop volumineux";
+					}
+					if (!isset($error)) {
+						$screenshotKey = md5($_FILES['file3']['name']) . time() . $extension;
+						move_uploaded_file($_FILES['file3']['tmp_name'], 'public/img/' . $screenshotKey);
+						$screenshot = $screenshotKey;
+					} else {
+						?>
+						<div class="card red">
+							<div class="card-content white-text">
+								<?php
+									foreach($errors as $error){
+										echo $error."<br/>";
+									}
+								?>
+							</div>
+						</div>
+						<?php
+					}
+				}			
 				$sheet->setCover($cover);
 				$sheet->setScreenshot($screenshot);
 				$sheet->setTrack($track);
@@ -77,11 +182,15 @@ class AdminController extends Controller
 				?>
 				<div class="card red">
 					<div class="card-content white-text">
-						<?php echo $errors."<br/>"; ?>
+						<?php
+							foreach($errors as $error){
+								echo $error."<br/>";
+							}
+						?>
 					</div>
 				</div>
 				<?php
-			}	
+			}
 		}
 		
 		echo $this->twig->render('admin/admin.twig', ['selectedTab' => 'write']);
@@ -102,7 +211,100 @@ class AdminController extends Controller
 					$sheet->setReleaseDate($_POST['release_date']);
 					$sheet->setGenre($_POST['genre']);
 					$sheet->setTrackName($_POST['trackname']);
-					include 'includes/file-upload.php';
+					// upload de la cover de la fiche
+					if (isset($_FILES['file'])) {
+						$file = $_FILES['file']['name'];
+						$max_size = 2000000;
+						$size = $_FILES['file']['size'];
+						$extensions = array('.png', '.jpg', '.jpeg', '.gif', '.PNG', '.JPG', '.JPEG', '.GIF');
+						$extension = strrchr($file, '.');
+						$errors = '';
+						if (!in_array($extension, $extensions)) {
+							$errors = "Cette image n'est pas valable";
+						}
+						if ($size > $max_size) {
+							$errors = "Le fichier est trop volumineux";
+						}
+						if (!isset($error)) {
+							$coverKey = md5($_FILES['file']['name']) . time() . $extension;
+							move_uploaded_file($_FILES['file']['tmp_name'], 'public/img/' . $coverKey);
+							$cover = $coverKey;
+						} else {
+							?>
+							<div class="card red">
+								<div class="card-content white-text">
+									<?php
+										foreach($errors as $error){
+											echo $error."<br/>";
+										}
+									?>
+								</div>
+							</div>
+							<?php
+						}
+					} 
+					// upload de la track de la fiche
+					if (isset($_FILES['file2'])) {
+						$file = $_FILES['file2']['name'];
+						$max_size = 60000000;
+						$size = $_FILES['file2']['size'];
+						$extensions = array('.mp3', '.MP3');
+						$extension = strrchr($file, '.');
+						if (!in_array($extension, $extensions)) {
+							$error = "Cette musique n'est pas valable";
+						}
+						if ($size > $max_size) {
+							$error = "Le fichier est trop volumineux";
+						}
+						if (!isset($error)) {
+							$trackKey = md5($_FILES['file2']['name']) . time() . $extension;
+							move_uploaded_file($_FILES['file2']['tmp_name'], 'public/mp3/' . $trackKey);
+							$track = $trackKey;
+						} else {
+							?>
+							<div class="card red">
+								<div class="card-content white-text">
+									<?php
+										foreach($errors as $error){
+											echo $error."<br/>";
+										}
+									?>
+								</div>
+							</div>
+							<?php
+						}
+					}
+					// upload du screenshot de la fiche
+					if (isset($_FILES['file3'])) {
+						$file = $_FILES['file3']['name'];
+						$max_size = 2000000;
+						$size = $_FILES['file3']['size'];
+						$extensions = array('.png', '.jpg', '.jpeg', '.gif', '.PNG', '.JPG', '.JPEG', '.GIF');
+						$extension = strrchr($file, '.');
+						if (!in_array($extension, $extensions)) {
+							$error = "Cette image n'est pas valable";
+						}
+						if ($size > $max_size) {
+							$error = "Le fichier est trop volumineux";
+						}
+						if (!isset($error)) {
+							$screenshotKey = md5($_FILES['file3']['name']) . time() . $extension;
+							move_uploaded_file($_FILES['file3']['tmp_name'], 'public/img/' . $screenshotKey);
+							$screenshot = $screenshotKey;
+						} else {
+							?>
+							<div class="card red">
+								<div class="card-content white-text">
+									<?php
+										foreach($errors as $error){
+											echo $error."<br/>";
+										}
+									?>
+								</div>
+							</div>
+							<?php
+						}
+					}			
 					if(!empty($cover)) {
 						$sheet->setCover($cover);
 					}
@@ -133,12 +335,12 @@ class AdminController extends Controller
 		header('Location: '.generateURL('admin?tab=list'));
 	}
 
-	public function executeDeleteAllSheet()
-	{
-		$sheetManager = new Datasheet();
-		$sheetManager->deleteAll();
-		header('Location: '.generateURL('admin?tab=list'));
-	}
+	// public function executeDeleteAllSheet()
+	// {
+	// 	$sheetManager = new Datasheet();
+	// 	$sheetManager->deleteAll();
+	// 	header('Location: '.generateURL('admin?tab=list'));
+	// }
 
 	public function executeValidateComment()
 	{
@@ -158,12 +360,12 @@ class AdminController extends Controller
 		}
 	}
 
-	public function executeDeleteAllComments()
-	{
-		$commentManager = new Comment();
-		$commentManager->deleteAll();
-		header('Location: '.generateURL('admin?tab=comments'));
-	}
+	// public function executeDeleteAllComments()
+	// {
+	// 	$commentManager = new Comment();
+	// 	$commentManager->deleteAll();
+	// 	header('Location: '.generateURL('admin?tab=comments'));
+	// }
 
 	public function executeSeenComment()
 	{
@@ -174,10 +376,10 @@ class AdminController extends Controller
 		}
 	}
 
-	public function deleteChatMessages()
-	{
-		$chatManager = new Chat();
-		$chatManager->deleteAllMessages();
-		header('Location: '.generateURL('admin?tab=dashboard'));
-	}
+	// public function deleteChatMessages()
+	// {
+	// 	$chatManager = new Chat();
+	// 	$chatManager->deleteAllMessages();
+	// 	header('Location: '.generateURL('admin?tab=dashboard'));
+	// }
 }

@@ -20,13 +20,13 @@ class AboutController extends Controller
             if (empty($errors)) {
                 $aboutAdd = new About();
                 $aboutAdd->setDescription($_POST['description']);
-                $aboutAdd->add($about);
+                $aboutAdd->add();
                 header('Location: '.generateURL('about'));
             } else {
                 ?>
 				<div class="card red">
 					<div class="card-content white-text">
-						<?php echo $error."<br/>"; ?>
+						<?php echo $errors."<br/>"; ?>
 					</div>
 				</div>
 				<?php
@@ -39,17 +39,20 @@ class AboutController extends Controller
     public function executeUpdateAbout()
     {
         $aboutUpdate = new About();
-        if(isset($_GET['id'])) {
+        if(isset($_POST['id'])) {
+            $aboutDescription = $aboutUpdate->getAboutDescription();
             if($aboutDescription) {
                 if(isset($_POST['description'])) {
                     $aboutUpdate->setDescription($_POST['description']);
-                    $aboutUpdate->update($description, $id);
+                    $aboutUpdate->update();
                     header('Location: '.generateURL('about'));
                 }
-            }
-        }
 
-        echo $this->twig->render('admin/admin.twig');
+                echo $this->twig->render('admin/admin.twig');
+            } else {
+                header('Location: '.generateURL('about'));
+            }
+        }  
     }
 
     public function executeDeleteAbout()

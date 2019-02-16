@@ -21,3 +21,17 @@ $(document).ready(function () {
 	}
 	setInterval(refreshChat, 5000)
 });
+
+
+// success: function (data) {
+//     id = data.last;
+//     data.messages.forEach(function(element) {      
+//         let msg =
+//         `<div>
+//             <p class="chatLine">
+//                 <span class="chatPseudo">${element.pseudo}</span> <span class="chatMessage">${element.message}</span>
+//             </p>
+//         </div>`;
+//         $('#chatWindow').append(msg)
+//     })
+// },

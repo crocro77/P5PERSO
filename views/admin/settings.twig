@@ -9,35 +9,27 @@
 
 	<p class="text-justify">Entrez une description de votre site, fournissez des informations de contact et ce qui vous paraîtra important. Cela apparaitra dans la page &laquo; À propos &raquo; de votre site.</p>
 
-	<form action="" method="post">
-		<textarea name="description" class="form-control">{% if aboutDescription %} {{ aboutDescription }} {% endif %}</textarea><br>
-		{% if not aboutDescription %}
-			<input type="submit" class="btn btn-publish" href="{{generateURL}}about/adddescription" value="Valider la description">
-		{% else %}
-			<input type="submit" class="btn btn-warning" href="{{generateURL}}about/updatedescription" value="Mettre à jour la description">
-		{% endif %}
-		<a id="delete-description-btn" class="btn btn-danger" onclick="return confirm('Etes vous sûr de vouloir supprimer la description ?')" href="{{generateURL}}about/deletedescription">Supprimer la description</a>
-	</form>
-	
+	{% if not aboutDescription %}
+		<form action="{{generateURL('about/adddescription')}}" method="post">
+			<textarea name="description" class="form-control"></textarea><br>
+			<input type="submit" class="btn btn-publish" value="Valider la description">
+	{% else %}
+		<form action="{{generateURL('about/updatedescription')}}" method="post">
+			<textarea name="description" class="form-control">{{aboutDescription}}</textarea><br>
+			<input type="submit" class="btn btn-warning" value="Mettre à jour la description">
+	{% endif %}
+			<a id="delete-description-btn" class="btn btn-danger" onclick="return confirm('Etes vous sûr de vouloir supprimer la description ?')" href="{{generateURL('about/deletedescription')}}">Supprimer la description</a>
+		</form>
 	<br>
 
-	<h4>Vos fiches</h4>
-
-	<p><a class="btn btn-danger" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer toutes les fiches ?'));" href="{{generateURL}}sheet/deleteall">Supprimer toutes les fiches</a></p>
-	<p><a class="btn btn-danger" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer tous les commentaires ?'));" href="{{generateURL}}comment/deleteall">Supprimer tous les commentaires</a></p>
-	<br>
-
-	<h4>Le Chat</h4>
-	<p><a class="btn btn-danger" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer tous les messages du chat ?'));" href="{{generateURL}}chat/deleteall">Supprimer tous les messages du chat</a></p>
-
-	<h4>Votre compte</h4>
+	<h4>Déconnexion</h4>
 
 	<div class="center">
-		<a class="btn btn-default btn-sm" title="Se déconnecter" onclick="return confirm('Etes vous sûr de vouloir vous déconnecter ?')" href="{{generateURL}}logout"><i class="material-icons left">exit_to_app</i>Se déconnecter</a></li>
+		<a class="btn btn-default btn-sm" title="Se déconnecter" onclick="return confirm('Etes vous sûr de vouloir vous déconnecter ?')" href="{{generateURL('logout')}}"><i class="material-icons left">exit_to_app</i>Se déconnecter</a></li>
     </div>
 </div>
 
 <script src="//cloud.tinymce.com/stable/tinymce.min.js?apiKey=c851wd1npuo4c59ed6f7fp6doripcdhfdi1ltt9hpr29wt3x"></script>
-<script type="text/javascript" src="http://localhost/PROJET5PERSO/public/js/tinymce.js"></script>
+<script type="text/javascript" src="{{generateURL('public/js/tinymce.js')}}"></script>
 
 {% endblock %}
