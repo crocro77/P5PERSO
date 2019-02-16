@@ -125,6 +125,24 @@ class AdminController extends Controller
 					if(!empty($track)) {
 						$sheet->setTrack($track);
 					}
+					// if ($cover) {
+					// 	$sheet->updateCover($cover, $id);
+					// 	header('Location: '.generateURL('admin?tab=list'));
+					// }
+					// if ($screenshot) {
+					// 	$sheet->updateScreenshot($screenshot, $id);
+					// 	header('Location: '.generateURL('admin?tab=list'));
+					// }
+					// if ($track) {
+					// 	$sheet->updateTrack($track, $id);
+					// 	header('Location: '.generateURL('admin?tab=list'));
+					// }
+					// if ($trackname) {
+					// 	$sheet->updateTrackName($trackname, $id);
+					// 	header('Location: '.generateURL('admin?tab=list'));
+					// } else {
+					// 	header('Location: '.generateURL('admin?tab=list'));
+					// }
 					$sheet->updateSheet();
 					header('Location: '.generateURL('admin?tab=list'));
 				}
