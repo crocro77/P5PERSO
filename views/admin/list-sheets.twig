@@ -4,32 +4,32 @@
 <h2 id="to-the-top" class="center">Liste des fiches</h2>
 <ul id="list-pagination" class="pagination center">
 	{% for letter in 'A'..'Z' %}
-		<li class="waves-effect"><a class="page-link" href="{{generateURL('admin?tab=list&char=')}}{{ letter }}">{{ letter }}</a></li>
+		<li class="waves-effect"><a class="page-link" href="{{generateURL('admin?tab=list&char=')}}{{letter}}">{{letter}}</a></li>
 	{% endfor %} 
 </ul>
 {% if not datasheet %}
-    <p>Vous n'avez pas encore publié de fiche. <a href="write">Commencez ici</a></p>
+    <p>Vous n'avez pas encore publié de fiche. <a href="{{generateURL('write')}}">Commencez ici</a></p>
 {% else %}
     {% for sheet in datasheet %}
         <div class="row">
             <div class="col s12">
-                <h4 id="post-title">{{ sheet.title }}</h4>
+                <h4 id="post-title">{{sheet.title}}</h4>
                 <p>
-                    <small>Rédigé le {{ sheet.date|date("d/m/Y") }} par {{ sheet.author }}</small>
+                    <small>Rédigé le {{sheet.date|date("d/m/Y") }} par {{sheet.author }}</small>
                 </p>
                 <div class="row">
                     <div class="col s12 m6 l8">
-                    {{ sheet.content|slice(0, 500)|raw }}...    
+                        {{sheet.content|slice(0, 500)|raw }}...    
                     </div>
                     <div class="col s12 m6 l4 center">
-                        <img src="{{generateURL('public/img/')}}{{ sheet.cover }}" class="responsive-img" alt="{{ sheet.title }}"/>
+                        <img src="{{generateURL('public/img/')}}{{sheet.cover}}" class="responsive-img" alt="{{sheet.title}}"/>
                         <br/><br/>
-                        <a class="btn btn-default btn-sm" href="{{generateURL('game/sheet?id=')}}{{ sheet.id }}">Voir la fiche complète</a>
+                        <a class="btn btn-default btn-sm" href="{{generateURL('game/sheet?id=')}}{{sheet.id}}">Voir la fiche complète</a>
                         <br/><br/>
-                        <a class="btn btn-default btn-sm" href="{{generateURL('edit?id=')}}{{ sheet.id }}">Éditer la fiche</a>
+                        <a class="btn btn-default btn-sm" href="{{generateURL('edit?id=')}}{{sheet.id}}">Éditer la fiche</a>
                         <br/><br/>
-                        <form method="post" role="form" onclick="return confirm('Etes vous sûr de vouloir supprimer cette fiche ?')" action="{{generateURL('sheet/delete?id=')}}{{ sheet.id }}">
-                            <input type="hidden" name="id" value="{{ sheet.id }}">
+                        <form method="post" role="form" onclick="return confirm('Etes vous sûr de vouloir supprimer cette fiche ?')" action="{{generateURL('sheet/delete?id=')}}{{sheet.id}}">
+                            <input type="hidden" name="id" value="{{sheet.id}}">
                             <input type="submit" value="Supprimer la fiche" class="btn btn-danger">
                         </form>
                     </div>

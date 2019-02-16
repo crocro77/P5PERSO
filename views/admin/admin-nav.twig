@@ -12,7 +12,7 @@
 			<p>Les Fiches</p>
 		</li>
 		<li class="tab" {% if selectedTab == 'write' %} class="active" {% endif %}>
-			<a title="Ecrire" href="write"><i class="material-icons">edit</i></a>
+			<a title="Ecrire" href="{{generateURL('write')}}"><i class="material-icons">edit</i></a>
 			<p>Ecrire</p>
 		</li>
 		<li class="tab" {% if selectedTab == 'comments' %} class="active" {% endif %}>

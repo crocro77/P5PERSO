@@ -3,7 +3,7 @@
 session_start();
 
 require 'vendor/autoload.php';
-include 'includes/helpers.php';
+include 'includes/generate-url.php';
 
 function autoload($classname)
 {

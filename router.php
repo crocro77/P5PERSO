@@ -106,7 +106,7 @@ $router->add_route('/member', function(){
     $controller = new UsersController();
 	$controller->executeUserDashboard();
 });
-// OK SAUF MP3
+
 $router->add_route('/write', function(){
     $createController = new AdminController();
 	$createController->executeCreateSheet();
@@ -116,7 +116,7 @@ $router->add_route('/memberwrite', function(){
     $createController = new UsersController();
 	$createController->executeMemberCreateSheet();
 });
-// OK SAUF LES FILE-UPLOADS
+
 $router->add_route('/edit', function(){
     $updateChapter = new AdminController();
     $updateChapter->executeUpdateSheet();

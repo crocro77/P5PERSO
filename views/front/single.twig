@@ -6,15 +6,15 @@
     <div>
         <h1 id="site-title">Liste des jeux Game Gear</h1>
         <br />
-        <p id="titleDetail"><a class="btn btn-default btn-sm" href="http://localhost/PROJET5PERSO/home">Retour à la page d'accueil</a></p>
+        <p id="titleDetail"><a class="btn btn-default btn-sm" href="{{generateURL('home')}}">Retour à la page d'accueil</a></p>
     </div>
 </div>
 <div id="single" class="container grey lighten-3">
-    <h2 id="post-title" class="center"><img src="http://localhost/PROJET5PERSO/public/img/sega-game-gear-icon.png"> {{ sheetUnique.title }} <img src="http://localhost/PROJET5PERSO/public/img/sega-game-gear-icon.png"> </h2>
+    <h2 id="post-title" class="center"><img src="{{generateURL('public/img/sega-game-gear-icon.png')}}"> {{sheetUnique.title}} <img src="{{generateURL('public/img/sega-game-gear-icon.png')}}"></h2>
         <div class="row center">
-            <img class="chapterUniqueImage" src="http://localhost/PROJET5PERSO/public/img/{{ sheetUnique.screenshot }}" alt="{{ sheetUnique.title }}" >
+            <img class="chapterUniqueImage" src="{{generateURL('public/img/')}}{{sheetUnique.screenshot}}" alt="{{sheetUnique.title}}">
         </div>
-        <h6 class="center">Par {{ sheetUnique.author }} le {{ sheetUnique.date|date("d/m/Y") }}</h6>
+        <h6 class="center">Par {{sheetUnique.author}} le {{sheetUnique.date|date("d/m/Y")}}</h6>
         <table>
             <thead>
                 <th>Développeur</th>
@@ -23,22 +23,22 @@
                 <th>Genre</th>
             </thead>
             <tbody>
-                <td>{{ sheetUnique.developer }}</td>
-                <td>{{ sheetUnique.publisher }}</td>
-                <td>{{ sheetUnique.releasedate }}</td>
-                <td>{{ sheetUnique.genre }}</td>
+                <td>{{sheetUnique.developer}}</td>
+                <td>{{sheetUnique.publisher}}</td>
+                <td>{{sheetUnique.releasedate}}</td>
+                <td>{{sheetUnique.genre}}</td>
             </tbody>
         </table>
         <br />
         <div class="center">
-            <img src="{{generateURL('public/img/')}}{{ sheetUnique.cover }}" alt="{{ sheetUnique.title }}" width="183px" heigth="256px">
+            <img src="{{generateURL('public/img/')}}{{sheetUnique.cover}}" alt="{{sheetUnique.title}}" width="183px" heigth="256px">
         </div>
-            <p class="sheetParagraph">{{ sheetUnique.content|raw }}</p>
+            <p class="sheetParagraph">{{sheetUnique.content|raw}}</p>
         <br />
         <div class="center">
-            <h5>Bonus : Extrait de l'OST "{{ sheetUnique.trackname }}"</h5>
+            <h5>Bonus : Extrait de l'OST "{{sheetUnique.trackname}}"</h5>
             <audio controls>
-                <source src="http://localhost/PROJET5PERSO/public/mp3/{{ sheetUnique.track }}" type="audio/mpeg">
+                <source src="{{generateURL('public/mp3/')}}{{sheetUnique.track}}" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
         </div>
@@ -47,14 +47,14 @@
 
     {% if listOfComments %}
         {% for singlecomment in comment %}
-            <strong>{{ singlecomment.author }} (Le {{ singlecomment.date|date("d/m/Y") }}) a dit :</strong>
+            <strong>{{singlecomment.author}} (Le {{singlecomment.date|date("d/m/Y")}}) a dit :</strong>
             <blockquote>
                 <p>
-                    {{ singlecomment.comment }}
+                    {{singlecomment.comment}}
                     {% if singlecomment.signaled  %}
                         <em class="orange">Le commentaire a été signalé et est en attente de modération.</em>
                     {% else %}
-                        <a href="http://localhost/PROJET5PERSO/comment/signal?id={{singlecomment.id}}"><small class="signal pull-right">Signaler</small></a>
+                        <a href="{{generateURL('comment/signal?id=')}}{{singlecomment.id}}"><small class="signal pull-right">Signaler</small></a>
                     {% endif %}
                 </p>
             </blockquote>
@@ -67,9 +67,9 @@
 	<h4 id="poster-commentaire">Commenter</h4>
 		<div class="write-comment">
             {% if _session.username %}
-                <p>Vous postez un commentaire en tant que <strong>{{ _session.username }}</strong></p>
+                <p>Vous postez un commentaire en tant que <strong>{{_session.username}}</strong></p>
             {% endif %}
-            <form class="form-horizontal" action="http://localhost/PROJET5PERSO/comment/post" method="post">
+            <form class="form-horizontal" action="{{generateURL('comment/post')}}" method="post">
                 {% if not _session.username %}
                 <div class="form-group">
                     <label for="author" class="col-sm-1 control-label">Pseudo </label>
@@ -85,7 +85,7 @@
                             <textarea name="comment" class="materialize-textarea"></textarea>
                         </div>
                 </div>
-                    <input type="hidden" name="id" value="{{ sheetUnique.id }}">
+                    <input type="hidden" name="id" value="{{sheetUnique.id}}">
                 <div class="col s12">
                     <button type="submit" name ="submit" class="btn btn-default btn-sm">Envoyer votre commentaire</button>
                 </div>

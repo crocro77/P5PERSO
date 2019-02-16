@@ -69,7 +69,7 @@ class Datasheet extends ObjectModel
 		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Datasheet');
 		$sheet = $request->fetch();
 		if($sheet === false) {
-			header("Location:index.php");
+			header('Location:' .generateURL('error'));
 		}
 		$sheet->setDate(new DateTime($sheet->getDate()));
 		return $sheet;
@@ -305,8 +305,8 @@ class Datasheet extends ObjectModel
 		if(is_string($trackname) && !empty($trackname) && strlen($trackname) < 255) 
 		{
 			$this->trackname = $trackname;
-		// } else {
-		// 	$this->trackname = 'SEGA';
+		} else {
+			$this->trackname = 'SEGA';
 		}
 	}
 	

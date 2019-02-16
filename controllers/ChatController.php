@@ -16,7 +16,11 @@ class ChatController extends Controller
 		$chatManager = new Chat();
 		$listOfChatMessages = $chatManager->getChatMessages();
 		
-		echo $this->twig->render('front/chat.twig', ['chat' => Chat::getChatMessages(), 'listOfChatMessages' => $listOfChatMessages ]);
+		echo $this->twig->render('front/chat.twig',
+			[
+				'chat' => Chat::getChatMessages(), 
+				'listOfChatMessages' => $listOfChatMessages
+			]);
 	}
 	
 	public function executeAddMessage()

@@ -8,6 +8,7 @@
         <div id="wrapper">
 
             <h1>Résultat</h1>
+            <img id="sonic_sing" src="{{generateURL('public/img/sonic_sing.gif')}}">
             <br />
             {% set answer1 = _post['answerOne'] %}
             {% set answer2 = _post['answerTwo'] %}
@@ -59,7 +60,7 @@
             {% endif %}
             <p id='score-result' class='center'>Votre score est de<br> {{ score }}/10</p>
 
-                {% if score > 0 and score < 5 %}
+                {% if score > 0 and score <= 5 %}
                     <p class='center'>Pas terrible</p>
                 {% elseif score > 5 and score < 10 %}
                     <p class='center'>Très bien</p>
@@ -70,7 +71,7 @@
                 {% endif %}
                 
             
-            <a title="Quiz" class="btn btn-default btn-sm" href="{{generateURL}}quiz">Retour au quiz</a>
+            <a title="Quiz" class="btn btn-default btn-sm" href="{{generateURL('quiz')}}">Retour au quiz</a>
         </div>
     </div>
 </div>

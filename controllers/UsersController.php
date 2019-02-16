@@ -83,7 +83,12 @@ class UsersController extends Controller
 		$sheetManager = new Datasheet();
 		$listOfsheets = $sheetManager->getListAlpha();
 
-		echo $this->twig->render('user/user.twig', ['datasheet' => Datasheet::getListAlpha(), 'listOfsheets' => $listOfsheets,'selectedTab' => $selectedTab]);
+		echo $this->twig->render('user/user.twig',
+			[
+				'datasheet' => Datasheet::getListAlpha(), 
+				'listOfsheets' => $listOfsheets,
+				'selectedTab' => $selectedTab
+			]);	
 	}
 
 	public function executeMemberCreateSheet()
@@ -117,6 +122,9 @@ class UsersController extends Controller
 				$errors .= '<li>Le genre est obligatoire.</li>';
 			}
 			if (empty($errors)) {
+				$cover = "";
+				$track = "";
+				$screenshot = "";
 				$sheet = new Datasheet();
 				$sheet->setTitle($_POST['title']);
 				$sheet->setContent($_POST['content']);

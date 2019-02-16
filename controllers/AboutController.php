@@ -4,9 +4,6 @@ class AboutController extends Controller
 {
     public function executeAbout()
     {
-        $aboutManager = new About();
-        $aboutDescription = $aboutManager->getAboutDescription();
-
         echo $this->twig->render('front/about.twig', ['aboutDescription' => About::getAboutDescription()]);
     }
 
