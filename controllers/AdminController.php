@@ -62,6 +62,9 @@ class AdminController extends Controller
 			if (empty($_POST['release_date'])) {
 				$errors .= '<li>L\'année de sortie est obligatoire.</li>';
 			}
+			// if (!empty($_POST['release_date']) != int ) {
+			// 	$errors .= '<li>L\'année de sortie est à écrire en chiffres (ex:1992).</li>';
+			// }
 			if (empty($_POST['genre'])) {
 				$errors .= '<li>Le genre est obligatoire.</li>';
 			}

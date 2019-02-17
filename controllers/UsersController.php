@@ -80,13 +80,9 @@ class UsersController extends Controller
 			$selectedTab = $_GET['tab'];
 		}
 
-		$sheetManager = new Datasheet();
-		$listOfsheets = $sheetManager->getListAlpha();
-
 		echo $this->twig->render('user/user.twig',
 			[
 				'datasheet' => Datasheet::getListAlpha(), 
-				'listOfsheets' => $listOfsheets,
 				'selectedTab' => $selectedTab
 			]);	
 	}

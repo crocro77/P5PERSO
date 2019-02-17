@@ -10,12 +10,15 @@ class FrontController extends Controller
 	public function executeSingleSheet()
 	{
 		if (isset($_GET['id'])) {
-			$sheetManager = new Datasheet();
-			$sheetUnique = $sheetManager->getUnique($_GET['id']);
 			$commentManager = new Comment();
 			$listOfComments = $commentManager->getSheetComments($_GET['id']);
 
-			echo $this->twig->render('front/single.twig', ['sheetUnique' => Datasheet::getUnique($_GET['id']), 'listOfComments' => $listOfComments, 'comment' => Comment::getSheetComments($_GET['id'])]);
+			echo $this->twig->render('front/single.twig',
+				[
+					'sheetUnique' => Datasheet::getUnique($_GET['id']), 
+					'comment' => Comment::getSheetComments($_GET['id']),
+					'listOfComments' => $listOfComments
+				]);
 		}
 	}
 
