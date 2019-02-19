@@ -152,29 +152,14 @@ $router->add_route('/comment/seen', function(){
     $seenComment->executeSeenComment();
 });
 
-// $router->add_route('/comment/deleteall', function(){
-//     $seenComment = new AdminController();
-//     $seenComment->executeDeleteAllComments();
-// });
-
 $router->add_route('/sheet/delete', function(){
     $deleteChapter = new AdminController();
     $deleteChapter->executeDeleteSheet();
 });
 
-// $router->add_route('/sheet/deleteall', function(){
-//     $deleteChapter = new AdminController();
-//     $deleteChapter->executeDeleteAllSheet();
-// });
-
 $router->add_route('/about/adddescription', function(){
     $addAbout = new AboutController();
     $addAbout->executeAddAbout();
-});
-// NON \\
-$router->add_route('/about/updatedescription', function(){
-    $updateAbout = new AboutController();
-    $updateAbout->executeUpdateAbout();
 });
 
 $router->add_route('/about/deletedescription', function(){
@@ -187,19 +172,9 @@ $router->add_route('/chat/postchatmessage', function(){
     $chatMessage->executeAddMessage();  
 });
 
-// $router->add_route('/chat/deleteall', function(){
-//     $chatMessage = new AdminController();
-//     $chatMessage->deleteChatMessages();  
-// });
-// ?? \\
 $router->add_route('/contact/postcontactmessage', function(){
     $contactMessage = new ContactController();
     $contactMessage->executeContactForm();
 });
-
-// $router->add_route('/member/deleteaccount', function(){
-//     $deleteAccount = new UsersController();
-//     $deleteAccount->executeDeleteUser();
-// });
 
 $router->execute();

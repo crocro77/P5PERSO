@@ -13,16 +13,16 @@
     {% for sheet in datasheet %}
         <div class="row">
             <div class="col s12">
-                <h4 id="post-title">{{sheet.title}}</h4>
+                <h4 id="post-title">{{sheet.title|e}}</h4>
                 <p>
-                    <small>Rédigé le {{sheet.date|date("d/m/Y") }} par {{sheet.author }}</small>
+                    <small>Rédigé le {{sheet.date|date("d/m/Y") }} par {{sheet.author|e }}</small>
                 </p>
                 <div class="row">
                     <div class="col s12 m6 l8">
                         {{sheet.content|slice(0, 500)|raw }}...    
                     </div>
                     <div class="col s12 m6 l4 center">
-                        <img src="{{generateURL('public/img/')}}{{sheet.cover}}" class="responsive-img" alt="{{sheet.title}}"/>
+                        <img src="{{generateURL('public/img/')}}{{sheet.cover}}" class="responsive-img" alt="{{sheet.title|e}}"/>
                         <br/><br/>
                         <a class="btn btn-default btn-sm" href="{{generateURL('game/sheet?id=')}}{{sheet.id}}">Voir la fiche complète</a>
                         <br/><br/>

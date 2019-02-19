@@ -135,15 +135,6 @@ class Comment extends ObjectModel
 		$req->execute();
 	}
 
-	/**
-	 * Delete all comments
-	 */
-	// public static function deleteAll() {
-	// 	$db = Database::getDBConnection();
-	// 	$result = $db->exec('TRUNCATE TABLE comments');
-	// 	return $result;
-	// }
-
 	// SETTERS 
 	
 	/**

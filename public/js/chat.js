@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	var id = 0;
+	var id = $("#chatWindow div").last().attr("id");
 	function refreshChat() {
 		$.ajax({
 			dataType: "Json",
@@ -17,18 +17,6 @@ $(document).ready(function () {
 					$('#chatWindow').append(msg)
 				})
 			},
-			// success: function (data) {
-			//     id = data.last;
-			//     data.messages.forEach(function(element) {      
-			//         let msg =
-			//         `<div>
-			//             <p class="chatLine">
-			//                 <span class="chatPseudo">${element.pseudo}</span> <span class="chatMessage">${element.message}</span>
-			//             </p>
-			//         </div>`;
-			//         $('#chatWindow').append(msg)
-			//     })
-			// },
 		});
 	}
 	setInterval(refreshChat, 5000)

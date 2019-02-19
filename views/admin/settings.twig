@@ -14,11 +14,12 @@
 			<textarea name="description" class="form-control"></textarea><br>
 			<input type="submit" class="btn btn-publish" value="Valider la description">
 	{% else %}
-		<form action="{{generateURL('about/updatedescription')}}" method="post">
+		<form action="" method="post">
 			<textarea name="description" class="form-control">{{aboutDescription}}</textarea><br>
-			<input type="submit" class="btn btn-warning" value="Mettre à jour la description">
 	{% endif %}
-			<a id="delete-description-btn" class="btn btn-danger" onclick="return confirm('Etes vous sûr de vouloir supprimer la description ?')" href="{{generateURL('about/deletedescription')}}">Supprimer la description</a>
+			{% if aboutDescription %}
+				<a id="delete-description-btn" class="btn btn-danger" onclick="return confirm('Etes vous sûr de vouloir supprimer la description ?')" href="{{generateURL('about/deletedescription')}}">Supprimer la description</a>
+			{% endif %}
 		</form>
 	<br>
 

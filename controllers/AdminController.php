@@ -62,9 +62,6 @@ class AdminController extends Controller
 			if (empty($_POST['release_date'])) {
 				$errors .= '<li>L\'année de sortie est obligatoire.</li>';
 			}
-			// if (!empty($_POST['release_date']) != int ) {
-			// 	$errors .= '<li>L\'année de sortie est à écrire en chiffres (ex:1992).</li>';
-			// }
 			if (empty($_POST['genre'])) {
 				$errors .= '<li>Le genre est obligatoire.</li>';
 			}
@@ -80,7 +77,15 @@ class AdminController extends Controller
 				$sheet->setPublisher($_POST['publisher']);
 				$sheet->setReleaseDate($_POST['release_date']);
 				$sheet->setGenre($_POST['genre']);
-				include 'includes/file-upload.php';
+				if (isset($_FILES['file'])) {
+					uploadCover();
+				}
+				if (isset($_FILES['file2'])) {
+					uploadTrack();
+				}
+				if (isset($_FILES['file3'])) {
+					uploadScreenshot();
+				}
 				$sheet->setCover($cover);
 				$sheet->setScreenshot($screenshot);
 				$sheet->setTrack($track);
@@ -118,7 +123,15 @@ class AdminController extends Controller
 					$sheet->setReleaseDate($_POST['release_date']);
 					$sheet->setGenre($_POST['genre']);
 					$sheet->setTrackName($_POST['trackname']);
-					include 'includes/file-upload.php';		
+					if (isset($_FILES['file'])) {
+						uploadCover();
+					}
+					if (isset($_FILES['file2'])) {
+						uploadTrack();
+					}
+					if (isset($_FILES['file3'])) {
+						uploadScreenshot();
+			 	    }
 					if(!empty($cover)) {
 						$sheet->setCover($cover);
 					}
@@ -128,24 +141,6 @@ class AdminController extends Controller
 					if(!empty($track)) {
 						$sheet->setTrack($track);
 					}
-					// if ($cover) {
-					// 	$sheet->updateCover($cover, $id);
-					// 	header('Location: '.generateURL('admin?tab=list'));
-					// }
-					// if ($screenshot) {
-					// 	$sheet->updateScreenshot($screenshot, $id);
-					// 	header('Location: '.generateURL('admin?tab=list'));
-					// }
-					// if ($track) {
-					// 	$sheet->updateTrack($track, $id);
-					// 	header('Location: '.generateURL('admin?tab=list'));
-					// }
-					// if ($trackname) {
-					// 	$sheet->updateTrackName($trackname, $id);
-					// 	header('Location: '.generateURL('admin?tab=list'));
-					// } else {
-					// 	header('Location: '.generateURL('admin?tab=list'));
-					// }
 					$sheet->updateSheet();
 					header('Location: '.generateURL('admin?tab=list'));
 				}
@@ -167,13 +162,6 @@ class AdminController extends Controller
 		header('Location: '.generateURL('admin?tab=list'));
 	}
 
-	// public function executeDeleteAllSheet()
-	// {
-	// 	$sheetManager = new Datasheet();
-	// 	$sheetManager->deleteAll();
-	// 	header('Location: '.generateURL('admin?tab=list'));
-	// }
-
 	public function executeValidateComment()
 	{
 		if(isset($_GET['commentId'])) {
@@ -192,13 +180,6 @@ class AdminController extends Controller
 		}
 	}
 
-	// public function executeDeleteAllComments()
-	// {
-	// 	$commentManager = new Comment();
-	// 	$commentManager->deleteAll();
-	// 	header('Location: '.generateURL('admin?tab=comments'));
-	// }
-
 	public function executeSeenComment()
 	{
 		if(isset($_GET['commentId'])) {
@@ -207,11 +188,4 @@ class AdminController extends Controller
 			header('Location: '.generateURL('admin?tab=comments'));
 		}
 	}
-
-	// public function deleteChatMessages()
-	// {
-	// 	$chatManager = new Chat();
-	// 	$chatManager->deleteAllMessages();
-	// 	header('Location: '.generateURL('admin?tab=dashboard'));
-	// }
 }

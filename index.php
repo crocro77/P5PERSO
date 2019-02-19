@@ -4,6 +4,7 @@ session_start();
 
 require 'vendor/autoload.php';
 include 'includes/generate-url.php';
+include 'includes/file-upload.php';
 
 function autoload($classname)
 {

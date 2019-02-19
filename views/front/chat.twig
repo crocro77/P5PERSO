@@ -6,7 +6,7 @@
     <div class="center"> 
         <h1>Bienvenue sur le Chat "{{_session.username}}"</h1>
     </div>
-    
+
     <div class="row" id="chatWindow">
         {% if not listOfChatMessages %}
             <div class="alert alert-danger">
@@ -14,8 +14,8 @@
             </div>
         {% else %}
             {% for message in chat %}
-                <div>
-                    <p class="chatLine"><span class="chatPseudo">{{ message.pseudo }}</span> <span class="chatMessage">{{ message.message }}</p></span>
+                <div id="{{message.id}}">
+                    <p class="chatLine"><span class="chatPseudo">{{ message.pseudo|e }}</span> <span class="chatMessage">{{ message.message|e }}</p></span>
                 </div>
             {% endfor %}
         {% endif %}
@@ -27,7 +27,7 @@
             <div class="form-group">
                 <label for="pseudo">Pseudo</label>
                 <div class="col-sm-offset-1 col-sm-2">
-                    <input type="text" name="pseudo" id="pseudo" value="{% if _session.username %}{{_session.username}}{% endif %}"/><br />
+                    <input type="text" name="pseudo" id="pseudo" value="{% if _session.username %}{{_session.username|e}}{% endif %}"/><br />
                 </div>
             </div>
             <div class="form-group">

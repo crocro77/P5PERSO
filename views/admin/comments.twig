@@ -24,8 +24,8 @@
 				{% for comm in comment %}
 					<tr id="commentaire_{{ comm.id }}"> 
 						<td class="center"><a href="{{generateURL('?p=single&id=')}}{{ comm.postid }}">{{ comm.postid }}</a></td>
-						<td><em>{{ comm.comment }}</em></td>
-						<td><strong>{{ comm.author }}</strong></td>
+						<td><em>{{ comm.comment|e }}</em></td>
+						<td><strong>{{ comm.author|e }}</strong></td>
 						<td><a href="{{generateURL('comment/seen?commentId=')}}{{ comm.id }}" title="Indiqué comme vu"><i class="material-icons">remove_red_eye</i></a>
 							<a href="{{generateURL('comment/delete?commentId=')}}{{ comm.id }}" title="Supprimer le commentaire" onclick="return confirm('Etes vous sûr de vouloir supprimer ce commentaire ?')"><i class="material-icons">delete</i></a>
 						</td>
@@ -49,8 +49,8 @@
 				<tbody>
 					{% for signaledComment in signaledComments %}
 						<tr>
-							<td><strong>{{ signaledComment.author }}</strong></td>
-							<td><em>{{ signaledComment.comment }}</em></td>
+							<td><strong>{{ signaledComment.author|e }}</strong></td>
+							<td><em>{{ signaledComment.comment|e }}</em></td>
 							<td>{{ signaledComment.commentDate|date("d/m/Y") }}</td>
 							<td>
 								<a title="Valider le commentaire" href="{{generateURL('comment/validate?commentId=')}}{{ signaledComment.id }}"><i class="material-icons">done</i></a>

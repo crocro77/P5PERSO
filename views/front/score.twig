@@ -54,7 +54,7 @@
             {% endif %}
             
             {% if _session.username %}
-                <p>{{_session.username }}</p>
+                <p>{{_session.username|e }}</p>
             {% else %}
                 <p>Cher visiteur :</p>
             {% endif %}

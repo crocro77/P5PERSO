@@ -193,16 +193,6 @@ class Datasheet extends ObjectModel
 		$db->exec('DELETE FROM datasheet WHERE id = '. $_POST['id']);
 	}
 
-	/**
-	 * Supprime toutes les fiches de la base de données. Remet l'id de base à 0.
-	 */
-	// public static function deleteAll()
-	// {
-	// 	$db = Database::getDBConnection();
-	// 	$result = $db->exec('TRUNCATE TABLE datasheet');
-	// 	return $result;
-	// }
-
 	// SETTERS
 
 	/**
@@ -271,7 +261,7 @@ class Datasheet extends ObjectModel
 	 */
 	public function setReleaseDate($release_date)
 	{
-		$this->release_date = $release_date;
+		$this->release_date = (int) $release_date;
 	}
 
 	/**

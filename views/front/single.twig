@@ -10,11 +10,11 @@
     </div>
 </div>
 <div id="single" class="container grey lighten-3">
-    <h2 id="post-title" class="center"><img src="{{generateURL('public/img/sega-game-gear-icon.png')}}"> {{sheetUnique.title}} <img src="{{generateURL('public/img/sega-game-gear-icon.png')}}"></h2>
+    <h2 id="post-title" class="center"><img src="{{generateURL('public/img/sega-game-gear-icon.png')}}"> {{sheetUnique.title|e}} <img src="{{generateURL('public/img/sega-game-gear-icon.png')}}"></h2>
         <div class="row center">
-            <img class="chapterUniqueImage" src="{{generateURL('public/img/')}}{{sheetUnique.screenshot}}" alt="{{sheetUnique.title}}">
+            <img class="chapterUniqueImage" src="{{generateURL('public/img/')}}{{sheetUnique.screenshot}}" alt="{{sheetUnique.title|e}}">
         </div>
-        <h6 class="center">Par {{sheetUnique.author}} le {{sheetUnique.date|date("d/m/Y")}}</h6>
+        <h6 class="center">Par {{sheetUnique.author|e}} le {{sheetUnique.date|date("d/m/Y")}}</h6>
         <table>
             <thead>
                 <th>Développeur</th>
@@ -23,15 +23,15 @@
                 <th>Genre</th>
             </thead>
             <tbody>
-                <td>{{sheetUnique.developer}}</td>
-                <td>{{sheetUnique.publisher}}</td>
-                <td>{{sheetUnique.releasedate}}</td>
-                <td>{{sheetUnique.genre}}</td>
+                <td>{{sheetUnique.developer|e}}</td>
+                <td>{{sheetUnique.publisher|e}}</td>
+                <td>{{sheetUnique.releasedate|e}}</td>
+                <td>{{sheetUnique.genre|e}}</td>
             </tbody>
         </table>
         <br />
         <div class="center">
-            <img src="{{generateURL('public/img/')}}{{sheetUnique.cover}}" alt="{{sheetUnique.title}}" width="183px" heigth="256px">
+            <img src="{{generateURL('public/img/')}}{{sheetUnique.cover}}" alt="{{sheetUnique.title|e}}" width="183px" heigth="256px">
         </div>
             <p class="sheetParagraph">{{sheetUnique.content|raw}}</p>
         <br />
@@ -47,10 +47,10 @@
 
     {% if listOfComments %}
         {% for singlecomment in comment %}
-            <strong>{{singlecomment.author}} (Le {{singlecomment.date|date("d/m/Y")}}) a dit :</strong>
+            <strong>{{singlecomment.author|e}} (Le {{singlecomment.date|date("d/m/Y")}}) a dit :</strong>
             <blockquote>
                 <p>
-                    {{singlecomment.comment}}
+                    {{singlecomment.comment|e}}
                     {% if singlecomment.signaled  %}
                         <em class="orange">Le commentaire a été signalé et est en attente de modération.</em>
                     {% else %}
@@ -67,7 +67,7 @@
 	<h4 id="poster-commentaire">Commenter</h4>
 		<div class="write-comment">
             {% if _session.username %}
-                <p>Vous postez un commentaire en tant que <strong>{{_session.username}}</strong></p>
+                <p>Vous postez un commentaire en tant que <strong>{{_session.username|e}}</strong></p>
             {% endif %}
             <form class="form-horizontal" action="{{generateURL('comment/post')}}" method="post">
                 {% if not _session.username %}

@@ -36,24 +36,7 @@ class Chat extends ObjectModel
         return $listOfNewMessages;
 	}
 
-	// public static function getNewMessages($id)
-	// {
-	// 	$db = Database::getDBConnection();
-	// 	$r = $db->prepare("SELECT id FROM chat ORDER BY id DESC LIMIT 0, 1");
-	// 	$last = $r->fetch(PDO::FETCH_ASSOC);
-	// 	$listOfNewMessages = ['messages'=>[],'last'=>$last['id']];
-	
-	// 	if($id){
-	// 		$request = $db->prepare('SELECT pseudo, message, id FROM chat WHERE id > :id ORDER BY id ASC');
-	// 		$request->bindValue(':id', (int) $id);
-	// 		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Chat');
-	// 		$request->execute();
-	// 		$listOfNewMessages['messages'] = $request->fetchAll();       
-	// 	}
-	// 	return $listOfNewMessages;
-	// }
-
-    // Insertion du message à l'aide d'une requête préparée
+    // Insertion du message
     public static function addChatMessage()
     {
         $db = Database::getDBConnection();
@@ -61,16 +44,6 @@ class Chat extends ObjectModel
         $request->execute(array($_POST['pseudo'], $_POST['message']));
 	}
 	
-	
-	/**
-	 * Delete all comments
-	 */
-	// public static function deleteAllMessages() {
-	// 	$db = Database::getDBConnection();
-	// 	$result = $db->exec('TRUNCATE TABLE chat');
-	// 	return $result;
-	// }
-
     // SETTERS //
 
 	/**
@@ -90,7 +63,7 @@ class Chat extends ObjectModel
 	public function setPseudo($pseudo) {
 		if(is_string($pseudo) AND !empty($pseudo)) {
 			$this->pseudo = $pseudo;
-		}
+		} //filtre
     }
     
 	/**
@@ -100,7 +73,7 @@ class Chat extends ObjectModel
 	public function setMessage($message) {
 		if(is_string($message) AND !empty($message)) {
 			$this->message = $message;
-		}
+		} // filtre
 	}
 
 	// GETTERS //

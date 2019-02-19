@@ -17,7 +17,7 @@ class AboutController extends Controller
             if (empty($errors)) {
                 $aboutAdd = new About();
                 $aboutAdd->setDescription($_POST['description']);
-                $aboutAdd->add();
+                $aboutAdd->addAbout();
                 header('Location: '.generateURL('about'));
             } else {
                 ?>
@@ -31,25 +31,6 @@ class AboutController extends Controller
         }
 
         echo $this->twig->render('admin/admin.twig');
-    }
-
-    public function executeUpdateAbout()
-    {
-        $aboutUpdate = new About();
-        if(isset($_POST['id'])) {
-            $aboutDescription = $aboutUpdate->getAboutDescription();
-            if($aboutDescription) {
-                if(isset($_POST['description'])) {
-                    $aboutUpdate->setDescription($_POST['description']);
-                    $aboutUpdate->update();
-                    header('Location: '.generateURL('about'));
-                }
-
-                echo $this->twig->render('admin/admin.twig');
-            } else {
-                header('Location: '.generateURL('about'));
-            }
-        }  
     }
 
     public function executeDeleteAbout()
