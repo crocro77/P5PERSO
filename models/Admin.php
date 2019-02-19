@@ -53,6 +53,8 @@ class Admin extends ObjectModel
 		if(is_string($username) && !empty($username) && strlen($username) < 50)
 		{
 			$this->username = $username;
+		} else {
+			$this->username = '';
 		}
 	}
 
@@ -65,6 +67,8 @@ class Admin extends ObjectModel
 		if(is_string($password) && !empty($password) && strlen($password) < 255) 
 		{
 			$this->password = $password;
+		} else {
+			$this->password = '';
 		}
     }
 

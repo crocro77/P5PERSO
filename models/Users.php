@@ -70,8 +70,10 @@ class Users extends ObjectModel
 	 * @param string $pseudo le pseudo du user
 	 */
 	public function setPseudo($pseudo) {
-		if(is_string($pseudo) && !empty($pseudo)) {
+		if(is_string($pseudo) && !empty($pseudo) && strlen($pseudo) < 255) {
 			$this->pseudo = $pseudo;
+		} else {
+			$this->pseudo = '';
 		}
 	}
 
@@ -80,8 +82,10 @@ class Users extends ObjectModel
 	 * @param string $email email de l'user
 	 */
 	public function setEmail($email) {
-		if(is_string($email) && !empty($email)) {
+		if(is_string($email) && !empty($email) && strlen($email) < 255) {
 			$this->email = $email;
+		} else {
+			$this->email = '';
 		}
 	}
 
@@ -90,8 +94,10 @@ class Users extends ObjectModel
 	 * @param string $pass le password de l'user
 	 */
 	public function setPass($pass) {
-		if(is_string($pass) && !empty($pass)) {
+		if(is_string($pass) && !empty($pass) && strlen($pass) < 255) {
 			$this->pass = $pass;
+		} else {
+			$this->pass = '';
 		}
 	}
 

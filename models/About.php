@@ -60,8 +60,10 @@ class About extends ObjectModel {
 	 * @param string $description La description.
 	 */
 	public function setDescription($description) {
-		if(is_string($description) AND !empty($description)) {
+		if(is_string($description) AND !empty($description) && strlen($description) < 255) {
 			$this->description = $description;
+		} else {
+			$this->description = '';
 		}
 	}
 

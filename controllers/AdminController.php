@@ -78,13 +78,13 @@ class AdminController extends Controller
 				$sheet->setReleaseDate($_POST['release_date']);
 				$sheet->setGenre($_POST['genre']);
 				if (isset($_FILES['file'])) {
-					uploadCover();
+					uploadCover($_FILES['file']);
 				}
 				if (isset($_FILES['file2'])) {
-					uploadTrack();
+					uploadTrack($_FILES['file2']);
 				}
 				if (isset($_FILES['file3'])) {
-					uploadScreenshot();
+					uploadScreenshot($_FILES['file3']);
 				}
 				$sheet->setCover($cover);
 				$sheet->setScreenshot($screenshot);

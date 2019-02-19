@@ -160,8 +160,10 @@ class Comment extends ObjectModel
 	 * @param string $comment Le commentaire
 	 */
 	public function setComment($comment) {
-		if(is_string($comment) && !empty($comment)) {
+		if(is_string($comment) && !empty($comment) && strlen($comment) < 255) {
 			$this->comment = $comment;
+		} else {
+			$this->comment = '';
 		}
 	}
 
@@ -178,8 +180,10 @@ class Comment extends ObjectModel
 	 * @param string $author L'auteur
 	 */
 	public function setAuthor($author) {
-		if(is_string($author) && !empty($author)) {
+		if(is_string($author) && !empty($author) && strlen($author) < 50) {
 			$this->author = $author;
+		}  else {
+			$this->author = '';
 		}
 	}
     

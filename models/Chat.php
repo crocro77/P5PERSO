@@ -61,9 +61,11 @@ class Chat extends ObjectModel
 	 * @param string $pseudo Le pseudo.
 	 */
 	public function setPseudo($pseudo) {
-		if(is_string($pseudo) AND !empty($pseudo)) {
+		if(is_string($pseudo) AND !empty($pseudo) && strlen($title) < 255) {
 			$this->pseudo = $pseudo;
-		} //filtre
+		} else {
+			$this->pseudo = '';
+		}
     }
     
 	/**
@@ -71,9 +73,11 @@ class Chat extends ObjectModel
 	 * @param string $message Le message.
 	 */
 	public function setMessage($message) {
-		if(is_string($message) AND !empty($message)) {
+		if(is_string($message) AND !empty($message) && strlen($title) < 256) {
 			$this->message = $message;
-		} // filtre
+		} else {
+			$this->message = '';
+		}
 	}
 
 	// GETTERS //

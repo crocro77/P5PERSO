@@ -216,6 +216,8 @@ class Datasheet extends ObjectModel
 		if(is_string($title) && !empty($title) && strlen($title) < 255)
 		{
 			$this->title = $title;
+		} else {
+			$this->title = '';
 		}
 	}
 
@@ -228,6 +230,8 @@ class Datasheet extends ObjectModel
 		if(is_string($content) && !empty($content) && strlen($content) < 65535) 
 		{
 			$this->content = $content;
+		} else {
+			$this->content = '';
 		}
 	}
 
@@ -240,6 +244,8 @@ class Datasheet extends ObjectModel
 		if(is_string($developer) && !empty($developer) && strlen($developer) < 255) 
 		{
 			$this->developer = $developer;
+		} else {
+			$this->developer = '';
 		}
 	}
 
@@ -252,6 +258,8 @@ class Datasheet extends ObjectModel
 		if(is_string($publisher) && !empty($publisher) && strlen($publisher) < 255) 
 		{
 			$this->publisher = $publisher;
+		} else {
+			$this->publisher = '';
 		}
 	}
 
@@ -273,6 +281,8 @@ class Datasheet extends ObjectModel
 		if(is_string($genre) && !empty($genre) && strlen($genre) < 255) 
 		{
 			$this->genre = $genre;
+		} else {
+			$this->genre = '';
 		}
 	}
 
@@ -313,6 +323,8 @@ class Datasheet extends ObjectModel
 		if(is_string($author) && !empty($author) && strlen($author) < 255) 
 		{
 			$this->author = $author;
+		} else {
+			$this->author = '';
 		}
 	}
 
