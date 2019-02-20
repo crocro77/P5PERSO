@@ -129,10 +129,18 @@ class UsersController extends Controller
 				$sheet->setPublisher($_POST['publisher']);
 				$sheet->setReleaseDate($_POST['release_date']);
 				$sheet->setGenre($_POST['genre']);
-				include 'includes/file-upload.php';
-				$sheet->setCover($cover);
-				$sheet->setScreenshot($screenshot);
-				$sheet->setTrack($track);
+				if (isset($_FILES['file'])) {
+					$cover = uploadCover();
+					$sheet->setCover($cover);
+				}
+				if (isset($_FILES['file2'])) {
+					$track = uploadTrack();
+					$sheet->setTrack($track);
+				}
+				if (isset($_FILES['file3'])) {
+					$screenshot = uploadScreenshot();
+					$sheet->setScreenshot($screenshot);
+				}
 				if ($_POST['trackname']) {
 					$sheet->setTrackName($_POST['trackname']);
 				}

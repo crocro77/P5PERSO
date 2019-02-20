@@ -78,17 +78,17 @@ class AdminController extends Controller
 				$sheet->setReleaseDate($_POST['release_date']);
 				$sheet->setGenre($_POST['genre']);
 				if (isset($_FILES['file'])) {
-					uploadCover($_FILES['file']);
+					$cover = uploadCover();
+					$sheet->setCover($cover);
 				}
 				if (isset($_FILES['file2'])) {
-					uploadTrack($_FILES['file2']);
+					$track = uploadTrack();
+					$sheet->setTrack($track);
 				}
 				if (isset($_FILES['file3'])) {
-					uploadScreenshot($_FILES['file3']);
+					$screenshot = uploadScreenshot();
+					$sheet->setScreenshot($screenshot);
 				}
-				$sheet->setCover($cover);
-				$sheet->setScreenshot($screenshot);
-				$sheet->setTrack($track);
 				if ($_POST['trackname']) {
 					$sheet->setTrackName($_POST['trackname']);
 				}
@@ -124,14 +124,14 @@ class AdminController extends Controller
 					$sheet->setGenre($_POST['genre']);
 					$sheet->setTrackName($_POST['trackname']);
 					if (isset($_FILES['file'])) {
-						uploadCover();
+						$cover = uploadCover();
 					}
 					if (isset($_FILES['file2'])) {
-						uploadTrack();
+						$track = uploadTrack();
 					}
 					if (isset($_FILES['file3'])) {
-						uploadScreenshot();
-			 	    }
+						$screenshot = uploadScreenshot();
+					}
 					if(!empty($cover)) {
 						$sheet->setCover($cover);
 					}
@@ -140,6 +140,9 @@ class AdminController extends Controller
 					}
 					if(!empty($track)) {
 						$sheet->setTrack($track);
+					}
+					if ($_POST['trackname']) {
+						$sheet->setTrackName($_POST['trackname']);
 					}
 					$sheet->updateSheet();
 					header('Location: '.generateURL('admin?tab=list'));
