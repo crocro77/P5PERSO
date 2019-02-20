@@ -28,11 +28,11 @@ class ChatController extends Controller
 		if(!empty($_POST['pseudo']) && !empty($_POST['message'])) {
 			$chatMessage = new Chat();
 			if(isset($_SESSION['username'])) {
-				$chatMessage->setPseudo(htmlspecialchars(trim($_SESSION['username'])));
+				$chatMessage->setPseudo($_SESSION['username']);
 			} else {
-				$chatMessage->setPseudo(htmlspecialchars(trim($_POST['pseudo'])));
+				$chatMessage->setPseudo($_POST['pseudo']);
 			}
-			$chatMessage->setMessage(htmlspecialchars(trim($_POST['message'])));
+			$chatMessage->setMessage($_POST['message']);
 			$chatMessage->addChatMessage();
 			header('Location: '.generateURL('chat'));
         }

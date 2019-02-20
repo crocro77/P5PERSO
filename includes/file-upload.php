@@ -18,6 +18,14 @@ function uploadCover()
         move_uploaded_file($_FILES['file']['tmp_name'], 'public/img/' . $coverKey);
         $cover = $coverKey;
         return $cover;
+    } else {
+        ?>
+		<div class="card red">
+			<div class="card-content white-text">
+				<?php echo $error."<br/>"; ?>
+			</div>
+		</div>
+		<?php
     }
 }
 
@@ -39,6 +47,14 @@ function uploadTrack()
         move_uploaded_file($_FILES['file2']['tmp_name'], 'public/mp3/' . $trackKey);
         $track = $trackKey;
         return $track;
+    } else {
+        ?>
+		<div class="card red">
+			<div class="card-content white-text">
+				<?php echo $error."<br/>"; ?>
+			</div>
+		</div>
+		<?php
     }
     
 }
@@ -61,6 +77,14 @@ function uploadScreenshot()
         move_uploaded_file($_FILES['file3']['tmp_name'], 'public/img/' . $screenshotKey);
         $screenshot = $screenshotKey;
         return $screenshot;
+    } else {
+        ?>
+		<div class="card red">
+			<div class="card-content white-text">
+				<?php echo $error."<br/>"; ?>
+			</div>
+		</div>
+		<?php
     }
     
 }

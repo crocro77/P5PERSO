@@ -19,7 +19,7 @@ $(document).ready(function () {
 			},
 		});
 	}
-	setInterval(refreshChat, 5000)
+	setInterval(refreshChat, 3500)
 });
 
 
