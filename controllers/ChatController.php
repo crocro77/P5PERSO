@@ -45,8 +45,8 @@ class ChatController extends Controller
 		$messages = [];
 		foreach ($listOfNewMessages as $key => $message) {
 			$messages[$key]['id'] = $message->getId();
-			$messages[$key]['pseudo'] = $message->getPseudo();
-			$messages[$key]['message'] = $message->getMessage();
+			$messages[$key]['pseudo'] = htmlspecialchars($message->getPseudo());
+			$messages[$key]['message'] = htmlspecialchars($message->getMessage());
 		}  
 		echo json_encode($messages);
 	}
