@@ -56,7 +56,6 @@ function uploadTrack()
 		</div>
 		<?php
     }
-    
 }
 
 function uploadScreenshot()
@@ -86,5 +85,4 @@ function uploadScreenshot()
 		</div>
 		<?php
     }
-    
 }
