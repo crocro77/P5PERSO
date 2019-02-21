@@ -9,7 +9,7 @@
 {% endif %}
 
 {% if not listOfComments %}
-	<p>Aucun commentaire n\'a été posté pour le moment.</p>
+	<p class="center">Aucun nouveau commentaire n'a été posté pour le moment.</p>
 {% else %}
 <div class="row">
 	<div class="container">
@@ -63,9 +63,11 @@
 			</table>
 		</div>
 {% endif %}
+	{% if listOfComments%}
 	</div>
-	<a href="#to-the-top" title="Retour en haut" class="right"><i class="material-icons">arrow_upward</i></a>
-</div>
+		<a href="#to-the-top" title="Retour en haut" class="right"><i class="material-icons">arrow_upward</i></a>
+	</div>
+	{% endif %}
 </div>
 
 <script type="text/javascript" src="{{generateURL('public/js/clignotement.js')}}"></script>
