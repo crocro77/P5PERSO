@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 16 fév. 2019 à 22:52
+-- Généré le :  jeu. 21 fév. 2019 à 14:34
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `about` (
 --
 
 INSERT INTO `about` (`id`, `description`) VALUES
-(1, '<p>Bienvenue sur le site - En travaux - Projet 5 personnel formation d&eacute;veloppeur web junior OpenClassrooms</p>');
+(1, '<p>P5 PERSO FORMATION OPENCLASSROOMS&nbsp;</p>');
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,7 @@ DROP TABLE IF EXISTS `chat`;
 CREATE TABLE IF NOT EXISTS `chat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pseudo` varchar(255) NOT NULL,
-  `message` text NOT NULL,
+  `message` tinytext NOT NULL,
   PRIMARY KEY (`id`)
 ) ;
 
@@ -109,16 +109,15 @@ CREATE TABLE IF NOT EXISTS `comments` (
 --
 
 INSERT INTO `comments` (`id`, `post_id`, `comment`, `comment_date`, `author`, `signaled`, `seen`) VALUES
-(5, 13, 'test', '2019-01-22 00:00:00', 'test', 0, 0),
-(4, 19, 'test', '2019-01-14 00:00:00', 'test', 0, 0),
-(6, 19, 'aa', '2019-02-11 11:09:14', 'aa', 0, 0),
-(8, 19, 'rrr', '2019-02-11 11:10:39', 'rrr', 0, 0),
-(9, 19, 'zz', '2019-02-11 11:11:28', 'zzz', 0, 0),
-(11, 19, 'erezrzr', '2019-02-11 11:34:46', 'ttttt', 1, 0),
-(13, 19, 'yy', '2019-02-11 11:37:05', 'uy', 0, 0),
-(14, 19, 'c', '2019-02-11 11:37:36', 'c', 0, 0),
-(15, 19, 'v', '2019-02-11 11:38:55', 'v', 0, 0),
-(17, 19, 'z', '2019-02-11 11:39:59', 'zezezezeze', 1, 0);
+(29, 13, 'Mon 1er jeu GG :))', '2019-02-21 14:46:41', 'ntonyyy', 0, 0),
+(26, 20, '<h1>SALUT</h1>', '2019-02-21 14:44:55', 'blabla', 1, 0),
+(28, 1, 'Un des meilleurs jeux de la console assurément !', '2019-02-21 14:46:16', 'sonic123', 0, 0),
+(27, 42, 'C\'est un jeu d\'arcade à la base ;)', '2019-02-21 14:45:32', 'ABC456', 0, 0),
+(25, 20, 'De bons souvenirs mais jeu moyen...', '2019-02-21 14:44:33', 'TOTO', 0, 0),
+(24, 19, 'j\'ai bien aimé aussi oui ;)', '2019-02-21 14:43:52', 'BOB', 0, 0),
+(23, 19, 'un jeu sympa !', '2019-02-21 14:43:29', 'sonic123', 0, 0),
+(30, 13, 'Le jeu est très nul !', '2019-02-21 14:47:17', 'tails007', 1, 0),
+(31, 21, 'La musique est plutôt cool ;)', '2019-02-21 14:48:10', 'Momo123', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -248,10 +247,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `pseudo`, `pass`, `email`, `register_date`) VALUES
-(8, 'gg', 'f5678f1aa83c871e4d0218f20af62aa11dcbae74', 'gg@gg.com', '2019-01-22'),
-(7, 'deletetest', 'a0ff094025db6249d90f911e531633bdaea45616', 'deletetest@blabla.com', '2019-01-17'),
 (6, 'TOTO', '17e66b77b21bf57f6ea4efc179b416f10e9bdc6b', 'TOTO@toto.com', '2019-01-15'),
-(9, 'newuser', '9adcb29710e807607b683f62e555c22dc5659713', 'newuser@newuser.com', '2019-02-11');
+(12, 'ilovegamegear', '69c5fcebaa65b560eaf06c3fbeb481ae44b8d618', 'gg@gg.com', '2019-02-21'),
+(9, 'newuser', '9adcb29710e807607b683f62e555c22dc5659713', 'newuser@newuser.com', '2019-02-11'),
+(11, 'sonic123', 'a0ff094025db6249d90f911e531633bdaea45616', 'sonic@sonic.fr', '2019-02-21');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

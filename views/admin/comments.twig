@@ -54,7 +54,7 @@
 							<td>{{ signaledComment.commentDate|date("d/m/Y") }}</td>
 							<td>
 								<a title="Valider le commentaire" href="{{generateURL('comment/validate?commentId=')}}{{ signaledComment.id }}"><i class="material-icons">done</i></a>
-								<a title="Supprimer le commenaitre" href="{{generateURL('comment/delete?commentId=')}}{{ signaledComment.id }}" onclick="return confirm('Etes vous sûr de vouloir supprimer ce commentaire ?')"><i class="material-icons">delete</i></a>
+								<a title="Supprimer le commentaire" href="{{generateURL('comment/delete?commentId=')}}{{ signaledComment.id }}" onclick="return confirm('Etes vous sûr de vouloir supprimer ce commentaire ?')"><i class="material-icons">delete</i></a>
 							</td>
 						</tr>
 					{% endfor %}
