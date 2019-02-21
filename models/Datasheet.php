@@ -94,10 +94,6 @@ class Datasheet extends ObjectModel
 		$req->bindValue(':screenshot', $sheet->getScreenshot());
 		$req->bindValue(':track', $sheet->getTrack());
 		$req->bindValue(':trackname', $sheet->getTrackName() ? $sheet->getTrackName() : 'SEGA');
-		// $req->bindValue(':cover', $sheet->getCover() ? $sheet->getCover() : 'cover.png');
-		// $req->bindValue(':screenshot', $sheet->getScreenshot() ? $sheet->getScreenshot() : 'screenshot.png');
-		// $req->bindValue(':track', $sheet->getTrack() ? $sheet->getTrack() : 'track.mp3');
-		// $req->bindValue(':trackname', $sheet->getTrackName() ? $sheet->getTrackName() : 'SEGA');
 		$req->execute();
 	}
 
@@ -135,55 +131,6 @@ class Datasheet extends ObjectModel
 		$request->execute();
 	}
 	
-	// /**
-	//  * Met à jour de la cover de la fiche.
-	//  * @param string $cover La cover
-	//  */
-	// public static function updateCover($cover, $id)
-	// {
-	// 	$db = Database::getDBConnection();
-	// 	$request = $db->prepare('UPDATE datasheet SET cover = :cover WHERE id = :id');
-	// 	$request->bindValue(':cover', $cover);
-	// 	$request->bindValue(':id', (int) $id);
-	// 	$request->execute();
-	// }
-	// /**
-	//  * Met à jour du screenshot d'une fiche.
-	//  * @param string $screenshot Le screenshot
-	//  */
-	// public static function updateScreenshot($screenshot, $id)
-	// {
-	// 	$db = Database::getDBConnection();
-	// 	$request = $db->prepare('UPDATE datasheet SET screenshot = :screenshot WHERE id = :id');
-	// 	$request->bindValue(':screenshot', $screenshot);
-	// 	$request->bindValue(':id', (int) $id);
-	// 	$request->execute();
-	// }
-	// /**
-	//  * Met à jour l'image d'un chapitre.
-	//  * @param string $screenshot L'image
-	//  */
-	// public static function updateTrack($track, $id)
-	// {
-	// 	$db = Database::getDBConnection();
-	// 	$request = $db->prepare('UPDATE datasheet SET track = :track WHERE id = :id');
-	// 	$request->bindValue(':track', $track);
-	// 	$request->bindValue(':id', (int) $id);
-	// 	$request->execute();
-	// }
-	// /**
-	//  * Met à jour l'image d'un chapitre.
-	//  * @param string $screenshot L'image
-	//  */
-	// public static function updateTrackName($trackname, $id)
-	// {
-	// 	$db = Database::getDBConnection();
-	// 	$request = $db->prepare('UPDATE datasheet SET trackname = :trackname WHERE id = :id');
-	// 	$request->bindValue(':trackname', $trackname);
-	// 	$request->bindValue(':id', (int) $id);
-	// 	$request->execute();
-	// }
-
 	/**
 	 * Supprime une fiche de la bdd
 	 */

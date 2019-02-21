@@ -21,14 +21,30 @@ class UsersController extends Controller
             $pseudo = htmlspecialchars(trim($_POST['pseudo']));
             $email = htmlspecialchars(trim($_POST['email']));
             $pass = sha1(htmlspecialchars(trim($_POST['pass'])));
-    
-            if(Users::email_taken($email) == 1){
-                $error_email = "L'adresse email est déjà utilisée...";
-            }else{
-                Users::register($pseudo, $email, $pass);
+			$error_email = '';
+            if(Users::email_taken($email) == 0){
+				Users::register($pseudo, $email, $pass);
+				?>
+				<div class="card green">
+					<div class="card-content white-text">
+						<?php
+							echo "Inscription confirmée ! Bienvenue ! <a class='btn btn-default btn-sm' href='connection'>Connectez-vous</a> pour continuer.";
+						?>
+					</div>
+				</div>
+				<?php
+            } else {
+				$error_email = "L'adresse email est déjà utilisée...";
+				?>
+				<div class="card red">
+					<div class="card-content white-text">
+						<?php
+							echo $error_email."<br/>";
+						?>
+					</div>
+				</div>
+				<?php
 			}
-			header('Location: '.generateURL('connection'));
-			
         }
 		echo $this->twig->render('front/register.twig');
     }
@@ -159,11 +175,4 @@ class UsersController extends Controller
 		
 		echo $this->twig->render('user/user.twig', ['selectedTab' => 'memberwrite']);
 	}
-
-	// public function executeDeleteUser()
-	// {
-	// 	$userManager = new Users();
-	// 	$userManager->deleteUser();
-	// 	header('Location: '.generateURL('home'));
-	// }
 }
