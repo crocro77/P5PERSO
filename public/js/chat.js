@@ -21,5 +21,3 @@ $(document).ready(function () {
 	}
 	setInterval(refreshChat, 3500)
 });
-
-
