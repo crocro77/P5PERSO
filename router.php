@@ -20,14 +20,14 @@ class Router {
         if(array_key_exists($path, $this->routes)) {
             $this->routes[$path]();
         } else {
-            $this->routes['/404']();
+            $this->routes['/error']();
         }
     }   
 }
 
 $router = new Router();
 
-$router->add_route('/home', function(){
+$router->add_route('', function(){
     $controller = new FrontController();
     $controller->executeHome();
 });
@@ -122,7 +122,7 @@ $router->add_route('/edit', function(){
     $updateChapter->executeUpdateSheet();
 });
 
-$router->add_route('/404', function(){
+$router->add_route('/error', function(){
         $controller = new ErrorController();
         $controller->executeError();
 });

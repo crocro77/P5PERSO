@@ -40,6 +40,6 @@ class AuthentificationController extends Controller
 	public function executeLogout()
 	{
 		session_destroy();
-		header('Location: '.generateURL('home'));
+		header('Location: '.generateURL(''));
     }
 }
